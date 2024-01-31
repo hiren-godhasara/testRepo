@@ -1,0 +1,140 @@
+.p {
+    position: relative;
+    font-size: 56px;
+    margin-left: 190px;
+    color: #ffffff;
+}
+
+.p1 {
+    margin-top: -320px;
+}
+
+.p2 {
+    margin-top: -12px;
+}
+
+.rightSection {
+    position: absolute;
+    background-color: #144950;
+    width: 213px;
+    height: 60px;
+    border-radius: 12px;
+    margin-left: 190px;
+    margin-top: 20px;
+    border: #ffffff;
+    cursor: pointer;
+    color: #144950;
+}
+
+
+.rightSection:hover {
+    background-color: #FBD449;
+    color: #144950;
+}
+
+.rightSection:hover a {
+    color: #144950;
+}
+
+.rightSection span {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    font-size: 18px;
+    font-weight: 700;
+}
+
+.home {
+    position: relative;
+    height: 740px;
+}
+
+
+a .rightSection {
+    text-decoration: none;
+    color: #FBD449;
+
+}
+
+
+@media screen and (max-width: 1500px) {
+
+    .p {
+        position: relative;
+        font-size: 53px;
+        margin-left: 140px;
+        color: #ffffff;
+    }
+
+    .rightSection {
+        position: absolute;
+        width: 190px;
+        height: 55px;
+        border-radius: 11px;
+        margin-left: 140px;
+        margin-top: 20px;
+    }
+}
+
+@media screen and (max-width: 1300px) {
+
+    .p {
+        position: relative;
+        font-size: 49px;
+        margin-left: 110px;
+        margin-top: 50px;
+
+        color: #ffffff;
+    }
+
+    .rightSection {
+        position: absolute;
+        width: 165px;
+        height: 48px;
+        border-radius: 11px;
+        margin-left: 110px;
+        margin-top: 20px;
+    }
+}
+
+@media screen and (max-width: 1300px) {
+
+    .p {
+        position: relative;
+        font-size: 45px;
+        margin-left: 110px;
+        margin-top: 40px;
+        color: #ffffff;
+    }
+
+    .rightSection {
+        position: absolute;
+        width: 165px;
+        height: 48px;
+        border-radius: 11px;
+        margin-left: 110px;
+        margin-top: 20px;
+    }
+}
+
+
+@media screen and (max-width: 1180px) {
+
+    .p {
+        position: relative;
+        font-size: 42px;
+        margin-left: 110px;
+        margin-top: 50px;
+        color: #ffffff;
+    }
+
+    .rightSection {
+        position: absolute;
+        width: 165px;
+        height: 48px;
+        border-radius: 11px;
+        margin-left: 110px;
+        margin-top: 20px;
+    }
+}

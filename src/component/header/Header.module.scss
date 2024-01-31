@@ -21,7 +21,9 @@
     font-weight: 550;
     letter-spacing: 0.20px;
     text-decoration: none;
-
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 
@@ -45,7 +47,7 @@
 .leftSection {
     display: flex;
     align-items: center;
-    width: 230px;
+    width: 265px;
     height: 80px;
     gap: 10px;
 
@@ -201,6 +203,7 @@
 
     .navList {
         gap: 15px;
+        margin-left: -100px;
     }
 
     .leftSection .image {
@@ -212,14 +215,19 @@
         width: 130px;
         height: 42px;
         border-radius: 6px;
-        font-weight: 600;
+        font-weight: 500;
+        font-size: 15px;
     }
 
     .number {
-        font-size: 14px;
+        font-size: 13px;
     }
 
     .header {
         height: 70px;
+    }
+
+    .number span {
+        display: none;
     }
 }

@@ -1,0 +1,23 @@
+.image {
+    width: 1500px;
+    height: 740px;
+    object-fit: cover;
+}
+
+
+
+@media screen and (max-width: 1300px) {
+
+    .image {
+        width: 1300px;
+        height: 700px;
+    }
+}
+
+@media screen and (max-width: 1100px) {
+
+    .image {
+        width: 1300px;
+        height: 700px;
+    }
+}
