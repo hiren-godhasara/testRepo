@@ -1,20 +1,21 @@
 import React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import styles from './Header.module.css';
-import image from '../../Images/myDryFruitLogo.png';
+import styles from './Header.module.scss';
+import image from '../../Images/myDryFruitLogo-removebg-preview.png';
 
 
-const Header: React.FC = () => {
+const Header = () => {
     const whatsappLink = 'https://wa.me/+919157059719';
 
     return (
         <header className={styles.fixedHeader}>
-            <div className={`maxWidthWrapper ${styles.header}`}>
+            <div className={styles.header}>
                 <div className={styles.leftSection}>
-                    <Image src={image} alt='Home Page' width='175' height='175' className={styles.image} />
-                    <p>MYDRYFRUIT</p>
+                    <Image src={image} alt='Home Pagea' className={styles.image} />
+                    <div className={styles.leftSectionName}>MYDRYFRUIT</div>
                 </div>
+
                 <div className={styles.middleSection}>
                     <ul className={styles.navList}>
                         <li><Link className={styles.link} href="/">Home</Link></li>
@@ -25,6 +26,7 @@ const Header: React.FC = () => {
                         <li><Link className={styles.link} href="/#gifting">Gifting</Link></li>
                     </ul>
                 </div>
+
                 <div className={styles.rightSection}>
                     <p className={styles.number}><span>Mo.</span> <Link className={styles.mobileNumber} href="">+91 9157059719</Link></p>
 
