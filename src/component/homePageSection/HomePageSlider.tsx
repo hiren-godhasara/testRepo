@@ -3,12 +3,12 @@ import Image from 'next/image';
 import { Carousel } from 'antd';
 import styles from './HomePageSlider.module.scss';
 
-import homepage1 from '../../images/HomePageImages/homepage1.png';
-import homepage2 from '../../images/HomePageImages/homepage2.png';
-import homepage3 from '../../images/HomePageImages/homepage3.png';
-import homepage4 from '../../images/HomePageImages/homepage4.png';
-import homepage5 from '../../images/HomePageImages/homepage5.png';
-import homepage6 from '../../images/HomePageImages/homepage6.png';
+import homepage1 from '../../imageFolder/HomePageImages/homepage1.png';
+import homepage2 from '../../imageFolder/HomePageImages/homepage2.png';
+import homepage3 from '../../imageFolder/HomePageImages/homepage3.png';
+import homepage4 from '../../imageFolder/HomePageImages/homepage4.png';
+import homepage5 from '../../imageFolder/HomePageImages/homepage5.png';
+import homepage6 from '../../imageFolder/HomePageImages/homepage6.png';
 
 
 const HomePageSlider = () => {
