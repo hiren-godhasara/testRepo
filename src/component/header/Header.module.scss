@@ -110,56 +110,116 @@
 }
 
 .leftSection .image {
-    width: 75px;
-    height: 75px;
+    width: 65px;
+    height: 65px;
 }
 
 
+@media screen and (max-width: 1500px) {
 
-
-/* Media Query for screens less than 1100px */
-@media screen and (max-width: 1100px) {
-    .leftSectionImage {
-        display: none;
+    .link {
+        font-size: 16px;
     }
 
     .leftSectionName {
         font-size: 22px;
-    }
-
-    .link {
-        font-size: 13px;
     }
 
     .navList {
-        list-style: none;
-        // padding: 10px 0;
-        margin: 0;
-        display: flex;
-        gap: 10px
+        gap: 18px;
+    }
+
+    .leftSection .image {
+        width: 55px;
+        height: 50px;
+    }
+
+    .contactUsBtn {
+        width: 150px;
+        height: 46px;
+        border-radius: 8px;
+        font-weight: 600;
+    }
+
+    .number {
+        font-size: 16px;
+    }
+
+    .header {
+        height: 80px;
     }
 }
 
 
-@media screen and (max-width: 1400px) {
-    .leftSectionImage {
-        display: none;
-    }
 
-    .leftSectionName {
-        font-size: 22px;
-    }
+
+@media screen and (max-width: 1400px) {
 
     .link {
         font-size: 15px;
     }
 
+    .leftSectionName {
+        font-size: 21px;
+    }
+
     .navList {
-        gap: 20px
+        gap: 18px;
     }
 
     .leftSection .image {
-        width: 60px;
-        height: 60px;
+        width: 55px;
+        height: 50px;
+    }
+
+    .contactUsBtn {
+        width: 140px;
+        height: 46px;
+        border-radius: 8px;
+        font-weight: 600;
+    }
+
+    .number {
+        font-size: 15px;
+    }
+
+    .header {
+        height: 75px;
+    }
+}
+
+
+@media screen and (max-width: 1200px) {
+
+    .link {
+        font-size: 14px;
+    }
+
+    .leftSectionName {
+        font-size: 20px;
+    }
+
+    .navList {
+        gap: 15px;
+    }
+
+    .leftSection .image {
+        width: 40px;
+        height: 40px;
+    }
+
+    .contactUsBtn {
+        width: 130px;
+        height: 42px;
+        border-radius: 6px;
+        font-weight: 600;
+    }
+
+    .number {
+        font-size: 14px;
+    }
+
+    .header {
+        height: 70px;
     }
 }
