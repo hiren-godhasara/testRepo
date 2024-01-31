@@ -11,7 +11,7 @@ import homepage5 from '../../images/HomePageImages/homepage5.png';
 import homepage6 from '../../images/HomePageImages/homepage6.png';
 
 
-const HomePageSlider: React.FC = () => {
+const HomePageSlider = () => {
     return (
         <div>
             <Carousel slidesToShow={1} autoplay autoplaySpeed={4500} speed={2000} className='productCarousel'>

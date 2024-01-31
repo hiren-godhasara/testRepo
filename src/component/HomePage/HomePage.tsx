@@ -2,7 +2,7 @@ import styles from './HomePage.module.scss';
 import HomePageSlider from './HomePageSlider';
 
 const whatsappLink = 'https://wa.me/+919157059719';
-const HomePage: React.FC = () => {
+const HomePage = () => {
 
     return (
         <div className={styles.home}>
