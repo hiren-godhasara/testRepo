@@ -1,3 +1,4 @@
+import BestSelling from "../component/bestSellingSection/BestSellingProducts";
 import Header from "../component/headerSection/Header";
 import HomePage from "../component/homePageSection/HomePage";
 
@@ -6,6 +7,7 @@ export default function Home() {
     <div>
       <div id='header'><Header /></div>
       <HomePage />
+      <div id='products'><BestSelling /></div>
 
     </div>
   );
