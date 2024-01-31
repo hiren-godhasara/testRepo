@@ -2,7 +2,7 @@ import React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import styles from './Header.module.scss';
-import image from '../../images/myDryFruitLogo-removebg-preview.png';
+import image from '../../imageFolder/myDryFruitLogo-removebg-preview.png';
 
 
 const Header = () => {
