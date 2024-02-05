@@ -1,0 +1,50 @@
+.infoContainer {
+    position: relative;
+    width: 1890px;
+    height: 315px;
+    overflow: hidden;
+}
+
+.image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+}
+
+.cardDetails {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin-left: 100px;
+    margin-right: 140px;
+    padding-top: 67px;
+}
+
+.card {
+    max-width: 337px;
+    width: 337px;
+    height: 187px;
+    max-height: 187px;
+    border-radius: 16px;
+    background-color: #68939b;
+    text-align: center;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+
+
+}
+
+.h2 {
+    font-size: 44px;
+    font-weight: 700;
+    margin-bottom: 10px;
+    color: #ffffff;
+}
+
+.p {
+    font-size: 22px;
+    color: #ffffff;
+}
