@@ -36,7 +36,7 @@ const fetchInstagramFeeds = async (accessToken: string, count: Number) => {
 
 const InstagramFeeds: React.FC = () => {
     const [feeds, setFeeds] = useState<InstagramFeed[]>([]);
-    const accessToken = 'IGQWRPSTB3bk96cTl6N0VyeDVuMjVpdk1LdktzQVZAKdF9CSS02bVNrVktEcXNfOTJpS3ZAnc0tlVktkVXk2cDJTYXVEdU53WEQxVDV0YXJ6UUFxcVVKWXBycENYUUxhX01jV3loZAFpUSGM2M1pmWTdhenBtWUxrRFEZD';
+    const accessToken = 'IGQWRPWW9OMDVVSmZAJVFBwWkFPczg5VmEyUUhVd0sxVHh6ZATFEYjItZAEVkcF9HRXBha1hGSnJEWGRYeERvZAEt0ZAGx6aW84OEVOOUpXSUZAQczdqNVJYaGJmMHUyaGt5djVURFRndXpQS3Iwc1lPYWtOMzFJS1kzRjQZD';
 
     useEffect(() => {
         fetchInstagramFeeds(accessToken, 10)
