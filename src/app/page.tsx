@@ -8,6 +8,7 @@ import AllProductSlider from "../component/allProductsSlider/AllProductsSlider";
 import Storing from "../component/storeDetails/StoreDetails";
 import Info from "../component/outletInfo/OutletInfo";
 import ReviewSlider from "@/component/customerReviews/CustomerReviews";
+import GiftCombo from "@/component/giftCombos/GiftCombo";
 
 export default function Home() {
   return (
@@ -36,6 +37,8 @@ export default function Home() {
       </div>
 
       <div id='reviews'><ReviewSlider /></div>
+      <div id='gifting'> <GiftCombo /></div>
+
 
 
     </div>
