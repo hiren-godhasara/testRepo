@@ -1,0 +1,71 @@
+.mainReview {
+    margin-left: 20px;
+    margin-right: 120px;
+    margin-top: 70px;
+
+}
+
+.card {
+    flex: 0 0 440px;
+    height: 289px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 16px;
+    box-sizing: border - box;
+    border-radius: 16px;
+}
+
+.p {
+    font-size: 16px;
+    position: relative;
+    top: 20px;
+    left: 13px;
+
+}
+
+.h4 {
+    position: relative;
+    top: 20px;
+    left: 13px;
+
+}
+
+
+.image {
+
+    border-radius: 8px;
+    position: relative;
+    top: 190px;
+    left: 10px;
+}
+
+
+.h2 {
+    font-size: 18px;
+    font-weight: 600;
+    color: rgba(20, 73, 80, 1);
+    position: relative;
+    top: 125px;
+    left: 70px;
+}
+
+.h3 {
+    font-size: 16px;
+    font-weight: 600;
+    color: rgba(131, 129, 129, 1);
+    position: relative;
+    top: 115px;
+    left: 70px;
+}
+
+
+.h4 {
+    margin-top: -140px;
+}
+
+
+.says {
+    font-size: 44px;
+    position: relative;
+    top: -10px;
+    text-align: center;
+}
