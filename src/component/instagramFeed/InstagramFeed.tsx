@@ -58,10 +58,6 @@ const InstagramFeeds: React.FC = () => {
     });
 
     const finalArray = [...filteredArray, ...defaultImages];
-    console.log(filteredArray);
-    console.log(defaultImages);
-
-
 
     return (
         <div className={styles.carouselWrapper}>
