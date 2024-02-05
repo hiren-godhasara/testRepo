@@ -35,7 +35,7 @@ export default function Home() {
         ))}
       </div>
 
-      <AllProductSlider />
+      <div id='allProductSlider'><AllProductSlider /></div>
       <div id='about'><Info /></div>
 
       <div id='store'>
