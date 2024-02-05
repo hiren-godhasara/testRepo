@@ -40,18 +40,18 @@ const Footer = () => {
                 </section>
 
                 <section className={styles.section}>
-                    <Link className={styles.linkP} href={`/dryFruitsDetails#${encodeURIComponent("mazafatiDates")}`}><p>Mazafati</p></Link>
-                    <Link className={styles.linkP} href={`/dryFruitsDetails#${encodeURIComponent("khalasDates")}`}><p>Khalas</p></Link>
-                    <Link className={styles.linkP} href={`/dryFruitsDetails#${encodeURIComponent("fardDates")}`}><p>Fard</p></Link>
-                    <Link className={styles.linkP} href={`/dryFruitsDetails#${encodeURIComponent("medjoolDates")}`}><p>Medjool</p></Link>
+                    <Link className={styles.linkP} href={`/#${encodeURIComponent("allProductSlider")}`}><p>Mazafati</p></Link>
+                    <Link className={styles.linkP} href={`/#${encodeURIComponent("allProductSlider")}`}><p>Khalas</p></Link>
+                    <Link className={styles.linkP} href={`/#${encodeURIComponent("allProductSlider")}`}><p>Fard</p></Link>
+                    <Link className={styles.linkP} href={`/#${encodeURIComponent("allProductSlider")}`}><p>Medjool</p></Link>
 
                 </section>
 
                 <section className={styles.section}>
-                    <Link className={styles.linkP} href={`/dryFruitsDetails#${encodeURIComponent("almond")}`}><p>Almond</p></Link>
-                    <Link className={styles.linkP} href={`/dryFruitsDetails#${encodeURIComponent("cashew")}`}><p>Cashew</p></Link>
-                    <Link className={styles.linkP} href={`/dryFruitsDetails#${encodeURIComponent("pistachio")}`}><p>Pistachio</p></Link>
-                    <Link className={styles.linkP} href={`/dryFruitsDetails#${encodeURIComponent("figs")}`}><p>Figs</p></Link>
+                    <Link className={styles.linkP} href={`/#${encodeURIComponent("allProductSlider")}`}><p>Almond</p></Link>
+                    <Link className={styles.linkP} href={`/#${encodeURIComponent("allProductSlider")}`}><p>Cashew</p></Link>
+                    <Link className={styles.linkP} href={`/#${encodeURIComponent("allProductSlider")}`}><p>Pistachio</p></Link>
+                    <Link className={styles.linkP} href={`/#${encodeURIComponent("allProductSlider")}`}><p>Figs</p></Link>
 
                 </section>
 
