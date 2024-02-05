@@ -1,0 +1,96 @@
+.card {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 150px;
+    margin-right: 150px;
+}
+
+.h1 {
+    text-align: center;
+    position: relative;
+    top: 25px;
+    font-size: 42px;
+    color: #144950;
+    font-weight: 700;
+
+}
+
+.imageFlex {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: -10px;
+}
+
+.icons {
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    margin-left: 6px;
+}
+
+.mainIcon {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.like,
+.comment,
+.share {
+    margin: 8px;
+}
+
+
+.saveIcon {
+    margin-right: 13px;
+}
+
+.image {
+    width: 310px;
+    height: 310px;
+    margin: 10px;
+    transition: all 0.3s ease;
+}
+
+
+.carouselWrapper {
+    margin-top: -22px;
+    background-color: #ffe89c;
+    height: 750px;
+}
+
+.separateCard {
+    background-color: white;
+    border-radius: 20px;
+    margin-top: 50px;
+    width: 340px;
+    height: 480px;
+}
+
+
+
+.userName {
+    font-size: 16px;
+    margin-left: -10px;
+    color: black;
+    font-weight: 700;
+}
+
+.dots {
+    margin-right: 5px;
+}
+
+.flex {
+    display: flex;
+    justify-content: left;
+    align-items: center;
+}
+
+.mainFlex {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+}

@@ -1,3 +1,5 @@
+'use client'
+import React from 'react';
 import BestSelling from "../component/bestSellingSection/BestSellingProducts";
 import Header from "../component/headerSection/Header";
 import HomePage from "../component/homePageSection/HomePage";
@@ -7,8 +9,10 @@ import Card from "../component/card/Card";
 import AllProductSlider from "../component/allProductsSlider/AllProductsSlider";
 import Storing from "../component/storeDetails/StoreDetails";
 import Info from "../component/outletInfo/OutletInfo";
-import ReviewSlider from "@/component/customerReviews/CustomerReviews";
-import GiftCombo from "@/component/giftCombos/GiftCombo";
+import ReviewSlider from "../component/customerReviews/CustomerReviews";
+import GiftCombo from "../component/giftCombos/GiftCombo";
+import InstagramFeeds from "../component/instagramFeed/InstagramFeed";
+import HashtagInstagramFeeds from "../component/instagramFeed/HashtagInstagramFeed";
 
 export default function Home() {
   return (
@@ -38,6 +42,9 @@ export default function Home() {
 
       <div id='reviews'><ReviewSlider /></div>
       <div id='gifting'> <GiftCombo /></div>
+
+      <InstagramFeeds />
+      <HashtagInstagramFeeds />
 
 
 
