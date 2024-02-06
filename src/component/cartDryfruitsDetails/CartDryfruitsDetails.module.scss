@@ -1,0 +1,31 @@
+.main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 45px;
+    margin-bottom: 100px;
+}
+
+.pageWrapper {
+    padding-top: 5rem;
+    margin-bottom: 180px;
+}
+
+.heading {
+    font-size: 38px;
+    margin-bottom: 30px;
+    color: #144249;
+}
+
+.boldHeading {
+    color: #144249;
+}
+
+.slider {
+    width: 500px;
+    // margin-top: -210px;
+}
+
+.details {
+    width: 650px;
+}

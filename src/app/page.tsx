@@ -15,6 +15,8 @@ import InstagramFeeds from "../component/instagramFeed/InstagramFeed";
 import HashtagInstagramFeeds from "../component/instagramFeed/HashtagInstagramFeed";
 import CopyRight from '../component/copyRight/CopyRight';
 import Footer from '../component/footer/Footer';
+import RegisterForm from '@/component/registrationUser/Register';
+import LoginForm from '@/component/registrationUser/Login';
 
 export default function Home() {
   return (
@@ -50,7 +52,7 @@ export default function Home() {
       <Footer />
       <CopyRight />
 
-
+      {/* <LoginForm /> */}
 
     </div>
   );

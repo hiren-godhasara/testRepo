@@ -7,6 +7,7 @@ import image from '../../imageFolder/myDryFruitLogo-removebg-preview.png';
 
 const Header = () => {
     const whatsappLink = 'https://wa.me/+919157059719';
+    const phoneNumber = "+91 9157059719";
 
     return (
         <header className={styles.fixedHeader}>
@@ -28,9 +29,10 @@ const Header = () => {
                 </div>
 
                 <div className={styles.rightSection}>
-                    <p className={styles.number}><span>Mo.</span> <Link className={styles.mobileNumber} href="">+91 9157059719</Link></p>
+                    <p className={styles.number}><span>Mo.</span> <Link className={styles.mobileNumber} href={`tel:${phoneNumber}`}>+91 9157059719</Link></p>
 
-                    <Link className={styles.contactUsBtn} href={whatsappLink}>Contact Us</Link>
+                    <Link className={styles.contactUsBtn} href='/registration'>Register</Link>
+                    <Link className={styles.contactUsBtn} href='/login'>Login</Link>
                 </div>
             </div>
         </header>

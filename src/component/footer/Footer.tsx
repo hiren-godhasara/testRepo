@@ -34,31 +34,43 @@ const Footer = () => {
 
                 <section className={styles.section}>
                     <Link className={styles.linkP} href={whatsappLink}><p>Contact Us</p></Link>
+                    <br />
                     <Link className={styles.linkP} href={`/#${encodeURIComponent("productDetail")}`}><p>All Products</p></Link>
+                    <br />
                     <Link className={styles.linkP} href={`/#${encodeURIComponent("gifting")}`}><p> Gifting</p></Link>
+                    <br />
                     <Link className={styles.linkP} href={`/#${encodeURIComponent("reviews")}`}><p>Reviews</p></Link>
                 </section>
 
                 <section className={styles.section}>
-                    <Link className={styles.linkP} href={`/#${encodeURIComponent("allProductSlider")}`}><p>Mazafati</p></Link>
-                    <Link className={styles.linkP} href={`/#${encodeURIComponent("allProductSlider")}`}><p>Khalas</p></Link>
-                    <Link className={styles.linkP} href={`/#${encodeURIComponent("allProductSlider")}`}><p>Fard</p></Link>
-                    <Link className={styles.linkP} href={`/#${encodeURIComponent("allProductSlider")}`}><p>Medjool</p></Link>
+                    <Link className={styles.linkP} href={`/products/mazafatiDates`}><p>Mazafati</p></Link>
+                    <br />
+                    <Link className={styles.linkP} href={`/products/khalasDates`}><p>Khalas</p></Link>
+                    <br />
+                    <Link className={styles.linkP} href={`/products/fardDates`}><p>Fard</p></Link>
+                    <br />
+                    <Link className={styles.linkP} href={`/products/medjoolDates`}><p>Medjool</p></Link>
 
                 </section>
 
                 <section className={styles.section}>
-                    <Link className={styles.linkP} href={`/#${encodeURIComponent("allProductSlider")}`}><p>Almond</p></Link>
-                    <Link className={styles.linkP} href={`/#${encodeURIComponent("allProductSlider")}`}><p>Cashew</p></Link>
-                    <Link className={styles.linkP} href={`/#${encodeURIComponent("allProductSlider")}`}><p>Pistachio</p></Link>
-                    <Link className={styles.linkP} href={`/#${encodeURIComponent("allProductSlider")}`}><p>Figs</p></Link>
+                    <Link className={styles.linkP} href={`/products/almond`}><p>Almond</p></Link>
+                    <br />
+                    <Link className={styles.linkP} href={`/products/cashew`}><p>Cashew</p></Link>
+                    <br />
+                    <Link className={styles.linkP} href={`/products/pistachio`}><p>Pistachio</p></Link>
+                    <br />
+                    <Link className={styles.linkP} href={`/products/figs`}><p>Figs</p></Link>
 
                 </section>
 
                 <section className={styles.section}>
                     <Link className={styles.linkP} href={`/#${encodeURIComponent("")}`}><p>Home</p></Link>
-                    <Link className={styles.linkP} href={`/#${encodeURIComponent("products")}`}><p>Returns</p></Link>
-                    <Link className={styles.linkP} href={`/#${encodeURIComponent("products")}`}><p>Terms & Conditions</p></Link>
+                    <br />
+                    <Link className={styles.linkP} href={`/registration`}><p>Registartion</p></Link>
+                    <br />
+                    <Link className={styles.linkP} href={`/login`}><p>Login</p></Link>
+                    <br />
                     <Link className={styles.linkP} href={`/#${encodeURIComponent("products")}`}><p>Privacy Policy</p></Link>
                 </section>
 

@@ -15,7 +15,10 @@ const Card: React.FC<CardProps> = ({ image, name, grade, displayname }) => {
     const imageWidth = 180;
     const imageHeight = 180;
 
-    const handleButtonClick = () => { };
+
+    const onBtnClick = () => {
+        console.log(displayname);
+    }
 
     return (
         <div className={styles.card}>
@@ -26,8 +29,8 @@ const Card: React.FC<CardProps> = ({ image, name, grade, displayname }) => {
             <div className={styles['card-info']}>
                 <h2 className={styles.h2}>{name}</h2>
                 <p className={styles.p}>Grade: <b className={styles.grade}>{grade}</b></p>
-                <Link href={`/dryFruitsDetails#${encodeURIComponent(displayname)}`}>
-                    <button className={styles.button} ><span>Details</span></button>
+                <Link href={`/products/${displayname}`}>
+                    <button onClick={onBtnClick} className={styles.button} ><span>Buy Now</span></button>
                 </Link>
             </div>
         </div>

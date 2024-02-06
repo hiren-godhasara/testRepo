@@ -1,0 +1,127 @@
+.image {
+    border-radius: 10px;
+}
+
+.description {
+    margin-top: 20px;
+
+}
+
+.buttonwrapper {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin-top: 20px;
+
+}
+
+.price {
+    color: #144249;
+    font-weight: 700;
+}
+
+.packet {
+    width: 100px;
+    height: 40px;
+    font-size: 14px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid black;
+    padding: 10px;
+    transition: background-color 0.4s, color 0.4s;
+    border-radius: 4px;
+    font-weight: 600;
+}
+
+.qty {
+    margin-top: 20px;
+}
+
+.totalQty {
+    margin-top: 20px;
+}
+
+.total {
+    margin-top: 20px;
+}
+
+.packet:hover {
+    background-color: #144249;
+    color: #FBD449;
+}
+
+.selected {
+    background-color: #144249;
+    color: #FBD449;
+}
+
+.orderButton {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin-top: 35px;
+
+}
+
+.btnOrder {
+    width: 200px;
+    height: 40px;
+    font-size: 14px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: 800;
+    border: 1px solid black;
+    padding: 10px;
+    transition: background-color 0.4s, color 0.4s;
+    border-radius: 4px;
+}
+
+.btnOrder:hover {
+    color: #144249;
+    background-color: #FBD449;
+}
+
+
+
+.qtyWrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+
+    input {
+        width: 130px;
+        height: 40px;
+        border-radius: 10px;
+        text-align: center;
+    }
+}
+
+.total {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    input {
+        width: 130px;
+        height: 40px;
+        border-radius: 10px;
+        text-align: center;
+    }
+}
+
+.errorMessage {
+    margin-top: 10px;
+    text-align: center;
+    color: red;
+}
+
+.clickableInput {
+    cursor: not-allowed;
+}
+
+.clickable {
+    cursor: pointer;
+}
