@@ -3,7 +3,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import styles from './Header.module.scss';
 import image from '../../imageFolder/myDryFruitLogo-removebg-preview.png';
-
+import { headerCompanyLogo } from '@/S3Images/S3Images';
 
 const Header = () => {
     const whatsappLink = 'https://wa.me/+919157059719';
@@ -13,7 +13,7 @@ const Header = () => {
         <header className={styles.fixedHeader}>
             <div className={styles.header}>
                 <div className={styles.leftSection}>
-                    <Image src={image} alt='Home Pagea' className={styles.image} />
+                    <Image src={headerCompanyLogo} width={65} height={65} alt='Home Pagea' className={styles.image} />
                     <div className={styles.leftSectionName}>MYDRYFRUIT</div>
                 </div>
 

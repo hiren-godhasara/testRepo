@@ -17,6 +17,7 @@ import CopyRight from '../component/copyRight/CopyRight';
 import Footer from '../component/footer/Footer';
 import RegisterForm from '@/component/registrationUser/Register';
 import LoginForm from '@/component/registrationUser/Login';
+import OrderAddress from '@/component/orderAddress/OrderAddress';
 
 export default function Home() {
   return (
@@ -52,8 +53,7 @@ export default function Home() {
       <Footer />
       <CopyRight />
 
-      {/* <LoginForm /> */}
-
+      <OrderAddress />
     </div>
   );
 }

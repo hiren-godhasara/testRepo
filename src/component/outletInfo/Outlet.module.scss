@@ -25,6 +25,10 @@
 }
 
 .card {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     max-width: 337px;
     width: 337px;
     height: 187px;

@@ -85,11 +85,9 @@
 
 
 
-.qtyWrapper {
+.qty {
     display: flex;
-    justify-content: space-between;
     align-items: center;
-
 
     input {
         width: 130px;
@@ -99,17 +97,13 @@
     }
 }
 
-.total {
+
+.qtyWrapper {
     display: flex;
     justify-content: center;
     align-items: center;
+    gap: 50px;
 
-    input {
-        width: 130px;
-        height: 40px;
-        border-radius: 10px;
-        text-align: center;
-    }
 }
 
 .errorMessage {
@@ -124,4 +118,8 @@
 
 .clickable {
     cursor: pointer;
+}
+
+.mainDiv {
+    margin-top: 50px;
 }

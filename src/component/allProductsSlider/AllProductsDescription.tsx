@@ -23,7 +23,7 @@ const Detail: React.FC<ProductDetailProps> = ({ product }) => {
             <div className={styles.productContainer}>
                 <div className={styles.backgroundLayer}></div>
                 <div className={styles.imageContainer}>
-                    <Image src={product.image} alt={`${name} Image`} width={imageWidth} height={imageHeight} />
+                    <Image src={product.image} alt={`${name} Image`} width={465} height={362} />
                 </div>
                 <div className={styles.detailsContainer}>
                     <div className={styles.details}>

@@ -3,15 +3,15 @@ import Image from 'next/image';
 import { Carousel } from 'antd';
 import styles from './CartSlider.module.scss';
 
-import mazafati1 from '../../imageFolder/newM3.jpg';
+import mazafati1 from '../../imageFolder/newM1.jpg';
 import mazafati2 from '../../imageFolder/newM2.jpg';
 import mazafati3 from '../../imageFolder/newM3.jpg';
 import mazafati4 from '../../imageFolder/newM4.jpg';
 
-import khalas1 from '../../imageFolder/newM3.jpg';
-import khalas2 from '../../imageFolder/newM3.jpg';
-import khalas3 from '../../imageFolder/newM3.jpg';
-import khalas4 from '../../imageFolder/newM3.jpg';
+import khalas1 from '../../imageFolder/newK1.jpg';
+import khalas2 from '../../imageFolder/newK2.jpg';
+import khalas3 from '../../imageFolder/newK3.jpg';
+import khalas4 from '../../imageFolder/newK4.jpeg';
 
 import medjool1 from '../../imageFolder/newM3.jpg';
 import medjool2 from '../../imageFolder/newM3.jpg';
@@ -124,40 +124,41 @@ const MazafatiSlider: React.FC = () => {
 
 
     return (
-        <div className={styles.mainDiv} style={{ width: imageWidth, height: imageHeight }}>
+        <div className={styles.mainDiv} >
             <div>
                 <Carousel slidesToShow={1} autoplay autoplaySpeed={4500} speed={2000} className='productCarousel'>
-                    <Image src={mazafati1} alt={`Image`} width={imageWidth} height={imageHeight} className={styles.image} />
-                    <Image src={mazafati2} alt={`Image`} width={imageWidth} height={imageHeight} className={styles.image} />
-                    <Image src={mazafati3} alt={`Image`} width={imageWidth} height={imageHeight} className={styles.image} />
-                    <Image src={mazafati4} alt={`Image`} width={imageWidth} height={imageHeight} className={styles.image} />
+                    <Image src={mazafati1} alt={`Image`} width={475} height={475} className={styles.image} />
+                    <Image src={mazafati2} alt={`Image`} width={475} height={475} className={styles.image} />
+                    <Image src={mazafati3} alt={`Image`} width={475} height={475} className={styles.image} />
+                    <Image src={mazafati4} alt={`Image`} width={475} height={475} className={styles.image} />
                 </Carousel>
             </div>
             <div className={styles.description}>
                 <p className={styles.price}>Price : {mazafatiDatesPrice} Rs./KG</p>
                 <div className={styles.buttonwrapper}>
-
+                    <button onClick={() => buttonClick('100')} className={`${styles.packet} ${selectedButton === '100' ? styles.selected : ''}`}>100 Gram</button>
                     <button onClick={() => buttonClick('250')} className={`${styles.packet} ${selectedButton === '250' ? styles.selected : ''}`}>250 Gram</button>
                     <button onClick={() => buttonClick('500')} className={`${styles.packet} ${selectedButton === '500' ? styles.selected : ''}`}>500 Gram</button>
                     <button onClick={() => buttonClick('1000')} className={`${styles.packet} ${selectedButton === '1000' ? styles.selected : ''}`}>1 KG</button>
                 </div>
                 {totalQuantityMessage && <p className={styles.errorMessage}>{totalQuantityMessage}</p>}
 
-                <div className={styles.qtyWrapper}>
-                    <div className={styles.qty}>
-                        <label htmlFor="quantity">Qty   :</label>
-                        <input type="number" id="quantity" name="quantity" value={quantity} className={styles.clickable} onChange={handleQuantityChange} />
-                    </div>
-
-                    <div className={styles.totalQty}>
-                        <label htmlFor="totalQuantity">Total Qty in Kilogram   :</label>
-                        <input type="number" id="totalQuantity" name="totalQuantity" value={totalQuantity} className={styles.clickableInput} readOnly />
-                    </div>
+                <div className={styles.qty}>
+                    <label htmlFor="quantity">Qty :</label>
+                    <input type="number" id="quantity" name="quantity" value={quantity} className={styles.clickable} onChange={handleQuantityChange} />
                 </div>
 
-                <div className={styles.total}>
-                    <label htmlFor="total">Total Price   :</label>
-                    <input type="number" id="total" name="total" value={total} className={styles.clickableInput} readOnly />
+                <div className={styles.qtyWrapper}>
+
+                    <div className={styles.totalQty}>
+                        <label htmlFor="totalQuantity">Total Qty in Kilogram  :  </label>
+                        <strong><span id="totalQuantity" className={styles.clickableInput}>{totalQuantity}</span></strong>
+                    </div>
+                    <div className={styles.total}>
+                        <label htmlFor="total">Total Price  : </label>
+                        <strong><span id="total" className={styles.clickableInput}>{total} Rs.</span></strong>
+
+                    </div>
                 </div>
 
                 <div className={styles.orderButton}>
@@ -197,13 +198,13 @@ const KhalasSlider: React.FC = () => {
     };
     const total = khalsDatesPrice * totalQuantity;
     return (
-        <div className={styles.mainDiv} style={{ width: imageWidth, height: imageHeight }}>
+        <div className={styles.mainDiv}   >
             <div>
                 <Carousel slidesToShow={1} autoplay autoplaySpeed={4500} speed={2000} className='productCarousel'>
-                    <Image src={mazafati1} alt={`Image`} width={imageWidth} height={imageHeight} className={styles.image} />
-                    <Image src={mazafati2} alt={`Image`} width={imageWidth} height={imageHeight} className={styles.image} />
-                    <Image src={mazafati3} alt={`Image`} width={imageWidth} height={imageHeight} className={styles.image} />
-                    <Image src={mazafati4} alt={`Image`} width={imageWidth} height={imageHeight} className={styles.image} />
+                    <Image src={khalas1} alt={`Image`} width={475} height={475} className={styles.image} />
+                    <Image src={khalas2} alt={`Image`} width={475} height={475} className={styles.image} />
+                    <Image src={khalas3} alt={`Image`} width={475} height={475} className={styles.image} />
+                    <Image src={khalas4} alt={`Image`} width={475} height={475} className={styles.image} />
                 </Carousel>
             </div>
             <div className={styles.description}>
@@ -269,13 +270,13 @@ const FigsSlider: React.FC = () => {
     };
     const total = figsPrice * totalQuantity;
     return (
-        <div className={styles.mainDiv} style={{ width: imageWidth, height: imageHeight }}>
+        <div className={styles.mainDiv}   >
             <div>
                 <Carousel slidesToShow={1} autoplay autoplaySpeed={4500} speed={2000} className='productCarousel'>
-                    <Image src={mazafati1} alt={`Image`} width={imageWidth} height={imageHeight} className={styles.image} />
-                    <Image src={mazafati2} alt={`Image`} width={imageWidth} height={imageHeight} className={styles.image} />
-                    <Image src={mazafati3} alt={`Image`} width={imageWidth} height={imageHeight} className={styles.image} />
-                    <Image src={mazafati4} alt={`Image`} width={imageWidth} height={imageHeight} className={styles.image} />
+                    <Image src={figs1} alt={`Image`} width={475} height={475} className={styles.image} />
+                    <Image src={figs2} alt={`Image`} width={475} height={475} className={styles.image} />
+                    <Image src={figs3} alt={`Image`} width={475} height={475} className={styles.image} />
+                    <Image src={figs4} alt={`Image`} width={475} height={475} className={styles.image} />
                 </Carousel>
             </div>
             <div className={styles.description}>
@@ -340,13 +341,13 @@ const PistachioSlider: React.FC = () => {
     };
     const total = pistachioPrice * totalQuantity;
     return (
-        <div className={styles.mainDiv} style={{ width: imageWidth, height: imageHeight }}>
+        <div className={styles.mainDiv}   >
             <div>
                 <Carousel slidesToShow={1} autoplay autoplaySpeed={4500} speed={2000} className='productCarousel'>
-                    <Image src={mazafati1} alt={`Image`} width={imageWidth} height={imageHeight} className={styles.image} />
-                    <Image src={mazafati2} alt={`Image`} width={imageWidth} height={imageHeight} className={styles.image} />
-                    <Image src={mazafati3} alt={`Image`} width={imageWidth} height={imageHeight} className={styles.image} />
-                    <Image src={mazafati4} alt={`Image`} width={imageWidth} height={imageHeight} className={styles.image} />
+                    <Image src={pista1} alt={`Image`} width={475} height={475} className={styles.image} />
+                    <Image src={pista2} alt={`Image`} width={475} height={475} className={styles.image} />
+                    <Image src={pista3} alt={`Image`} width={475} height={475} className={styles.image} />
+                    <Image src={pista4} alt={`Image`} width={475} height={475} className={styles.image} />
                 </Carousel>
             </div>
             <div className={styles.description}>
@@ -411,13 +412,13 @@ const CashewSlider: React.FC = () => {
     };
     const total = cahsewPrice * totalQuantity;
     return (
-        <div className={styles.mainDiv} style={{ width: imageWidth, height: imageHeight }}>
+        <div className={styles.mainDiv}   >
             <div>
                 <Carousel slidesToShow={1} autoplay autoplaySpeed={4500} speed={2000} className='productCarousel'>
-                    <Image src={mazafati1} alt={`Image`} width={imageWidth} height={imageHeight} className={styles.image} />
-                    <Image src={mazafati2} alt={`Image`} width={imageWidth} height={imageHeight} className={styles.image} />
-                    <Image src={mazafati3} alt={`Image`} width={imageWidth} height={imageHeight} className={styles.image} />
-                    <Image src={mazafati4} alt={`Image`} width={imageWidth} height={imageHeight} className={styles.image} />
+                    <Image src={cashew1} alt={`Image`} width={475} height={475} className={styles.image} />
+                    <Image src={cashew2} alt={`Image`} width={475} height={475} className={styles.image} />
+                    <Image src={cashew3} alt={`Image`} width={475} height={475} className={styles.image} />
+                    <Image src={cashew4} alt={`Image`} width={475} height={475} className={styles.image} />
                 </Carousel>
             </div>
             <div className={styles.description}>
@@ -483,13 +484,13 @@ const AlmondSlider: React.FC = () => {
     };
     const total = almondPrice * totalQuantity;
     return (
-        <div className={styles.mainDiv} style={{ width: imageWidth, height: imageHeight }}>
+        <div className={styles.mainDiv}   >
             <div>
                 <Carousel slidesToShow={1} autoplay autoplaySpeed={4500} speed={2000} className='productCarousel'>
-                    <Image src={mazafati1} alt={`Image`} width={imageWidth} height={imageHeight} className={styles.image} />
-                    <Image src={mazafati2} alt={`Image`} width={imageWidth} height={imageHeight} className={styles.image} />
-                    <Image src={mazafati3} alt={`Image`} width={imageWidth} height={imageHeight} className={styles.image} />
-                    <Image src={mazafati4} alt={`Image`} width={imageWidth} height={imageHeight} className={styles.image} />
+                    <Image src={almond1} alt={`Image`} width={475} height={475} className={styles.image} />
+                    <Image src={almond2} alt={`Image`} width={475} height={475} className={styles.image} />
+                    <Image src={almond1} alt={`Image`} width={475} height={475} className={styles.image} />
+                    <Image src={almond4} alt={`Image`} width={475} height={475} className={styles.image} />
                 </Carousel>
             </div>
             <div className={styles.description}>
@@ -554,13 +555,13 @@ const MedjoolSlider: React.FC = () => {
     };
     const total = medjoolDatesPrice * totalQuantity;
     return (
-        <div className={styles.mainDiv} style={{ width: imageWidth, height: imageHeight }}>
+        <div className={styles.mainDiv}   >
             <div>
                 <Carousel slidesToShow={1} autoplay autoplaySpeed={4500} speed={2000} className='productCarousel'>
-                    <Image src={mazafati1} alt={`Image`} width={imageWidth} height={imageHeight} className={styles.image} />
-                    <Image src={mazafati2} alt={`Image`} width={imageWidth} height={imageHeight} className={styles.image} />
-                    <Image src={mazafati3} alt={`Image`} width={imageWidth} height={imageHeight} className={styles.image} />
-                    <Image src={mazafati4} alt={`Image`} width={imageWidth} height={imageHeight} className={styles.image} />
+                    <Image src={medjool1} alt={`Image`} width={475} height={475} className={styles.image} />
+                    <Image src={medjool2} alt={`Image`} width={475} height={475} className={styles.image} />
+                    <Image src={medjool3} alt={`Image`} width={475} height={475} className={styles.image} />
+                    <Image src={medjool4} alt={`Image`} width={475} height={475} className={styles.image} />
                 </Carousel>
             </div>
             <div className={styles.description}>
@@ -626,13 +627,13 @@ const FardSlider: React.FC = () => {
     };
     const total = fardDatesPrice * totalQuantity;
     return (
-        <div className={styles.mainDiv} style={{ width: imageWidth, height: imageHeight }}>
+        <div className={styles.mainDiv}   >
             <div>
                 <Carousel slidesToShow={1} autoplay autoplaySpeed={4500} speed={2000} className='productCarousel'>
-                    <Image src={mazafati1} alt={`Image`} width={imageWidth} height={imageHeight} className={styles.image} />
-                    <Image src={mazafati2} alt={`Image`} width={imageWidth} height={imageHeight} className={styles.image} />
-                    <Image src={mazafati3} alt={`Image`} width={imageWidth} height={imageHeight} className={styles.image} />
-                    <Image src={mazafati4} alt={`Image`} width={imageWidth} height={imageHeight} className={styles.image} />
+                    <Image src={fard1} alt={`Image`} width={475} height={475} className={styles.image} />
+                    <Image src={fard2} alt={`Image`} width={475} height={475} className={styles.image} />
+                    <Image src={fard3} alt={`Image`} width={475} height={475} className={styles.image} />
+                    <Image src={fard3} alt={`Image`} width={475} height={475} className={styles.image} />
                 </Carousel>
             </div>
             <div className={styles.description}>
