@@ -52,12 +52,12 @@ const MazafatiSlider: React.FC = () => {
     const [selectedButton, setSelectedButton] = useState<string>('');
     const [quantity, setQuantity] = useState<number>(0);
     const [totalQuantity, setTotalQuantity] = useState<number>(0);
-    const [selectedValue, setSelectedValue] = useState('');
+    const [packetWeight, setPacketWeight] = useState('');
     const [totalQuantityMessage, setTotalQuantityMessage] = useState('');
     const [productName, setProductName] = useState('mazafatiDates');
 
     const buttonClick = (value: React.SetStateAction<string>) => {
-        setSelectedValue(value);
+        setPacketWeight(value);
         setSelectedButton(value);
         setQuantity(0);
         setTotalQuantity(0);
@@ -68,43 +68,40 @@ const MazafatiSlider: React.FC = () => {
 
     const handleQuantityChange = (e: ChangeEvent<HTMLInputElement>) => {
         const newQuantity = parseInt(e.target.value);
+        console.log(newQuantity);
+
         if (isNaN(newQuantity) || newQuantity < 0) {
             return
         }
 
-        if (!selectedValue) {
+        if (!packetWeight) {
             setTotalQuantityMessage("Please select a weight packet first");
             return;
         }
         else {
             setTotalQuantityMessage("");
             setQuantity(newQuantity);
-            updateTotalQuantity(newQuantity, selectedValue);
+            updateTotalQuantity(newQuantity, packetWeight);
         }
     };
 
 
-    const updateTotalQuantity = (newQuantity: number, selectedValue: string) => {
-        const valueMultiplier = parseInt(selectedValue) || 1;
+    const updateTotalQuantity = (newQuantity: number, packetWeight: string) => {
+        const valueMultiplier = parseInt(packetWeight) || 1;
         const newTotalQuantity = (newQuantity * valueMultiplier) / 1000;
         setTotalQuantity(newTotalQuantity);
     };
     const total = mazafatiDatesPrice * totalQuantity;
-
-
-    // const getUserId = () => {
-    //     return localStorage.getItem('userId');
-    // };
-
+    const roundedTotal = total.toFixed(2);
 
     const addToCart = () => {
         const productData = {
-            // userId: getUserId(),
-            productName: productName,
+            product: productName,
             productId: 1,
-            price: mazafatiDatesPrice,
-            quantity: totalQuantity,
-            total: total
+            pricePerKg: mazafatiDatesPrice,
+            quantity: quantity,
+            totalPrice: total,
+            packetWeight: packetWeight
         };
         console.log(productData);
     };
@@ -112,7 +109,7 @@ const MazafatiSlider: React.FC = () => {
         setSelectedButton('');
         setQuantity(0);
         setTotalQuantity(0);
-        setSelectedValue('');
+        setPacketWeight('');
         setTotalQuantityMessage('');
         setProductName('mazafatiDates');
     };
@@ -156,7 +153,7 @@ const MazafatiSlider: React.FC = () => {
                     </div>
                     <div className={styles.total}>
                         <label htmlFor="total">Total Price  : </label>
-                        <strong><span id="total" className={styles.clickableInput}>{total} Rs.</span></strong>
+                        <strong><span id="total" className={styles.clickableInput}>{roundedTotal} Rs.</span></strong>
 
                     </div>
                 </div>
@@ -176,10 +173,10 @@ const KhalasSlider: React.FC = () => {
     const [selectedButton, setSelectedButton] = useState<string>('');
     const [quantity, setQuantity] = useState<number>();
     const [totalQuantity, setTotalQuantity] = useState<number>(0);
-    const [selectedValue, setSelectedValue] = useState('');
+    const [packetWeight, setPacketWeight] = useState('');
 
     const buttonClick = (value: React.SetStateAction<string>) => {
-        setSelectedValue(value);
+        setPacketWeight(value);
         setSelectedButton(value);
         setQuantity(0);
         setTotalQuantity(0);
@@ -188,11 +185,11 @@ const KhalasSlider: React.FC = () => {
     const handleQuantityChange = (e: ChangeEvent<HTMLInputElement>) => {
         const newQuantity = parseInt(e.target.value);
         setQuantity(newQuantity);
-        updateTotalQuantity(newQuantity, selectedValue);
+        updateTotalQuantity(newQuantity, packetWeight);
     };
 
-    const updateTotalQuantity = (newQuantity: number, selectedValue: string) => {
-        const valueMultiplier = parseInt(selectedValue) || 1;
+    const updateTotalQuantity = (newQuantity: number, packetWeight: string) => {
+        const valueMultiplier = parseInt(packetWeight) || 1;
         const newTotalQuantity = (newQuantity * valueMultiplier) / 1000;
         setTotalQuantity(newTotalQuantity);
     };
@@ -246,10 +243,10 @@ const FigsSlider: React.FC = () => {
     const [selectedButton, setSelectedButton] = useState<string>('');
     const [quantity, setQuantity] = useState<number>();
     const [totalQuantity, setTotalQuantity] = useState<number>(0);
-    const [selectedValue, setSelectedValue] = useState('');
+    const [packetWeight, setPacketWeight] = useState('');
 
     const buttonClick = (value: React.SetStateAction<string>) => {
-        setSelectedValue(value);
+        setPacketWeight(value);
         setSelectedButton(value);
         setQuantity(0);
         setTotalQuantity(0);
@@ -259,12 +256,12 @@ const FigsSlider: React.FC = () => {
     const handleQuantityChange = (e: ChangeEvent<HTMLInputElement>) => {
         const newQuantity = parseInt(e.target.value);
         setQuantity(newQuantity);
-        updateTotalQuantity(newQuantity, selectedValue);
+        updateTotalQuantity(newQuantity, packetWeight);
         // console.log('Quantity:', newQuantity);
     };
 
-    const updateTotalQuantity = (newQuantity: number, selectedValue: string) => {
-        const valueMultiplier = parseInt(selectedValue) || 1;
+    const updateTotalQuantity = (newQuantity: number, packetWeight: string) => {
+        const valueMultiplier = parseInt(packetWeight) || 1;
         const newTotalQuantity = (newQuantity * valueMultiplier) / 1000;
         setTotalQuantity(newTotalQuantity);
     };
@@ -317,10 +314,10 @@ const PistachioSlider: React.FC = () => {
     const [selectedButton, setSelectedButton] = useState<string>('');
     const [quantity, setQuantity] = useState<number>();
     const [totalQuantity, setTotalQuantity] = useState<number>(0);
-    const [selectedValue, setSelectedValue] = useState('');
+    const [packetWeight, setPacketWeight] = useState('');
 
     const buttonClick = (value: React.SetStateAction<string>) => {
-        setSelectedValue(value);
+        setPacketWeight(value);
         setSelectedButton(value);
         setQuantity(0);
         setTotalQuantity(0);
@@ -330,12 +327,12 @@ const PistachioSlider: React.FC = () => {
     const handleQuantityChange = (e: ChangeEvent<HTMLInputElement>) => {
         const newQuantity = parseInt(e.target.value);
         setQuantity(newQuantity);
-        updateTotalQuantity(newQuantity, selectedValue);
+        updateTotalQuantity(newQuantity, packetWeight);
         // console.log('Quantity:', newQuantity);
     };
 
-    const updateTotalQuantity = (newQuantity: number, selectedValue: string) => {
-        const valueMultiplier = parseInt(selectedValue) || 1;
+    const updateTotalQuantity = (newQuantity: number, packetWeight: string) => {
+        const valueMultiplier = parseInt(packetWeight) || 1;
         const newTotalQuantity = (newQuantity * valueMultiplier) / 1000;
         setTotalQuantity(newTotalQuantity);
     };
@@ -388,10 +385,10 @@ const CashewSlider: React.FC = () => {
     const [selectedButton, setSelectedButton] = useState<string>('');
     const [quantity, setQuantity] = useState<number>();
     const [totalQuantity, setTotalQuantity] = useState<number>(0);
-    const [selectedValue, setSelectedValue] = useState('');
+    const [packetWeight, setPacketWeight] = useState('');
 
     const buttonClick = (value: React.SetStateAction<string>) => {
-        setSelectedValue(value);
+        setPacketWeight(value);
         setSelectedButton(value);
         setQuantity(0);
         setTotalQuantity(0);
@@ -401,12 +398,12 @@ const CashewSlider: React.FC = () => {
     const handleQuantityChange = (e: ChangeEvent<HTMLInputElement>) => {
         const newQuantity = parseInt(e.target.value);
         setQuantity(newQuantity);
-        updateTotalQuantity(newQuantity, selectedValue);
+        updateTotalQuantity(newQuantity, packetWeight);
         // console.log('Quantity:', newQuantity);
     };
 
-    const updateTotalQuantity = (newQuantity: number, selectedValue: string) => {
-        const valueMultiplier = parseInt(selectedValue) || 1;
+    const updateTotalQuantity = (newQuantity: number, packetWeight: string) => {
+        const valueMultiplier = parseInt(packetWeight) || 1;
         const newTotalQuantity = (newQuantity * valueMultiplier) / 1000;
         setTotalQuantity(newTotalQuantity);
     };
@@ -460,10 +457,10 @@ const AlmondSlider: React.FC = () => {
     const [selectedButton, setSelectedButton] = useState<string>('');
     const [quantity, setQuantity] = useState<number>();
     const [totalQuantity, setTotalQuantity] = useState<number>(0);
-    const [selectedValue, setSelectedValue] = useState('');
+    const [packetWeight, setPacketWeight] = useState('');
 
     const buttonClick = (value: React.SetStateAction<string>) => {
-        setSelectedValue(value);
+        setPacketWeight(value);
         setSelectedButton(value);
         setQuantity(0);
         setTotalQuantity(0);
@@ -473,12 +470,12 @@ const AlmondSlider: React.FC = () => {
     const handleQuantityChange = (e: ChangeEvent<HTMLInputElement>) => {
         const newQuantity = parseInt(e.target.value);
         setQuantity(newQuantity);
-        updateTotalQuantity(newQuantity, selectedValue);
+        updateTotalQuantity(newQuantity, packetWeight);
         // console.log('Quantity:', newQuantity);
     };
 
-    const updateTotalQuantity = (newQuantity: number, selectedValue: string) => {
-        const valueMultiplier = parseInt(selectedValue) || 1;
+    const updateTotalQuantity = (newQuantity: number, packetWeight: string) => {
+        const valueMultiplier = parseInt(packetWeight) || 1;
         const newTotalQuantity = (newQuantity * valueMultiplier) / 1000;
         setTotalQuantity(newTotalQuantity);
     };
@@ -531,10 +528,10 @@ const MedjoolSlider: React.FC = () => {
     const [selectedButton, setSelectedButton] = useState<string>('');
     const [quantity, setQuantity] = useState<number>();
     const [totalQuantity, setTotalQuantity] = useState<number>(0);
-    const [selectedValue, setSelectedValue] = useState('');
+    const [packetWeight, setPacketWeight] = useState('');
 
     const buttonClick = (value: React.SetStateAction<string>) => {
-        setSelectedValue(value);
+        setPacketWeight(value);
         setSelectedButton(value);
         setQuantity(0);
         setTotalQuantity(0);
@@ -544,12 +541,12 @@ const MedjoolSlider: React.FC = () => {
     const handleQuantityChange = (e: ChangeEvent<HTMLInputElement>) => {
         const newQuantity = parseInt(e.target.value);
         setQuantity(newQuantity);
-        updateTotalQuantity(newQuantity, selectedValue);
+        updateTotalQuantity(newQuantity, packetWeight);
         // console.log('Quantity:', newQuantity);
     };
 
-    const updateTotalQuantity = (newQuantity: number, selectedValue: string) => {
-        const valueMultiplier = parseInt(selectedValue) || 1;
+    const updateTotalQuantity = (newQuantity: number, packetWeight: string) => {
+        const valueMultiplier = parseInt(packetWeight) || 1;
         const newTotalQuantity = (newQuantity * valueMultiplier) / 1000;
         setTotalQuantity(newTotalQuantity);
     };
@@ -603,10 +600,10 @@ const FardSlider: React.FC = () => {
     const [selectedButton, setSelectedButton] = useState<string>('');
     const [quantity, setQuantity] = useState<number>();
     const [totalQuantity, setTotalQuantity] = useState<number>(0);
-    const [selectedValue, setSelectedValue] = useState('');
+    const [packetWeight, setPacketWeight] = useState('');
 
     const buttonClick = (value: React.SetStateAction<string>) => {
-        setSelectedValue(value);
+        setPacketWeight(value);
         setSelectedButton(value);
         setQuantity(0);
         setTotalQuantity(0);
@@ -616,12 +613,12 @@ const FardSlider: React.FC = () => {
     const handleQuantityChange = (e: ChangeEvent<HTMLInputElement>) => {
         const newQuantity = parseInt(e.target.value);
         setQuantity(newQuantity);
-        updateTotalQuantity(newQuantity, selectedValue);
+        updateTotalQuantity(newQuantity, packetWeight);
         // console.log('Quantity:', newQuantity);
     };
 
-    const updateTotalQuantity = (newQuantity: number, selectedValue: string) => {
-        const valueMultiplier = parseInt(selectedValue) || 1;
+    const updateTotalQuantity = (newQuantity: number, packetWeight: string) => {
+        const valueMultiplier = parseInt(packetWeight) || 1;
         const newTotalQuantity = (newQuantity * valueMultiplier) / 1000;
         setTotalQuantity(newTotalQuantity);
     };

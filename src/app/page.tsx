@@ -18,11 +18,12 @@ import Footer from '../component/footer/Footer';
 import RegisterForm from '@/component/registrationUser/Register';
 import LoginForm from '@/component/registrationUser/Login';
 import OrderAddress from '@/component/orderAddress/OrderAddress';
+import Invoices from '@/component/invoice/Invoice';
 
 export default function Home() {
   return (
     <div>
-      <div id='header'><Header /></div>
+      {/* <div id='header'><Header /></div>
       <HomePage />
       <div id='products'><BestSelling /></div>
 
@@ -53,7 +54,9 @@ export default function Home() {
       <Footer />
       <CopyRight />
 
-      <OrderAddress />
-    </div>
+      <OrderAddress /> */}
+
+      <Invoices />
+    </div >
   );
 }
