@@ -9,16 +9,17 @@ import {
     OrderingDryFruitsPistachio1, OrderingDryFruitsPistachio2, OrderingDryFruitsPistachio3, OrderingDryFruitsPistachio4,
 } from "@/S3Images/S3Images";
 
+import image from '../imageFolder/almodProduct22.png'
 
 export const productData = {
     mazafatiDates: {
         name: 'Mazafati Premium Dates',
         price: 140,
         images: [
-            { image: OrderingDryFruitsMazafati1 },
-            { image: OrderingDryFruitsMazafati2 },
-            { image: OrderingDryFruitsMazafati3 },
-            { image: OrderingDryFruitsMazafati4 },
+            { image: image },
+            { image: image },
+            { image: image },
+            { image: image },
         ],
         description: 'I have been a wholesale supplier of high-quality dry fruits for the past 5 years. Purchase from us and savor the finest selection!',
         origin: [
@@ -46,10 +47,10 @@ export const productData = {
         name: 'Khalas Premium Dates',
         price: 100,
         images: [
-            { image: OrderingDryFruitsKhalas1 },
-            { image: OrderingDryFruitsKhalas2 },
-            { image: OrderingDryFruitsKhalas3 },
-            { image: OrderingDryFruitsKhalas4 },
+            { image: image },
+            { image: image },
+            { image: image },
+            { image: image },
         ],
         description: 'I have been a wholesale supplier of high-quality dry fruits for the past 5 years. Purchase from us and savor the finest selection.',
         origin: [
@@ -75,10 +76,10 @@ export const productData = {
         name: 'Fard Premium Dates',
         price: 120,
         images: [
-            { image: OrderingDryFruitsFard1 },
-            { image: OrderingDryFruitsFard2 },
-            { image: OrderingDryFruitsFard3 },
-            { image: OrderingDryFruitsFard4 },
+            { image: image },
+            { image: image },
+            { image: image },
+            { image: image },
         ],
         description: 'I have been a wholesale supplier of high-quality dry fruits for the past 5 years. Purchase from us and savor the finest selection!',
         origin: [
@@ -105,10 +106,10 @@ export const productData = {
         name: 'Medjool Premium Dates',
         price: 150,
         images: [
-            { image: OrderingDryFruitsMedjool1 },
-            { image: OrderingDryFruitsMedjool2 },
-            { image: OrderingDryFruitsMedjool3 },
-            { image: OrderingDryFruitsMedjool4 },
+            { image: image },
+            { image: image },
+            { image: image },
+            { image: image },
         ],
         description: 'I have been a wholesale supplier of high-quality dry fruits for the past 5 years. Purchase from us and savor the finest selection!',
         origin: [
@@ -136,10 +137,10 @@ export const productData = {
         name: 'Almond',
         price: 730,
         images: [
-            { image: OrderingDryFruitsAlmond1 },
-            { image: OrderingDryFruitsAlmond2 },
-            { image: OrderingDryFruitsAlmond3 },
-            { image: OrderingDryFruitsAlmond4 },
+            { image: image },
+            { image: image },
+            { image: image },
+            { image: image },
         ],
         description: 'I have been a wholesale supplier of high-quality dry fruits for the past 5 years. Purchase from us and savor the finest selection!',
         origin: [
@@ -166,10 +167,10 @@ export const productData = {
         name: 'Cashew',
         price: 885,
         images: [
-            { image: OrderingDryFruitsCashew1 },
-            { image: OrderingDryFruitsCashew2 },
-            { image: OrderingDryFruitsCashew3 },
-            { image: OrderingDryFruitsCashew4 },
+            { image: image },
+            { image: image },
+            { image: image },
+            { image: image },
         ],
         description: 'I have been a wholesale supplier of high-quality dry fruits for the past 5 years. Purchase from us and savor the finest selection!',
         origin: [
@@ -194,10 +195,10 @@ export const productData = {
         name: 'Pistachio',
         price: 1500,
         images: [
-            { image: OrderingDryFruitsPistachio1 },
-            { image: OrderingDryFruitsPistachio2 },
-            { image: OrderingDryFruitsPistachio3 },
-            { image: OrderingDryFruitsPistachio4 },
+            { image: image },
+            { image: image },
+            { image: image },
+            { image: image },
         ],
         description: 'I have been a wholesale supplier of high-quality dry fruits for the past 5 years. Purchase from us and savor the finest selection!',
         origin: [
@@ -225,10 +226,10 @@ export const productData = {
         name: 'Figs',
         price: 800,
         images: [
-            { image: OrderingDryFruitsFigs1 },
-            { image: OrderingDryFruitsFigs2 },
-            { image: OrderingDryFruitsFigs3 },
-            { image: OrderingDryFruitsFigs4 },
+            { image: image },
+            { image: image },
+            { image: image },
+            { image: image },
         ],
         description: 'I have been a wholesale supplier of high-quality dry fruits for the past 5 years. Purchase from us and savor the finest selection!',
         origin: [

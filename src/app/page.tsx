@@ -27,23 +27,8 @@ export default function Home() {
       <HomePage />
       <div id='products'><BestSelling /></div>
 
-      <div className={cardStyles.cardConatiner}>
-        {products.map((products) => (
-          <div
-            key={products.id}
 
-          >
-
-            <Card
-              id={products.id}
-              image={products.image}
-              name={products.name}
-              grade={products.grade}
-              displayname={products.displayname}
-            />
-          </div>
-        ))}
-      </div>
+      <Card />
 
       <div id='allProductSlider'><AllProductSlider /></div>
       <div id='about'><Info /></div>

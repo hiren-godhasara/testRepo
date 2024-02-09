@@ -1,110 +1,222 @@
-   .cardConatiner {
+//    .cardConatiner {
 
-       display: flex;
-       justify-content: space-evenly;
-       flex-wrap: wrap;
-       margin-top: 2%;
-       margin-left: 140px;
-       margin-right: 140px;
-       box-sizing: border-box;
-   }
+//        display: flex;
+//        justify-content: space-evenly;
+//        flex-wrap: wrap;
+//        margin-top: 2%;
+//        margin-left: 140px;
+//        margin-right: 140px;
+//        box-sizing: border-box;
+//    }
 
-   .card {
-       width: 320px;
-       height: 410px;
-       box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-       padding: 16px;
-       margin: 10px 10px;
-       margin-bottom: 30px;
-       box-sizing: border-box;
-       border-radius: 8px;
-       transition: box-shadow 0.8s ease-in-out;
-   }
+//    .card {
+//        width: 320px;
+//        height: 410px;
+//        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+//        padding: 16px;
+//        margin: 10px 10px;
+//        margin-bottom: 30px;
+//        box-sizing: border-box;
+//        border-radius: 8px;
+//        transition: box-shadow 0.8s ease-in-out;
+//    }
 
-   .card-info {
-       margin-top: 30px;
-   }
+//    .card-info {
+//        margin-top: 30px;
+//    }
 
-   .h2 {
-       font-size: 16px;
-       font-weight: 600;
-       letter-spacing: 0.20px;
-       color: #144950;
-       padding: 5px;
-   }
+//    .h2 {
+//        font-size: 16px;
+//        font-weight: 600;
+//        letter-spacing: 0.20px;
+//        color: #144950;
+//        padding: 5px;
+//    }
 
-   .grade {
-       color: #144950;
-   }
+//    .grade {
+//        color: #144950;
+//    }
 
-   .p {
-       margin-top: -8px;
-       margin-left: 5px;
-   }
+//    .p {
+//        margin-top: -8px;
+//        margin-left: 5px;
+//    }
 
-   .button {
-       color: #144950;
-       border: 1.5px solid #144950;
-       border-radius: 7px;
-       cursor: pointer;
-       width: 289px;
-       height: 40px;
-       background-color: #144950;
-       color: #FBD449;
-       position: relative;
-       margin-left: 0px;
-       margin-top: 25px;
-       transition: all 0.6s ease;
+//    .button {
+//        color: #144950;
+//        border: 1.5px solid #144950;
+//        border-radius: 7px;
+//        cursor: pointer;
+//        width: 289px;
+//        height: 40px;
+//        background-color: #144950;
+//        color: #FBD449;
+//        position: relative;
+//        margin-left: 0px;
+//        margin-top: 25px;
+//        transition: all 0.6s ease;
 
-   }
+//    }
 
-   .button:hover span {
-       font-weight: 600;
-       letter-spacing: 0.8px;
+//    .button:hover span {
+//        font-weight: 600;
+//        letter-spacing: 0.8px;
 
-   }
+//    }
 
-   .button:hover {
-       border: 1.5px solid #FBD449;
-       background-color: #FBD449;
-       color: #144950;
-   }
+//    .button:hover {
+//        border: 1.5px solid #FBD449;
+//        background-color: #FBD449;
+//        color: #144950;
+//    }
 
-   .button span {
-       font-size: 18px;
-       font-weight: 600;
-       align-items: center;
-       justify-content: center;
-       letter-spacing: 0.8px;
-   }
+//    .button span {
+//        font-size: 18px;
+//        font-weight: 600;
+//        align-items: center;
+//        justify-content: center;
+//        letter-spacing: 0.8px;
+//    }
 
-   .card:hover {
-       box-shadow: 0 4px 8px rgba(0, 0, 0, 0.6);
-   }
+//    .card:hover {
+//        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.6);
+//    }
 
-   .image {
-       width: 270px;
-       height: 220px;
-       background-color: #ecebeb;
-       border-radius: 8px;
-       align-items: center;
-       justify-content: center;
-   }
+//    .image {
+//        width: 270px;
+//        height: 220px;
+//        background-color: #ecebeb;
+//        border-radius: 8px;
+//        align-items: center;
+//        justify-content: center;
+//    }
 
-   .image1 {
-       display: flex;
-       align-items: center;
-       justify-content: center;
-       background-color: #ecebeb;
+//    .image1 {
+//        display: flex;
+//        align-items: center;
+//        justify-content: center;
+//        background-color: #ecebeb;
 
-       width: 289px;
-   }
+//        width: 289px;
+//    }
 
 
-   .card:hover img {
-       transform: scale(1.05);
-   }
+//    .card:hover img {
+//        transform: scale(1.05);
+//    }
 
-   .card img {
-       transition: transform 1s ease-in-out;
-   }
+//    .card img {
+//        transition: transform 1s ease-in-out;
+//    }
+
+
+
+.card {
+
+    width: 300px;
+    height: 380px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    box-sizing: border-box;
+    margin-bottom: 30px;
+    border-radius: 8px;
+    transition: box-shadow 0.8s ease-in-out;
+}
+
+
+
+.h2 {
+    font-size: 16px;
+    font-weight: 600;
+    letter-spacing: 0.20px;
+    color: #144950;
+    padding: 5px;
+}
+
+.grade {
+    color: #144950;
+}
+
+.p {
+    margin-top: -8px;
+    margin-left: 5px;
+}
+
+.button {
+    color: #144950;
+    border: 1.5px solid #144950;
+    border-radius: 7px;
+    cursor: pointer;
+    width: 260px;
+    height: 40px;
+    background-color: #144950;
+    color: #FBD449;
+    position: relative;
+    margin-left: 0px;
+    margin-top: 15px;
+    transition: all 0.6s ease;
+
+}
+
+
+
+.button:hover {
+    border: 1.5px solid #FBD449;
+    background-color: #FBD449;
+    color: #144950;
+}
+
+
+
+.card:hover {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.6);
+}
+
+.image {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    object-fit: cover;
+    padding-top: 10px;
+}
+
+
+
+.card:hover img {
+    transform: scale(1.05);
+}
+
+.card img {
+    transition: transform 1s ease-in-out;
+}
+
+.orgName {
+    font-size: 12px;
+    opacity: 0.6;
+    text-align: center;
+    margin-top: 20px;
+}
+
+.cardInfo {
+    text-align: center;
+
+}
+
+.productName {
+    margin-top: 10px;
+}
+
+.price {
+    margin-top: 10px;
+}
+
+
+.cardContainer {
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+    box-sizing: border-box;
+    margin-top: 2%;
+    margin-left: 140px;
+    margin-right: 140px;
+
+}
