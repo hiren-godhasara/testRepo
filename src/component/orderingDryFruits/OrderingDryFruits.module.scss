@@ -1,16 +1,39 @@
+.mainDiv {
+    padding: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
 .image {
+    width: 100%;
+    height: 350px;
+    object-fit: cover;
     border-radius: 10px;
+}
+
+.leftSection {
+    width: 38%;
+    margin-left: 10%;
+    margin-top: 38px;
+
+}
+
+.rightSection {
+    width: 38%;
+    margin-right: 10%;
+
 }
 
 .description {
     margin-top: 20px;
-
 }
 
 .buttonwrapper {
     display: flex;
-    justify-content: space-around;
-    align-items: center;
+    gap: 20px;
+    justify-content: center;
     margin-top: 20px;
 
 }
@@ -18,6 +41,7 @@
 .price {
     color: #144249;
     font-weight: 700;
+    margin-left: 17.5%;
 }
 
 .packet {
@@ -36,6 +60,8 @@
 
 .qty {
     margin-top: 20px;
+    display: flex;
+    justify-content: center;
 }
 
 .totalQty {
@@ -58,7 +84,8 @@
 
 .orderButton {
     display: flex;
-    justify-content: space-around;
+    gap: 50px;
+    justify-content: center;
     align-items: center;
     margin-top: 35px;
 
@@ -125,4 +152,17 @@
 
 .mainDiv {
     margin-top: 50px;
+}
+
+.heading {
+    color: #144249;
+    font-size: 32px;
+    font-weight: 800;
+    margin-bottom: 30px;
+}
+
+.insidedetails1 {
+    ul {
+        margin-bottom: 15px;
+    }
 }

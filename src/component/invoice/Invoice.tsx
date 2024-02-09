@@ -1,20 +1,19 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import styles from '../invoice/Invoice.module.scss';
 import Image from 'next/image';
 import { headerCompanyLogo } from '@/S3Images/S3Images';
 
+
 // API RESPONSE LIKE THAT
 const apiResponse = [
-    { packetWeight: '500', pricePerKg: 100, product: "mazafatiDates", quantity: 236, totalPrice: 11800 },
-    { packetWeight: '500', pricePerKg: 100, product: "mazafatiDates", quantity: 236, totalPrice: 11800 },
-    { packetWeight: '500', pricePerKg: 100, product: "mazafatiDates", quantity: 236, totalPrice: 11800 },
-    { packetWeight: '500', pricePerKg: 100, product: "mazafatiDates", quantity: 236, totalPrice: 11800 },
-    { packetWeight: '500', pricePerKg: 100, product: "mazafatiDates", quantity: 236, totalPrice: 11800 },
-    { packetWeight: '500', pricePerKg: 100, product: "mazafatiDates", quantity: 236, totalPrice: 11800 },
-    { packetWeight: '500', pricePerKg: 100, product: "mazafatiDates", quantity: 236, totalPrice: 11800 },
-    { packetWeight: '500', pricePerKg: 100, product: "mazafatiDates", quantity: 236, totalPrice: 11800 },
-    { packetWeight: '500', pricePerKg: 100, product: "mazafatiDates", quantity: 236, totalPrice: 11800 },
-    { packetWeight: '500', pricePerKg: 100, product: "mazafatiDates", quantity: 236, totalPrice: 11800 },
+    {
+        "product": "Cashew",
+        "productId": 1,
+        "pricePerKg": 885,
+        "quantity": 7,
+        "totalPrice": 3097.5,
+        "packetWeight": "500"
+    }
 
 ];
 
@@ -58,10 +57,8 @@ if (totalWeight < 1) {
     shippingCharge = 10000;
 }
 
-const grandTotal = shippingCharge + totalSum;
-
-
 const Invoices = () => {
+
     return (
         <div className={styles.pageWrapper}>
             <div className={styles.centeredContent}>
@@ -124,8 +121,8 @@ const Invoices = () => {
 
                 <div className={styles.grandTotal}>
                     <div className={styles.total}>Total: <strong>{totalSum} INR</strong></div>
-                    <div className={styles.shippingCharge}>Shipping Charges: <strong>{shippingCharge} INR</strong></div>
-                    <div className={styles.billTotal}>Grand Total: <strong>{grandTotal}INR</strong></div>
+                    <div className={styles.shippingCharge}>Shipping Charges: <del>{shippingCharge} INR</del> <strong>FREE</strong></div>
+                    <div className={styles.billTotal}>Grand Total: <strong>{totalSum}INR</strong></div>
                 </div >
 
                 <div className={styles.horizontalLine}></div>

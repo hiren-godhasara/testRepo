@@ -43,24 +43,24 @@ const Footer = () => {
                 </section>
 
                 <section className={styles.section}>
-                    <Link className={styles.linkP} href={`/products/mazafatiDates`}><p>Mazafati</p></Link>
+                    <Link className={styles.linkP} href={`/products/almond250`}><p>Mazafati</p></Link>
                     <br />
-                    <Link className={styles.linkP} href={`/products/khalasDates`}><p>Khalas</p></Link>
+                    <Link className={styles.linkP} href={`/products/almond250`}><p>Khalas</p></Link>
                     <br />
-                    <Link className={styles.linkP} href={`/products/fardDates`}><p>Fard</p></Link>
+                    <Link className={styles.linkP} href={`/products/almond250`}><p>Fard</p></Link>
                     <br />
-                    <Link className={styles.linkP} href={`/products/medjoolDates`}><p>Medjool</p></Link>
+                    <Link className={styles.linkP} href={`/products/almond250`}><p>Medjool</p></Link>
 
                 </section>
 
                 <section className={styles.section}>
-                    <Link className={styles.linkP} href={`/products/almond`}><p>Almond</p></Link>
+                    <Link className={styles.linkP} href={`/products/almond250`}><p>Almond</p></Link>
                     <br />
-                    <Link className={styles.linkP} href={`/products/cashew`}><p>Cashew</p></Link>
+                    <Link className={styles.linkP} href={`/products/almond250`}><p>Cashew</p></Link>
                     <br />
-                    <Link className={styles.linkP} href={`/products/pistachio`}><p>Pistachio</p></Link>
+                    <Link className={styles.linkP} href={`/products/almond250`}><p>Pistachio</p></Link>
                     <br />
-                    <Link className={styles.linkP} href={`/products/figs`}><p>Figs</p></Link>
+                    <Link className={styles.linkP} href={`/products/almond250`}><p>Figs</p></Link>
 
                 </section>
 
