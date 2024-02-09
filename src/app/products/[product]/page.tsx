@@ -110,6 +110,7 @@ export interface Product {
 }
 
 const Cart = () => {
+    console.log("hi");
 
     const [productDetails, setProductDetails] = useState<Product | null>(null);
     const paramId = useSearchParams().get('id');
