@@ -17,8 +17,37 @@ const LoginForm = () => {
         }));
     };
 
-    const handleSubmit = (e: any) => {
+    const handleSubmit = async (e: any) => {
         e.preventDefault();
+        try {
+            const response = await fetch('http://localhost:3001/s/login', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(formData)
+            });
+            const data = await response.json();
+            console.log(data);
+
+            // Save _id to local storage
+            localStorage.setItem('token', data.data.token);
+
+
+            // get from local stroage
+            // const token = localStorage.getItem('token');
+            // console.log(token);
+
+
+        } catch (error) {
+            console.error('Error registering:', error);
+        } finally {
+            // Reset form data
+            setFormData({
+                loginId: '',
+                password: ''
+            });
+        }
         console.log(formData);
         // Reset the form after submission if needed
         setFormData({ loginId: '', password: '' });

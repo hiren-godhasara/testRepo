@@ -19,6 +19,7 @@ import LoginForm from '@/component/registrationUser/Login';
 import OrderAddress from '@/component/orderAddress/OrderAddress';
 import Invoices from '@/component/invoice/Invoice';
 import products from '@/data/CardData';
+import CartList from '@/component/addToCartList/CartList';
 
 export default function Home() {
   return (
@@ -46,6 +47,7 @@ export default function Home() {
       <OrderAddress />
 
       <Invoices />
+      <CartList />
     </div >
   );
 }

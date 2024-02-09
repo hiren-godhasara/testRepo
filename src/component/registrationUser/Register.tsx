@@ -9,7 +9,7 @@ const RegisterForm = () => {
         lastName: '',
         email: '',
         countryCode: '+91',
-        phoneNumber: '',
+        mobile: '',
         password: ''
     });
 
@@ -21,55 +21,57 @@ const RegisterForm = () => {
         }));
     };
 
-    const handleSubmit = (e: any) => {
-        e.preventDefault();
-        setFormData({
-            firstName: '',
-            lastName: '',
-            email: '',
-            countryCode: '+91',
-            phoneNumber: '',
-            password: ''
-        });
-    };
-
-    // const handleSubmit = async (e) => {
+    // const handleSubmit = (e: any) => {
     //     e.preventDefault();
-    //     try {
-    //         // Make API call here to submit form data
-    //         const response = await fetch('/api/register', {
-    //             method: 'POST',
-    //             headers: {
-    //                 'Content-Type': 'application/json'
-    //             },
-    //             body: JSON.stringify(formData)
-    //         });
-    //         const data = await response.json();
-    //         // Save _id to local storage
-    //         localStorage.setItem('userId', data._id);
-    //         console.log('Registration successful!');
-    //     } catch (error) {
-    //         console.error('Error registering:', error);
-    //     } finally {
-    //         // Reset form data
-    //         setFormData({
-    //             firstName: '',
-    //             lastName: '',
-    //             email: '',
-    //             countryCode: '+91',
-    //             phoneNumber: '',
-    //             password: ''
-    //         });
-    //     }
+    //     setFormData({
+    //         firstName: '',
+    //         lastName: '',
+    //         email: '',
+    //         countryCode: '+91',
+    //         mobile: '',
+    //         password: ''
+    //     });
     // };
+
+    const handleSubmit = async (e: any) => {
+        e.preventDefault();
+        try {
+            // Make API call here to submit form data
+            const response = await fetch('http://localhost:3001/s/register', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(formData)
+            });
+            const data = await response.json();
+            console.log(data);
+
+            // Save _id to local storage
+            localStorage.setItem('userIdd', data.data._id);
+            console.log('Registration successful!');
+        } catch (error) {
+            console.error('Error registering:', error);
+        } finally {
+            // Reset form data
+            setFormData({
+                firstName: '',
+                lastName: '',
+                email: '',
+                countryCode: '+91',
+                mobile: '',
+                password: ''
+            });
+        }
+    };
 
     const handleReset = () => {
         setFormData({
             firstName: '',
             lastName: '',
             email: '',
-            countryCode: '+91',
-            phoneNumber: '',
+            countryCode: '',
+            mobile: '',
             password: ''
         });
     };
@@ -106,7 +108,7 @@ const RegisterForm = () => {
                     <label>Phone Number:</label>
                     <div className={styles.num}>
                         <input className={styles.code} type="tel" name="countryCode" value={formData.countryCode} onChange={handleChange} required />
-                        <input type="tel" name="phoneNumber" value={formData.phoneNumber} onChange={handleChange} required />
+                        <input type="tel" name="mobile" value={formData.mobile} onChange={handleChange} required />
                     </div>
 
                 </div>

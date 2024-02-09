@@ -112,12 +112,13 @@ export const DryFruitSliderForOrder: React.FC<DryFruitSliderForOrderProps> = (pr
     const price = props.data.price
     const total = price * quantity;
     const roundedTotal = total.toFixed(2);
-
+    const token = localStorage.getItem('token');
     const addToCart = () => {
         const productData = {
-            userId: "65c5eb2445227242a3b1a99b",
+            userId: "65c4afc25938e4bfeab6fef4",
             productId: params,
             qty: quantity,
+            token: token
         };
 
         fetch('http://localhost:3001/s/cartProduct', {
