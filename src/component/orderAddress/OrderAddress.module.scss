@@ -53,7 +53,8 @@
 
         .firstRow,
         .secondRow,
-        .thirdRow {
+        .thirdRow,
+        .fourthRow {
             display: flex;
             justify-content: space-between;
             margin-bottom: 15px;
@@ -176,4 +177,21 @@
     font-size: 26px;
     color: #144950;
     font-weight: 600;
+}
+
+.grandtotal {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    padding: 10px;
+    font-size: 22px;
+    margin-bottom: 30px;
+
+
+    span {
+        font-size: 26px;
+        color: #144950;
+        font-weight: 600;
+    }
 }

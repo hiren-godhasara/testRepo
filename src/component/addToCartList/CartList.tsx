@@ -29,6 +29,7 @@ const CartList: React.FC = () => {
     const imageWidth = 150;
     const imageHeight = 150;
     const [productDetails, setProductDetails] = useState<Product | null>(null);
+    const [editableQuantities, setEditableQuantities] = useState<boolean[]>([]);
     const userId = getUserId();
 
     const fetchCartData = () => {
@@ -116,8 +117,16 @@ const CartList: React.FC = () => {
             });
     };
 
-    const handleSave = (cartProductId: any, qty: number) => {
-        // fetchCartData();
+    const handleEditClick = (index: number) => {
+        const updatedEditableQuantities = [...editableQuantities];
+        updatedEditableQuantities[index] = true;
+        setEditableQuantities(updatedEditableQuantities);
+    };
+
+    const handleSave = (index: number, cartProductId: any, qty: number) => {
+        const updatedEditableQuantities = [...editableQuantities];
+        updatedEditableQuantities[index] = false;
+        setEditableQuantities(updatedEditableQuantities);
         UpdateCartData(cartProductId, qty);
     };
 
@@ -166,19 +175,33 @@ const CartList: React.FC = () => {
                                 <p>Price: <strong>{item.product.price} INR</strong></p>
                                 <div className={styles.quantityControls}>
 
-                                    <button className={styles.dec} onClick={() => handleQuantityChange(index, item.qty - 1)}>-</button>
+
+                                    <button className={styles.dec} disabled={!editableQuantities[index]} onClick={() => handleQuantityChange(index, item.qty - 1)}>-</button>
                                     <input
                                         className={styles.quantityInput}
                                         value={item.qty}
                                         onChange={(e) => handleQuantityChange(index, parseInt(e.target.value))}
+                                        disabled={!editableQuantities[index]}
                                     />
-                                    <button className={styles.inc} onClick={() => handleQuantityChange(index, item.qty + 1)}>+</button>
+                                    <button className={styles.inc} disabled={!editableQuantities[index]} onClick={() => handleQuantityChange(index, item.qty + 1)}>+</button>
 
                                 </div>
 
                                 <div className={styles.edit}>
-                                    <button className={styles.editBtn}>EDIT QTY</button>
-                                    <button className={styles.editBtn} onClick={() => handleSave(item.cartProductId, item.qty)}>SAVE</button>
+                                    <button
+                                        className={styles.editBtn}
+                                        onClick={() => handleEditClick(index)}
+                                        disabled={editableQuantities[index]}
+                                    >
+                                        EDIT QTY
+                                    </button>
+                                    <button
+                                        className={styles.editBtn}
+                                        onClick={() => handleSave(index, item.cartProductId, item.qty)}
+                                        disabled={!editableQuantities[index]}
+                                    >
+                                        SAVE
+                                    </button>
                                     <div className={styles.delete}>
                                         <button className={styles.editBtn} onClick={() => handleRemove(item.cartProductId)}>REMOVE</button>
 
@@ -217,9 +240,11 @@ const CartList: React.FC = () => {
                             </div>
                         </div>
                     )}
-                </div>
-                <div className={styles.placeOrder}>
-                    <button onClick={onBtnClick} className={styles.button}>PLACE ORDER</button>
+                    {productDetails && (
+                        <div className={styles.placeOrder}>
+                            <button onClick={onBtnClick} className={styles.button}>PLACE ORDER</button>
+                        </div>
+                    )}
                 </div>
             </div>
 
