@@ -1,142 +1,10 @@
-// import { useState, useEffect } from 'react';
-// import Image, { StaticImageData } from 'next/image';
-// import styles from './CartList.module.scss';
-// import { useRouter } from 'next/navigation';
-
-
-// interface Product {
-//     totalShippingValue: number;
-//     totalCartValue: any;
-//     userData: any;
-//     map(arg0: (data: any) => import("react").JSX.Element): import("react").ReactNode;
-//     _id: any;
-//     grade: string;
-//     displayName: string;
-//     imageUrl: any;
-//     name: string;
-//     weight: string;
-//     price: number;
-//     message: string;
-//     data: any;
-//     productList: any;
-// }
-
-
-// const CartList: React.FC = () => {
-
-
-//     const router = useRouter();
-//     const imageWidth = 150;
-//     const imageHeight = 150;
-//     const [productDetails, setProductDetails] = useState<Product | null>(null);
-
-//     const userId = "65c4afc25938e4bfeab6fef4"
-//     console.log(process.env.BASE_URL);
-
-//     useEffect(() => {
-//         fetch(`${process.env.BASE_URL}/s/cartProduct/cartProductList/65c4afc25938e4bfeab6fef4`, {
-//             method: 'POST',
-//             headers: {
-//                 'Content-Type': 'application/json',
-//             },
-//             body: JSON.stringify({}),
-
-//         })
-//             .then(response => {
-//                 console.log(response);
-
-//                 if (!response.ok) {
-//                     throw new Error('Network response was not ok');
-//                 }
-//                 return response.json();
-//             })
-//             .then(data => {
-//                 console.log(data.data);
-//                 setProductDetails(data.data);
-//             })
-//             .catch(error => {
-//                 console.error('There was a problem fetching the data:', error);
-//             });
-//     }, []);
-
-
-
-
-//     return (
-//         <div className={styles.cardContainer}>
-
-//             <div className={styles.leftContainer}>
-//                 {productDetails && productDetails.productList.map((item: any, index: any) => {
-//                     return (
-//                         <div key={index} className={styles.productCard}>
-//                             <img
-//                                 src={item.product.imageUrl[0].location}
-//                                 alt={item.product.name}
-//                                 width={imageWidth}
-//                                 height={imageHeight}
-//                             />
-//                             <div className={styles.productInfo}>
-//                                 <h3><strong>{item.product.name}</strong></h3>
-//                                 <p>Weight: <strong>{item.product.weight}</strong></p>
-//                                 <p>Price: <strong>{item.product.price} INR</strong></p>
-//                                 <p>Quantity: <strong>{item.qty}</strong></p>
-//                             </div>
-//                         </div>
-//                     );
-//                 })}
-//             </div>
-
-
-
-//             <div className={styles.rightContainer}>
-//                 <div className={styles.calc}>
-//                     {productDetails && (
-//                         <div className={styles.row}>
-//                             <div className={styles.label}>Total Cart Value:</div>
-//                             <div className={styles.value}>{productDetails.totalCartValue} INR</div>
-//                         </div>
-//                     )}
-//                     {productDetails && (
-//                         <div className={styles.row}>
-//                             <div className={styles.label}>Total Shipping Value:</div>
-//                             <div className={styles.value}>{productDetails.totalShippingValue || 0} INR</div>
-//                         </div>
-//                     )}
-//                     {productDetails && (
-//                         <div className={styles.row}>
-//                             <div className={`styles.label`}>Total Grand Value:</div>
-//                             <div className={styles.value}><strong>{productDetails.totalCartValue + (productDetails.totalShippingValue || 0)} INR</strong></div>
-//                         </div>
-//                     )}
-//                 </div>
-
-//                 <div className={styles.placeOrder}>
-//                     <button className={styles.button}>PLACE ORDER</button>
-//                 </div>
-
-
-
-
-//             </div>
-
-//         </div>
-//     );
-
-// };
-
-// export default CartList;
-
-
-
-
-
-
-
 import { useState, useEffect } from 'react';
 import Image from 'next/image';
 import styles from './CartList.module.scss';
 import { useRouter } from 'next/navigation';
 import getUserId from '../../getLocalStroageUserId'
+import url from 'url';
+
 
 interface Product {
     length: number;
@@ -255,11 +123,27 @@ const CartList: React.FC = () => {
 
     const handleRemove = (cartProductId: any) => {
         DeleteCartData(cartProductId)
+
     }
 
     const onBtnClick = () => {
-        router.push(`/orderAddress`);
+        if (productDetails && productDetails.productList) {
+            console.log(productDetails);
+
+            const cartProductIds = productDetails.productList.map((item: { cartProductId: any }) => item.cartProductId);
+
+            const destinationUrl = url.format({
+                pathname: '/orderAddress',
+                query: { cartProductIds: JSON.stringify(cartProductIds), totalCartValue: productDetails.totalCartValue, shippingCharge: 0, },
+            });
+
+            router.push(destinationUrl);
+        } else {
+            console.error('Product details or product list is not available.');
+        }
     };
+
+
 
 
     return (
@@ -295,23 +179,18 @@ const CartList: React.FC = () => {
                                 <div className={styles.edit}>
                                     <button className={styles.editBtn}>EDIT QTY</button>
                                     <button className={styles.editBtn} onClick={() => handleSave(item.cartProductId, item.qty)}>SAVE</button>
+                                    <div className={styles.delete}>
+                                        <button className={styles.editBtn} onClick={() => handleRemove(item.cartProductId)}>REMOVE</button>
 
+                                    </div>
                                 </div>
-
-                                <div className={styles.delete}>
-                                    <button className={styles.editBtn} onClick={() => handleRemove(item.cartProductId)}>REMOVE</button>
-
-                                </div>
-
 
                             </div>
                         </div>
                     ))
                 )}
-
-
-
             </div>
+
             <div className={styles.rightContainer}>
                 <div className={styles.calc}>
                     {productDetails && (
@@ -336,8 +215,6 @@ const CartList: React.FC = () => {
                                         : `${productDetails.totalCartValue + (productDetails.totalShippingValue || 0)} INR`}
                                 </strong>
                             </div>
-
-                            {/* <div className={styles.value}><strong>{productDetails.totalCartValue + (productDetails.totalShippingValue || 0)} INR</strong></div> */}
                         </div>
                     )}
                 </div>
@@ -345,6 +222,7 @@ const CartList: React.FC = () => {
                     <button onClick={onBtnClick} className={styles.button}>PLACE ORDER</button>
                 </div>
             </div>
+
         </div>
     );
 };

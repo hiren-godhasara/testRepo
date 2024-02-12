@@ -33,6 +33,8 @@ const Header = () => {
 
                     <Link className={styles.contactUsBtn} href='/registration'>Register</Link>
                     <Link className={styles.contactUsBtn} href='/login'>Login</Link>
+                    <Link className={styles.contactUsBtn} href='/cartList'>CART</Link>
+
                 </div>
             </div>
         </header>

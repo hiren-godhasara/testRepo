@@ -1,8 +1,9 @@
 .productCard {
     display: flex;
-    border: 1px solid black;
-    margin-top: 10px;
-
+    margin-top: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    background-color: #d6edf0;
+    border-radius: 2px;
 }
 
 .productInfo {
@@ -13,20 +14,36 @@
 
 .leftContainer {
     margin-right: 80px;
-    height: 600px;
+    height: 500px;
     overflow-y: auto;
+    width: 40%;
+    margin-left: 30%;
 }
 
-.cardContainer {
-    margin-top: 100px;
-    margin-bottom: 100px;
+.rightContainer {
+    background-color: #e7f4f5;
+    padding: 20px;
+    margin-top: 50px;
+    width: 20%;
+    margin-left: 40%;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+
+}
+
+.placeOrder {
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
+.row {
+    display: flex;
+    justify-content: space-between;
+}
 
-
+.cardContainer {
+    margin-top: 100px;
+}
 
 .button {
     color: #144950;
@@ -50,26 +67,6 @@
     border: 1.5px solid #FBD449;
     background-color: #FBD449;
     color: #144950;
-}
-
-.calc {
-    display: flex;
-    flex-direction: column;
-}
-
-.row {
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 5px;
-}
-
-.label {
-    margin-right: 10px;
-}
-
-.value {
-    flex-grow: 1;
-    text-align: right;
 }
 
 .quantityInput {
