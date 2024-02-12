@@ -80,7 +80,7 @@ const Card: React.FC = () => {
     const [products, setProducts] = useState<Product[]>([]);
 
     useEffect(() => {
-        fetch('http://localhost:3001/s/productList', {
+        fetch(`${process.env.BASE_URL}/s/productList`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',

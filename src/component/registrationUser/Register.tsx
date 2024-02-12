@@ -37,7 +37,7 @@ const RegisterForm = () => {
         e.preventDefault();
         try {
             // Make API call here to submit form data
-            const response = await fetch('http://localhost:3001/s/register', {
+            const response = await fetch(`${process.env.BASE_URL}/s/register`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
@@ -48,7 +48,7 @@ const RegisterForm = () => {
             console.log(data);
 
             // Save _id to local storage
-            localStorage.setItem('userIdd', data.data._id);
+            localStorage.setItem('userId', data.data._id);
             console.log('Registration successful!');
         } catch (error) {
             console.error('Error registering:', error);

@@ -20,7 +20,7 @@ const LoginForm = () => {
     const handleSubmit = async (e: any) => {
         e.preventDefault();
         try {
-            const response = await fetch('http://localhost:3001/s/login', {
+            const response = await fetch(`${process.env.BASE_URL}/s/login`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'

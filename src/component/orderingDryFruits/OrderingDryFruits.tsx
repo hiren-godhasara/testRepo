@@ -84,21 +84,33 @@
 
 
 
-import React, { useState, ChangeEvent } from 'react';
+import React, { useState, ChangeEvent, useEffect } from 'react';
 import Image from 'next/image';
 import { Carousel } from 'antd';
 import styles from './OrderingDryFruits.module.scss';
 import { Product } from '@/app/products/[product]/page';
-import { useSearchParams } from 'next/navigation';
+import { useRouter, useSearchParams } from 'next/navigation';
 
 interface DryFruitSliderForOrderProps {
     data: Product | any;
 }
 
 export const DryFruitSliderForOrder: React.FC<DryFruitSliderForOrderProps> = (props: any) => {
+    const router = useRouter();
     const [quantity, setQuantity] = useState<number>(0);
+    const [message, setMessage] = useState('');
     const [totalQuantity, setTotalQuantity] = useState<number>(0);
     const params = useSearchParams().get('id')
+
+    useEffect(() => {
+        let timer: any;
+        if (message) {
+            timer = setTimeout(() => {
+                setMessage('');
+            }, 1000);
+        }
+        return () => clearTimeout(timer);
+    }, [message]);
 
     const handleQuantityChange = (e: ChangeEvent<HTMLInputElement>) => {
         const newQuantity = parseInt(e.target.value);
@@ -113,15 +125,17 @@ export const DryFruitSliderForOrder: React.FC<DryFruitSliderForOrderProps> = (pr
     const total = price * quantity;
     const roundedTotal = total.toFixed(2);
     const token = localStorage.getItem('token');
+    const userId = localStorage.getItem('userId');
     const addToCart = () => {
         const productData = {
-            userId: "65c4afc25938e4bfeab6fef4",
+            userId: userId,
             productId: params,
             qty: quantity,
-            token: token
+            token: token,
+            // discount: 10
         };
 
-        fetch('http://localhost:3001/s/cartProduct', {
+        fetch(`${process.env.BASE_URL}/s/cartProduct`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -129,15 +143,13 @@ export const DryFruitSliderForOrder: React.FC<DryFruitSliderForOrderProps> = (pr
             body: JSON.stringify(productData),
         })
             .then(response => {
-                console.log(response);
-
                 if (!response.ok) {
                     throw new Error('Network response was not ok');
                 }
                 return response.json();
             })
             .then(data => {
-                console.log('Cart updated successfully:', data);
+                setMessage(data.message);
             })
             .catch(error => {
                 console.error('There was a problem adding to the cart:', error);
@@ -153,6 +165,11 @@ export const DryFruitSliderForOrder: React.FC<DryFruitSliderForOrderProps> = (pr
     const handleAddToCart = () => {
         addToCart();
         reset();
+    };
+
+
+    const handleRouting = () => {
+        router.push('/cartList');
     };
 
 
@@ -183,7 +200,8 @@ export const DryFruitSliderForOrder: React.FC<DryFruitSliderForOrderProps> = (pr
                 </div>
                 <div className={styles.orderButton}>
                     <button onClick={handleAddToCart} className={styles.btnOrder}>Add To Cart</button>
-                    <button onClick={handleAddToCart} className={styles.btnOrder}>Place Order</button>
+                    <button onClick={handleRouting} className={styles.btnOrder}>Place Order</button>
+                    {message && <div className={styles.message}>{message}</div>}
                 </div>
             </div>
 

@@ -44,10 +44,10 @@ export default function Home() {
       <Footer />
       <CopyRight />
 
-      <OrderAddress />
+      {/* <OrderAddress /> */}
 
-      <Invoices />
-      <CartList />
+      {/* <Invoices /> */}
+      {/* <CartList /> */}
     </div >
   );
 }
