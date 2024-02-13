@@ -9,6 +9,8 @@ export default function CartLists() {
     return (
         <div>
             <Header />
+            {/* <Header /> */}
+
             <CartList />
             <Footer />
             <CopyRight />
