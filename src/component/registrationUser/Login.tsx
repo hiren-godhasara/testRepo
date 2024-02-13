@@ -2,10 +2,12 @@ import React, { useState } from 'react';
 import styles from './Register.module.scss';
 import Image from 'next/image';
 import logo from '../../imageFolder/myDryFruitLogo-removebg-preview.png';
+import { useRouter } from 'next/navigation';
 
 const LoginForm = () => {
+    const router = useRouter()
     const [formData, setFormData] = useState({
-        loginId: '', // Combined field for email or phone number
+        loginId: '',
         password: ''
     });
 
@@ -28,28 +30,22 @@ const LoginForm = () => {
                 body: JSON.stringify(formData)
             });
             const data = await response.json();
-            console.log(data);
+            console.log(data.data);
 
-            // Save _id to local storage
-            localStorage.setItem('token', data.data.token);
-
-
-            // get from local stroage
-            // const token = localStorage.getItem('token');
-            // console.log(token);
-
+            if ((data.data && Object.keys(data.data).length > 0)) {
+                router.push('/');
+                localStorage.setItem('token', data.data.token);
+                localStorage.setItem('userId', data.data.userId);
+            }
 
         } catch (error) {
             console.error('Error registering:', error);
         } finally {
-            // Reset form data
             setFormData({
                 loginId: '',
                 password: ''
             });
         }
-        console.log(formData);
-        // Reset the form after submission if needed
         setFormData({ loginId: '', password: '' });
     };
 

@@ -4,6 +4,7 @@ import styles from './CartList.module.scss';
 import { useRouter } from 'next/navigation';
 import getUserId from '../../getLocalStroageUserId'
 import url from 'url';
+import emptyCart from '../../imageFolder/emptyCart1-removebg-preview.png'
 
 
 interface Product {
@@ -152,6 +153,9 @@ const CartList: React.FC = () => {
         }
     };
 
+    const OnShopBtn = () => {
+        router.push('/#products')
+    }
 
 
 
@@ -247,6 +251,37 @@ const CartList: React.FC = () => {
                     )}
                 </div>
             </div>
+
+
+            {!productDetails && (
+                <div className={styles.main}>
+                    <Image
+                        src={emptyCart}
+                        alt='Empty Shopping Bag'
+                        width='256'
+                        height='256'
+                    />
+                    <div className={styles.details}>
+                        <div className={styles.heading}>Shopping Cart</div>
+                        <div className={styles.emptyCard}>Your Cart Is Currently Empty.</div>
+                        <button onClick={OnShopBtn} className={styles.btn}>Return To Shop</button>
+                    </div>
+                </div>
+            )}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
         </div>
     );

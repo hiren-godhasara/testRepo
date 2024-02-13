@@ -1,0 +1,197 @@
+.CenteredContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 150px;
+    margin-bottom: 100px;
+}
+
+
+
+.preAddress {
+
+    .addressCard {
+        border: 1px solid #ccc;
+        padding: 10px;
+        margin: 10px 0;
+        display: flex;
+        align-items: center;
+
+        &.selectedAddress {
+            background-color: #e6f7ff;
+        }
+
+        input[type="checkbox"] {
+            margin-right: 10px;
+        }
+
+        .addressContent {
+            flex-grow: 1;
+
+            .fullName {
+                font-weight: bold;
+            }
+
+            .addressType {
+                color: #888;
+            }
+        }
+    }
+}
+
+
+.OrderAddressContainer {
+    width: 400px;
+    margin: auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+
+    form {
+        display: flex;
+        flex-direction: column;
+
+        .firstRow,
+        .secondRow,
+        .thirdRow,
+        .fourthRow {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 15px;
+
+            div {
+                flex-grow: 1;
+                margin-right: 10px;
+
+                label {
+                    display: block;
+                    margin-bottom: 5px;
+                    font-weight: bold;
+                }
+
+                input,
+                textarea {
+                    width: 100%;
+                    padding: 8px;
+                    margin-bottom: 10px;
+                    border: 1px solid #ccc;
+                    border-radius: 4px;
+                }
+            }
+        }
+
+        .row {
+            margin-bottom: 15px;
+
+            div {
+                width: 100%;
+
+                label {
+                    display: block;
+                    margin-bottom: 5px;
+                    font-weight: bold;
+                }
+
+                textarea {
+                    width: 100%;
+                    padding: 8px;
+                    margin-bottom: 10px;
+                    border: 1px solid #ccc;
+                    border-radius: 4px;
+                }
+            }
+        }
+
+        button {
+            padding: 10px;
+            margin-top: 10px;
+            cursor: pointer;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+
+            &:hover {
+                background-color: #0056b3;
+            }
+
+            &:last-child {
+                margin-left: 10px;
+                background-color: #ccc;
+                color: #000;
+
+                &:hover {
+                    background-color: #999;
+                }
+            }
+        }
+    }
+}
+
+
+.orderBtn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 40px;
+
+
+    button {
+        margin: 10px;
+        padding: 10px;
+        border-radius: 5px;
+        background-color: #144950;
+        color: #fbd449;
+        transition: background-color 0.5s, color 0.5s;
+    }
+
+    button:hover {
+        color: #144950;
+        background-color: #fbd449;
+    }
+}
+
+.buttons {
+    margin-top: -70px;
+    margin-left: 80px;
+}
+
+.removeAdd {
+    width: 70px;
+    background-color: #888;
+    color: white;
+    margin: 5px;
+    padding: 5px;
+    border-radius: 2px;
+    transition: background-color 0.5s, color 0.5s;
+}
+
+.removeAdd:hover {
+    color: #888;
+    background-color: white;
+}
+
+
+.deliverAddress {
+    margin-bottom: 30px;
+    font-size: 26px;
+    color: #144950;
+    font-weight: 600;
+}
+
+.grandtotal {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    padding: 10px;
+    font-size: 22px;
+    margin-bottom: 30px;
+
+
+    span {
+        font-size: 26px;
+        color: #144950;
+        font-weight: 600;
+    }
+}

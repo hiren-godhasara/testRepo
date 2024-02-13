@@ -85,6 +85,7 @@ export const DryFruitSliderForOrder: React.FC<DryFruitSliderForOrderProps> = (pr
     const handleRouting = () => {
         router.push('/cartList');
     };
+    console.log(props.data);
 
 
     return (
@@ -99,6 +100,7 @@ export const DryFruitSliderForOrder: React.FC<DryFruitSliderForOrderProps> = (pr
             </div>
 
             <div className={styles.description}>
+                <p className={styles.name}>{props.data.name}</p>
                 <p className={styles.des}>{props.data.productDescription}</p>
                 <p className={styles.price}>Price : {price} INR</p>
 

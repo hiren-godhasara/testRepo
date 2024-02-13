@@ -117,3 +117,55 @@
 
 
 }
+
+
+.main {
+    width: 50%;
+    margin-left: 25%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: -430px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+
+}
+
+.details {
+    width: 700px;
+    height: 256px;
+    color: #144950;
+}
+
+.emptyCard {
+    font-weight: 800;
+    font-size: 32px;
+    padding: 20px;
+    text-align: center;
+
+}
+
+.heading {
+    font-weight: 800;
+    font-size: 22px;
+    text-align: center;
+    margin-top: 10px;
+}
+
+.btn {
+    color: #FBD449;
+    background-color: #144249;
+    font-weight: 700;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+    transition: background-color 0.5s, color 0.5s;
+    margin-top: 50px;
+    margin-left: 250px;
+}
+
+.btn:hover {
+    background-color: #FBD449;
+    color: #144249;
+}

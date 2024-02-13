@@ -2,8 +2,10 @@ import React, { useState } from 'react';
 import styles from './Register.module.scss';
 import Image from 'next/image';
 import logo from '../../imageFolder/myDryFruitLogo-removebg-preview.png'
+import { useRouter } from 'next/navigation';
 
 const RegisterForm = () => {
+    const router = useRouter();
     const [formData, setFormData] = useState({
         firstName: '',
         lastName: '',
@@ -21,19 +23,9 @@ const RegisterForm = () => {
         }));
     };
 
-    // const handleSubmit = (e: any) => {
-    //     e.preventDefault();
-    //     setFormData({
-    //         firstName: '',
-    //         lastName: '',
-    //         email: '',
-    //         countryCode: '+91',
-    //         mobile: '',
-    //         password: ''
-    //     });
-    // };
-
     const handleSubmit = async (e: any) => {
+        router.push('/login');
+
         e.preventDefault();
         try {
             // Make API call here to submit form data
