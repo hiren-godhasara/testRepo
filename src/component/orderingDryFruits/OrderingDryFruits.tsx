@@ -94,7 +94,7 @@ export const DryFruitSliderForOrder: React.FC<DryFruitSliderForOrderProps> = (pr
             <div className={styles.carousel}>
                 <Carousel slidesToShow={1} autoplay autoplaySpeed={4500} speed={2000} style={{ width: '475px', height: '600px', margin: '0 auto' }} >
                     {props.data.imageUrl.map((image: any) => (
-                        <Image src={image.location} alt={`Image`} width={475} height={350} className={styles.image} />
+                        <Image key={props.data._id} src={image.location} alt={`Image`} width={475} height={350} className={styles.image} />
                     ))}
                 </Carousel>
             </div>

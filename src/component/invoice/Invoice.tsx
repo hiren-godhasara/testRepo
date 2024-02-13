@@ -4,9 +4,9 @@ import Image from 'next/image';
 import { headerCompanyLogo } from '@/S3Images/S3Images';
 
 
-// API RESPONSE LIKE THAT
 const apiResponse = [
     {
+        "id": 1,
         "product": "Cashew",
         "productId": 1,
         "pricePerKg": 885,
@@ -109,7 +109,7 @@ const Invoices = () => {
                         <div className={styles.column}><strong>Total Price</strong></div>
                     </div>
                     {apiResponse.map(item => (
-                        <div className={styles.columnWrapper}>
+                        <div key={item.id} className={styles.columnWrapper}>
                             <div className={styles.column}>{item.product}</div>
                             <div className={styles.column}>{item.packetWeight}</div>
                             <div className={styles.column}>{item.quantity}</div>
