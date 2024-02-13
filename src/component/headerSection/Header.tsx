@@ -1,14 +1,53 @@
-import React from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import styles from './Header.module.scss';
 import image from '../../imageFolder/myDryFruitLogo-removebg-preview.png';
 import { headerCompanyLogo } from '@/S3Images/S3Images';
+import { useRouter } from 'next/navigation';
+import UserDetails from '../user/UserData';
+import userIcon from '../../imageFolder/icons8-user-35.png'
+import cartIcon from '../../imageFolder/icons8-cart-35.png'
+
+
 
 const Header = () => {
+    const router = useRouter()
     const whatsappLink = 'https://wa.me/+919157059719';
     const phoneNumber = "+91 9157059719";
+    const [isCartDropdownOpen, setIsCartDropdownOpen] = useState(false);
+    const [isUserDetailsModalOpen, setIsUserDetailsModalOpen] = useState(false);
+    const cartButtonRef = useRef<HTMLButtonElement>(null);
 
+
+    const handleCartButtonClick = () => {
+        setIsCartDropdownOpen(!isCartDropdownOpen);
+    };
+
+    const orderListClick = () => {
+        router.push('/orderList')
+    }
+
+    const openUserDetailsModal = () => {
+        setIsUserDetailsModalOpen(true);
+    };
+
+    const closeUserDetailsModal = () => {
+        setIsUserDetailsModalOpen(false);
+    };
+
+    const handleDocumentClick = (event: any) => {
+        if (cartButtonRef.current && !cartButtonRef.current.contains(event.target)) {
+            setIsCartDropdownOpen(false);
+        }
+    };
+    useEffect(() => {
+        document.addEventListener('click', handleDocumentClick);
+
+        return () => {
+            document.removeEventListener('click', handleDocumentClick);
+        };
+    }, []);
     return (
         <header className={styles.fixedHeader}>
             <div className={styles.header}>
@@ -29,14 +68,35 @@ const Header = () => {
                 </div>
 
                 <div className={styles.rightSection}>
-                    <p className={styles.number}><span>Mo.</span> <Link className={styles.mobileNumber} href={`tel:${phoneNumber}`}>+91 9157059719</Link></p>
+                    <div className={styles.dropdownContainer}>
+                        <button ref={cartButtonRef}
+                            className={styles.userBtn}
+                            onClick={handleCartButtonClick}>
+                            <Image src={userIcon} width={35} height={35} alt='Home Pagea' className={styles.userIcon} />
+                        </button>
+                        {isCartDropdownOpen && (
+                            <div className={styles.cartDropdownContent}>
+                                <button onClick={openUserDetailsModal}>User Details</button>
+                                <button onClick={orderListClick} >Your Order</button>
+                            </div>
+                        )}
+                    </div>
+
+                    <Link href='/cartList'>
+                        <Image src={cartIcon} width={35} height={35} alt='Cart list' title='Cart List' className={styles.cartIcon} />
+                    </Link>
 
                     <Link className={styles.contactUsBtn} href='/registration'>Register</Link>
                     <Link className={styles.contactUsBtn} href='/login'>Login</Link>
-                    <Link className={styles.contactUsBtn} href='/cartList'>CART</Link>
+
+
+
 
                 </div>
             </div>
+            {isUserDetailsModalOpen && (
+                <UserDetails onClose={closeUserDetailsModal} />
+            )}
         </header>
     );
 };
