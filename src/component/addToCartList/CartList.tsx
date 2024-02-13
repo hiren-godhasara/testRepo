@@ -141,6 +141,8 @@ const CartList: React.FC = () => {
             console.log(productDetails);
 
             const cartProductIds = productDetails.productList.map((item: { cartProductId: any }) => item.cartProductId);
+            console.log(cartProductIds);
+
 
             const destinationUrl = url.format({
                 pathname: '/orderAddress',
@@ -268,21 +270,6 @@ const CartList: React.FC = () => {
                     </div>
                 </div>
             )}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
         </div>
     );
 };

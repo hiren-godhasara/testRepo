@@ -483,10 +483,12 @@ const OrderAddress = () => {
     useEffect(() => {
         if (paramId !== null) {
             const arrayOfIds = JSON.parse(paramId);
-            const arrayOfObjects = arrayOfIds.map((id: any) => ({ cartProductId: id }));
+            const arrayOfObjects = arrayOfIds.map((id: any) => ({ cartProductId: id, isOrder: true }));
             setCartProducts(arrayOfObjects);
         }
     }, []);
+
+
 
     const [address, setAddress] = useState<Address[]>([]);
     const userId = getUserId();
@@ -640,10 +642,12 @@ const OrderAddress = () => {
         const shippingAddressId = selectedAddress;
         const billingAddressId = selectedAddress;
         const productList = cartProducts;
+        // const isOrder = true;
         totalCartValue; shippingCharge
 
         const payload = {
             userId,
+            // isOrder,
             shippingAddressId,
             billingAddressId,
             productList, totalCartValue, shippingCharge
