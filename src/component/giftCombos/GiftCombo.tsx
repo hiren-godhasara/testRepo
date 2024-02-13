@@ -1,17 +1,14 @@
 import Image from 'next/image';
 import styles from './GiftCombo.module.scss';
 import image from '../../imageFolder/image 8.png';
-import kaju from '../../imageFolder/kaju.png';
-import badam from '../../imageFolder/badam.png';
-import mazafati from '../../imageFolder/mazafati.png';
-import khalas from '../../imageFolder/khalas.png';
+import { giftComboAlmond, giftComboBackground, giftComboCashew, giftComboDates1, giftComboDates2 } from '@/S3Images/S3Images';
 
 const GiftCombo: React.FC = () => {
 
     return (
         <div className={styles.giftComboContainer}>
             <div className={styles.backgroundImageContainer}>
-                <Image src={image} alt='Home Page' className={styles.backgroundImage} />
+                <Image src={giftComboBackground} alt='Home Page' width={1870} height={751} className={styles.backgroundImage} />
             </div>
 
             <div className={styles.contentContainer}>
@@ -27,7 +24,7 @@ const GiftCombo: React.FC = () => {
                                 <div className={styles.h5}><h5>10% Off</h5></div>
                             </div>
                             <div className={styles.right}>
-                                <Image src={mazafati} alt='' className={styles.rightImage} />
+                                <Image src={giftComboDates1} alt='' width={118} height={118} className={styles.rightImage} />
                             </div>
                         </div>
 
@@ -38,7 +35,7 @@ const GiftCombo: React.FC = () => {
                                 <div className={styles.h5}><h5>10% Off</h5></div>
                             </div>
                             <div className={styles.right}>
-                                <Image src={khalas} alt='' className={styles.rightImage} />
+                                <Image src={giftComboDates2} alt='' width={118} height={118} className={styles.rightImage} />
                             </div>
                         </div>
                     </div>
@@ -47,23 +44,23 @@ const GiftCombo: React.FC = () => {
                     <div className={styles.cardRow}>
                         <div className={styles.card}>
                             <div className={styles.left}>
-                                <h3>Premium Dates</h3>
+                                <h3>Premium Almond</h3>
                                 <h4>Grade: A+</h4>
                                 <div className={styles.h5}><h5>10% Off</h5></div>
                             </div>
                             <div className={styles.right}>
-                                <Image src={badam} alt='' className={styles.rightImage} />
+                                <Image src={giftComboAlmond} alt='' width={118} height={118} className={styles.rightImage} />
                             </div>
                         </div>
 
                         <div className={styles.card}>
                             <div className={styles.left}>
-                                <h3>Premium Dates</h3>
+                                <h3>Premium Cashew</h3>
                                 <h4>Grade: A+</h4>
                                 <div className={styles.h5}><h5>10% Off</h5></div>
                             </div>
                             <div className={styles.right}>
-                                <Image src={kaju} alt='' className={styles.rightImage} />
+                                <Image src={giftComboCashew} alt='' width={118} height={118} className={styles.rightImage} />
                             </div>
                         </div>
                     </div>

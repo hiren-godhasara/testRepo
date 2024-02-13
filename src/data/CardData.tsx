@@ -1,70 +1,134 @@
-import kaju from '../imageFolder/kaju.png'
-import badam from '../imageFolder/badam.png'
-import mazafati from '../imageFolder/mazafati.png'
-import khalas from '../imageFolder/khalas.png'
-import fard from '../imageFolder/fard.png'
-import medjool from '../imageFolder/medjool.png'
-import pista from '../imageFolder/pista.png'
-import figs from '../imageFolder/figs.png'
+import { bestSellingCard1, bestSellingCard2, bestSellingCard3, bestSellingCard4, bestSellingCard5, bestSellingCard6, bestSellingCard7, bestSellingCard8 } from "@/S3Images/S3Images";
+import image from '../imageFolder/almodProduct22.png'
 const products = [
     {
         id: 1,
-        name: 'Mazafati Premium Dates',
-        displayname: 'mazafatiDates',
+        name: 'Premium Almond, 100g',
+        displayname: 'almond',
+        weight: "100",
+        price: 750,
         grade: 'A+',
-        image: mazafati,
+        images: [
+            { image: image },
+            { image: image },
+            { image: image },
+            { image: image },
+        ],
     },
     {
         id: 2,
-        name: 'Khalas Dates Super Jumbo Size',
-        displayname: 'khalasDates',
-        grade: 'A+',
-        image: khalas,
-    },
-    {
-        id: 3,
-        name: 'Fard Premium Dates',
-        displayname: 'fardDates',
-        grade: 'A',
-        image: fard,
-    },
-    {
-        id: 4,
-        name: 'Medjoul Jordan Premium Dates',
-        displayname: 'medjoolDates',
-        grade: 'B+',
-        image: medjool,
-    },
-    {
-        id: 5,
-        name: 'Premium Almond',
+        name: 'Premium Almond, 250g',
+        weight: "250",
+
         displayname: 'almond',
         grade: 'A+',
-        image: badam,
+        images: [
+            { image: image },
+            { image: image },
+            { image: image },
+            { image: image },
+        ],
+    }, {
+        id: 3,
+        name: 'Premium Almond, 500g',
+        weight: "500",
+
+        displayname: 'almond',
+        grade: 'A+',
+        images: [
+            { image: image },
+            { image: image },
+            { image: image },
+            { image: image },
+        ],
+    }, {
+        id: 4,
+        name: 'Premium Almond 750g',
+        displayname: 'almond',
+        grade: 'A+',
+        images: [
+            { image: image },
+            { image: image },
+            { image: image },
+            { image: image },
+        ],
+    }, {
+        id: 5,
+        name: 'Premium Almond 1kg',
+        displayname: 'almond',
+        grade: 'A+',
+        images: [
+            { image: image },
+            { image: image },
+            { image: image },
+            { image: image },
+        ],
     },
     {
         id: 6,
-        name: 'Premium Cashew',
+        name: 'Premium Cashew 100g',
         displayname: 'cashew',
         grade: 'A+',
-        image: kaju,
+        images: [
+            { image: image },
+            { image: image },
+            { image: image },
+            { image: image },
+        ],
     },
     {
         id: 7,
-        name: 'Premium Pistachio',
-        displayname: 'pistachio',
+        name: 'Premium Cashew 250g',
+        displayname: 'cashew',
         grade: 'A+',
-        image: pista,
-    },
-    {
+        images: [
+            { image: image },
+            { image: image },
+            { image: image },
+            { image: image },
+        ],
+    }, {
         id: 8,
-        name: 'Premium Figs',
-        displayname: 'figs',
+        name: 'Premium Cashew 500g',
+        displayname: 'cashew',
         grade: 'A+',
-        image: figs,
+        images: [
+            { image: image },
+            { image: image },
+            { image: image },
+            { image: image },
+        ],
+    }, {
+        id: 9,
+        name: 'Premium Cashew 750g',
+        displayname: 'cashew',
+        grade: 'A+',
+        images: [
+            { image: image },
+            { image: image },
+            { image: image },
+            { image: image },
+        ],
+    }, {
+        id: 10,
+        name: 'Premium Cashew 1kg',
+        displayname: 'cashew',
+        grade: 'A+',
+        images: [
+            { image: image },
+            { image: image },
+            { image: image },
+            { image: image },
+        ],
     },
 
 ];
 
 
 export default products;
+
+
+
+
+
+

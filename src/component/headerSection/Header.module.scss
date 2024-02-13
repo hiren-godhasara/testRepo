@@ -41,9 +41,6 @@
     text-decoration: underline;
 }
 
-
-
-
 .leftSection {
     display: flex;
     align-items: center;
@@ -72,7 +69,7 @@
 .rightSection {
     display: flex;
     align-items: center;
-    gap: 25px;
+    gap: 15px;
 }
 
 
@@ -82,14 +79,14 @@
     justify-content: center;
     align-items: center;
     background-color: #144950;
-    width: 174px;
-    height: 48px;
+    width: 94px;
+    height: 42px;
     color: #FBD449;
     text-align: center;
     border-radius: 10px;
     cursor: pointer;
     border: none;
-    font-weight: 700;
+    font-weight: 500;
     transition: background-color 0.3s, color 0.3s, font-weight 0.3s;
 }
 
@@ -117,117 +114,27 @@
 }
 
 
-@media screen and (max-width: 1500px) {
+.cartDropdownContent {
+    position: absolute;
+    top: 100%;
+    left: 73.5%;
+    background-color: #fff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    color: #144950;
+    font-weight: 500;
+    padding: 10px;
+    min-width: 150px;
+    z-index: 1;
 
-    .link {
-        font-size: 16px;
-    }
+    button {
+        display: block;
+        padding: 8px;
+        color: #333;
+        text-decoration: none;
+        transition: background-color 0.3s;
 
-    .leftSectionName {
-        font-size: 22px;
-    }
-
-    .navList {
-        gap: 18px;
-    }
-
-    .leftSection .image {
-        width: 55px;
-        height: 50px;
-    }
-
-    .contactUsBtn {
-        width: 150px;
-        height: 46px;
-        border-radius: 8px;
-        font-weight: 600;
-    }
-
-    .number {
-        font-size: 16px;
-    }
-
-    .header {
-        height: 80px;
-    }
-}
-
-
-
-
-@media screen and (max-width: 1400px) {
-
-    .link {
-        font-size: 15px;
-    }
-
-    .leftSectionName {
-        font-size: 21px;
-    }
-
-    .navList {
-        gap: 18px;
-    }
-
-    .leftSection .image {
-        width: 55px;
-        height: 50px;
-    }
-
-    .contactUsBtn {
-        width: 140px;
-        height: 46px;
-        border-radius: 8px;
-        font-weight: 600;
-    }
-
-    .number {
-        font-size: 15px;
-    }
-
-    .header {
-        height: 75px;
-    }
-}
-
-
-@media screen and (max-width: 1200px) {
-
-    .link {
-        font-size: 14px;
-    }
-
-    .leftSectionName {
-        font-size: 20px;
-    }
-
-    .navList {
-        gap: 15px;
-        margin-left: -100px;
-    }
-
-    .leftSection .image {
-        width: 40px;
-        height: 40px;
-    }
-
-    .contactUsBtn {
-        width: 130px;
-        height: 42px;
-        border-radius: 6px;
-        font-weight: 500;
-        font-size: 15px;
-    }
-
-    .number {
-        font-size: 13px;
-    }
-
-    .header {
-        height: 70px;
-    }
-
-    .number span {
-        display: none;
+        &:hover {
+            background-color: #c1c1c1;
+        }
     }
 }

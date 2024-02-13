@@ -1,0 +1,94 @@
+.pageWrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+.centeredContent {
+    width: 55%;
+    background-color: rgb(255, 255, 255);
+}
+
+
+
+.companyDetails {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logoContainer {
+    display: flex;
+    margin-left: 20px;
+    margin-top: 20px;
+}
+
+.contactDetails {
+    margin-right: 20px;
+    margin-top: 20px;
+
+}
+
+.name {
+    font-size: 22px;
+    font-weight: 600;
+    color: #144950;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.orderDetails {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.order {
+    width: 300px;
+}
+
+.grandTotal {
+    margin-top: 40px;
+    margin-right: 150px;
+    text-align: right;
+}
+
+.billTotal {
+    margin-top: 10px;
+    font-size: 24px;
+}
+
+.message {
+    text-align: center;
+}
+
+.horizontalLine {
+    border-top: 1px solid black;
+    margin-top: 50px;
+}
+
+
+.horizontalLine1 {
+    border-top: 1px solid black;
+    margin-top: 15px;
+}
+
+.tableWrapper {
+    margin-left: 50px;
+    margin-right: 50px;
+    margin-top: 30px;
+}
+
+.columnWrapper {
+    display: grid;
+    grid-template-columns: repeat(5, auto);
+    column-gap: 50px;
+    margin: 10px 0;
+}
+
+.column {
+    text-align: center;
+}
