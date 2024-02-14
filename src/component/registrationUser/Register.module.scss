@@ -3,7 +3,7 @@
     justify-content: center;
     align-items: center;
     height: 100vh;
-    background-color: #a5b6b8;
+    // background-color: #a5b6b8;
 
     form {
         width: 450px;
@@ -42,7 +42,8 @@
             border-radius: 3px;
             cursor: pointer;
             margin-right: 10px;
-            margin-top: 20px;
+            margin-top: 40px;
+            margin-bottom: 20px;
 
             &:last-child {
                 margin-right: 0;
@@ -53,6 +54,7 @@
             background-color: #FBD449;
             color: #144249;
         }
+
     }
 }
 
@@ -93,4 +95,28 @@
         width: 100px;
 
     }
+}
+
+
+.link {
+    margin-bottom: -15px;
+    font-size: 14px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: blue;
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+.cancel {
+    position: absolute;
+    top: 242px;
+    left: 1161px;
+}
+
+.cancelReg {
+    position: absolute;
+    top: 125px;
+    left: 1161px;
 }

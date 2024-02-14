@@ -1,6 +1,8 @@
-const getUserId = (): string | null => {
-    if (typeof localStorage !== 'undefined') {
-        return localStorage.getItem('userId');
+import Cookies from 'js-cookie';
+
+const getUserId = () => {
+    if (typeof Cookies !== 'undefined') {
+        return Cookies.get('userId');
     } else {
         return null;
     }

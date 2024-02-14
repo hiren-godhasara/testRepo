@@ -68,6 +68,9 @@ const RegisterForm = () => {
         });
     };
 
+    const handleCancel = () => {
+        router.back();
+    };
 
     return (
         <div className={styles.register}>
@@ -113,6 +116,8 @@ const RegisterForm = () => {
                     <button type="button" onClick={handleReset}>Reset</button>
                 </div>
             </form>
+            <button onClick={handleCancel} className={styles.cancelReg}>✖</button>
+
         </div>
     );
 };

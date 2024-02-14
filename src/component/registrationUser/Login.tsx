@@ -3,6 +3,8 @@ import styles from './Register.module.scss';
 import Image from 'next/image';
 import logo from '../../imageFolder/myDryFruitLogo-removebg-preview.png';
 import { useRouter } from 'next/navigation';
+import Cookies from 'js-cookie';
+import Link from 'next/link';
 
 const LoginForm = () => {
     const router = useRouter()
@@ -34,8 +36,19 @@ const LoginForm = () => {
 
             if ((data.data && Object.keys(data.data).length > 0)) {
                 router.push('/');
-                localStorage.setItem('token', data.data.token);
-                localStorage.setItem('userId', data.data.userId);
+                // Cookies.set('token', data.data.token, { expires: 7 });
+                // Cookies.set('userId', data.data.userId, { expires: 7 });
+                Cookies.set('token', data.data.token, { expires: 30 / (24 * 60 * 60) });
+                Cookies.set('userId', data.data.userId, { expires: 30 / (24 * 60 * 60) });
+
+
+
+                // const storedToken = Cookies.get('token');
+                // const storedUserId = Cookies.get('userId');
+                // console.log(storedToken, storedUserId);
+
+                // localStorage.setItem('token', data.data.token);
+                // localStorage.setItem('userId', data.data.userId);
             }
 
         } catch (error) {
@@ -51,6 +64,10 @@ const LoginForm = () => {
 
     const handleReset = () => {
         setFormData({ loginId: '', password: '' });
+    };
+
+    const handleCancel = () => {
+        router.back();
     };
 
     const inputType = formData.loginId.includes('@') ? 'email' : 'tel';
@@ -91,7 +108,9 @@ const LoginForm = () => {
                     <button type="submit">Submit</button>
                     <button type="button" onClick={handleReset}>Reset</button>
                 </div>
+                <Link className={styles.link} href='/registration'>Create an account</Link>
             </form>
+            <button onClick={handleCancel} className={styles.cancel}>✖</button>
         </div>
     );
 };

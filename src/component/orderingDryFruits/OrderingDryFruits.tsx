@@ -4,6 +4,11 @@ import { Carousel } from 'antd';
 import styles from './OrderingDryFruits.module.scss';
 import { Product } from '@/app/products/[product]/page';
 import { useRouter, useSearchParams } from 'next/navigation';
+import Cookies from 'js-cookie';
+import getToken from '@/getLocalStroageToken';
+import getUserId from '@/getLocalStroageUserId';
+import RegisterForm from '../registrationUser/Register';
+import LoginForm from '../registrationUser/Login';
 
 interface DryFruitSliderForOrderProps {
     data: Product | any;
@@ -12,7 +17,9 @@ interface DryFruitSliderForOrderProps {
 export const DryFruitSliderForOrder: React.FC<DryFruitSliderForOrderProps> = (props: any) => {
     const router = useRouter();
     const [quantity, setQuantity] = useState<number>(1);
+    const [shouldRenderRegisterForm, setShouldRenderRegisterForm] = useState(false);
     const [message, setMessage] = useState('');
+
     const [totalQuantity, setTotalQuantity] = useState<number>(0);
     const params = useSearchParams().get('id')
 
@@ -38,8 +45,8 @@ export const DryFruitSliderForOrder: React.FC<DryFruitSliderForOrderProps> = (pr
     const price = props.data.price
     const total = price * quantity;
     const roundedTotal = total.toFixed(2);
-    const token = localStorage.getItem('token');
-    const userId = localStorage.getItem('userId');
+    const token = getToken();
+    const userId = getUserId();
     const addToCart = () => {
         const productData = {
             userId: userId,
@@ -81,16 +88,36 @@ export const DryFruitSliderForOrder: React.FC<DryFruitSliderForOrderProps> = (pr
         reset();
     };
 
+    // const handleClick = () => {
+    //     if (token) {
+    //         handleAddToCart();
+    //     } else {
+    //         alert("Please LOGIN to add items to the cart");
+    //     }
+    // };
+
+
+    const handleClick = () => {
+        if (token) {
+            handleAddToCart();
+        } else {
+            setShouldRenderRegisterForm(true);
+        }
+    };
+
+
+    const handleCancelClick = () => {
+        setShouldRenderRegisterForm(false);
+    };
 
     const handleRouting = () => {
         router.push('/cartList');
     };
-    console.log(props.data);
 
 
     return (
-        <div className={styles.mainDiv} >
-
+        // <div className={styles.mainDiv} >
+        <div className={styles.mainDiv} style={shouldRenderRegisterForm ? { background: 'rgba(0, 0, 0, 0.6)' } : {}}>
             <div className={styles.carousel}>
                 <Carousel slidesToShow={1} autoplay autoplaySpeed={4500} speed={2000} style={{ width: '475px', height: '600px', margin: '0 auto' }} >
                     {props.data.imageUrl.map((image: any) => (
@@ -115,15 +142,21 @@ export const DryFruitSliderForOrder: React.FC<DryFruitSliderForOrderProps> = (pr
 
                 </div>
                 <div className={styles.orderButton}>
-                    <button onClick={handleAddToCart} className={styles.btnOrder}>Add To Cart</button>
+                    <button onClick={handleClick} className={styles.btnOrder}>Add To Cart</button>
                     <button onClick={handleRouting} className={styles.btnOrder}>Place Order</button>
                     {/* {message && <div className={styles.message}>{message}</div>} */}
 
                 </div>
             </div>
 
+            <div className={styles.reg}>
+                {shouldRenderRegisterForm && <LoginForm />}
+                {shouldRenderRegisterForm && <button onClick={handleCancelClick} className={styles.cancel}>✖</button>}
+            </div>
+
         </div>
     );
 };
+
 
 
