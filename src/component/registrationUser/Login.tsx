@@ -23,6 +23,7 @@ const LoginForm = () => {
 
     const handleSubmit = async (e: any) => {
         e.preventDefault();
+        router.back();
         try {
             const response = await fetch(`${process.env.BASE_URL}/s/login`, {
                 method: 'POST',
@@ -32,23 +33,11 @@ const LoginForm = () => {
                 body: JSON.stringify(formData)
             });
             const data = await response.json();
-            console.log(data.data);
 
             if ((data.data && Object.keys(data.data).length > 0)) {
-                router.push('/');
-                // Cookies.set('token', data.data.token, { expires: 7 });
-                // Cookies.set('userId', data.data.userId, { expires: 7 });
-                Cookies.set('token', data.data.token, { expires: 30 / (24 * 60 * 60) });
-                Cookies.set('userId', data.data.userId, { expires: 30 / (24 * 60 * 60) });
+                Cookies.set('token', data.data.token, { expires: 1 });
+                Cookies.set('userId', data.data.userId, { expires: 1 });
 
-
-
-                // const storedToken = Cookies.get('token');
-                // const storedUserId = Cookies.get('userId');
-                // console.log(storedToken, storedUserId);
-
-                // localStorage.setItem('token', data.data.token);
-                // localStorage.setItem('userId', data.data.userId);
             }
 
         } catch (error) {
@@ -65,6 +54,7 @@ const LoginForm = () => {
     const handleReset = () => {
         setFormData({ loginId: '', password: '' });
     };
+
 
     const handleCancel = () => {
         router.back();
@@ -108,9 +98,8 @@ const LoginForm = () => {
                     <button type="submit">Submit</button>
                     <button type="button" onClick={handleReset}>Reset</button>
                 </div>
-                <Link className={styles.link} href='/registration'>Create an account</Link>
+                <Link className={styles.link} href='/registration'>  New to mydryfruit  ?<span className={styles.span}> Create an account </span></Link>
             </form>
-            <button onClick={handleCancel} className={styles.cancel}>✖</button>
         </div>
     );
 };

@@ -9,6 +9,9 @@ import getToken from '@/getLocalStroageToken';
 import getUserId from '@/getLocalStroageUserId';
 import RegisterForm from '../registrationUser/Register';
 import LoginForm from '../registrationUser/Login';
+import emptyCart from '../../imageFolder/emptyCart1-removebg-preview.png'
+import useTokenExpiration from '@/userTokenExpiration';
+
 
 interface DryFruitSliderForOrderProps {
     data: Product | any;
@@ -19,19 +22,14 @@ export const DryFruitSliderForOrder: React.FC<DryFruitSliderForOrderProps> = (pr
     const [quantity, setQuantity] = useState<number>(1);
     const [shouldRenderRegisterForm, setShouldRenderRegisterForm] = useState(false);
     const [message, setMessage] = useState('');
-
     const [totalQuantity, setTotalQuantity] = useState<number>(0);
     const params = useSearchParams().get('id')
 
-    useEffect(() => {
-        let timer: any;
-        if (message) {
-            timer = setTimeout(() => {
-                setMessage('');
-            }, 1000);
-        }
-        return () => clearTimeout(timer);
-    }, [message]);
+    const token = getToken();
+    const userId = getUserId();
+
+
+    useTokenExpiration(token);
 
     const handleQuantityChange = (e: ChangeEvent<HTMLInputElement>) => {
         const newQuantity = parseInt(e.target.value);
@@ -45,9 +43,9 @@ export const DryFruitSliderForOrder: React.FC<DryFruitSliderForOrderProps> = (pr
     const price = props.data.price
     const total = price * quantity;
     const roundedTotal = total.toFixed(2);
-    const token = getToken();
-    const userId = getUserId();
+
     const addToCart = () => {
+
         const productData = {
             userId: userId,
             productId: params,
@@ -60,6 +58,7 @@ export const DryFruitSliderForOrder: React.FC<DryFruitSliderForOrderProps> = (pr
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
+                'Authorization': `Bearer ${token}`,
             },
             body: JSON.stringify(productData),
         })
@@ -78,33 +77,25 @@ export const DryFruitSliderForOrder: React.FC<DryFruitSliderForOrderProps> = (pr
     };
 
     const reset = () => {
-        setQuantity(0);
+        setQuantity(1);
         setTotalQuantity(0);
     };
-
 
     const handleAddToCart = () => {
         addToCart();
         reset();
     };
 
-    // const handleClick = () => {
-    //     if (token) {
-    //         handleAddToCart();
-    //     } else {
-    //         alert("Please LOGIN to add items to the cart");
-    //     }
-    // };
-
 
     const handleClick = () => {
+        const token = getToken()
+        console.log(token);
         if (token) {
             handleAddToCart();
         } else {
             setShouldRenderRegisterForm(true);
         }
     };
-
 
     const handleCancelClick = () => {
         setShouldRenderRegisterForm(false);
@@ -153,7 +144,6 @@ export const DryFruitSliderForOrder: React.FC<DryFruitSliderForOrderProps> = (pr
                 {shouldRenderRegisterForm && <LoginForm />}
                 {shouldRenderRegisterForm && <button onClick={handleCancelClick} className={styles.cancel}>✖</button>}
             </div>
-
         </div>
     );
 };

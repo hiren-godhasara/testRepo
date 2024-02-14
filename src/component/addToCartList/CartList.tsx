@@ -5,6 +5,8 @@ import { useRouter } from 'next/navigation';
 import getUserId from '../../getLocalStroageUserId'
 import url from 'url';
 import emptyCart from '../../imageFolder/emptyCart1-removebg-preview.png'
+import getToken from '@/getLocalStroageToken';
+import useTokenExpiration from '@/userTokenExpiration';
 
 
 interface Product {
@@ -32,12 +34,15 @@ const CartList: React.FC = () => {
     const [productDetails, setProductDetails] = useState<Product | null>(null);
     const [editableQuantities, setEditableQuantities] = useState<boolean[]>([]);
     const userId = getUserId();
+    const token = getToken()
+    useTokenExpiration(token);
 
     const fetchCartData = () => {
         fetch(`${process.env.BASE_URL}/s/cartProduct/cartProductList/${userId}`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
+                'Authorization': `Bearer ${token}`,
             },
             body: JSON.stringify({}),
         })
@@ -76,6 +81,7 @@ const CartList: React.FC = () => {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json',
+                'Authorization': `Bearer ${token}`,
             },
             body: JSON.stringify({ qty }),
         })
@@ -100,6 +106,7 @@ const CartList: React.FC = () => {
             method: 'DELETE',
             headers: {
                 'Content-Type': 'application/json',
+                'Authorization': `Bearer ${token}`,
             },
             body: JSON.stringify({}),
         })
@@ -124,6 +131,8 @@ const CartList: React.FC = () => {
         setEditableQuantities(updatedEditableQuantities);
     };
 
+
+
     const handleSave = (index: number, cartProductId: any, qty: number) => {
         const updatedEditableQuantities = [...editableQuantities];
         updatedEditableQuantities[index] = false;
@@ -133,17 +142,13 @@ const CartList: React.FC = () => {
 
     const handleRemove = (cartProductId: any) => {
         DeleteCartData(cartProductId)
-
     }
 
+
     const onBtnClick = () => {
+
         if (productDetails && productDetails.productList) {
-            console.log(productDetails);
-
             const cartProductIds = productDetails.productList.map((item: { cartProductId: any }) => item.cartProductId);
-            console.log(cartProductIds);
-
-
             const destinationUrl = url.format({
                 pathname: '/orderAddress',
                 query: { cartProductIds: JSON.stringify(cartProductIds), totalCartValue: productDetails.totalCartValue, shippingCharge: 0, },
@@ -159,7 +164,9 @@ const CartList: React.FC = () => {
         router.push('/#products')
     }
 
-
+    const OnSignInBtn = () => {
+        router.push('/login')
+    }
 
     return (
         <div className={styles.cardContainer}>
@@ -266,7 +273,11 @@ const CartList: React.FC = () => {
                     <div className={styles.details}>
                         <div className={styles.heading}>Shopping Cart</div>
                         <div className={styles.emptyCard}>Your Cart Is Currently Empty.</div>
-                        <button onClick={OnShopBtn} className={styles.btn}>Return To Shop</button>
+
+                        <div className={styles.btns}>
+                            <button onClick={OnSignInBtn} className={styles.btn}>SIGN IN</button>
+                            <button onClick={OnShopBtn} className={styles.btn}>Return To Shop</button>
+                        </div>
                     </div>
                 </div>
             )}

@@ -79,6 +79,7 @@ import { useRouter } from 'next/router';
 import getUserId from '@/getLocalStroageUserId';
 import RegistrationForm from '../registrationUser/Register';
 import UpdateUser from './UpdateUser';
+import getToken from '@/getLocalStroageToken';
 
 const UserDetails = ({ onClose }: any) => {
     const handleClose = () => {
@@ -90,12 +91,13 @@ const UserDetails = ({ onClose }: any) => {
     const userId = getUserId();
     const [formattedDate, setFormattedDate] = useState<string | null>(null);
     const [isEditing, setIsEditing] = useState(false);
-
+    const token = getToken()
     const fetchUserData = () => {
         fetch(`${process.env.BASE_URL}/s/user/${userId}`, {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
+                'Authorization': `Bearer ${token}`,
             },
         })
             .then(response => {

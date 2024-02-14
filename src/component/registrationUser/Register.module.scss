@@ -104,19 +104,26 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    color: blue;
-    text-decoration: underline;
-    cursor: pointer;
+    text-decoration: none;
+    color: black;
+
+
 }
 
 .cancel {
     position: absolute;
-    top: 242px;
-    left: 1161px;
+    top: 199px;
+    left: 1131px;
 }
 
 .cancelReg {
     position: absolute;
     top: 125px;
     left: 1161px;
+}
+
+.span {
+    color: blue;
+    text-decoration: underline;
+    cursor: pointer;
 }

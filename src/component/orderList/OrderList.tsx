@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import styles from './OrderList.module.scss';
 import getUserId from '@/getLocalStroageUserId';
 import Image from 'next/image';
+import getToken from '@/getLocalStroageToken';
 
 interface OrderData {
     productList: any;
@@ -17,7 +18,7 @@ const OrderList = () => {
 
 
     const userId = getUserId();
-
+    const token = getToken()
 
 
 
@@ -26,6 +27,7 @@ const OrderList = () => {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
+                'Authorization': `Bearer ${token}`,
             },
             body: JSON.stringify({}),
         })

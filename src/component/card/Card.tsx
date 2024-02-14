@@ -207,11 +207,14 @@
 
 
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, Key } from 'react';
 import Image, { StaticImageData } from 'next/image';
 import styles from './Card.module.scss';
 import { useRouter } from 'next/navigation';
 import { Carousel } from 'antd';
+import getToken from '@/getLocalStroageToken';
+import { StaticImport } from 'next/dist/shared/lib/get-img-props';
+import Cookies from 'js-cookie';
 
 interface Product {
     _id: any;
@@ -223,6 +226,7 @@ interface Product {
 }
 
 const Card: React.FC = () => {
+    const token = getToken()
     const router = useRouter();
     const imageWidth = 150;
     const imageHeight = 150;
@@ -233,6 +237,7 @@ const Card: React.FC = () => {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
+                // 'Authorization': `Bearer ${token}`,
             },
             body: JSON.stringify({}),
         })
@@ -262,10 +267,16 @@ const Card: React.FC = () => {
 
                     <div className={styles.cardImg}>
                         <Carousel slidesToShow={1} autoplay dots={false} autoplaySpeed={4500} speed={2000} className={styles.image} >
-                            <Image src={product.imageUrl[0].location} alt={`Image`} width={imageWidth} height={imageHeight} className={styles.img} />
-                            <Image src={product.imageUrl[1].location} alt={`Image`} width={imageWidth} height={imageHeight} className={styles.img} />
-                            <Image src={product.imageUrl[2].location} alt={`Image`} width={imageWidth} height={imageHeight} className={styles.img} />
-                            <Image src={product.imageUrl[3].location} alt={`Image`} width={imageWidth} height={imageHeight} className={styles.img} />
+                            {product.imageUrl.map((image: { location: string | StaticImport; }, index: Key | null | undefined) => (
+                                <Image
+                                    key={index}
+                                    src={image.location}
+                                    alt={`Image`}
+                                    width={imageWidth}
+                                    height={imageHeight}
+                                    className={styles.img}
+                                />
+                            ))}
                         </Carousel>
                     </div>
 
