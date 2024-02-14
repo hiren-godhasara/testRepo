@@ -217,12 +217,14 @@ import { StaticImport } from 'next/dist/shared/lib/get-img-props';
 import Cookies from 'js-cookie';
 
 interface Product {
+    mrp: any;
     _id: any;
     imageUrl: any | string | StaticImageData;
     name: string;
     grade: string;
     displayName: string;
     price: number
+    discount: any
 }
 
 const Card: React.FC = () => {
@@ -248,6 +250,8 @@ const Card: React.FC = () => {
                 return response.json();
             })
             .then(data => {
+                console.log(data.data.productData);
+
                 setProducts(data.data.productData);
 
             })
@@ -290,9 +294,22 @@ const Card: React.FC = () => {
                                 </span>
                             ))}
                         </h2>
+                        {(product.discount !== 0) && <del> <p className={styles.mrp}>MRP: {product.mrp} INR</p></del>}
                         <p className={styles.price}>Price: <b className={styles.grade}>{product.price} INR</b></p>
-                        <button onClick={() => onBtnClick(product._id, product.displayName)} className={styles.button}>Buy Now</button>
+
+                        <button
+                            onClick={() => onBtnClick(product._id, product.displayName)}
+                            className={`${styles.button} ${product.discount === 0 ? styles.withMargin : ''}`}
+                        >
+                            Buy Now
+                        </button>
                     </div>
+
+                    {(product.discount !== 0) &&
+                        <div className={styles.discount}>
+                            <p>{product.discount} %</p>
+                        </div>
+                    }
                 </div>
             ))}
         </div>

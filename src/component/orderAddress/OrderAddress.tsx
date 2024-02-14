@@ -107,6 +107,8 @@ const OrderAddresss = () => {
                 method: 'PUT',
                 headers: {
                     'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${token}`,
+
                 },
                 body: JSON.stringify(editFormData),
             });
@@ -210,6 +212,7 @@ const OrderAddresss = () => {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${token}`
                 },
                 body: JSON.stringify(formData),
             });
@@ -346,6 +349,7 @@ const OrderAddresss = () => {
     const OnSignInBtn = () => {
         router.push('/login')
     }
+    console.log(address);
 
     return (
 

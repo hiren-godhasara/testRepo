@@ -185,6 +185,7 @@ const CartList: React.FC = () => {
                             <div className={styles.productInfo}>
                                 <h3><strong>{item.product.name}</strong></h3>
                                 <p>Weight: <strong>{item.product.weight}</strong></p>
+                                <del><p className={styles.mrp}>MRP: {item.product.mrp} INR</p></del>
                                 <p>Price: <strong>{item.product.price} INR</strong></p>
                                 <div className={styles.quantityControls}>
 

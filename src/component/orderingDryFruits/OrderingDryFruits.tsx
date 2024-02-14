@@ -120,6 +120,7 @@ export const DryFruitSliderForOrder: React.FC<DryFruitSliderForOrderProps> = (pr
             <div className={styles.description}>
                 <p className={styles.name}>{props.data.name}</p>
                 <p className={styles.des}>{props.data.productDescription}</p>
+                <del> <p className={styles.mrp}>MRP : {props.data.mrp} INR</p></del>
                 <p className={styles.price}>Price : {price} INR</p>
 
                 <div className={styles.qty}>
