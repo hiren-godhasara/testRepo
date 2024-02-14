@@ -11,7 +11,8 @@ import RegisterForm from '../registrationUser/Register';
 import LoginForm from '../registrationUser/Login';
 import emptyCart from '../../imageFolder/emptyCart1-removebg-preview.png'
 import useTokenExpiration from '@/userTokenExpiration';
-
+import { ToastNotifications, showSuccessToast, showErrorToast } from '../../toastNotifications'
+import NewLoginForm from '../registrationUser/NewLogin';
 
 interface DryFruitSliderForOrderProps {
     data: Product | any;
@@ -70,10 +71,13 @@ export const DryFruitSliderForOrder: React.FC<DryFruitSliderForOrderProps> = (pr
             })
             .then(data => {
                 setMessage(data.message);
+                showSuccessToast(data.message);
             })
             .catch(error => {
                 console.error('There was a problem adding to the cart:', error);
-            });
+                showErrorToast('Failed to add to cart');
+            })
+            ;
     };
 
     const reset = () => {
@@ -142,9 +146,10 @@ export const DryFruitSliderForOrder: React.FC<DryFruitSliderForOrderProps> = (pr
             </div>
 
             <div className={styles.reg}>
-                {shouldRenderRegisterForm && <LoginForm />}
-                {shouldRenderRegisterForm && <button onClick={handleCancelClick} className={styles.cancel}>✖</button>}
+                {shouldRenderRegisterForm && <NewLoginForm />}
+                {/* {shouldRenderRegisterForm && <button onClick={handleCancelClick} className={styles.cancel}>✖</button>} */}
             </div>
+            <ToastNotifications />
         </div>
     );
 };

@@ -3,6 +3,8 @@ import styles from './Register.module.scss';
 import Image from 'next/image';
 import logo from '../../imageFolder/myDryFruitLogo-removebg-preview.png'
 import { useRouter } from 'next/navigation';
+import { ToastNotifications, showSuccessToast, showErrorToast } from '../../toastNotifications'
+
 
 const RegisterForm = () => {
     const router = useRouter();
@@ -24,11 +26,9 @@ const RegisterForm = () => {
     };
 
     const handleSubmit = async (e: any) => {
-        router.push('/login');
 
         e.preventDefault();
         try {
-            // Make API call here to submit form data
             const response = await fetch(`${process.env.BASE_URL}/s/register`, {
                 method: 'POST',
                 headers: {
@@ -39,13 +39,19 @@ const RegisterForm = () => {
             const data = await response.json();
             console.log(data);
 
-            // Save _id to local storage
-            localStorage.setItem('userId', data.data._id);
-            console.log('Registration successful!');
-        } catch (error) {
-            console.error('Error registering:', error);
+            if (data.data._id) {
+                showSuccessToast(data.message);
+                router.push('/login');
+            }
+            if (!data.data._id) {
+                showErrorToast(data.message);
+
+            }
+        } catch (error: any) {
+            showErrorToast('Something went wrong');
+            console.log('Error registering:', error);
+
         } finally {
-            // Reset form data
             setFormData({
                 firstName: '',
                 lastName: '',
@@ -117,7 +123,7 @@ const RegisterForm = () => {
                 </div>
             </form>
             <button onClick={handleCancel} className={styles.cancelReg}>✖</button>
-
+            <ToastNotifications />
         </div>
     );
 };
