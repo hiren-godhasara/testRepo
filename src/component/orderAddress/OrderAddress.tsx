@@ -43,8 +43,12 @@ interface Address {
 
 const OrderAddresss = () => {
     const [userData, setUserData] = useState<any>({});
-
     const [cartProducts, setCartProducts] = useState([]);
+    const [orderId, setOrderId] = useState('');
+    const [selectedAddress, setSelectedAddress] = useState<string | null>(null);
+    const [showAddressForm, setShowAddressForm] = useState(false);
+    const [address, setAddress] = useState<Address[]>([]);
+    const userId = getUserId();
     const paramId = useSearchParams().get('cartProductIds');
     const cartValue = useSearchParams().get('totalCartValue');
     const totalCartValue = Number(cartValue)
@@ -55,7 +59,6 @@ const OrderAddresss = () => {
     const token = getToken()
     const router = useRouter();
     useTokenExpiration(token);
-
 
     const [editFormData, setEditFormData] = useState<EditFormData>({
         firstName: '',
@@ -68,6 +71,35 @@ const OrderAddresss = () => {
         country: '',
         addressType: ''
     });
+
+    const [formData, setFormData] = useState({
+        userId: userId || '',
+        firstName: '',
+        lastName: '',
+        mobile: '',
+        pincode: '',
+        city: '',
+        addressLine: '',
+        state: '',
+        country: '',
+        addressType: ''
+
+    });
+
+    const handleEditCancel = () => {
+        setEditFormData({
+            firstName: '',
+            lastName: '',
+            mobile: '',
+            pincode: '',
+            city: '',
+            addressLine: '',
+            state: '',
+            country: '',
+            addressType: ''
+        });
+        setEditFormVisible(false);
+    };
 
     const handleEdit = (addressId: any) => {
         const selectedAddress = address.find((e: any) => e._id === addressId);
@@ -135,20 +167,6 @@ const OrderAddresss = () => {
         setEditAddressId(null);
     };
 
-    const handleEditCancel = () => {
-        setEditFormData({
-            firstName: '',
-            lastName: '',
-            mobile: '',
-            pincode: '',
-            city: '',
-            addressLine: '',
-            state: '',
-            country: '',
-            addressType: ''
-        });
-        setEditFormVisible(false);
-    };
 
     useEffect(() => {
         if (paramId !== null) {
@@ -158,23 +176,6 @@ const OrderAddresss = () => {
         }
     }, []);
 
-
-
-    const [address, setAddress] = useState<Address[]>([]);
-    const userId = getUserId();
-    const [formData, setFormData] = useState({
-        userId: userId || '',
-        firstName: '',
-        lastName: '',
-        mobile: '',
-        pincode: '',
-        city: '',
-        addressLine: '',
-        state: '',
-        country: '',
-        addressType: ''
-
-    });
 
     const handleChange = (e: any) => {
         const { name, value } = e.target;
@@ -267,42 +268,6 @@ const OrderAddresss = () => {
     };
 
 
-    const handlePayment = async () => {
-        try {
-
-            const response = await fetch(`${process.env.BASE_URL}/s/order/payment`, {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                    'Authorization': `Bearer ${token}`
-                },
-                body: JSON.stringify({
-                    amount: totalCartValue,
-                    currency: 'INR'
-                }),
-            });
-            if (response.ok) {
-                const responseData = await response.json();
-                const orderId = responseData.data.id;
-                const amount = responseData.data.amount;
-                const currency = responseData.data.currency;
-                openPaymentGateway(amount, currency, orderId)
-
-                // router.replace('/');
-            } else {
-                console.error('Failed to payment');
-            }
-        } catch (error: any) {
-            console.error('Error sending form data:', error.message);
-        }
-    };
-
-    // const orderAndPayment = () => {
-    //     handleOrder();
-    //     handlePayment();
-
-    // }
-
     const openPaymentGateway = (amount: any, currency: any, orderId: any) => {
 
         fetch(`${process.env.BASE_URL}/s/user/${userId}`, {
@@ -353,8 +318,7 @@ const OrderAddresss = () => {
     }
 
 
-    const [selectedAddress, setSelectedAddress] = useState<string | null>(null);
-    const [showAddressForm, setShowAddressForm] = useState(false);
+
     const handleCheckboxChange = (addressId: string) => {
         setSelectedAddress((prevSelected) => {
             if (prevSelected === addressId) {
@@ -393,49 +357,18 @@ const OrderAddresss = () => {
             });
     };
 
-    const handleRemove = (addressId: any) => {
-        DeleteCartAddress(addressId)
+    const orderAndPayment = () => {
+        handleOrder()
+            .then(() => {
+                handlePayment();
+            })
+            .then(() => {
+                handleStatusUpdate();
+            })
+            .catch(error => {
+                console.error('Order failed:', error);
+            });
     }
-
-    // const handleOrder = () => {
-    //     const userId = getUserId();
-    //     const shippingAddressId = selectedAddress;
-    //     const billingAddressId = selectedAddress;
-    //     const productList = cartProducts;
-    //     totalCartValue; shippingCharge
-
-    //     const payload = {
-    //         userId,
-    //         shippingAddressId,
-    //         billingAddressId,
-    //         productList, totalCartValue, shippingCharge
-    //     };
-    //     console.log(payload);
-
-
-    //     fetch(`${process.env.BASE_URL}/s/order`, {
-    //         method: 'POST',
-    //         headers: {
-    //             'Content-Type': 'application/json',
-    //             'Authorization': `Bearer ${token}`,
-    //         },
-    //         body: JSON.stringify(payload),
-    //     })
-    //         .then(async response => {
-    //             if (!response.ok) {
-    //                 throw new Error('Network response was not ok');
-    //             }
-    //             return response.json();
-
-    //         })
-    //         .then(data => {
-    //             setSelectedAddress(null);
-    //         })
-    //         .catch(error => {
-    //             console.error('There was a problem with the fetch operation:', error);
-    //         });
-    // }
-
 
     const handleOrder = () => {
         return new Promise<void>((resolve, reject) => {
@@ -471,6 +404,9 @@ const OrderAddresss = () => {
                     return response.json();
                 })
                 .then(data => {
+                    setOrderId(data.data.orderData._id)
+                    console.log(data.data.orderData._id);
+
                     setSelectedAddress(null);
                     showSuccessToast(data.message);
                     resolve();
@@ -482,15 +418,63 @@ const OrderAddresss = () => {
         });
     }
 
-    const orderAndPayment = () => {
-        handleOrder()
-            .then(() => {
-                handlePayment();
-                // window.location.replace('http://localhost:3000');
+    const handlePayment = async () => {
+        try {
+
+            const response = await fetch(`${process.env.BASE_URL}/s/order/payment`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${token}`
+                },
+                body: JSON.stringify({
+                    amount: totalCartValue,
+                    currency: 'INR'
+                }),
+            });
+            if (response.ok) {
+                const responseData = await response.json();
+                const orderId = responseData.data.id;
+                const amount = responseData.data.amount;
+                const currency = responseData.data.currency;
+                openPaymentGateway(amount, currency, orderId)
+
+                // router.replace('/');
+            } else {
+                console.error('Failed to payment');
+            }
+        } catch (error: any) {
+            console.error('Error sending form data:', error.message);
+        }
+    };
+
+    const handleStatusUpdate = () => {
+        console.log(orderId);
+
+        fetch(`${process.env.BASE_URL}/s/order/${orderId}`, {
+            method: 'PUT',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${token}`,
+            },
+            body: JSON.stringify({
+                status: "paid",
+            }),
+        })
+            .then(async response => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                return response.json();
+            })
+            .then(data => {
+                console.log(data);
+
             })
             .catch(error => {
-                console.error('Order failed:', error);
+                console.error('There was a problem with the fetch operation:', error);
             });
+
     }
 
 
@@ -501,7 +485,12 @@ const OrderAddresss = () => {
     const OnSignInBtn = () => {
         router.push('/login')
     }
-    console.log(address);
+
+    const handleRemove = (addressId: any) => {
+        DeleteCartAddress(addressId)
+    }
+
+
 
     return (
 
@@ -696,7 +685,7 @@ const OrderAddresss = () => {
 
                     <div className={styles.orderBtn}>
                         <button type="submit" onClick={orderAndPayment} >PROCEED TO PAYMENT</button>
-                        <button type="button" >CANCEL ORDER</button>
+                        <button type="button" onClick={OnShopBtn}>CANCEL ORDER</button>
                     </div>
 
                 </div>}

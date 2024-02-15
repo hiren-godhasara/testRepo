@@ -74,6 +74,7 @@ const OrderList = () => {
                     <div className={styles.addressCard} key={e._id}>
                         <div className={styles.row1}>
                             <p>ORDER No : <strong> {e.orderNumber}</strong></p>
+                            <p>ORDER Status : <strong style={{ color: 'green' }}>{e.status.toUpperCase()}</strong></p>
                             <p>Total Order Value : <strong> {e.totalOrderValue} INR</strong></p>
                         </div>
 
