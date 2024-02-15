@@ -306,12 +306,10 @@ const OrderAddresss = () => {
         const shippingAddressId = selectedAddress;
         const billingAddressId = selectedAddress;
         const productList = cartProducts;
-        // const isOrder = true;
         totalCartValue; shippingCharge
 
         const payload = {
             userId,
-            // isOrder,
             shippingAddressId,
             billingAddressId,
             productList, totalCartValue, shippingCharge
