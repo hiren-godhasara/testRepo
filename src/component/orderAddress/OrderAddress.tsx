@@ -7,8 +7,15 @@ import getToken from '@/getLocalStroageToken';
 import Image from 'next/image';
 import emptyCart from '../../imageFolder/emptyCart1-removebg-preview.png'
 import useTokenExpiration from '@/userTokenExpiration';
+import { headerCompanyLogo } from '@/S3Images/S3Images';
+import { ToastNotifications, showSuccessToast, showErrorToast } from '../../toastNotifications'
 
 
+declare global {
+    interface Window {
+        Razorpay: any;
+    }
+}
 interface EditFormData {
     firstName: string;
     lastName: string;
@@ -35,6 +42,8 @@ interface Address {
 }
 
 const OrderAddresss = () => {
+    const [userData, setUserData] = useState<any>({});
+
     const [cartProducts, setCartProducts] = useState([]);
     const paramId = useSearchParams().get('cartProductIds');
     const cartValue = useSearchParams().get('totalCartValue');
@@ -257,6 +266,93 @@ const OrderAddresss = () => {
 
     };
 
+
+    const handlePayment = async () => {
+        try {
+
+            const response = await fetch(`${process.env.BASE_URL}/s/order/payment`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${token}`
+                },
+                body: JSON.stringify({
+                    amount: totalCartValue,
+                    currency: 'INR'
+                }),
+            });
+            if (response.ok) {
+                const responseData = await response.json();
+                const orderId = responseData.data.id;
+                const amount = responseData.data.amount;
+                const currency = responseData.data.currency;
+                openPaymentGateway(amount, currency, orderId)
+
+                // router.replace('/');
+            } else {
+                console.error('Failed to payment');
+            }
+        } catch (error: any) {
+            console.error('Error sending form data:', error.message);
+        }
+    };
+
+    // const orderAndPayment = () => {
+    //     handleOrder();
+    //     handlePayment();
+
+    // }
+
+    const openPaymentGateway = (amount: any, currency: any, orderId: any) => {
+
+        fetch(`${process.env.BASE_URL}/s/user/${userId}`, {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${token}`
+            },
+        })
+            .then(response => response.json())
+            .then(data => {
+                setUserData(data.data)
+                console.log('API Response:', data);
+            })
+            .catch(error => {
+                console.error('Error fetching data:', error);
+            });
+        const options: any = {
+            key: 'rzp_test_i7OU6XSO1iyCX6',
+            amount: amount,
+            currency: currency,
+            name: 'MY DRY FRUIT',
+            image: headerCompanyLogo,
+            description: 'Payment for Order',
+            order_id: orderId,
+            prefill: {
+                name: userData.firstName + userData.lastName,
+                email: userData.email,
+                contact: userData.mobile,
+            },
+            notes: {
+                address: 'User Address',
+            },
+            theme: {
+                color: '#144950',
+            },
+            handler: function (response: any) {
+                console.log(response);
+                if (response) {
+                    router.replace('/orderList');
+                }
+
+            },
+        };
+
+        const razorpayInstance = new window.Razorpay(options);
+        razorpayInstance.open();
+    }
+
+
     const [selectedAddress, setSelectedAddress] = useState<string | null>(null);
     const [showAddressForm, setShowAddressForm] = useState(false);
     const handleCheckboxChange = (addressId: string) => {
@@ -301,44 +397,102 @@ const OrderAddresss = () => {
         DeleteCartAddress(addressId)
     }
 
+    // const handleOrder = () => {
+    //     const userId = getUserId();
+    //     const shippingAddressId = selectedAddress;
+    //     const billingAddressId = selectedAddress;
+    //     const productList = cartProducts;
+    //     totalCartValue; shippingCharge
+
+    //     const payload = {
+    //         userId,
+    //         shippingAddressId,
+    //         billingAddressId,
+    //         productList, totalCartValue, shippingCharge
+    //     };
+    //     console.log(payload);
+
+
+    //     fetch(`${process.env.BASE_URL}/s/order`, {
+    //         method: 'POST',
+    //         headers: {
+    //             'Content-Type': 'application/json',
+    //             'Authorization': `Bearer ${token}`,
+    //         },
+    //         body: JSON.stringify(payload),
+    //     })
+    //         .then(async response => {
+    //             if (!response.ok) {
+    //                 throw new Error('Network response was not ok');
+    //             }
+    //             return response.json();
+
+    //         })
+    //         .then(data => {
+    //             setSelectedAddress(null);
+    //         })
+    //         .catch(error => {
+    //             console.error('There was a problem with the fetch operation:', error);
+    //         });
+    // }
+
+
     const handleOrder = () => {
-        const userId = getUserId();
-        const shippingAddressId = selectedAddress;
-        const billingAddressId = selectedAddress;
-        const productList = cartProducts;
-        totalCartValue; shippingCharge
+        return new Promise<void>((resolve, reject) => {
+            const userId = getUserId();
+            const shippingAddressId = selectedAddress;
+            const billingAddressId = selectedAddress;
+            const productList = cartProducts;
+            totalCartValue;
+            shippingCharge
 
-        const payload = {
-            userId,
-            shippingAddressId,
-            billingAddressId,
-            productList, totalCartValue, shippingCharge
-        };
-        console.log(payload);
+            const payload = {
+                userId,
+                shippingAddressId,
+                billingAddressId,
+                productList,
+                totalCartValue,
+                shippingCharge
+            };
 
-
-        fetch(`${process.env.BASE_URL}/s/order`, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-                'Authorization': `Bearer ${token}`,
-            },
-            body: JSON.stringify(payload),
-        })
-            .then(response => {
-                if (!response.ok) {
-                    throw new Error('Network response was not ok');
-                }
-                return response.json();
+            fetch(`${process.env.BASE_URL}/s/order`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${token}`,
+                },
+                body: JSON.stringify(payload),
             })
-            .then(data => {
-                console.log('Response:', data);
-                setSelectedAddress(null);
+                .then(async response => {
+                    if (!response.ok) {
+                        showErrorToast(`Status Code ${response.status} : ${response.statusText}`)
+                        throw new Error('Network response was not ok');
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    setSelectedAddress(null);
+                    showSuccessToast(data.message);
+                    resolve();
+                })
+                .catch(error => {
+                    console.error('There was a problem with the fetch operation:', error);
+                    reject(error);
+                });
+        });
+    }
+
+    const orderAndPayment = () => {
+        handleOrder()
+            .then(() => {
+                handlePayment();
+                // window.location.replace('http://localhost:3000');
             })
             .catch(error => {
-                console.error('There was a problem with the fetch operation:', error);
+                console.error('Order failed:', error);
             });
     }
+
 
     const OnShopBtn = () => {
         router.push('/#products')
@@ -541,7 +695,7 @@ const OrderAddresss = () => {
                     )}
 
                     <div className={styles.orderBtn}>
-                        <button type="submit" onClick={handleOrder} >PROCEED TO PAYMENT</button>
+                        <button type="submit" onClick={orderAndPayment} >PROCEED TO PAYMENT</button>
                         <button type="button" >CANCEL ORDER</button>
                     </div>
 
@@ -573,6 +727,8 @@ const OrderAddress = () => {
     return (
         <Suspense>
             <OrderAddresss />
+            <ToastNotifications />
+
         </Suspense>
     )
 };
