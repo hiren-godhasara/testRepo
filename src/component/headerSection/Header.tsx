@@ -68,23 +68,7 @@ const Header = () => {
                 </div>
 
                 <div className={styles.rightSection}>
-                    <div className={styles.dropdownContainer}>
-                        <button ref={cartButtonRef}
-                            className={styles.userBtn}
-                            onClick={handleCartButtonClick}>
-                            <Image src={userIcon} width={35} height={35} alt='Home Pagea' className={styles.userIcon} />
-                        </button>
-                        {isCartDropdownOpen && (
-                            <div className={styles.cartDropdownContent}>
-                                <button onClick={openUserDetailsModal}>User Details</button>
-                                <button onClick={orderListClick} >Your Order</button>
-                            </div>
-                        )}
-                    </div>
-
-                    <Link href='/cartList'>
-                        <Image src={cartIcon} width={35} height={35} alt='Cart list' title='Cart List' className={styles.cartIcon} />
-                    </Link>
+                    <p className={styles.number}><span>Mo.</span> <Link className={styles.mobileNumber} href={`tel:${phoneNumber}`}>+91 9157059719</Link></p>
 
                     <Link className={styles.contactUsBtn} href='/registration'>Register</Link>
                     <Link className={styles.contactUsBtn} href='/login'>Login</Link>
