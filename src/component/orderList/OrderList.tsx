@@ -3,6 +3,7 @@ import styles from './OrderList.module.scss';
 import getUserId from '@/getLocalStroageUserId';
 import Image from 'next/image';
 import getToken from '@/getLocalStroageToken';
+import { useRouter } from 'next/navigation';
 
 interface OrderData {
     productList: any;
@@ -51,15 +52,25 @@ const OrderList = () => {
         fetchAddressData();
     }, []);
 
-    console.log(orderList);
+    const reversedOrderList = [...orderList].reverse();
 
-
+    // const router = useRouter();
+    // useEffect(() => {
+    //     const handlePopstate = () => {
+    //         router.push('/');
+    //     };
+    //     window.addEventListener('popstate', handlePopstate);
+    //     return () => {
+    //         window.removeEventListener('popstate', handlePopstate);
+    //     };
+    // }, []);
     return (
 
         <div className={styles.CenteredContainer}>
-            {/* <div className={styles.deliverAddress}>YOUR ORDERS</div> */}
+            <div className={styles.deliverAddress}>YOUR ORDERS</div>
             <div className={styles.mainDiv}>
-                {orderList && orderList.length > 0 && orderList.map((e: any) => (
+                {/* {orderList && orderList.length > 0 && orderList.map((e: any) => ( */}
+                {reversedOrderList && reversedOrderList.length > 0 && reversedOrderList.map((e: any) => (
                     <div className={styles.addressCard} key={e._id}>
                         <div className={styles.row1}>
                             <p>ORDER No : <strong> {e.orderNumber}</strong></p>
