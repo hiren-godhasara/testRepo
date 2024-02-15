@@ -207,22 +207,28 @@
 
 
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, Key } from 'react';
 import Image, { StaticImageData } from 'next/image';
 import styles from './Card.module.scss';
 import { useRouter } from 'next/navigation';
 import { Carousel } from 'antd';
+import getToken from '@/getLocalStroageToken';
+import { StaticImport } from 'next/dist/shared/lib/get-img-props';
+import Cookies from 'js-cookie';
 
 interface Product {
+    mrp: any;
     _id: any;
     imageUrl: any | string | StaticImageData;
     name: string;
     grade: string;
     displayName: string;
     price: number
+    discount: any
 }
 
 const Card: React.FC = () => {
+    const token = getToken()
     const router = useRouter();
     const imageWidth = 150;
     const imageHeight = 150;
@@ -233,6 +239,7 @@ const Card: React.FC = () => {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
+                // 'Authorization': `Bearer ${token}`,
             },
             body: JSON.stringify({}),
         })
@@ -243,6 +250,8 @@ const Card: React.FC = () => {
                 return response.json();
             })
             .then(data => {
+                console.log(data.data.productData);
+
                 setProducts(data.data.productData);
 
             })
@@ -262,10 +271,16 @@ const Card: React.FC = () => {
 
                     <div className={styles.cardImg}>
                         <Carousel slidesToShow={1} autoplay dots={false} autoplaySpeed={4500} speed={2000} className={styles.image} >
-                            <Image src={product.imageUrl[0].location} alt={`Image`} width={imageWidth} height={imageHeight} className={styles.img} />
-                            <Image src={product.imageUrl[1].location} alt={`Image`} width={imageWidth} height={imageHeight} className={styles.img} />
-                            <Image src={product.imageUrl[2].location} alt={`Image`} width={imageWidth} height={imageHeight} className={styles.img} />
-                            <Image src={product.imageUrl[3].location} alt={`Image`} width={imageWidth} height={imageHeight} className={styles.img} />
+                            {product.imageUrl.map((image: { location: string | StaticImport; }, index: Key | null | undefined) => (
+                                <Image
+                                    key={index}
+                                    src={image.location}
+                                    alt={`Image`}
+                                    width={imageWidth}
+                                    height={imageHeight}
+                                    className={styles.img}
+                                />
+                            ))}
                         </Carousel>
                     </div>
 
@@ -279,9 +294,22 @@ const Card: React.FC = () => {
                                 </span>
                             ))}
                         </h2>
+                        {(product.discount !== 0) && <del> <p className={styles.mrp}>MRP: {product.mrp} INR</p></del>}
                         <p className={styles.price}>Price: <b className={styles.grade}>{product.price} INR</b></p>
-                        <button onClick={() => onBtnClick(product._id, product.displayName)} className={styles.button}>Buy Now</button>
+
+                        <button
+                            onClick={() => onBtnClick(product._id, product.displayName)}
+                            className={`${styles.button} ${product.discount === 0 ? styles.withMargin : ''}`}
+                        >
+                            Buy Now
+                        </button>
                     </div>
+
+                    {(product.discount !== 0) &&
+                        <div className={styles.discount}>
+                            <p>{product.discount} %</p>
+                        </div>
+                    }
                 </div>
             ))}
         </div>

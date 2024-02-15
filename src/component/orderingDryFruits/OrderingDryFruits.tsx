@@ -4,6 +4,15 @@ import { Carousel } from 'antd';
 import styles from './OrderingDryFruits.module.scss';
 import { Product } from '@/app/products/[product]/page';
 import { useRouter, useSearchParams } from 'next/navigation';
+import Cookies from 'js-cookie';
+import getToken from '@/getLocalStroageToken';
+import getUserId from '@/getLocalStroageUserId';
+import RegisterForm from '../registrationUser/Register';
+import LoginForm from '../registrationUser/Login';
+import emptyCart from '../../imageFolder/emptyCart1-removebg-preview.png'
+import useTokenExpiration from '@/userTokenExpiration';
+import { ToastNotifications, showSuccessToast, showErrorToast } from '../../toastNotifications'
+import NewLoginForm from '../registrationUser/NewLogin';
 
 interface DryFruitSliderForOrderProps {
     data: Product | any;
@@ -12,19 +21,16 @@ interface DryFruitSliderForOrderProps {
 export const DryFruitSliderForOrder: React.FC<DryFruitSliderForOrderProps> = (props: any) => {
     const router = useRouter();
     const [quantity, setQuantity] = useState<number>(1);
+    const [shouldRenderRegisterForm, setShouldRenderRegisterForm] = useState(false);
     const [message, setMessage] = useState('');
     const [totalQuantity, setTotalQuantity] = useState<number>(0);
     const params = useSearchParams().get('id')
 
-    useEffect(() => {
-        let timer: any;
-        if (message) {
-            timer = setTimeout(() => {
-                setMessage('');
-            }, 1000);
-        }
-        return () => clearTimeout(timer);
-    }, [message]);
+    const token = getToken();
+    const userId = getUserId();
+
+
+    useTokenExpiration(token);
 
     const handleQuantityChange = (e: ChangeEvent<HTMLInputElement>) => {
         const newQuantity = parseInt(e.target.value);
@@ -38,9 +44,9 @@ export const DryFruitSliderForOrder: React.FC<DryFruitSliderForOrderProps> = (pr
     const price = props.data.price
     const total = price * quantity;
     const roundedTotal = total.toFixed(2);
-    const token = localStorage.getItem('token');
-    const userId = localStorage.getItem('userId');
+
     const addToCart = () => {
+
         const productData = {
             userId: userId,
             productId: params,
@@ -53,6 +59,7 @@ export const DryFruitSliderForOrder: React.FC<DryFruitSliderForOrderProps> = (pr
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
+                'Authorization': `Bearer ${token}`,
             },
             body: JSON.stringify(productData),
         })
@@ -64,17 +71,19 @@ export const DryFruitSliderForOrder: React.FC<DryFruitSliderForOrderProps> = (pr
             })
             .then(data => {
                 setMessage(data.message);
+                showSuccessToast(data.message);
             })
             .catch(error => {
                 console.error('There was a problem adding to the cart:', error);
-            });
+                showErrorToast('Failed to add to cart');
+            })
+            ;
     };
 
     const reset = () => {
-        setQuantity(0);
+        setQuantity(1);
         setTotalQuantity(0);
     };
-
 
     const handleAddToCart = () => {
         addToCart();
@@ -82,15 +91,28 @@ export const DryFruitSliderForOrder: React.FC<DryFruitSliderForOrderProps> = (pr
     };
 
 
+    const handleClick = () => {
+        const token = getToken()
+        console.log(token);
+        if (token) {
+            handleAddToCart();
+        } else {
+            setShouldRenderRegisterForm(true);
+        }
+    };
+
+    const handleCancelClick = () => {
+        setShouldRenderRegisterForm(false);
+    };
+
     const handleRouting = () => {
         router.push('/cartList');
     };
-    console.log(props.data);
 
 
     return (
-        <div className={styles.mainDiv} >
-
+        // <div className={styles.mainDiv} >
+        <div className={styles.mainDiv} style={shouldRenderRegisterForm ? { background: 'rgba(0, 0, 0, 0.6)' } : {}}>
             <div className={styles.carousel}>
                 <Carousel slidesToShow={1} autoplay autoplaySpeed={4500} speed={2000} style={{ width: '475px', height: '600px', margin: '0 auto' }} >
                     {props.data.imageUrl.map((image: any) => (
@@ -102,6 +124,7 @@ export const DryFruitSliderForOrder: React.FC<DryFruitSliderForOrderProps> = (pr
             <div className={styles.description}>
                 <p className={styles.name}>{props.data.name}</p>
                 <p className={styles.des}>{props.data.productDescription}</p>
+                <del> <p className={styles.mrp}>MRP : {props.data.mrp} INR</p></del>
                 <p className={styles.price}>Price : {price} INR</p>
 
                 <div className={styles.qty}>
@@ -115,15 +138,21 @@ export const DryFruitSliderForOrder: React.FC<DryFruitSliderForOrderProps> = (pr
 
                 </div>
                 <div className={styles.orderButton}>
-                    <button onClick={handleAddToCart} className={styles.btnOrder}>Add To Cart</button>
+                    <button onClick={handleClick} className={styles.btnOrder}>Add To Cart</button>
                     <button onClick={handleRouting} className={styles.btnOrder}>Place Order</button>
                     {/* {message && <div className={styles.message}>{message}</div>} */}
 
                 </div>
             </div>
 
+            <div className={styles.reg}>
+                {shouldRenderRegisterForm && <NewLoginForm />}
+                {/* {shouldRenderRegisterForm && <button onClick={handleCancelClick} className={styles.cancel}>✖</button>} */}
+            </div>
+            <ToastNotifications />
         </div>
     );
 };
+
 
 

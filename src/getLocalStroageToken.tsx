@@ -1,6 +1,8 @@
-const getToken = (): string | null => {
-    if (typeof localStorage !== 'undefined') {
-        return localStorage.getItem('token');
+import Cookies from 'js-cookie';
+
+const getToken = () => {
+    if (typeof Cookies !== 'undefined') {
+        return Cookies.get('token');
     } else {
         return null;
     }

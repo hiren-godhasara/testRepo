@@ -162,10 +162,21 @@
     cursor: pointer;
     transition: background-color 0.5s, color 0.5s;
     margin-top: 50px;
-    margin-left: 250px;
+    margin-left: 20px;
 }
 
 .btn:hover {
     background-color: #FBD449;
     color: #144249;
+}
+
+.btns {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.mrp {
+    margin-top: 10px;
+    margin-bottom: 5px;
 }

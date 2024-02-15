@@ -4,6 +4,7 @@ import Image from 'next/image';
 import logo from '../../imageFolder/myDryFruitLogo-removebg-preview.png'
 import { useRouter } from 'next/navigation';
 import getUserId from '@/getLocalStroageUserId';
+import getToken from '@/getLocalStroageToken';
 
 const UpdateUser = ({ userDetails, onClose, onFormSubmit }: any) => {
     const router = useRouter();
@@ -24,6 +25,7 @@ const UpdateUser = ({ userDetails, onClose, onFormSubmit }: any) => {
         }));
     };
     const userId = getUserId();
+    const token = getToken()
 
     const handleSubmit = async (e: any) => {
         e.preventDefault();
@@ -31,7 +33,9 @@ const UpdateUser = ({ userDetails, onClose, onFormSubmit }: any) => {
             const response = await fetch(`${process.env.BASE_URL}/s/user/${userId}`, {
                 method: 'PUT',
                 headers: {
-                    'Content-Type': 'application/json'
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${token}`
+
                 },
                 body: JSON.stringify(formData)
             });

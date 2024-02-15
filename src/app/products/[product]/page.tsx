@@ -5,6 +5,7 @@ import Footer from '@/component/footer/Footer';
 import Header from '@/component/headerSection/Header';
 import CopyRight from '@/component/copyRight/CopyRight';
 import { useSearchParams } from 'next/navigation';
+import getToken from '@/getLocalStroageToken';
 
 export interface Product {
     _id: any;
@@ -24,7 +25,7 @@ const Cart = () => {
 
     const [productDetails, setProductDetails] = useState<Product | null>(null);
     const paramId = useSearchParams().get('id');
-
+    const token = getToken()
     useEffect(() => {
         getProductDetails();
     }, [paramId]);
@@ -37,6 +38,7 @@ const Cart = () => {
                 method: 'GET',
                 headers: {
                     'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${token}`,
                 },
             });
 

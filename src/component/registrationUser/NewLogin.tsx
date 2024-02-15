@@ -2,13 +2,14 @@ import React, { useState } from 'react';
 import styles from './Register.module.scss';
 import Image from 'next/image';
 import logo from '../../imageFolder/myDryFruitLogo-removebg-preview.png';
-import { useRouter } from 'next/navigation';
+import { useRouter, useSearchParams } from 'next/navigation';
 import Cookies from 'js-cookie';
 import Link from 'next/link';
 import { ToastNotifications, showSuccessToast, showErrorToast } from '../../toastNotifications'
 
 
-const LoginForm = () => {
+const NewLoginForm = () => {
+
     const router = useRouter()
     const [formData, setFormData] = useState({
         loginId: '',
@@ -22,9 +23,11 @@ const LoginForm = () => {
             [name]: value
         }));
     };
+    const [formVisible, setFormVisible] = useState(true);
 
     const handleSubmit = async (e: any) => {
         e.preventDefault();
+
         try {
             const response = await fetch(`${process.env.BASE_URL}/s/login`, {
                 method: 'POST',
@@ -39,7 +42,10 @@ const LoginForm = () => {
                 Cookies.set('token', data.data.token, { expires: 1 });
                 Cookies.set('userId', data.data.userId, { expires: 1 });
                 showSuccessToast(data.message);
-                router.push('/');
+                // router.back();
+                setFormVisible(false);
+                window.location.reload();
+
             } else {
                 showErrorToast(data.message)
             }
@@ -64,9 +70,15 @@ const LoginForm = () => {
         router.back();
     };
 
+    const handleCloseForm = () => {
+        setFormVisible(false);
+        window.location.reload();
+
+    };
+
     const inputType = formData.loginId.includes('@') ? 'email' : 'tel';
 
-    return (
+    return formVisible ? (
         <div className={styles.register}>
             <form onSubmit={handleSubmit}>
                 <div className={styles.companydetails}>
@@ -103,11 +115,12 @@ const LoginForm = () => {
                     <button type="button" onClick={handleReset}>Reset</button>
                 </div>
                 <Link className={styles.link} href='/registration'>  New to mydryfruit  ?<span className={styles.span}> Create an account </span></Link>
+                <button onClick={handleCloseForm} className={styles.newLoginbtn}>✖</button>
             </form>
             <ToastNotifications />
         </div>
-    );
+    ) : null;
 };
 
-export default LoginForm;
+export default NewLoginForm;
 
