@@ -268,57 +268,6 @@ const OrderAddresss = () => {
     };
 
 
-    const openPaymentGateway = (amount: any, currency: any, orderId: any) => {
-
-        fetch(`${process.env.BASE_URL}/s/user/${userId}`, {
-            method: 'GET',
-            headers: {
-                'Content-Type': 'application/json',
-                'Authorization': `Bearer ${token}`
-            },
-        })
-            .then(response => response.json())
-            .then(data => {
-                setUserData(data.data)
-                console.log('API Response:', data);
-            })
-            .catch(error => {
-                console.error('Error fetching data:', error);
-            });
-        const options: any = {
-            key: 'rzp_test_i7OU6XSO1iyCX6',
-            amount: amount,
-            currency: currency,
-            name: 'MY DRY FRUIT',
-            image: headerCompanyLogo,
-            description: 'Payment for Order',
-            order_id: orderId,
-            prefill: {
-                name: userData.firstName + userData.lastName,
-                email: userData.email,
-                contact: userData.mobile,
-            },
-            notes: {
-                address: 'User Address',
-            },
-            theme: {
-                color: '#144950',
-            },
-            handler: function (response: any) {
-                console.log(response);
-                if (response) {
-                    router.replace('/orderList');
-                }
-
-            },
-        };
-
-        const razorpayInstance = new window.Razorpay(options);
-        razorpayInstance.open();
-    }
-
-
-
     const handleCheckboxChange = (addressId: string) => {
         setSelectedAddress((prevSelected) => {
             if (prevSelected === addressId) {
@@ -357,101 +306,127 @@ const OrderAddresss = () => {
             });
     };
 
-    const orderAndPayment = () => {
-        handleOrder()
-            .then(() => {
-                handlePayment();
-            })
-            .then(() => {
-                handleStatusUpdate();
-            })
-            .catch(error => {
-                console.error('Order failed:', error);
-            });
-    }
+
 
     const handleOrder = () => {
-        return new Promise<void>((resolve, reject) => {
-            const userId = getUserId();
-            const shippingAddressId = selectedAddress;
-            const billingAddressId = selectedAddress;
-            const productList = cartProducts;
-            totalCartValue;
+        const userId = getUserId();
+        const shippingAddressId = selectedAddress;
+        const billingAddressId = selectedAddress;
+        const productList = cartProducts;
+        totalCartValue;
+        shippingCharge
+
+        const payload = {
+            userId,
+            shippingAddressId,
+            billingAddressId,
+            productList,
+            totalCartValue,
             shippingCharge
+        };
 
-            const payload = {
-                userId,
-                shippingAddressId,
-                billingAddressId,
-                productList,
-                totalCartValue,
-                shippingCharge
-            };
+        return fetch(`${process.env.BASE_URL}/s/order`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${token}`,
+            },
+            body: JSON.stringify(payload),
+        }).then(async response => {
+            if (!response.ok) {
+                showErrorToast(`Status Code ${response.status} : ${response.statusText}`)
+                throw new Error('Network response was not ok');
+            }
+            return response.json();
+        }).then(data => {
 
-            fetch(`${process.env.BASE_URL}/s/order`, {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                    'Authorization': `Bearer ${token}`,
-                },
-                body: JSON.stringify(payload),
-            })
-                .then(async response => {
-                    if (!response.ok) {
-                        showErrorToast(`Status Code ${response.status} : ${response.statusText}`)
-                        throw new Error('Network response was not ok');
-                    }
-                    return response.json();
-                })
-                .then(data => {
-                    setOrderId(data.data.orderData._id)
-                    console.log(data.data.orderData._id);
+            setOrderId(data.data.orderData._id)
+            console.log(data.data.orderData._id);
 
-                    setSelectedAddress(null);
-                    showSuccessToast(data.message);
-                    resolve();
-                })
-                .catch(error => {
-                    console.error('There was a problem with the fetch operation:', error);
-                    reject(error);
-                });
+            setSelectedAddress(null);
+            showSuccessToast(data.message);
+            return data.data.orderData._id
+        }).catch(error => {
+            console.error('There was a problem with the fetch operation:', error);
+
         });
     }
 
-    const handlePayment = async () => {
-        try {
 
-            const response = await fetch(`${process.env.BASE_URL}/s/order/payment`, {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                    'Authorization': `Bearer ${token}`
-                },
-                body: JSON.stringify({
-                    amount: totalCartValue,
-                    currency: 'INR'
-                }),
-            });
+    const handlePayment = async () => {
+        return fetch(`${process.env.BASE_URL}/s/order/payment`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${token}`
+            },
+            body: JSON.stringify({
+                amount: totalCartValue,
+                currency: 'INR'
+
+            }),
+        }).then(async response => {
             if (response.ok) {
                 const responseData = await response.json();
-                const orderId = responseData.data.id;
-                const amount = responseData.data.amount;
-                const currency = responseData.data.currency;
-                openPaymentGateway(amount, currency, orderId)
-
-                // router.replace('/');
-            } else {
-                console.error('Failed to payment');
+                return responseData
             }
-        } catch (error: any) {
-            console.error('Error sending form data:', error.message);
-        }
+        })
+
     };
 
-    const handleStatusUpdate = () => {
-        console.log(orderId);
+    const openPaymentGateway = (razorpayData: any, mongoOrderId: any) => {
 
-        fetch(`${process.env.BASE_URL}/s/order/${orderId}`, {
+        fetch(`${process.env.BASE_URL}/s/user/${userId}`, {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${token}`
+            },
+        })
+            .then(response => response.json())
+            .then(data => {
+                setUserData(data.data)
+                console.log('API Response:', data);
+            })
+            .catch(error => {
+                console.error('Error fetching data:', error);
+            });
+        const options: any = {
+            key: 'rzp_test_i7OU6XSO1iyCX6',
+            amount: razorpayData.data.amount,
+            currency: razorpayData.data.currency,
+            name: 'MY DRY FRUIT',
+            image: headerCompanyLogo,
+            description: 'Payment for Order',
+            order_id: razorpayData.data.id,
+            prefill: {
+                name: userData.firstName + userData.lastName,
+                email: userData.email,
+                contact: userData.mobile,
+            },
+            notes: {
+                address: 'User Address',
+            },
+            theme: {
+                color: '#144950',
+            },
+            handler: async function (response: any) {
+                console.log(response);
+                if (response) {
+                    const res = await handleStatusUpdate(mongoOrderId)
+                    router.replace('/orderList');
+                }
+
+            },
+        };
+
+        const razorpayInstance = new window.Razorpay(options);
+        razorpayInstance.open();
+    }
+
+    const handleStatusUpdate = (mongoOrderId: any) => {
+
+        return fetch(`${process.env.BASE_URL}/s/order/${mongoOrderId}`, {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json',
@@ -469,7 +444,7 @@ const OrderAddresss = () => {
             })
             .then(data => {
                 console.log(data);
-
+                return data;
             })
             .catch(error => {
                 console.error('There was a problem with the fetch operation:', error);
@@ -477,6 +452,24 @@ const OrderAddresss = () => {
 
     }
 
+    const orderAndPayment = async () => {
+        try {
+            const mongoOrderId = await handleOrder();
+            console.log(orderId, 'orderId');
+            if (!mongoOrderId) {
+                throw new Error('orderId not found.')
+            }
+
+            const razorpayResponse = await handlePayment();
+            if (!razorpayResponse.data.id) {
+                throw new Error('please try adain later.')
+            }
+            openPaymentGateway(razorpayResponse, mongoOrderId)
+
+        } catch (error) {
+            console.error('Order and payment process failed:', error);
+        }
+    };
 
     const OnShopBtn = () => {
         router.push('/#products')
