@@ -48,6 +48,8 @@ const OrderAddresss = () => {
     const [selectedAddress, setSelectedAddress] = useState<string | null>(null);
     const [showAddressForm, setShowAddressForm] = useState(false);
     const [address, setAddress] = useState<Address[]>([]);
+    const [cartData, setCartData] = useState<any>('');
+
     const userId = getUserId();
     const paramId = useSearchParams().get('cartProductIds');
     const cartValue = useSearchParams().get('totalCartValue');
@@ -59,6 +61,46 @@ const OrderAddresss = () => {
     const token = getToken()
     const router = useRouter();
     useTokenExpiration(token);
+
+
+
+
+    const fetchCartData = () => {
+        fetch(`${process.env.BASE_URL}/s/cartProduct/cartProductList/${userId}`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${token}`,
+            },
+            body: JSON.stringify({}),
+        })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                return response.json();
+            })
+            .then(data => {
+                console.log(data.data);
+                setCartData(data.data);
+
+                const cartProductIds = data.data.productList.map((item: any) => {
+                    return { "cartProductId": item.cartProductId };
+                });
+
+                setCartProducts(cartProductIds);
+                console.log(cartProductIds);
+            })
+            .catch(error => {
+                console.error('There was a problem fetching the data:', error);
+            });
+    };
+
+    useEffect(() => {
+        fetchCartData();
+    }, []);
+
+
 
     const [editFormData, setEditFormData] = useState<EditFormData>({
         firstName: '',
@@ -167,14 +209,6 @@ const OrderAddresss = () => {
         setEditAddressId(null);
     };
 
-
-    useEffect(() => {
-        if (paramId !== null) {
-            const arrayOfIds = JSON.parse(paramId);
-            const arrayOfObjects = arrayOfIds.map((id: any) => ({ cartProductId: id, isOrder: true }));
-            setCartProducts(arrayOfObjects);
-        }
-    }, []);
 
 
     const handleChange = (e: any) => {
@@ -313,8 +347,8 @@ const OrderAddresss = () => {
         const shippingAddressId = selectedAddress;
         const billingAddressId = selectedAddress;
         const productList = cartProducts;
-        totalCartValue;
-        shippingCharge
+        const totalCartValue = cartData.totalCartValue;
+        const shippingCharge = cartData.shippingCharge || 0
 
         const payload = {
             userId,
@@ -361,7 +395,7 @@ const OrderAddresss = () => {
                 'Authorization': `Bearer ${token}`
             },
             body: JSON.stringify({
-                amount: totalCartValue,
+                amount: cartData.totalCartValue,
                 currency: 'INR'
 
             }),
@@ -490,7 +524,7 @@ const OrderAddresss = () => {
         <div className={styles.CenteredContainer}>
             {token &&
                 <div className={styles.selectedAdd}>
-                    <div className={styles.grandtotal}>Grand Total<span>{totalCartValue + shippingCharge} INR</span> </div>
+                    <div className={styles.grandtotal}>Grand Total<span>{cartData.totalCartValue} INR</span> </div>
 
                     <div className={styles.deliverAddress}>DELIVERY ADDRESS</div>
 
