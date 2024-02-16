@@ -54,16 +54,6 @@ const OrderList = () => {
 
     const reversedOrderList = [...orderList].reverse();
 
-    // const router = useRouter();
-    // useEffect(() => {
-    //     const handlePopstate = () => {
-    //         router.push('/');
-    //     };
-    //     window.addEventListener('popstate', handlePopstate);
-    //     return () => {
-    //         window.removeEventListener('popstate', handlePopstate);
-    //     };
-    // }, []);
     return (
 
         <div className={styles.CenteredContainer}>

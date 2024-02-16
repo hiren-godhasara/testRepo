@@ -8,6 +8,8 @@ import { useRouter } from 'next/navigation';
 import UserDetails from '../user/UserData';
 import userIcon from '../../imageFolder/icons8-user-35.png'
 import cartIcon from '../../imageFolder/icons8-cart-35.png'
+import getToken from '@/getLocalStroageToken';
+import getUserId from '@/getLocalStroageUserId';
 
 
 
@@ -48,6 +50,52 @@ const Header = () => {
             document.removeEventListener('click', handleDocumentClick);
         };
     }, []);
+
+
+    const token = getToken();
+    const userId = getUserId();
+    const [productDetails, setProductDetails] = useState('');
+
+    const fetchCartData = () => {
+        fetch(`${process.env.BASE_URL}/s/cartProduct/cartProductList/${userId}`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${token}`,
+            },
+            body: JSON.stringify({}),
+        })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                return response.json();
+            })
+            .then(data => {
+
+                const cartProductIds = data.data.productList.map((item: any) => item.cartProductId);
+                if (data.data.productList) {
+                    const cartItems = cartProductIds.length
+                    setProductDetails(cartItems);
+                    console.log(cartItems);
+                } else {
+                    setProductDetails('0');
+                }
+
+            })
+            .catch(error => {
+                console.error('There was a problem fetching the data:', error);
+            });
+    };
+
+    useEffect(() => {
+        fetchCartData();
+    }, []);
+
+
+
+
+
     return (
         <header className={styles.fixedHeader}>
             <div className={styles.header}>
@@ -88,10 +136,7 @@ const Header = () => {
 
                     <Link className={styles.contactUsBtn} href='/registration'>Register</Link>
                     <Link className={styles.contactUsBtn} href='/login'>Login</Link>
-
-
-
-
+                    <p className={styles.cartItem}>{productDetails}</p>
                 </div>
             </div>
             {isUserDetailsModalOpen && (
