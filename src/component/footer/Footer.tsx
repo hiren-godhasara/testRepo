@@ -6,6 +6,7 @@ import linkedin from '../../imageFolder/linkedinlogo.png';
 import fb from '../../imageFolder/fb.png'
 import insta from '../../imageFolder/insta.png'
 import twitter from '../../imageFolder/icons8-twitter-circled-40.png'
+import CopyRight from '../copyRight/CopyRight';
 
 
 const whatsappLink = 'https://wa.me/+919157059719';
@@ -14,68 +15,50 @@ const faceBookLink = 'https://www.facebook.com/mydryfruit'
 const instagramLink = 'https://instagram.com/mydryfruit_com'
 const Footer = () => {
     return (
-        <footer className={styles.footer}>
+        <footer >
+            <div className={styles.footer}>
+                <div className={styles.mainFooter}>
 
+                    <section className={styles.sectionInfo}>
+                        <Link className={styles.linkH2} href={webSiteLink}><h2>MY DRYFRUIT</h2> </Link>
+                        <p className={styles.letterspacing} style={{ fontSize: '18px' }}>BITSSHADOW LLP</p>
+                        <p className={styles.letterspacing}>Phone: +919157059719</p>
+                        <p className={styles.letterspacing}>519-522 MBC, Lajamni Chowk, opposite Opera Business center, Shanti Niketan Society, Mota Varachha, Surat, Gujarat 394105</p>
+                        <p className={styles.imageP}>
+                            <Link className={styles.linkP} href={faceBookLink}><Image className={styles.fb} src={fb} alt='Home Page' width='40' height='40' /></Link>
+                            <Link className={styles.linkP} href="/"><Image className={styles.twitter} src={twitter} alt='Home Page' width='40' height='40' /></Link>
+                            <Link className={styles.linkP} href={instagramLink}><Image className={styles.insta} src={insta} alt='Home Page' width='40' height='40' /></Link>
+                            <Link className={styles.linkP} href="/"><Image className={styles.linkedin} src={linkedin} alt='Home Page' width='40' height='40' /></Link>
+                        </p>
 
-            <div className={styles.mainFooter}>
+                    </section>
 
-                <section className={styles.sectionInfo}>
-                    <Link className={styles.linkH2} href={webSiteLink}><h2>Bitsshadow LLP</h2> </Link>
-                    <p className={styles.letterspacing}>Phone: +919157059719</p>
-                    <p className={styles.letterspacing}>517-518 MBC, Lajamni Chowk, Mota Varachha, Surat, Gujarat 394104</p>
-                    <p className={styles.imageP}>
-                        <Link className={styles.linkP} href={faceBookLink}><Image className={styles.fb} src={fb} alt='Home Page' width='40' height='40' /></Link>
-                        <Link className={styles.linkP} href="/"><Image className={styles.twitter} src={twitter} alt='Home Page' width='40' height='40' /></Link>
-                        <Link className={styles.linkP} href={instagramLink}><Image className={styles.insta} src={insta} alt='Home Page' width='40' height='40' /></Link>
-                        <Link className={styles.linkP} href="/"><Image className={styles.linkedin} src={linkedin} alt='Home Page' width='40' height='40' /></Link>
-                    </p>
-
-                </section>
-
-                <section className={styles.section}>
-                    <Link className={styles.linkP} href={whatsappLink}><p>Contact Us</p></Link>
-                    <br />
-                    <Link className={styles.linkP} href={`/#${encodeURIComponent("productDetail")}`}><p>All Products</p></Link>
-                    <br />
-                    <Link className={styles.linkP} href={`/#${encodeURIComponent("gifting")}`}><p> Gifting</p></Link>
-                    <br />
-                    <Link className={styles.linkP} href={`/#${encodeURIComponent("reviews")}`}><p>Reviews</p></Link>
-                </section>
-
-                <section className={styles.section}>
-                    <Link className={styles.linkP} href={`/products/almond250`}><p>Mazafati</p></Link>
-                    <br />
-                    <Link className={styles.linkP} href={`/products/almond250`}><p>Khalas</p></Link>
-                    <br />
-                    <Link className={styles.linkP} href={`/products/almond250`}><p>Fard</p></Link>
-                    <br />
-                    <Link className={styles.linkP} href={`/products/almond250`}><p>Medjool</p></Link>
-
-                </section>
-
-                <section className={styles.section}>
-                    <Link className={styles.linkP} href={`/products/almond250`}><p>Almond</p></Link>
-                    <br />
-                    <Link className={styles.linkP} href={`/products/almond250`}><p>Cashew</p></Link>
-                    <br />
-                    <Link className={styles.linkP} href={`/products/almond250`}><p>Pistachio</p></Link>
-                    <br />
-                    <Link className={styles.linkP} href={`/products/almond250`}><p>Figs</p></Link>
-
-                </section>
-
-                <section className={styles.section}>
-                    <Link className={styles.linkP} href={`/#${encodeURIComponent("")}`}><p>Home</p></Link>
-                    <br />
-                    <Link className={styles.linkP} href={`/registration`}><p>Registartion</p></Link>
-                    <br />
-                    <Link className={styles.linkP} href={`/login`}><p>Login</p></Link>
-                    <br />
-                    <Link className={styles.linkP} href={`/privacyPolicy`}><p>Privacy Policy</p></Link>
-                </section>
-
+                    <section className={styles.section}>
+                        <Link className={styles.linkP} href={whatsappLink}><p>Home</p></Link>
+                        <br />
+                        <Link className={styles.linkP} href={`/#${encodeURIComponent("productDetail")}`}><p>Contact Us</p></Link>
+                        <br />
+                        <Link className={styles.linkP} href={`/#${encodeURIComponent("gifting")}`}><p>About Us</p></Link>
+                    </section>
+                    <section className={styles.section}>
+                        <Link className={styles.linkP} href={whatsappLink}><p>Product</p></Link>
+                        <br />
+                        <Link className={styles.linkP} href={`/#${encodeURIComponent("productDetail")}`}><p>Cart</p></Link>
+                        <br />
+                        <Link className={styles.linkP} href={`/#${encodeURIComponent("gifting")}`}><p>Your Order</p></Link>
+                    </section>
+                    <section className={styles.section}>
+                        <Link className={styles.linkP} href={`/products/almond250`}><p>Privacy Policy</p></Link>
+                        <br />
+                        <Link className={styles.linkP} href={`/products/almond250`}><p>Return Policy</p></Link>
+                        <br />
+                        <Link className={styles.linkP} href={`/products/almond250`}><p>Terms & Condition </p></Link>
+                    </section>
+                </div>
             </div>
-
+            <div>
+                <CopyRight />
+            </div>
         </footer >
     );
 };
