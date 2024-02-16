@@ -452,14 +452,76 @@ const OrderAddresss = () => {
                 }
             },
             modal: {
-                ondismiss: function () {
+                ondismiss: async function () {
                     console.log('Payment failed or user closed the popup.');
+                    const orderData = await handleIsOrderUpdate(mongoOrderId)
+                    console.log(orderData);
+
+                    if (!orderData) return;
+                    await updateCartStatus(orderData)
                 }
             }
         };
 
         const razorpayInstance = new window.Razorpay(options);
         razorpayInstance.open();
+    }
+    const updateCartStatus = (orderData: any) => {
+        for (let i = 0; i < orderData.data.productList.length; i++) {
+            const cartId = orderData.data.productList[i].cartProductId._id
+
+            return fetch(`${process.env.BASE_URL}/s/cartProduct/${cartId}`, {
+                method: 'PUT',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${token}`,
+                },
+                body: JSON.stringify({
+                    isOrder: false,
+
+                }),
+            })
+                .then(async response => {
+                    if (!response.ok) {
+                        throw new Error('Network response was not ok');
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    console.log(data);
+                    return data;
+                })
+                .catch(error => {
+                    console.error('There was a problem with the fetch operation:', error);
+                });
+
+        }
+    }
+
+    const handleIsOrderUpdate = (mongoOrderId: any) => {
+
+        console.log(mongoOrderId);
+
+        return fetch(`${process.env.BASE_URL}/s/order/${mongoOrderId}`, {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${token}`,
+            },
+        })
+            .then(async response => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                return response.json();
+            })
+            .then(data => {
+                console.log(data);
+                return data;
+            })
+            .catch(error => {
+                console.error('There was a problem with the fetch operation:', error);
+            });
     }
 
 

@@ -149,11 +149,6 @@ const CartList: React.FC = () => {
 
         if (productDetails && productDetails.productList) {
             const cartProductIds = productDetails.productList.map((item: { cartProductId: any }) => item.cartProductId);
-            // const destinationUrl = url.format({
-            //     pathname: '/orderAddress',
-            //     query: { cartProductIds: JSON.stringify(cartProductIds), totalCartValue: productDetails.totalCartValue, shippingCharge: 0, },
-            // });
-
             router.push('/orderAddress');
         } else {
             console.error('Product details or product list is not available.');

@@ -134,8 +134,8 @@ const Header = () => {
                         <Image src={cartIcon} width={35} height={35} alt='Cart list' title='Cart List' className={styles.cartIcon} />
                     </Link>
 
-                    <Link className={styles.contactUsBtn} href='/registration'>Register</Link>
-                    <Link className={styles.contactUsBtn} href='/login'>Login</Link>
+                    {!token && <Link className={styles.contactUsBtn} href='/registration'>Register</Link>}
+                    {!token && <Link className={styles.contactUsBtn} href='/login'>Login</Link>}
                     <p className={styles.cartItem}>{productDetails}</p>
                 </div>
             </div>
