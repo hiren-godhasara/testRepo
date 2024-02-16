@@ -117,12 +117,12 @@ const RegisterForm = () => {
                     <label>Password:</label>
                     <input type="password" name="password" value={formData.password} onChange={handleChange} required />
                 </div>
-                <div>
+                <div className={styles.btns}>
                     <button type="submit" onClick={handleSubmit}>Submit</button>
                     <button type="button" onClick={handleReset}>Reset</button>
+                    <button onClick={handleCancel} className={styles.cancelReg}>✖</button>
                 </div>
             </form>
-            <button onClick={handleCancel} className={styles.cancelReg}>✖</button>
             <ToastNotifications />
         </div>
     );

@@ -82,6 +82,8 @@ const NewLoginForm = () => {
         <div className={styles.register}>
             <form onSubmit={handleSubmit}>
                 <div className={styles.companydetails}>
+                    <button onClick={handleCloseForm} className={styles.newClosebtn}>✖</button>
+
                     <Image src={logo} alt={`Company logo`} width={100} height={100} />
                     <div className={styles.details}>
                         <p className={styles.headerdetails}>MYDRYFRUIT</p>
@@ -115,7 +117,6 @@ const NewLoginForm = () => {
                     <button type="button" onClick={handleReset}>Reset</button>
                 </div>
                 <Link className={styles.link} href='/registration'>  New to mydryfruit  ?<span className={styles.span}> Create an account </span></Link>
-                <button onClick={handleCloseForm} className={styles.newLoginbtn}>✖</button>
             </form>
             <ToastNotifications />
         </div>
