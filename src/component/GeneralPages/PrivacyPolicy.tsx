@@ -48,7 +48,7 @@ const PrivacyPolicy: React.FC = () => {
                     <p>Your payment information is securely processed by reputable third-party payment gateways. We do not store or have direct access to your credit card details.</p>
                     <br />
                     <h2>3.2 Analytics:</h2>
-                    <p>We may use analytics services to understand how users interact with our website. These services may collect and analyze data to improve our site's functionality.</p>
+                    <p>We may use analytics services to understand how users interact with our website. These services may collect and analyze data to improve our site functionality.</p>
                 </div>
 
 
