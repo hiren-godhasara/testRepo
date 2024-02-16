@@ -20,9 +20,9 @@ const Footer = () => {
             <div className={styles.mainFooter}>
 
                 <section className={styles.sectionInfo}>
-                    <Link className={styles.linkH2} href={webSiteLink}><h2>MyDryFruit<span>.com</span></h2> </Link>
-
-                    <p className={styles.letterspacing}>The variety of products available at our store at the moment is vast,but we still continue to widen our assortment.</p>
+                    <Link className={styles.linkH2} href={webSiteLink}><h2>Bitsshadow LLP</h2> </Link>
+                    <p className={styles.letterspacing}>Phone: +919157059719</p>
+                    <p className={styles.letterspacing}>519-522 MBC, Lajamni Chowk, opposite Opera Business center, Shanti Niketan Society, Mota Varachha, Surat, Gujarat 394105</p>
                     <p className={styles.imageP}>
                         <Link className={styles.linkP} href={faceBookLink}><Image className={styles.fb} src={fb} alt='Home Page' width='40' height='40' /></Link>
                         <Link className={styles.linkP} href="/"><Image className={styles.twitter} src={twitter} alt='Home Page' width='40' height='40' /></Link>
