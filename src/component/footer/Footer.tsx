@@ -36,23 +36,23 @@ const Footer = () => {
                     <section className={styles.section}>
                         <Link className={styles.linkP} href={whatsappLink}><p>Home</p></Link>
                         <br />
-                        <Link className={styles.linkP} href={`/#${encodeURIComponent("productDetail")}`}><p>Contact Us</p></Link>
+                        <Link className={styles.linkP} href={`/`}><p>Contact Us</p></Link>
                         <br />
-                        <Link className={styles.linkP} href={`/#${encodeURIComponent("gifting")}`}><p>About Us</p></Link>
+                        <Link className={styles.linkP} href={`/`}><p>About Us</p></Link>
                     </section>
                     <section className={styles.section}>
-                        <Link className={styles.linkP} href={whatsappLink}><p>Product</p></Link>
+                        <Link className={styles.linkP} href={`/#${encodeURIComponent("products")}`}><p>Product</p></Link>
                         <br />
-                        <Link className={styles.linkP} href={`/#${encodeURIComponent("productDetail")}`}><p>Cart</p></Link>
+                        <Link className={styles.linkP} href={`/cartList`}><p>Cart</p></Link>
                         <br />
-                        <Link className={styles.linkP} href={`/#${encodeURIComponent("gifting")}`}><p>Your Order</p></Link>
+                        <Link className={styles.linkP} href={`/orderList`}><p>Your Order</p></Link>
                     </section>
                     <section className={styles.section}>
-                        <Link className={styles.linkP} href={`/products/almond250`}><p>Privacy Policy</p></Link>
+                        <Link className={styles.linkP} href={`/privacyPolicy`}><p>Privacy Policy</p></Link>
                         <br />
-                        <Link className={styles.linkP} href={`/products/almond250`}><p>Return Policy</p></Link>
+                        <Link className={styles.linkP} href={`/returnPolicy`}><p>Return Policy</p></Link>
                         <br />
-                        <Link className={styles.linkP} href={`/products/almond250`}><p>Terms & Condition </p></Link>
+                        <Link className={styles.linkP} href={`/termsOfUse`}><p>Terms & Condition </p></Link>
                     </section>
                 </div>
             </div>
