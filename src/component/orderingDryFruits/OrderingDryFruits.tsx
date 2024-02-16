@@ -25,6 +25,7 @@ export const DryFruitSliderForOrder: React.FC<DryFruitSliderForOrderProps> = (pr
     const [message, setMessage] = useState('');
     const [totalQuantity, setTotalQuantity] = useState<number>(0);
     const params = useSearchParams().get('id')
+    const [id, setId] = useState('')
 
     const token = getToken();
     const userId = getUserId();
@@ -96,6 +97,7 @@ export const DryFruitSliderForOrder: React.FC<DryFruitSliderForOrderProps> = (pr
         console.log(token);
         if (token) {
             handleAddToCart();
+            router.push('/cartList')
         } else {
             setShouldRenderRegisterForm(true);
         }
@@ -106,7 +108,18 @@ export const DryFruitSliderForOrder: React.FC<DryFruitSliderForOrderProps> = (pr
     };
 
     const handleRouting = () => {
-        router.push('/cartList');
+
+        const token = getToken()
+        if (token) {
+            const productId = params;
+            const qtys = quantity;
+            const totalOrderCartValue = total;
+            console.log(productId, qtys, totalOrderCartValue);
+            router.push(`/placeOrder?productId=${productId}&qtys=${qtys}&totalOrderCartValue=${totalOrderCartValue}`);
+
+        } else {
+            setShouldRenderRegisterForm(true);
+        }
     };
 
 
@@ -140,14 +153,12 @@ export const DryFruitSliderForOrder: React.FC<DryFruitSliderForOrderProps> = (pr
                 <div className={styles.orderButton}>
                     <button onClick={handleClick} className={styles.btnOrder}>Add To Cart</button>
                     <button onClick={handleRouting} className={styles.btnOrder}>Place Order</button>
-                    {/* {message && <div className={styles.message}>{message}</div>} */}
 
                 </div>
             </div>
 
             <div className={styles.reg}>
                 {shouldRenderRegisterForm && <NewLoginForm />}
-                {/* {shouldRenderRegisterForm && <button onClick={handleCancelClick} className={styles.cancel}>✖</button>} */}
             </div>
             <ToastNotifications />
         </div>

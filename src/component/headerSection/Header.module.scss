@@ -236,4 +236,17 @@
         height: 36px;
         // font-size: 10px;
     }
+
+    .cartItem {
+        color: #144950;
+        background-color: #FBD449;
+        width: 25px;
+        text-align: center;
+        border-radius: 40px;
+        font-size: 16px;
+        font-weight: 800;
+        position: relative;
+        top: -15px;
+        left: -250px;
+    }
 }

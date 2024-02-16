@@ -149,12 +149,7 @@ const CartList: React.FC = () => {
 
         if (productDetails && productDetails.productList) {
             const cartProductIds = productDetails.productList.map((item: { cartProductId: any }) => item.cartProductId);
-            const destinationUrl = url.format({
-                pathname: '/orderAddress',
-                query: { cartProductIds: JSON.stringify(cartProductIds), totalCartValue: productDetails.totalCartValue, shippingCharge: 0, },
-            });
-
-            router.push(destinationUrl);
+            router.push('/orderAddress');
         } else {
             console.error('Product details or product list is not available.');
         }
@@ -177,6 +172,7 @@ const CartList: React.FC = () => {
                             <div className={styles.image}>
                                 <Image
                                     src={item.product.imageUrl[0].location}
+                                    className={styles.image1}
                                     alt={item.product.name}
                                     width={imageWidth}
                                     height={imageHeight}
@@ -207,7 +203,7 @@ const CartList: React.FC = () => {
                                         onClick={() => handleEditClick(index)}
                                         disabled={editableQuantities[index]}
                                     >
-                                        EDIT QTY
+                                        EDIT
                                     </button>
                                     <button
                                         className={styles.editBtn}
