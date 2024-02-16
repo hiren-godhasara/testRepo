@@ -19,31 +19,15 @@ import LoginForm from '@/component/registrationUser/Login';
 import OrderAddress from '@/component/orderAddress/OrderAddress';
 import Invoices from '@/component/invoice/Invoice';
 import products from '@/data/CardData';
+import CartList from '@/component/addToCartList/CartList';
 
 export default function Home() {
   return (
     <div>
       <div id='header'><Header /></div>
       <HomePage />
-      {/* <div id='products'><BestSelling /></div>
-
-      <div className={cardStyles.cardConatiner}>
-        {products.map((products) => (
-          <div
-            key={products.id}
-
-          >
-
-            <Card
-              id={products.id}
-              image={products.image}
-              name={products.name}
-              grade={products.grade}
-              displayname={products.displayname}
-            />
-          </div>
-        ))}
-      </div>
+      <div id='products'><BestSelling /></div>
+      <Card />
 
       <div id='allProductSlider'><AllProductSlider /></div>
       <div id='about'><Info /></div>
@@ -53,14 +37,15 @@ export default function Home() {
       <div id='reviews'><ReviewSlider /></div>
       <div id='gifting'> <GiftCombo /></div>
 
-      <InstagramFeeds />
-      <HashtagInstagramFeeds />
+      {/* <InstagramFeeds />
+      <HashtagInstagramFeeds /> */}
       <Footer />
       <CopyRight />
 
-      <OrderAddress />
+      {/* <OrderAddress /> */}
 
-      <Invoices /> */}
+      {/* <Invoices /> */}
+      {/* <CartList /> */}
     </div >
   );
 }
