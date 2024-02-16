@@ -12,7 +12,6 @@ import ReviewSlider from "../component/customerReviews/CustomerReviews";
 import GiftCombo from "../component/giftCombos/GiftCombo";
 import InstagramFeeds from "../component/instagramFeed/InstagramFeed";
 import HashtagInstagramFeeds from "../component/instagramFeed/HashtagInstagramFeed";
-import CopyRight from '../component/copyRight/CopyRight';
 import Footer from '../component/footer/Footer';
 import RegisterForm from '@/component/registrationUser/Register';
 import LoginForm from '@/component/registrationUser/Login';
@@ -40,7 +39,6 @@ export default function Home() {
       {/* <InstagramFeeds />
       <HashtagInstagramFeeds /> */}
       <Footer />
-      <CopyRight />
 
       {/* <OrderAddress /> */}
 
