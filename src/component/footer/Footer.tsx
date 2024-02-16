@@ -22,7 +22,7 @@ const Footer = () => {
                 <section className={styles.sectionInfo}>
                     <Link className={styles.linkH2} href={webSiteLink}><h2>Bitsshadow LLP</h2> </Link>
                     <p className={styles.letterspacing}>Phone: +919157059719</p>
-                    <p className={styles.letterspacing}>519-522 MBC, Lajamni Chowk, opposite Opera Business center, Shanti Niketan Society, Mota Varachha, Surat, Gujarat 394105</p>
+                    <p className={styles.letterspacing}>517-518 MBC, Lajamni Chowk, Mota Varachha, Surat, Gujarat 394104</p>
                     <p className={styles.imageP}>
                         <Link className={styles.linkP} href={faceBookLink}><Image className={styles.fb} src={fb} alt='Home Page' width='40' height='40' /></Link>
                         <Link className={styles.linkP} href="/"><Image className={styles.twitter} src={twitter} alt='Home Page' width='40' height='40' /></Link>
@@ -71,7 +71,7 @@ const Footer = () => {
                     <br />
                     <Link className={styles.linkP} href={`/login`}><p>Login</p></Link>
                     <br />
-                    <Link className={styles.linkP} href={`/#${encodeURIComponent("products")}`}><p>Privacy Policy</p></Link>
+                    <Link className={styles.linkP} href={`/privacyPolicy`}><p>Privacy Policy</p></Link>
                 </section>
 
             </div>
