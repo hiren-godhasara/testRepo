@@ -113,12 +113,36 @@ const Header = () => {
                         <Image src={headerCompanyLogo} width={45} height={45} alt='Home Pagea' className={styles.image} />
                         <div className={styles.leftSectionName}>MYDRYFRUIT</div>
                     </div>
-                    <div onClick={() => handleSidebarShown()}>
-                        <svg height={24} width={20} viewBox="0 0 22 14" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M21 7L1 7" stroke="black" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-                            <path d="M21 13L1 13" stroke="black" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-                            <path d="M21 1L1 1" stroke="black" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-                        </svg>
+                    <div className={styles.headerIconWrapper}>
+                        {token &&
+                            <>
+                                <div className={styles.rightSection}>
+                                    <div className={styles.dropdownContainer}>
+                                        <button ref={cartButtonRef}
+                                            className={styles.userBtn}
+                                            onClick={handleCartButtonClick}>
+                                            <Image src={userIcon} width={35} height={35} alt='Home Pagea' className={styles.userIcon} />
+                                        </button>
+                                        {isCartDropdownOpen && (
+                                            <div className={styles.cartDropdownContent}>
+                                                <button onClick={openUserDetailsModal}>User Details</button>
+                                                <button onClick={orderListClick} >Your Order</button>
+                                            </div>
+                                        )}
+                                    </div>
+                                </div>
+                                <Link href='/cartList'>
+                                    <Image src={cartIcon} width={35} height={35} alt='Cart list' title='Cart List' className={styles.cartIcon} />
+                                </Link>
+                            </>
+                        }
+                        <div onClick={() => handleSidebarShown()}>
+                            <svg height={30} width={25} viewBox="0 0 22 14" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M21 7L1 7" stroke="black" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                                <path d="M21 13L1 13" stroke="black" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                                <path d="M21 1L1 1" stroke="black" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                            </svg>
+                        </div>
                     </div>
                     {isMenuShown &&
                         <Drawer
@@ -146,20 +170,12 @@ const Header = () => {
                                     <li onClick={() => setIsMenuShown(false)}><Link href="/#gifting">Gifting</Link></li>
                                 </ul>
                                 <div className={styles.antDrawerBtn}>
-                                    <Link className={styles.contactUsBtn} href='/registration'>Register</Link>
-                                    <Link className={styles.contactUsBtn} href='/login'>Login</Link>
+                                    {!token && <Link className={styles.contactUsBtn} href='/registration'>Register</Link>}
+                                    {!token && <Link className={styles.contactUsBtn} href='/login'>Login</Link>}
                                 </div>
                             </div>
                         </Drawer>
                     }
-
-                    <Link href='/cartList'>
-                        <Image src={cartIcon} width={35} height={35} alt='Cart list' title='Cart List' className={styles.cartIcon} />
-                    </Link>
-
-                    {!token && <Link className={styles.contactUsBtn} href='/registration'>Register</Link>}
-                    {!token && <Link className={styles.contactUsBtn} href='/login'>Login</Link>}
-                    <p className={styles.cartItem}>{productDetails}</p>
                 </div>
                 :
                 <header className={styles.fixedHeader}>
@@ -179,9 +195,28 @@ const Header = () => {
                             </ul>
                         </div>
                         <div className={styles.rightSection}>
-                            {/* <p className={styles.number}><span>Mo.</span> <Link className={styles.mobileNumber} href={`tel:${phoneNumber}`}>+91 9157059719</Link></p> */}
-                            <Link className={styles.contactUsBtn} href='/registration'>Register</Link>
-                            <Link className={styles.contactUsBtn} href='/login'>Login</Link>
+                            {token &&
+                                <> <div className={styles.dropdownContainer}>
+                                    <button ref={cartButtonRef}
+                                        className={styles.userBtn}
+                                        onClick={handleCartButtonClick}>
+                                        <Image src={userIcon} width={35} height={35} alt='Home Pagea' className={styles.userIcon} />
+                                    </button>
+                                    {isCartDropdownOpen && (
+                                        <div className={styles.cartDropdownContent}>
+                                            <button onClick={openUserDetailsModal}>User Details</button>
+                                            <button onClick={orderListClick} >Your Order</button>
+                                        </div>
+                                    )}
+                                </div>
+                                    <Link href='/cartList'>
+                                        <Image src={cartIcon} width={35} height={35} alt='Cart list' title='Cart List' className={styles.cartIcon} />
+                                    </Link>
+                                </>
+                            }
+                            {!token && <Link className={styles.contactUsBtn} href='/registration'>Register</Link>}
+                            {!token && <Link className={styles.contactUsBtn} href='/login'>Login</Link>}
+                            <p className={styles.cartItem}>{productDetails}</p>
                         </div>
                     </div>
                     {isUserDetailsModalOpen && (

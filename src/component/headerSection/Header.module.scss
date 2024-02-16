@@ -28,7 +28,7 @@
 .link {
     text-decoration: none;
     color: black;
-    font-size: 16px;
+    font-size: 18px;
     font-weight: 400;
     transition: color 0.5s ease, text-decoration 0.5s ease;
 }
@@ -62,13 +62,11 @@
     align-items: center;
 }
 
-
 .rightSection {
     display: flex;
     align-items: center;
     gap: 15px;
 }
-
 
 .contactUsBtn {
     text-decoration: none;
@@ -86,13 +84,6 @@
     font-weight: 500;
     transition: background-color 0.3s, color 0.3s, font-weight 0.3s;
 }
-
-.contactUsBtn:hover {
-    background-color: #FBD449;
-    color: #144950;
-    font-weight: 700;
-}
-
 
 .mobileNumber {
     cursor: pointer;
@@ -138,6 +129,12 @@
     }
 }
 
+.headerIconWrapper {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
 .headerForDrawer {
     display: flex;
     justify-content: space-between;
@@ -157,43 +154,35 @@
     width: 100%;
 }
 
-@media screen and (max-width :1536px) {
-    .navList {
-        gap: 30px;
-    }
 
+.cartDropdownContent {
+    position: absolute;
+    top: 100%;
+    left: 73.5%;
+    background-color: #fff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    color: #144950;
+    font-weight: 500;
+    padding: 10px;
+    min-width: 150px;
+    z-index: 1;
+
+    button {
+        display: block;
+        padding: 8px;
+        color: #333;
+        text-decoration: none;
+        transition: background-color 0.3s;
+
+        &:hover {
+            background-color: #c1c1c1;
+        }
+    }
+}
+
+@media screen and (max-width :1450px) {
     .header {
-        height: 65px;
-    }
-
-    .link {
-        // font-size: 13px;
-    }
-
-    .leftSection .image {
-        width: 57px;
-        height: 56px;
-    }
-
-    .leftSection {
-        display: flex;
-        align-items: center;
-        width: 248px;
-        height: 80px;
-        gap: 10px;
-
-    }
-
-    .leftSectionName {
-        color: #144950;
-        font-size: 20px;
-        font-weight: 900;
-    }
-
-    .contactUsBtn {
-        width: 86px;
-        height: 32px;
-        // font-size: 12px;
+        justify-content: space-between;
     }
 }
 
@@ -217,13 +206,10 @@
         width: 200px;
         height: 80px;
         gap: 7px;
-        // margin-left: 50px;
-
     }
 
     .leftSectionName {
         color: #144950;
-        // font-size: 17px;
         font-weight: 900
     }
 
@@ -234,7 +220,6 @@
     .contactUsBtn {
         width: 94px;
         height: 36px;
-        // font-size: 10px;
     }
 
     .cartItem {
@@ -249,4 +234,10 @@
         top: -15px;
         left: -250px;
     }
+}
+
+.contactUsBtn:hover {
+    background-color: #FBD449;
+    color: #144950;
+    font-weight: 700;
 }
