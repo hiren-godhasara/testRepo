@@ -108,7 +108,11 @@ export const DryFruitSliderForOrder: React.FC<DryFruitSliderForOrderProps> = (pr
     };
 
     const handleRouting = () => {
-        router.push('/cartList');
+        const productId = params;
+        const qtys = quantity;
+        const totalOrderCartValue = total;
+        console.log(productId, qtys, totalOrderCartValue);
+        router.push(`/placeOrder?productId=${productId}&qtys=${qtys}&totalOrderCartValue=${totalOrderCartValue}`);
     };
 
 
@@ -141,7 +145,7 @@ export const DryFruitSliderForOrder: React.FC<DryFruitSliderForOrderProps> = (pr
                 </div>
                 <div className={styles.orderButton}>
                     <button onClick={handleClick} className={styles.btnOrder}>Add To Cart</button>
-                    {/* <button onClick={handleRouting} className={styles.btnOrder}>Place Order</button> */}
+                    <button onClick={handleRouting} className={styles.btnOrder}>Place Order</button>
                     {/* {message && <div className={styles.message}>{message}</div>} */}
 
                 </div>

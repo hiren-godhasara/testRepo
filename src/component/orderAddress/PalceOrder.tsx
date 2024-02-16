@@ -1,4 +1,5 @@
 
+
 import { Suspense, useEffect, useState } from 'react';
 import styles from './OrderAddress.module.scss';
 import getUserId from '@/getLocalStroageUserId';
@@ -41,7 +42,7 @@ interface Address {
     addressType: string;
 }
 
-const OrderAddresss = () => {
+const PlaceOrders = () => {
     const [userData, setUserData] = useState<any>({});
     const [cartProducts, setCartProducts] = useState([]);
     const [orderId, setOrderId] = useState('');
@@ -49,13 +50,13 @@ const OrderAddresss = () => {
     const [showAddressForm, setShowAddressForm] = useState(false);
     const [address, setAddress] = useState<Address[]>([]);
     const [cartData, setCartData] = useState<any>('');
-
     const userId = getUserId();
-    const paramId = useSearchParams().get('cartProductIds');
-    const cartValue = useSearchParams().get('totalCartValue');
-    const totalCartValue = Number(cartValue)
-    const sCharge = useSearchParams().get('shippingCharge');
-    const shippingCharge = Number(sCharge)
+
+
+    const prodId = useSearchParams().get('productId');
+    const qtys = useSearchParams().get('qtys');
+    const totalOrderCartValue = useSearchParams().get('totalOrderCartValue');
+
     const [editAddressId, setEditAddressId] = useState<string | null>(null);
     const [editFormVisible, setEditFormVisible] = useState(false);
     const token = getToken()
@@ -65,40 +66,7 @@ const OrderAddresss = () => {
 
 
 
-    const fetchCartData = () => {
-        fetch(`${process.env.BASE_URL}/s/cartProduct/cartProductList/${userId}`, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-                'Authorization': `Bearer ${token}`,
-            },
-            body: JSON.stringify({}),
-        })
-            .then(response => {
-                if (!response.ok) {
-                    throw new Error('Network response was not ok');
-                }
-                return response.json();
-            })
-            .then(data => {
-                console.log(data.data);
-                setCartData(data.data);
 
-                const cartProductIds = data.data.productList.map((item: any) => {
-                    return { "cartProductId": item.cartProductId };
-                });
-
-                setCartProducts(cartProductIds);
-                console.log(cartProductIds);
-            })
-            .catch(error => {
-                console.error('There was a problem fetching the data:', error);
-            });
-    };
-
-    useEffect(() => {
-        fetchCartData();
-    }, []);
 
 
 
@@ -342,21 +310,22 @@ const OrderAddresss = () => {
 
 
 
-    const handleOrder = () => {
-        const userId = getUserId();
-        const shippingAddressId = selectedAddress;
-        const billingAddressId = selectedAddress;
-        const productList = cartProducts;
-        const totalCartValue = cartData.totalCartValue;
-        const shippingCharge = cartData.shippingCharge || 0
 
-        const payload = {
+
+
+
+
+    const handleOrder = () => {
+
+        const obj = {
             userId,
-            shippingAddressId,
-            billingAddressId,
-            productList,
-            totalCartValue,
-            shippingCharge
+            productId: prodId,
+            qty: qtys,
+            shippingAddressId: selectedAddress,
+            billingAddressId: selectedAddress,
+            totalCartValue: totalOrderCartValue,
+            shippingCharge: 0
+
         };
 
         return fetch(`${process.env.BASE_URL}/s/order`, {
@@ -365,7 +334,7 @@ const OrderAddresss = () => {
                 'Content-Type': 'application/json',
                 'Authorization': `Bearer ${token}`,
             },
-            body: JSON.stringify(payload),
+            body: JSON.stringify(obj),
         }).then(async response => {
             if (!response.ok) {
                 showErrorToast(`Status Code ${response.status} : ${response.statusText}`)
@@ -395,7 +364,7 @@ const OrderAddresss = () => {
                 'Authorization': `Bearer ${token}`
             },
             body: JSON.stringify({
-                amount: cartData.totalCartValue,
+                amount: totalOrderCartValue,
                 currency: 'INR'
 
             }),
@@ -450,19 +419,13 @@ const OrderAddresss = () => {
                     const res = await handleStatusUpdate(mongoOrderId)
                     router.replace('/orderList');
                 }
+
             },
-            modal: {
-                ondismiss: function () {
-                    console.log('Payment failed or user closed the popup.');
-                }
-            }
         };
 
         const razorpayInstance = new window.Razorpay(options);
         razorpayInstance.open();
     }
-
-
 
     const handleStatusUpdate = (mongoOrderId: any) => {
 
@@ -530,7 +493,7 @@ const OrderAddresss = () => {
         <div className={styles.CenteredContainer}>
             {token &&
                 <div className={styles.selectedAdd}>
-                    {cartData && <div className={styles.grandtotal}>Grand Total<span>{cartData.totalCartValue} INR</span> </div>}
+                    <div className={styles.grandtotal}>Grand Total<span>{totalOrderCartValue} INR</span> </div>
 
                     <div className={styles.deliverAddress}>DELIVERY ADDRESS</div>
 
@@ -745,14 +708,13 @@ const OrderAddresss = () => {
     );
 };
 
-const OrderAddress = () => {
+const PlaceOrder = () => {
     return (
         <Suspense>
-            <OrderAddresss />
+            <PlaceOrders />
             <ToastNotifications />
-
         </Suspense>
     )
 };
 
-export default OrderAddress;
+export default PlaceOrder;
