@@ -19,7 +19,8 @@
     "razorpay": "^2.9.2",
     "react": "^18",
     "react-dom": "^18",
-    "react-toastify": "^10.0.4"
+    "react-toastify": "^10.0.4",
+    "sharp": "^0.33.2"
   },
   "devDependencies": {
     "@types/js-cookie": "^3.0.6",

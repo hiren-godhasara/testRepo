@@ -27,8 +27,6 @@ export default function Home() {
       <div id='header'><Header /></div>
       <HomePage />
       <div id='products'><BestSelling /></div>
-
-
       <Card />
 
       <div id='allProductSlider'><AllProductSlider /></div>
