@@ -1,4 +1,4 @@
-const headerCompanyLogo = "https://mydryfruit.s3.ap-northeast-1.amazonaws.com/myDryFruitLogo-removebg-preview.png";
+const headerCompanyLogo = "https://mydryfruit.s3.ap-northeast-1.amazonaws.com/1.png";
 
 const homePage1 = "https://mydryfruit.s3.ap-northeast-1.amazonaws.com/03+Web+Banner.png";
 const homePage2 = "https://mydryfruit.s3.ap-northeast-1.amazonaws.com/02+Web+Banner.png";
