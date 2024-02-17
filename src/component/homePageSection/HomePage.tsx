@@ -26,7 +26,7 @@ const HomePage = () => {
                 </Carousel>
             </div>
 
-            {/* <button className={styles.rightSection}>Contact Us</button> */}
+            <button className={styles.rightSection}>Contact Us</button>
         </div>
     );
 };
