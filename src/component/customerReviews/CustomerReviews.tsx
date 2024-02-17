@@ -1,7 +1,7 @@
 import React from 'react';
 import styles from './CustomerReviews.module.scss';
-import ReviewData from './ReviewData';
 import reviews from '../../data/CustomerReviews';
+import ReviewData from './ReviewData';
 
 const ReviewSlider: React.FC = () => {
     return (
