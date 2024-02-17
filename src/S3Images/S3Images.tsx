@@ -1,11 +1,11 @@
 const headerCompanyLogo = "https://mydryfruit.s3.ap-northeast-1.amazonaws.com/myDryFruitLogo-removebg-preview.png";
 
-const homePage1 = "https://mydryfruit.s3.ap-northeast-1.amazonaws.com/MFD+HOME1.jpg";
-const homePage2 = "https://mydryfruit.s3.ap-northeast-1.amazonaws.com/MFD+HOME2.jpg";
-const homePage3 = "https://mydryfruit.s3.ap-northeast-1.amazonaws.com/MFD+HOME3.jpg";
-const homePage4 = "https://mydryfruit.s3.ap-northeast-1.amazonaws.com/MFD+HOME4.jpg";
-const homePage5 = "https://mydryfruit.s3.ap-northeast-1.amazonaws.com/MFD+HOME5.jpg";
-const homePage6 = "https://mydryfruit.s3.ap-northeast-1.amazonaws.com/MFD+HOME6.jpg";
+const homePage1 = "https://mydryfruit.s3.ap-northeast-1.amazonaws.com/1708153028397.jpg";
+const homePage2 = "https://mydryfruit.s3.ap-northeast-1.amazonaws.com/02+Web+Banner.png";
+const homePage3 = "https://mydryfruit.s3.ap-northeast-1.amazonaws.com/03+Web+Banner.png";
+const homePage4 = "https://mydryfruit.s3.ap-northeast-1.amazonaws.com/04+Web+Banner.png";
+const homePage5 = "https://mydryfruit.s3.ap-northeast-1.amazonaws.com/05+Web+Banner.png";
+const homePage6 = "https://mydryfruit.s3.ap-northeast-1.amazonaws.com/06+Web+Banner.png";
 
 const bestSellingCard1 = "https://mydryfruit.s3.ap-northeast-1.amazonaws.com/mazafati.png";
 const bestSellingCard2 = "https://mydryfruit.s3.ap-northeast-1.amazonaws.com/khalas.png";
