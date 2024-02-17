@@ -1,6 +1,6 @@
 const headerCompanyLogo = "https://mydryfruit.s3.ap-northeast-1.amazonaws.com/myDryFruitLogo-removebg-preview.png";
 
-const homePage1 = "https://mydryfruit.s3.ap-northeast-1.amazonaws.com/1708153028397.jpg";
+const homePage1 = "https://mydryfruit.s3.ap-northeast-1.amazonaws.com/03+Web+Banner.png";
 const homePage2 = "https://mydryfruit.s3.ap-northeast-1.amazonaws.com/02+Web+Banner.png";
 const homePage3 = "https://mydryfruit.s3.ap-northeast-1.amazonaws.com/03+Web+Banner.png";
 const homePage4 = "https://mydryfruit.s3.ap-northeast-1.amazonaws.com/04+Web+Banner.png";
