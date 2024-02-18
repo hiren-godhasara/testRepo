@@ -8,4 +8,10 @@ const getToken = () => {
     }
 };
 
-export default getToken;
+const removeToken = () => {
+    if (typeof Cookies !== 'undefined') {
+        Cookies.remove('token');
+    }
+};
+
+export { getToken, removeToken };

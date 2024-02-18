@@ -8,4 +8,10 @@ const getUserId = () => {
     }
 };
 
-export default getUserId;
+const removeUserId = () => {
+    if (typeof Cookies !== 'undefined') {
+        Cookies.remove('token');
+    }
+};
+
+export { getUserId, removeUserId };

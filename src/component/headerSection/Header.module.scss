@@ -177,14 +177,16 @@
     opacity: 1;
 
     button {
+        width: 150px;
+        text-align: left;
         display: block;
         padding: 8px;
-        color: #333;
+        color: #144950;
         text-decoration: none;
         transition: background-color 0.3s;
 
         &:hover {
-            background-color: #c1c1c1;
+            background-color: #FBD449;
         }
     }
 }
