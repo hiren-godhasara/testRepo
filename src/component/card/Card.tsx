@@ -212,9 +212,9 @@ import Image, { StaticImageData } from 'next/image';
 import styles from './Card.module.scss';
 import { useRouter } from 'next/navigation';
 import { Carousel } from 'antd';
-import getToken from '@/getLocalStroageToken';
 import { StaticImport } from 'next/dist/shared/lib/get-img-props';
 import Cookies from 'js-cookie';
+import { getToken } from '@/getLocalStroageToken';
 
 interface Product {
     mrp: any;

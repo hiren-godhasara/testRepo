@@ -3,8 +3,8 @@ import styles from './UpdateUser.module.scss';
 import Image from 'next/image';
 import logo from '../../imageFolder/myDryFruitLogo-removebg-preview.png'
 import { useRouter } from 'next/navigation';
-import getUserId from '@/getLocalStroageUserId';
-import getToken from '@/getLocalStroageToken';
+import { getUserId } from '@/getLocalStroageUserId';
+import { getToken } from '@/getLocalStroageToken';
 
 const UpdateUser = ({ userDetails, onClose, onFormSubmit }: any) => {
     const router = useRouter();

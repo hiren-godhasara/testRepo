@@ -5,8 +5,8 @@ import styles from './OrderingDryFruits.module.scss';
 import { Product } from '@/app/products/[product]/page';
 import { useRouter, useSearchParams } from 'next/navigation';
 import Cookies from 'js-cookie';
-import getToken from '@/getLocalStroageToken';
-import getUserId from '@/getLocalStroageUserId';
+import { getToken } from '@/getLocalStroageToken';
+import { getUserId } from '@/getLocalStroageUserId';
 import RegisterForm from '../registrationUser/Register';
 import LoginForm from '../registrationUser/Login';
 import emptyCart from '../../imageFolder/emptyCart1-removebg-preview.png'

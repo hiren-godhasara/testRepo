@@ -1,9 +1,9 @@
 
 import { Suspense, useEffect, useState } from 'react';
 import styles from './OrderAddress.module.scss';
-import getUserId from '@/getLocalStroageUserId';
+import { getUserId } from '@/getLocalStroageUserId';
 import { useRouter, useSearchParams } from 'next/navigation';
-import getToken from '@/getLocalStroageToken';
+import { getToken } from '@/getLocalStroageToken';
 import Image from 'next/image';
 import emptyCart from '../../imageFolder/emptyCart1-removebg-preview.png'
 import useTokenExpiration from '@/userTokenExpiration';

@@ -11,8 +11,10 @@ import userIcon from '../../imageFolder/icons8-user-35.png'
 import cartIcon from '../../imageFolder/icons8-cart-35.png'
 import useWindowSize from '../hooks/useWindowsize';
 import { Drawer } from 'antd';
-import getToken from '@/getLocalStroageToken';
-import getUserId from '@/getLocalStroageUserId';
+import Cookies from 'js-cookie';
+import { getToken, removeToken } from '@/getLocalStroageToken';
+import { getUserId, removeUserId } from '@/getLocalStroageUserId';
+
 
 
 
@@ -102,9 +104,43 @@ const Header = () => {
         fetchCartData();
     }, []);
 
+    const logout = () => {
+        fetch(`${process.env.BASE_URL}/s/logout`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                // 'Authorization': `Bearer ${token}`,
+            },
+            body: JSON.stringify({
+                userId: userId,
+                token: token
+            }),
+        })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                return response.json();
+            })
+            .then(data => {
+                console.log(data);
+                if (data) {
+                    removeToken();
+                    removeUserId();
+                    window.location.reload();
+                    window.location.href = '/'
+                }
+
+            })
+            .catch(error => {
+                console.error('There was a problem fetching the data:', error);
+            });
+    };
 
 
-
+    const onLogoutBtn = () => {
+        logout();
+    }
 
     return (
         <div>
@@ -117,11 +153,16 @@ const Header = () => {
                             <path d="M21 1L1 1" stroke="black" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
                         </svg>
                     </div>
-
-                    <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
+                    <Link href="/">
+                        <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
+                            <Image src={headerCompanyLogo} width={45} height={45} alt='Home Pagea' className={styles.image} />
+                            <div className={styles.leftSectionName}>MYDRYFRUIT</div>
+                        </div>
+                    </Link>
+                    {/* <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
                         <Image src={headerCompanyLogo} width={45} height={45} alt='Home Pagea' className={styles.image} />
                         <div className={styles.leftSectionName}>MYDRYFRUIT</div>
-                    </div>
+                    </div> */}
                     <div className={styles.headerIconWrapper}>
                         {token &&
                             <>
@@ -137,6 +178,7 @@ const Header = () => {
                                         <div className={styles.cartDropdownContent}>
                                             <button onClick={openUserDetailsModal}>User Details</button>
                                             <button onClick={orderListClick} >Your Order</button>
+                                            <button onClick={onLogoutBtn} >Log Out</button>
                                         </div>
                                     )}
                                 </div>
@@ -181,10 +223,16 @@ const Header = () => {
                 :
                 <header className={styles.fixedHeader}>
                     <div className={styles.header}>
-                        <div className={styles.leftSection}>
+                        <Link href='/'>
+                            <div className={styles.leftSection}>
+                                <Image src={headerCompanyLogo} width={323} height={323} alt='Home Pagea' className={styles.image} />
+                                <div className={styles.leftSectionName}>MYDRYFRUIT</div>
+                            </div>
+                        </Link>
+                        {/* <div className={styles.leftSection}>
                             <Image src={headerCompanyLogo} width={323} height={323} alt='Home Pagea' className={styles.image} />
                             <div className={styles.leftSectionName}>MYDRYFRUIT</div>
-                        </div>
+                        </div> */}
                         <div className={styles.middleSection}>
                             <ul className={styles.navList}>
                                 <li><Link className={styles.link} href="/">Home</Link></li>
@@ -211,6 +259,7 @@ const Header = () => {
                                             <div className={styles.cartDropdownContent}>
                                                 <button onClick={openUserDetailsModal}>User Details</button>
                                                 <button onClick={orderListClick} >Your Order</button>
+                                                <button onClick={onLogoutBtn} >Log Out</button>
                                             </div>
                                         )}
                                     </div>

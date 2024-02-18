@@ -69,3 +69,25 @@
     top: -10px;
     text-align: center;
 }
+
+
+@media (max-width: 680px) {
+    .says {
+        font-size: 34px;
+
+    }
+}
+
+@media (max-width: 558px) {
+    .says {
+        font-size: 30px;
+
+    }
+}
+
+@media (max-width: 500px) {
+    .says {
+        font-size: 22px;
+
+    }
+}
