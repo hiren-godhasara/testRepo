@@ -1,8 +1,8 @@
 import { useEffect, useState } from 'react';
 import styles from './OrderList.module.scss';
-import getUserId from '@/getLocalStroageUserId';
+import { getUserId } from '@/getLocalStroageUserId';
 import Image from 'next/image';
-import getToken from '@/getLocalStroageToken';
+import { getToken } from '@/getLocalStroageToken';
 import { useRouter } from 'next/navigation';
 
 interface OrderData {

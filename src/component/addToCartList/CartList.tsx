@@ -2,10 +2,10 @@ import { useState, useEffect } from 'react';
 import Image from 'next/image';
 import styles from './CartList.module.scss';
 import { useRouter } from 'next/navigation';
-import getUserId from '../../getLocalStroageUserId'
+import { getUserId } from '../../getLocalStroageUserId'
 import url from 'url';
 import emptyCart from '../../imageFolder/emptyCart1-removebg-preview.png'
-import getToken from '@/getLocalStroageToken';
+import { getToken } from '@/getLocalStroageToken';
 import useTokenExpiration from '@/userTokenExpiration';
 
 

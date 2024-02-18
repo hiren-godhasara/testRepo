@@ -76,10 +76,10 @@ import React, { useEffect, useState } from 'react';
 import styles from './UserData.module.scss';
 import Image from 'next/image';
 import { useRouter } from 'next/router';
-import getUserId from '@/getLocalStroageUserId';
+import { getUserId } from '@/getLocalStroageUserId';
 import RegistrationForm from '../registrationUser/Register';
 import UpdateUser from './UpdateUser';
-import getToken from '@/getLocalStroageToken';
+import { getToken } from '@/getLocalStroageToken';
 
 const UserDetails = ({ onClose }: any) => {
     const handleClose = () => {

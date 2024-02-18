@@ -10,7 +10,7 @@ const AboutUs = () => {
         <div className={styles.aboutContainer}>
             <div className={styles.detailsContainer}>
                 <h1 className={styles.head}>About Us</h1>
-                <p >At Bitsshadow, we take pride in being a leading manufacturer, processor, and trader of a diverse range of high-quality dry fruits under our esteemed brand name "MyDryFruit." With a commitment to excellence, we engage in the meticulous processing, grading, packaging, and marketing of a wide variety of dry fruits and spices, ensuring that our customers receive nothing but the best.</p>
+                <p >At Bitsshadow, we take pride in being a leading manufacturer, processor, and trader of a diverse range of high-quality dry fruits under our esteemed brand name &quot;MyDryFruit.&quot; With a commitment to excellence, we engage in the meticulous processing, grading, packaging, and marketing of a wide variety of dry fruits and spices, ensuring that our customers receive nothing but the best.</p>
                 <br /> <div className={styles.details1}>
                     <div className={styles.p}>Our Mission:</div> <br />
                     <p>At Bitsshadow, we are dedicated to delivering wholesome and nutritious dry fruits to satisfy your cravings at any time of the day. We understand the importance of offering premium products that not only curb your odd-hour cravings but also contribute to a healthy and energetic lifestyle.</p>
@@ -23,7 +23,7 @@ const AboutUs = () => {
 
                 <div className={styles.details1}>
                     <div className={styles.p}>Product Range:</div> <br />
-                    <p>Explore the exquisite range of MyDryFruit products, featuring the finest assortment of flavors to enhance your breakfasts and evening snacks. Whether you're looking to add a boost to your tiresome day or preparing a healthy feast, our dry fruits are the perfect choice.</p>
+                    <p>Explore the exquisite range of MyDryFruit products, featuring the finest assortment of flavors to enhance your breakfasts and evening snacks. Whether you are looking to add a boost to your tiresome day or preparing a healthy feast, our dry fruits are the perfect choice.</p>
                 </div>
 
                 <div className={styles.details1}>
