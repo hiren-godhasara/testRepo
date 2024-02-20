@@ -19,11 +19,13 @@ import OrderAddress from '@/component/orderAddress/OrderAddress';
 import Invoices from '@/component/invoice/Invoice';
 import products from '@/data/CardData';
 import CartList from '@/component/addToCartList/CartList';
+import TagLine from '@/component/tagLine/TagLine';
 
 export default function Home() {
   return (
     <div>
-      <div id='header'><Header /></div>
+      <TagLine />
+      <Header />
       <HomePage />
       <div id='products'><BestSelling /></div>
       <Card />

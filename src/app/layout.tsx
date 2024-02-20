@@ -3,6 +3,7 @@ import { Inter } from "next/font/google";
 import "./globals.scss";
 import Script from "next/script";
 import Head from "next/head";
+import TagLine from "@/component/tagLine/TagLine";
 
 
 const inter = Inter({ subsets: ["latin"] });
@@ -34,6 +35,7 @@ export default function RootLayout({
         </Head>
         <body className={inter.className}>
           {children}
+
         </body>
       </html>
       <Script src="https://checkout.razorpay.com/v1/checkout.js" />
