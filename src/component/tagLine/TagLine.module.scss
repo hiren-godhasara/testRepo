@@ -15,3 +15,16 @@
     font-weight: 700;
     color: #144950;
 }
+
+.layer {
+    position: relative;
+    top: -10px;
+    width: 100px;
+    background-color: red;
+}
+
+.whiteBackground {
+    background: white;
+    padding: 5px;
+    border-radius: 5px;
+}
