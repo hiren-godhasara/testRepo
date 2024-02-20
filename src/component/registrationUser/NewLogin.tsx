@@ -45,6 +45,10 @@ const NewLoginForm = () => {
                 // router.back();
                 setFormVisible(false);
                 window.location.reload();
+                setFormData({
+                    loginId: '',
+                    password: ''
+                });
 
             } else {
                 showErrorToast(data.message)
@@ -52,13 +56,8 @@ const NewLoginForm = () => {
 
         } catch (error) {
             console.error('Error registering:', error);
-        } finally {
-            setFormData({
-                loginId: '',
-                password: ''
-            });
         }
-        setFormData({ loginId: '', password: '' });
+        // setFormData({ loginId: '', password: '' });
     };
 
     const handleReset = () => {

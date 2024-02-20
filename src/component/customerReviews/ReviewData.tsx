@@ -105,6 +105,7 @@ const ReviewData: React.FC<ReviewSliderProps> = ({ reviews }) => {
             slidesToShow={slidesToShow}
             autoplaySpeed={3000}
             speed={1500}
+            dots={false}
         >
             {reviews.map((product, index) => (
                 <div key={index} className={styles.cardContainer} style={{ width: `${cardWidth}px` }}>

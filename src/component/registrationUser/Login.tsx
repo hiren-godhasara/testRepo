@@ -40,19 +40,17 @@ const LoginForm = () => {
                 Cookies.set('userId', data.data.userId, { expires: 1 });
                 showSuccessToast(data.message);
                 router.push('/');
+                setFormData({
+                    loginId: '',
+                    password: ''
+                });
             } else {
                 showErrorToast(data.message)
             }
 
         } catch (error) {
             console.error('Error registering:', error);
-        } finally {
-            setFormData({
-                loginId: '',
-                password: ''
-            });
         }
-        setFormData({ loginId: '', password: '' });
     };
 
     const handleReset = () => {

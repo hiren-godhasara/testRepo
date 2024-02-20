@@ -44,8 +44,9 @@ const Card: React.FC = () => {
             })
             .then(data => {
                 console.log(data.data.productData);
-
-                setProducts(data.data.productData);
+                const comboProducts = data.data.productData.filter((product: { isCombo: boolean; }) => product.isCombo !== true);
+                console.log(comboProducts);
+                setProducts(comboProducts);
 
             })
             .catch(error => {

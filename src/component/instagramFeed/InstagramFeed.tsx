@@ -10,6 +10,7 @@ import share from '../../imageFolder/share.png'
 import dots from '../../imageFolder/dots.png'
 import save from '../../imageFolder/saveIcon.png'
 import { defaultFeedDataArray, hashtag } from '../../data/DefaultInstagramFeedData'
+import Link from 'next/link';
 
 
 interface InstagramFeed {
@@ -66,7 +67,7 @@ const InstagramFeeds: React.FC = () => {
                 {finalArray.map((feed) => (
                     <div key={feed.id}>
 
-                        <a href={feed.permalink} target="_blank" rel="noopener noreferrer">
+                        <Link href={feed.permalink} target="_blank" rel="noopener noreferrer">
                             <div className={styles.separateCard}>
                                 <div className={styles.mainFlex}>
                                     <div className={styles.flex}>
@@ -91,7 +92,7 @@ const InstagramFeeds: React.FC = () => {
                                     </div>
                                 </div>
                             </div>
-                        </a>
+                        </Link>
                     </div>
                 ))}
             </Carousel >
