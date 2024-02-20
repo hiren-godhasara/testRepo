@@ -1,55 +1,3 @@
-// .infoContainer {
-//     position: relative;
-//     width: 100%;
-//     height: 315px;
-// }
-
-// .image {
-//     width: 100%;
-//     height: 100%;
-//     object-fit: cover;
-//     position: absolute;
-//     top: 0;
-//     left: 0;
-//     z-index: -1;
-// }
-
-// .cardDetails {
-//     display: flex;
-//     justify-content: space-around;
-//     align-items: center;
-//     margin-left: 10%;
-//     margin-right: 10%;
-//     padding-top: 67px;
-// }
-
-// .card {
-//     display: flex;
-//     flex-direction: column;
-//     justify-content: center;
-//     align-items: center;
-//     width: 20%;
-//     height: 187px;
-//     border-radius: 16px;
-//     background-color: #68939b;
-//     text-align: center;
-//     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-
-
-// }
-
-// .h2 {
-//     font-size: 44px;
-//     font-weight: 700;
-//     margin-bottom: 10px;
-//     color: #ffffff;
-// }
-
-// .p {
-//     font-size: 22px;
-//     color: #ffffff;
-// }
-
 .infoContainer {
     position: relative;
 }
@@ -75,8 +23,8 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    height: 120px;
-    width: 200px;
+    height: 150px;
+    width: 300px;
     text-align: center;
     background-color: white;
     padding: 10px;
@@ -85,15 +33,38 @@
 
 .h2 {
     margin: 0;
-    font-size: 22px;
+    font-size: 30px;
     color: #144950;
     font-weight: 700;
 }
 
 .p {
+    font-size: 22px;
     margin: 0;
 }
 
+
+@media only screen and (max-width: 1440px) {
+    .cardDetails {
+        gap: 35px;
+    }
+
+    .card {
+        height: 140px;
+        width: 280px;
+    }
+
+    .h2 {
+        margin: 0;
+        font-size: 26px;
+        color: #144950;
+        font-weight: 700;
+    }
+
+    .p {
+        font-size: 20px;
+    }
+}
 
 @media only screen and (max-width: 1250px) {
     .cardDetails {
@@ -103,6 +74,17 @@
     .card {
         height: 110px;
         width: 180px;
+    }
+
+    .h2 {
+        margin: 0;
+        font-size: 23px;
+        color: #144950;
+        font-weight: 700;
+    }
+
+    .p {
+        font-size: 16px;
     }
 }
 
@@ -114,6 +96,17 @@
     .card {
         height: 100px;
         width: 160px;
+    }
+
+    .h2 {
+        margin: 0;
+        font-size: 20px;
+        color: #144950;
+        font-weight: 700;
+    }
+
+    .p {
+        font-size: 15px;
     }
 }
 
@@ -185,5 +178,28 @@
 
     .p {
         font-size: 11px;
+    }
+}
+
+
+@media only screen and (max-width: 420px) {
+    .cardDetails {
+        gap: 10px;
+    }
+
+    .card {
+        height: 42px;
+        width: 70px;
+    }
+
+    .h2 {
+        margin: 0;
+        font-size: 9px;
+        color: #144950;
+        font-weight: 700;
+    }
+
+    .p {
+        font-size: 9px;
     }
 }
