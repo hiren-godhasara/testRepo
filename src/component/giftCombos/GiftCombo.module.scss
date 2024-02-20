@@ -1,93 +1,142 @@
-.giftComboContainer {
-    position: relative;
-    margin-bottom: 310px;
-}
-
-.backgroundImageContainer {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: -1;
-}
-
-.backgroundImage {
-    object-fit: cover;
-    width: 100%;
-    height: 751px;
-}
-
-.contentContainer {
-    position: relative;
-    z-index: 1;
-}
-
-.cardsContainer {
-    display: flex;
-    flex-direction: column;
-    position: relative;
-    top: 120px;
-    left: -160px;
-}
-
-.cardRow {
-    display: flex;
-    justify-content: flex-end;
-    margin-bottom: 20px;
-}
-
 .card {
-    width: 330px;
-    height: 170px;
-    display: flex;
-    border-radius: 6px;
+
+    width: 300px;
+    height: 440px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    box-sizing: border-box;
+    margin-bottom: 30px;
+    border-radius: 8px;
+    transition: box-shadow 0.8s ease-in-out;
     background-color: white;
-    margin: 15px;
+
 }
 
-.right {
-    margin-left: 15px;
+.h2 {
+    font-size: 16px;
+    font-weight: 600;
+    letter-spacing: 0.20px;
+    color: #144950;
+    padding: 5px;
 }
 
-.right {
-    transform: translate(40%, 15%);
+.grade {
+    color: #144950;
 }
 
-.left {
-    transform: translate(20%, 40%);
+.p {
+    margin-top: -8px;
+    margin-left: 5px;
 }
 
-
-.rightImage {
-    width: 118px;
-    height: 118px;
-}
-
-
-.h1 {
-    font-size: 44px;
-    position: absolute;
-    top: 20px;
-    left: 61%;
-    transform: translateX(-50%);
-    color: white;
-}
-
-
-.h5 {
-    width: 40px;
-    height: 45px;
-    background-color: #FBD449;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    color: rgb(6, 6, 6);
-    font-weight: 700;
+.button {
+    color: #144950;
+    border: 1.5px solid #144950;
+    border-radius: 7px;
+    cursor: pointer;
+    width: 260px;
+    height: 40px;
+    background-color: #144950;
+    color: #FBD449;
     position: relative;
-    top: -116px;
+    margin-left: 0px;
+    margin-top: 17px;
+    transition: all 0.6s ease;
+
 }
 
-.h5 h5 {
+.button:hover {
+    border: 1.5px solid #FBD449;
+    background-color: #FBD449;
+    color: #144950;
+}
+
+.card:hover {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.6);
+}
+
+.cardInfo {
+    margin-top: -10px;
+    text-align: center;
+
+}
+
+.productName {
+    margin-top: 10px;
+}
+
+.price {
+    margin-top: 5px;
+}
+
+.mrp {
+    opacity: 0.8;
+    margin-top: 5px;
+}
+
+.cardContainer {
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+    box-sizing: border-box;
+    margin-top: 2%;
+    margin-left: 140px;
+    margin-right: 140px;
+
+}
+
+
+.withMargin {
+    margin-top: 49px;
+}
+
+
+.cardImg {
+    position: relative;
+    overflow: hidden;
+    border-radius: 8px;
+
+}
+
+.image {
+    position: relative;
+    padding: 20px;
+
+}
+
+.img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+
+}
+
+.discount {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background-color: #FBD449;
+    color: #144950;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 14px;
+    font-weight: bold;
+    z-index: 1;
+    width: 50px;
+
+    p {
+        text-align: center;
+    }
+}
+
+.prod {
+    font-size: 12px;
+    opacity: 0.8;
+    margin-top: 2px;
+}
+
+.giftHead {
+    font-size: 35px;
+    font-weight: 700;
+    color: #144950;
     text-align: center;
 }

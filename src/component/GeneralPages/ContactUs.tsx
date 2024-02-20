@@ -4,6 +4,8 @@ import Image from 'next/image';
 import image from '../../imageFolder/01-04.png'
 import Link from 'next/link';
 import { getToken } from '@/getLocalStroageToken';
+import { ToastNotifications, showSuccessToast, showErrorToast } from '../../toastNotifications'
+
 
 const ContactUs = () => {
 
@@ -33,10 +35,14 @@ const ContactUs = () => {
 
             });
 
-            if (response.ok) {
-                alert('Form submitted successfully!');
-            } else {
-                const data = await response.json();
+            if (response) {
+                if (response.ok) {
+                    const data = await response.json();
+                    showSuccessToast(data.message)
+                } else {
+                    const data = await response.json();
+                    showErrorToast(data.message)
+                }
             }
         } catch (error) {
             console.error('Error during form submission:', error);
@@ -83,6 +89,7 @@ const ContactUs = () => {
                     </form>
                 </div>
             </div>
+            <ToastNotifications />
         </div>
     );
 };
