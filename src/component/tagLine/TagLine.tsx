@@ -1,79 +1,3 @@
-// import { useEffect, useState } from 'react';
-// import { getUserId } from '@/getLocalStroageUserId';
-// import styles from './TagLine.module.scss';
-// import { getToken } from '@/getLocalStroageToken';
-
-// interface TagLineItem {
-//     _id: string;
-//     tagLine: string;
-// }
-
-// const TagLine = () => {
-//     const [tagLineList, setTagLineList] = useState<TagLineItem[]>([]);
-//     const [currentTagLineIndex, setCurrentTagLineIndex] = useState(0);
-//     const [currentColorIndex, setCurrentColorIndex] = useState(0);
-
-//     const userId = getUserId();
-//     const token = getToken();
-
-//     const fetchTagLineData = () => {
-//         fetch(`${process.env.BASE_URL}/s/tagLine`, {
-//             method: 'GET',
-//             headers: {
-//                 'Content-Type': 'application/json',
-//                 'Authorization': `Bearer ${token}`,
-//             },
-//         })
-//             .then(response => {
-//                 if (!response.ok) {
-//                     throw new Error('Network response was not ok');
-//                 }
-//                 return response.json();
-//             })
-//             .then(data => {
-//                 console.log(data.data);
-//                 setTagLineList(data.data);
-//             })
-//             .catch(error => {
-//                 console.error('There was a problem fetching the data:', error);
-//             });
-//     };
-
-//     useEffect(() => {
-//         fetchTagLineData();
-//     }, []);
-
-//     useEffect(() => {
-//         const intervalId = setInterval(() => {
-//             setCurrentTagLineIndex(prevIndex => (prevIndex + 1) % tagLineList.length);
-//             setCurrentColorIndex(prevIndex => (prevIndex + 1) % colorList.length);
-//         }, 3000);
-
-//         return () => clearInterval(intervalId);
-//     }, [tagLineList]);
-
-//     const colorList = ["red", "green", "blue"];
-
-//     return (
-//         <div className={styles.container}>
-//             {tagLineList.length > 0 && (
-//                 <div>
-//                     <p className={`${styles.p} ${styles.blinkingtext}`} style={{ color: colorList[currentColorIndex] }}>
-//                         {tagLineList[currentTagLineIndex].tagLine}
-//                     </p>
-//                 </div>
-//             )}
-//         </div>
-//     );
-// };
-
-// export default TagLine;
-
-
-
-
-
-
 import { useEffect, useState } from 'react';
 import { getUserId } from '@/getLocalStroageUserId';
 import styles from './TagLine.module.scss';
@@ -125,24 +49,6 @@ const TagLine = () => {
 
         return () => clearInterval(intervalId);
     }, [tagLineList]);
-
-    // const parseTagLine = (tagLine: string) => {
-    //     const regex = /(\d+%)/; // Regular expression to extract the number and percentage
-    //     const match = tagLine.match(regex);
-    //     if (match) {
-    //         const numberAndPercentage = match[1]; // Extracted number and percentage
-    //         const color = getColorForNumberAndPercentage(numberAndPercentage);
-    //         const parts = tagLine.split(numberAndPercentage);
-    //         return (
-    //             <p className={styles.blinkingtext}>
-    //                 {parts[0]}
-    //                 <span style={{ color }}>{numberAndPercentage}</span>
-    //                 {parts[1]}
-    //             </p>
-    //         );
-    //     }
-    //     return <p className={styles.p}>{tagLine}</p>;
-    // };
 
     const parseTagLine = (tagLine: string) => {
         const regex = /(\d+%)/;
