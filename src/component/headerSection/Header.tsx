@@ -120,7 +120,7 @@ const Header = () => {
     };
 
     return (
-        <div className={styles.mediumScreenHeader}>
+        <div className={styles.header}>
             {isMediumScreen &&
                 <div className={styles.mediumScreenHeaderarea}>
                     <div style={{ cursor: 'pointer' }} onClick={() => handleDrawerOpen()}>
@@ -128,10 +128,7 @@ const Header = () => {
                             <path d="M21 13L1 13" stroke="black" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
                             <path d="M21 1L1 1" stroke="black" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
                         </svg>
-
-
                     </div>
-
                     <div className={styles.mediumScreenSectionOne} >
                         <Image src={headerCompanyLogo} width={45} height={45} alt='Home Pagea' className={styles.image} />
 
@@ -142,7 +139,7 @@ const Header = () => {
                         <div className={styles.mediumScreenSectionTwo}>
                             <Link href='/cartList'>
                                 {/* <Image src={cartIcon} width={35} height={35} alt='Cart list' title='Cart List' className={styles.cartIcon} /> */}
-                                <Image src={cart} width={38} height={38} alt='Cart list' title='Cart List' className={styles.cartIcon} />
+                                <Image src={cart} width={38} height={38} alt='Cart list' title='Cart List' />
                             </Link>
                             {productDetails && <p className={styles.cartItem}>{productDetails}</p>}
                             <div className={styles.rightSection}>

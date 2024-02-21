@@ -1,8 +1,8 @@
-.mediumScreenHeader {
+.header {
     background-color: #FFFFFF;
     position: sticky;
-    top: 0;
-    z-index: 1;
+    top: 25px;
+    z-index: 2;
 }
 
 .fixedHeader {
@@ -37,6 +37,7 @@
 .mediumScreenSectionTwo {
     display: flex;
     margin-left: 10px;
+    align-items: center;
 }
 
 .fullScreenHeader {
@@ -208,6 +209,7 @@
     margin-top: 0;
     font-weight: bold;
     color: #144950;
+    top: -7px;
 }
 
 .cartDropdownContent {
