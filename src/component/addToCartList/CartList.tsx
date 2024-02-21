@@ -37,6 +37,8 @@ const CartList: React.FC = () => {
     const userId = getUserId();
     const token = getToken()
     useTokenExpiration(token);
+    const [loading, setLoading] = useState(true);
+
 
     const fetchCartData = () => {
         setLoading(true)
@@ -164,12 +166,6 @@ const CartList: React.FC = () => {
         router.push('/login')
     }
 
-    const [loading, setLoading] = useState(true);
-    useEffect(() => {
-        // setTimeout(() => {
-        setLoading(false);
-        // }, 1000);
-    }, []);
 
     return (
         <div className={styles.cardContainer}>

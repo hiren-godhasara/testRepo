@@ -221,6 +221,7 @@ const OrderAddresss = () => {
     };
 
     const fetchAddressData = () => {
+        setLoading(true)
         fetch(`${process.env.BASE_URL}/s/address/${userId}`, {
             method: 'POST',
             headers: {
@@ -228,6 +229,7 @@ const OrderAddresss = () => {
                 'Authorization': `Bearer ${token}`,
             },
             body: JSON.stringify({}),
+
         })
             .then(response => {
                 if (!response.ok) {
@@ -243,6 +245,9 @@ const OrderAddresss = () => {
             })
             .catch(error => {
                 console.error('There was a problem fetching the data:', error);
+            }).finally(() => {
+                setLoading(false);
+
             });
     };
 
@@ -603,11 +608,11 @@ const OrderAddresss = () => {
     }
 
 
-    useEffect(() => {
-        setTimeout(() => {
-            setLoading(false);
-        }, 1000);
-    }, []);
+    // useEffect(() => {
+    //     // setTimeout(() => {
+    //     setLoading(false);
+    //     // }, 1000);
+    // }, []);
 
 
     return (
