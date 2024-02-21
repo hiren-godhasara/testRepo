@@ -12,11 +12,9 @@ export default function Home() {
     return (
         <div>
             <TagLine />
-
             <Header />
             <OrderList />
             <Footer />
-            <CopyRight />
         </div >
     );
 }

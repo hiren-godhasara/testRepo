@@ -57,11 +57,9 @@ const Cart = () => {
     return (
         <div>
             <TagLine />
-
             <div id='header'><Header /></div>
             {productDetails && <DryFruitSliderForOrder data={productDetails} />}
             <Footer />
-            <CopyRight />
         </div>
     );
 };

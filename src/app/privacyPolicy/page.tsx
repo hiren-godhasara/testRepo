@@ -14,8 +14,6 @@ export default function Cart() {
             <Header />
             <PrivacyPolicy />
             <Footer />
-            <CopyRight />
-
         </div>
     );
 }

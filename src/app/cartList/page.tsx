@@ -10,13 +10,9 @@ export default function CartLists() {
     return (
         <div>
             <TagLine />
-
             <Header />
-            {/* <Header /> */}
-
             <CartList />
             <Footer />
-            <CopyRight />
         </div >
     );
 }
