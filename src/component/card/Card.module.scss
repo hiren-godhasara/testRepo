@@ -89,6 +89,11 @@
     margin-top: 49px;
 }
 
+.prodMargin {
+    margin-top: 5px;
+
+}
+
 
 .cardImg {
     position: relative;
@@ -126,4 +131,14 @@
     p {
         text-align: center;
     }
+}
+
+.prod {
+    font-size: 12px;
+    opacity: 0.8;
+    margin-top: 2px;
+}
+
+.prodPrice {
+    margin-top: 0px;
 }
