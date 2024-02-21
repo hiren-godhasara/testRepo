@@ -16,6 +16,7 @@ interface OrderData {
     orderListData: any
 }
 const OrderList = () => {
+    const router = useRouter();
     const [orderList, setOrderList] = useState<[]>([]);
     const [userList, setUserList] = useState<[]>([]);
     const [loading, setLoading] = useState(true);
@@ -62,7 +63,13 @@ const OrderList = () => {
         }, 1000);
     }, []);
     const reversedOrderList = [...orderList].reverse();
+    const OnShopBtn = () => {
+        router.push('/#products')
+    }
 
+    const OnSignInBtn = () => {
+        router.push('/login')
+    }
     return (
 
         <div className={styles.CenteredContainer}>
@@ -144,10 +151,7 @@ const OrderList = () => {
                 </>
             )}
 
-
-
-
-            {orderList &&
+            {!reversedOrderList.length &&
                 <div className={styles.shoppingCartMainContainer}>
                     <div className={styles.shoppingCartWrapper}>
                         <Image
@@ -155,16 +159,15 @@ const OrderList = () => {
                             alt='Empty Shopping Bag'
                             // width='256'
                             // height='256'
-                            className=
-                            {styles.image}
+                            className={styles.image}
                         ></Image>
                         <div>
                             <div className={styles.heading}>Shopping Cart</div>
                             <div className={styles.emptyCard}>Your Cart Is Currently Empty.</div>
 
                             <div className={styles.btns}>
-                                <button className={styles.btn}>SIGN IN</button>
-                                <button className={styles.btn}>Return To Shop</button>
+                                {!token && <button onClick={OnSignInBtn} className={styles.btn}>SIGN IN</button>}
+                                <button onClick={OnShopBtn} className={styles.btn}>Return To Shop</button>
                             </div>
                         </div>
                     </div>

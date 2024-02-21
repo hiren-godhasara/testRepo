@@ -173,6 +173,7 @@ const CartList: React.FC = () => {
 
     return (
         <div className={styles.cardContainer}>
+            <p>Cart List</p>
             {loading ? (
                 <div className={styles.loaderContainer}>
                     <Spin size="large" />
@@ -180,7 +181,6 @@ const CartList: React.FC = () => {
             ) : (
                 <>
                     <div className={styles.leftContainer}>
-                        <div className={styles.cartHeading}>CART LIST</div>
                         {productDetails && productDetails.productList && (
                             productDetails.productList.map((item: any, index: number) => (
                                 <div key={index} className={styles.productCard}>
@@ -199,8 +199,6 @@ const CartList: React.FC = () => {
                                         <del><p className={styles.mrp}>MRP: {item.product.mrp} INR</p></del>
                                         <p>Price: <strong>{item.product.price} INR</strong></p>
                                         <div className={styles.quantityControls}>
-
-
                                             <button className={styles.dec} disabled={!editableQuantities[index]} onClick={() => handleQuantityChange(index, item.qty - 1)}>-</button>
                                             <input
                                                 className={styles.quantityInput}
@@ -209,30 +207,7 @@ const CartList: React.FC = () => {
                                                 disabled={!editableQuantities[index]}
                                             />
                                             <button className={styles.inc} disabled={!editableQuantities[index]} onClick={() => handleQuantityChange(index, item.qty + 1)}>+</button>
-
                                         </div>
-
-                                        <div className={styles.edit}>
-                                            <button
-                                                className={styles.editBtn}
-                                                onClick={() => handleEditClick(index)}
-                                                disabled={editableQuantities[index]}
-                                            >
-                                                EDIT
-                                            </button>
-                                            <button
-                                                className={styles.editBtn}
-                                                onClick={() => handleSave(index, item.cartProductId, item.qty)}
-                                                disabled={!editableQuantities[index]}
-                                            >
-                                                SAVE
-                                            </button>
-                                            <div className={styles.delete}>
-                                                <button className={styles.editBtn} onClick={() => handleRemove(item.cartProductId)}>REMOVE</button>
-
-                                            </div>
-                                        </div>
-
                                     </div>
 
                                     <div className={styles.edit}>
@@ -294,80 +269,33 @@ const CartList: React.FC = () => {
                             )}
                         </div>
                     </div>
+
+
+                    {!productDetails && (
+                        <div className={styles.shoppingCartMainContainer}>
+                            <div className={styles.shoppingCartWrapper}>
+                                <Image
+                                    src={emptyCart}
+                                    alt='Empty Shopping Bag'
+                                    // width='256'
+                                    // height='256'
+                                    className={styles.image}
+                                ></Image>
+                                <div>
+                                    <div className={styles.heading}>Shopping Cart</div>
+                                    <div className={styles.emptyCard}>Your Cart Is Currently Empty.</div>
+
+                                    <div className={styles.btns}>
+                                        {!token && <button onClick={OnSignInBtn} className={styles.btn}>SIGN IN</button>}
+                                        <button onClick={OnShopBtn} className={styles.btn}>Return To Shop</button>
+                                    </div>
+                                </div >
+                            </div >
+                        </div>
+                    )}
                 </>
             )
             }
-
-            {!productDetails && (
-                // <div className={styles.main}>
-                //     <Image
-                //         src={emptyCart}
-                //         alt='Empty Shopping Bag'
-                //         width='256'
-                //         height='256'
-                //     />
-                //     <div className={styles.details}>
-                //         <div className={styles.heading}>Shopping Cart</div>
-                //         <div className={styles.emptyCard}>Your Cart Is Currently Empty.</div>
-
-                //         <div className={styles.btns}>
-                //             <button onClick={OnSignInBtn} className={styles.btn}>SIGN IN</button>
-                //             <button onClick={OnShopBtn} className={styles.btn}>Return To Shop</button>
-                //         </div>
-                //     </div>
-                // </div>
-
-
-
-
-                <div className={styles.shoppingCartMainContainer}>
-                    <div className={styles.shoppingCartWrapper}>
-                        <Image
-                            src={emptyCart}
-                            alt='Empty Shopping Bag'
-                            // width='256'
-                            // height='256'
-                            className=
-                            {styles.image}
-                        ></Image>
-                        <div>
-                            <div className={styles.heading}>Shopping Cart</div>
-                            <div className={styles.emptyCard}>Your Cart Is Currently Empty.</div>
-
-                            <div className={styles.btns}>
-                                <button onClick={OnSignInBtn} className={styles.btn}>SIGN IN</button>
-                                <button onClick={OnShopBtn} className={styles.btn}>Return To Shop</button>
-                            </div>
-                        </div >
-                    </div >
-                </div>
-            )}
-
-
-            {
-                !productDetails && (
-                    <div className={styles.main}>
-                        <Image
-                            src={emptyCart}
-                            alt='Empty Shopping Bag'
-                            width='256'
-                            height='256'
-                        />
-                        <div className={styles.details}>
-                            <div className={styles.heading}>Shopping Cart</div>
-                            <div className={styles.emptyCard}>Your Cart Is Currently Empty.</div>
-
-                            <div className={styles.btns}>
-                                <button onClick={OnSignInBtn} className={styles.btn}>SIGN IN</button>
-                                <button onClick={OnShopBtn} className={styles.btn}>Return To Shop</button>
-                            </div>
-                        </div>
-                    </div>
-                )
-            }
-
-
-
         </div >
     );
 };

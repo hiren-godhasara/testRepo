@@ -43,40 +43,9 @@
     margin-top: 70px;
     font-weight: 700;
     color: #144950;
-    font-size: 32px;
     text-align: center;
 }
 
-.button {
-    color: #144950;
-    border: 1.5px solid #144950;
-    border-radius: 7px;
-    cursor: pointer;
-    width: 260px;
-    height: 40px;
-    background-color: #144950;
-    color: #FBD449;
-    position: relative;
-    margin-left: 0px;
-    margin-top: 55px;
-    transition: all 0.6s ease;
-}
-
-.cartHeading {
-    margin-bottom: 30px;
-    margin-top: 84px;
-    font-weight: 700;
-    color: #144950;
-    font-size: 32px;
-    text-align: center;
-
-}
-
-.button:hover {
-    border: 1.5px solid #FBD449;
-    background-color: #FBD449;
-    color: #144950;
-}
 
 .quantityInput {
     width: 70px;
@@ -87,7 +56,8 @@
 }
 
 
-.inc {
+.inc,
+.dec {
     width: 40px;
     height: 30px;
     background-color: #ffffff;
@@ -95,6 +65,9 @@
 }
 
 .quantityControls {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
     margin-top: 20px;
 }
 
@@ -143,11 +116,6 @@
     color: #144249;
 }
 
-.btns {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
 
 .mrp {
     margin-top: 10px;
@@ -171,16 +139,15 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    margin-top: -500px;
+    margin-bottom: 100px;
 }
 
 .shoppingCartWrapper {
     display: flex;
     justify-content: center;
     align-items: center;
-    margin: auto 2rem;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    border-radius: 8px;
-    margin-bottom: 80px;
 }
 
 .heading {
