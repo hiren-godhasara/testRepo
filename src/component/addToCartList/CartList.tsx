@@ -173,40 +173,65 @@ const CartList: React.FC = () => {
 
     return (
         <div className={styles.cardContainer}>
-
-
-
-            <div className={styles.cartHeading}>CART LIST</div>
-            {productDetails &&
-                <><div className={styles.leftContainer}>
-                    {productDetails && productDetails.productList && (
-                        productDetails.productList.map((item: any, index: number) => (
-                            <div key={index} className={styles.productCard}>
-                                <div className={styles.image}>
-                                    <Image
-                                        src={item.product.imageUrl[0].location}
-                                        className={styles.image1}
-                                        alt={item.product.name}
-                                        width={imageWidth}
-                                        height={imageHeight}
-                                    />
-                                </div>
-                                <div className={styles.productInfo}>
-                                    <h3><strong>{item.product.name}</strong></h3>
-                                    <p>Weight: <strong>{item.product.weight}</strong></p>
-                                    <del><p className={styles.mrp}>MRP: {item.product.mrp} INR</p></del>
-                                    <p>Price: <strong>{item.product.price} INR</strong></p>
-                                    <div className={styles.quantityControls}>
-
-
-                                        <button className={styles.dec} disabled={!editableQuantities[index]} onClick={() => handleQuantityChange(index, item.qty - 1)}>-</button>
-                                        <input
-                                            className={styles.quantityInput}
-                                            value={item.qty}
-                                            onChange={(e) => handleQuantityChange(index, parseInt(e.target.value))}
-                                            disabled={!editableQuantities[index]}
+            {loading ? (
+                <div className={styles.loaderContainer}>
+                    <Spin size="large" />
+                </div>
+            ) : (
+                <>
+                    <div className={styles.leftContainer}>
+                        <div className={styles.cartHeading}>CART LIST</div>
+                        {productDetails && productDetails.productList && (
+                            productDetails.productList.map((item: any, index: number) => (
+                                <div key={index} className={styles.productCard}>
+                                    <div className={styles.image}>
+                                        <Image
+                                            src={item.product.imageUrl[0].location}
+                                            className={styles.image1}
+                                            alt={item.product.name}
+                                            width={imageWidth}
+                                            height={imageHeight}
                                         />
-                                        <button className={styles.inc} disabled={!editableQuantities[index]} onClick={() => handleQuantityChange(index, item.qty + 1)}>+</button>
+                                    </div>
+                                    <div className={styles.productInfo}>
+                                        <h3><strong>{item.product.name}</strong></h3>
+                                        <p>Weight: <strong>{item.product.weight}</strong></p>
+                                        <del><p className={styles.mrp}>MRP: {item.product.mrp} INR</p></del>
+                                        <p>Price: <strong>{item.product.price} INR</strong></p>
+                                        <div className={styles.quantityControls}>
+
+
+                                            <button className={styles.dec} disabled={!editableQuantities[index]} onClick={() => handleQuantityChange(index, item.qty - 1)}>-</button>
+                                            <input
+                                                className={styles.quantityInput}
+                                                value={item.qty}
+                                                onChange={(e) => handleQuantityChange(index, parseInt(e.target.value))}
+                                                disabled={!editableQuantities[index]}
+                                            />
+                                            <button className={styles.inc} disabled={!editableQuantities[index]} onClick={() => handleQuantityChange(index, item.qty + 1)}>+</button>
+
+                                        </div>
+
+                                        <div className={styles.edit}>
+                                            <button
+                                                className={styles.editBtn}
+                                                onClick={() => handleEditClick(index)}
+                                                disabled={editableQuantities[index]}
+                                            >
+                                                EDIT
+                                            </button>
+                                            <button
+                                                className={styles.editBtn}
+                                                onClick={() => handleSave(index, item.cartProductId, item.qty)}
+                                                disabled={!editableQuantities[index]}
+                                            >
+                                                SAVE
+                                            </button>
+                                            <div className={styles.delete}>
+                                                <button className={styles.editBtn} onClick={() => handleRemove(item.cartProductId)}>REMOVE</button>
+
+                                            </div>
+                                        </div>
 
                                     </div>
 
@@ -232,10 +257,9 @@ const CartList: React.FC = () => {
                                     </div>
 
                                 </div>
-                            </div>
-                        ))
-                    )}
-                </div>
+                            ))
+                        )}
+                    </div>
 
                     <div className={styles.rightContainer}>
                         <div className={styles.calc}>
@@ -271,6 +295,7 @@ const CartList: React.FC = () => {
                         </div>
                     </div>
                 </>
+            )
             }
 
             {!productDetails && (
@@ -296,7 +321,7 @@ const CartList: React.FC = () => {
 
 
                 <div className={styles.shoppingCartMainContainer}>
-                    < div className={styles.shoppingCartWrapper}>
+                    <div className={styles.shoppingCartWrapper}>
                         <Image
                             src={emptyCart}
                             alt='Empty Shopping Bag'
@@ -313,36 +338,37 @@ const CartList: React.FC = () => {
                                 <button onClick={OnSignInBtn} className={styles.btn}>SIGN IN</button>
                                 <button onClick={OnShopBtn} className={styles.btn}>Return To Shop</button>
                             </div>
-                        </div>
-                    </div>
-
-
-                    {!productDetails && (
-                        <div className={styles.main}>
-                            <Image
-                                src={emptyCart}
-                                alt='Empty Shopping Bag'
-                                width='256'
-                                height='256'
-                            />
-                            <div className={styles.details}>
-                                <div className={styles.heading}>Shopping Cart</div>
-                                <div className={styles.emptyCard}>Your Cart Is Currently Empty.</div>
-
-                                <div className={styles.btns}>
-                                    <button onClick={OnSignInBtn} className={styles.btn}>SIGN IN</button>
-                                    <button onClick={OnShopBtn} className={styles.btn}>Return To Shop</button>
-                                </div>
-                            </div>
-                        </div>
-                    )}
-
-
-
-                </>
+                        </div >
+                    </div >
+                </div>
             )}
 
-        </div>
+
+            {
+                !productDetails && (
+                    <div className={styles.main}>
+                        <Image
+                            src={emptyCart}
+                            alt='Empty Shopping Bag'
+                            width='256'
+                            height='256'
+                        />
+                        <div className={styles.details}>
+                            <div className={styles.heading}>Shopping Cart</div>
+                            <div className={styles.emptyCard}>Your Cart Is Currently Empty.</div>
+
+                            <div className={styles.btns}>
+                                <button onClick={OnSignInBtn} className={styles.btn}>SIGN IN</button>
+                                <button onClick={OnShopBtn} className={styles.btn}>Return To Shop</button>
+                            </div>
+                        </div>
+                    </div>
+                )
+            }
+
+
+
+        </div >
     );
 };
 
