@@ -51,8 +51,8 @@ const RegisterForm = () => {
                         mobile: '',
                         password: ''
                     });
-                    Cookies.set('token', data.data.token, { expires: (1 / 8640) });
-                    Cookies.set('userId', data.data.userId, { expires: (1 / 8640) });
+                    Cookies.set('token', data.data.token, { expires: 1 });
+                    Cookies.set('userId', data.data.userId, { expires: 1 });
                     router.push('/');
                 } else {
                     const data = await response.json();
