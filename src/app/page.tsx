@@ -24,8 +24,8 @@ import TagLine from '@/component/tagLine/TagLine';
 export default function Home() {
   return (
     <div>
-      <TagLine />
       <Header />
+      <TagLine />
       <HomePage />
       <div id='products'><BestSelling /></div>
       <Card />
