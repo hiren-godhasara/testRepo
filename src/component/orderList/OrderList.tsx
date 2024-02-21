@@ -59,8 +59,6 @@ const OrderList = () => {
 
     useEffect(() => {
         fetchAddressData();
-        setLoading(true);
-
     }, []);
 
     const reversedOrderList = [...orderList].reverse();
