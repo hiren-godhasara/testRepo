@@ -28,6 +28,7 @@ const OrderList = () => {
 
 
     const fetchAddressData = () => {
+        setLoading(true);
         fetch(`${process.env.BASE_URL}/s/order/orderList/${userId}`, {
             method: 'POST',
             headers: {
@@ -45,24 +46,25 @@ const OrderList = () => {
             .then(data => {
                 setUserList(data.data.userData)
                 setOrderList(data.data.orderListData)
+                setLoading(false);
+
 
             })
             .catch(error => {
                 console.error('There was a problem fetching the data:', error);
+            }).finally(() => {
+                setLoading(false);
             });
     };
 
     useEffect(() => {
         fetchAddressData();
+        setLoading(true);
+
     }, []);
 
-
-    useEffect(() => {
-        setTimeout(() => {
-            setLoading(false);
-        }, 1000);
-    }, []);
     const reversedOrderList = [...orderList].reverse();
+
     const OnShopBtn = () => {
         router.push('/#products')
     }
@@ -148,31 +150,32 @@ const OrderList = () => {
                         ))}
                     </div>
 
-                </>
-            )}
 
-            {!reversedOrderList.length &&
-                <div className={styles.shoppingCartMainContainer}>
-                    <div className={styles.shoppingCartWrapper}>
-                        <Image
-                            src={emptyCart}
-                            alt='Empty Shopping Bag'
-                            // width='256'
-                            // height='256'
-                            className={styles.image}
-                        ></Image>
-                        <div>
-                            <div className={styles.heading}>Shopping Cart</div>
-                            <div className={styles.emptyCard}>Your Cart Is Currently Empty.</div>
 
-                            <div className={styles.btns}>
-                                {!token && <button onClick={OnSignInBtn} className={styles.btn}>SIGN IN</button>}
-                                <button onClick={OnShopBtn} className={styles.btn}>Return To Shop</button>
+                    {!reversedOrderList.length &&
+                        <div className={styles.shoppingCartMainContainer}>
+                            <div className={styles.shoppingCartWrapper}>
+                                <Image
+                                    src={emptyCart}
+                                    alt='Empty Shopping Bag'
+                                    // width='256'
+                                    // height='256'
+                                    className={styles.image}
+                                ></Image>
+                                <div>
+                                    <div className={styles.heading}>Shopping Cart</div>
+                                    <div className={styles.emptyCard}>Your Cart Is Currently Empty.</div>
+
+                                    <div className={styles.btns}>
+                                        {!token && <button onClick={OnSignInBtn} className={styles.btn}>SIGN IN</button>}
+                                        <button onClick={OnShopBtn} className={styles.btn}>Return To Shop</button>
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                </div>
-            }
+                    }
+                </>
+            )}
         </div >
 
 
