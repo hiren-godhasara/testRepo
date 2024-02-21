@@ -24,8 +24,8 @@ import TagLine from '@/component/tagLine/TagLine';
 export default function Home() {
   return (
     <div>
-      <Header />
       <TagLine />
+      <Header />
       <HomePage />
       <div id='products'><BestSelling /></div>
       <Card />
@@ -39,12 +39,12 @@ export default function Home() {
       {/* <div id='reviews'><ReviewSlider /></div> */}
       <div id='gifting'> <GiftCombo /></div>
 
-      <InstagramFeeds />
-      <HashtagInstagramFeeds />
+      {/* <InstagramFeeds />
+      <HashtagInstagramFeeds /> */}
       <Footer />
-      <OrderAddress />
+      {/* <OrderAddress />
       <Invoices />
-      <CartList />
+      <CartList /> */}
     </div >
   );
 }
