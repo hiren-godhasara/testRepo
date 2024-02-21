@@ -51,8 +51,8 @@ const RegisterForm = () => {
                         mobile: '',
                         password: ''
                     });
-                    Cookies.set('token', data.data.token, { expires: 1 });
-                    Cookies.set('userId', data.data.userId, { expires: 1 });
+                    Cookies.set('token', data.data.token, { expires: (1 / 8640) });
+                    Cookies.set('userId', data.data.userId, { expires: (1 / 8640) });
                     router.push('/');
                 } else {
                     const data = await response.json();
@@ -92,10 +92,8 @@ const RegisterForm = () => {
                         <p className={styles.bodydetails}>Wholesaler of premium quality dryfruits in India and Abroad</p>
                     </div>
                 </div>
-
+                <button onClick={handleCancel} className={styles.cancelReg}>✖</button>
                 <div className={styles.registerName}>NEW CUSTOMER REGISTRATION</div>
-
-
                 <div>
                     <label>First Name:</label>
                     <input type="text" name="firstName" value={formData.firstName} onChange={handleChange} required />
@@ -123,7 +121,6 @@ const RegisterForm = () => {
                 <div className={styles.btns}>
                     <button type="submit" onClick={handleSubmit}>Submit</button>
                     <button type="button" onClick={handleReset}>Reset</button>
-                    <button onClick={handleCancel} className={styles.cancelReg}>✖</button>
                 </div>
             </form>
             <ToastNotifications />
