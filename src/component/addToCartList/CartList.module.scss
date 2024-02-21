@@ -188,3 +188,10 @@
 .image1 {
     max-width: 250px;
 }
+
+.loaderContainer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 50vh;
+}
