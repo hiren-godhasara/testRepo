@@ -13,8 +13,6 @@ export default function Cart() {
             <Header />
             <ReturnPolicy />
             <Footer />
-            <CopyRight />
-
         </div>
     );
 }

@@ -13,11 +13,9 @@ export default function Home() {
         <div>
 
             <TagLine />
-
             <Header />
             <OrderAddress />
             <Footer />
-            <CopyRight />
         </div >
     );
 }

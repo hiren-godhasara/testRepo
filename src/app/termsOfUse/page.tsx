@@ -10,12 +10,9 @@ export default function Cart() {
     return (
         <div>
             <TagLine />
-
             <Header />
             <TermsOfUse />
             <Footer />
-            <CopyRight />
-
         </div>
     );
 }

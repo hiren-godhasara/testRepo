@@ -1,0 +1,176 @@
+.register {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+
+
+    form {
+        width: 420px;
+        height: 500px;
+        margin-top: 20px;
+        max-width: 500px;
+        padding: 20px;
+        border: 1px solid #ccc;
+        background-color: rgb(255, 255, 255);
+
+        border-radius: 5px;
+
+        div {
+            margin-bottom: 10px;
+
+            label {
+                display: block;
+                margin-bottom: 5px;
+                font-weight: bold;
+            }
+
+            input {
+                width: 100%;
+                padding: 8px;
+                border-radius: 3px;
+                border: 1px solid #ccc;
+                box-sizing: border-box;
+            }
+        }
+
+        button {
+            color: #FBD449;
+            background-color: #144249;
+            font-weight: 700;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 3px;
+            cursor: pointer;
+            margin-right: 10px;
+            margin-top: 40px;
+            transition: background-color 0.6s, color 0.6s;
+
+            &:last-child {
+                margin-right: 0;
+            }
+        }
+
+        button:hover {
+            background-color: #FBD449;
+            color: #144249;
+        }
+
+    }
+}
+
+.companydetails {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+.details {
+    margin-left: 10px;
+}
+
+.headerdetails {
+    font-size: 18px;
+    font-weight: 700;
+    color: #144249;
+}
+
+.registerName {
+    margin-top: -100px;
+    text-align: center;
+}
+
+.link {
+    margin-bottom: -15px;
+    margin-top: 85px;
+    font-size: 14px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+    color: black;
+}
+
+.newClosebtn {
+    position: relative;
+    top: -150px;
+    margin-left: 340px;
+    color: black !important;
+    background-color: transparent !important;
+}
+
+.span {
+    color: blue;
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+@media(max-width:500px) {
+    .register {
+        height: 100vh;
+
+        form {
+            width: 360px;
+            height: 500px;
+            border: 1px solid #ccc;
+            background-color: rgb(255, 255, 255);
+
+
+            button {
+                color: #FBD449;
+                background-color: #144950;
+                font-weight: 600;
+                padding: 10px 20px;
+                border: none;
+                border-radius: 3px;
+                cursor: pointer;
+                margin-right: 10px;
+                margin-top: 0px;
+                transition: background-color 0.6s, color 0.6s;
+
+                &:last-child {
+                    margin-right: 0;
+                }
+            }
+
+            div {
+                margin-bottom: 16px;
+
+                label {
+
+                    margin-bottom: 0px;
+                }
+
+                input {
+                    padding: 5px;
+                }
+            }
+
+        }
+
+        .newClosebtn {
+            position: relative;
+            top: -120px;
+            margin-left: 280px;
+
+        }
+
+        .registerName {
+            margin-top: -65px;
+            font-size: 14px;
+        }
+
+        .bodydetails {
+            font-size: 14px;
+            font-weight: 400;
+            color: #144249;
+        }
+
+
+        .link {
+            margin-bottom: -15px;
+            margin-top: 135px;
+        }
+    }
+}
