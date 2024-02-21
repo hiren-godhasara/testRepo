@@ -28,22 +28,21 @@ export default function Home() {
       <div id='products'><BestSelling /></div>
       <Card />
 
-      <div id='allProductSlider'><AllProductSlider /></div>
+      {/* <div id='allProductSlider'><AllProductSlider /></div> */}
+
       <div id='about'><Info /></div>
 
-      <div id='store'><Storing /></div>
+      {/* <div id='store'><Storing /></div> */}
 
-      <div id='reviews'><ReviewSlider /></div>
+      {/* <div id='reviews'><ReviewSlider /></div> */}
       <div id='gifting'> <GiftCombo /></div>
 
-      {/* <InstagramFeeds />
-      <HashtagInstagramFeeds /> */}
+      <InstagramFeeds />
+      <HashtagInstagramFeeds />
       <Footer />
-
-      {/* <OrderAddress /> */}
-
-      {/* <Invoices /> */}
-      {/* <CartList /> */}
+      <OrderAddress />
+      <Invoices />
+      <CartList />
     </div >
   );
 }

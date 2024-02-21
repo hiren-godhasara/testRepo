@@ -64,7 +64,7 @@ const LoginForm = () => {
         router.back();
     };
 
-    const inputType = formData.loginId.includes('@') ? 'email' : 'tel';
+    const inputType = formData.loginId.includes('@') ? 'email' : "text";
 
     return (
         <div className={styles.register}>
@@ -86,6 +86,7 @@ const LoginForm = () => {
                         value={formData.loginId}
                         onChange={handleChange}
                         required
+                        style={{ color: "black" }}
                     />
                 </div>
                 <div>
@@ -96,6 +97,9 @@ const LoginForm = () => {
                         value={formData.password}
                         onChange={handleChange}
                         required
+                        style={{
+                            color: "black"
+                        }}
                     />
                 </div>
                 <div>

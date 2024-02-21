@@ -3,7 +3,7 @@ import styles from './HashtagInstagramFeed.module.scss';
 import axios from 'axios';
 import { Carousel } from 'antd';
 import Image from 'next/image';
-import companyLogo from '../../imageFolder/companyLogo.png'
+import companyLogo from '../../imageFolder/mdfLogo.png'
 import like from '../../imageFolder/heart.png'
 import comment from '../../imageFolder/comment.png'
 import share from '../../imageFolder/share.png'

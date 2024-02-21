@@ -4,6 +4,7 @@ import { getUserId } from '@/getLocalStroageUserId';
 import Image from 'next/image';
 import { getToken } from '@/getLocalStroageToken';
 import { useRouter } from 'next/navigation';
+import emptyCart from '../../imageFolder/emptyCart1-removebg-preview.png'
 
 interface OrderData {
     productList: any;
@@ -125,6 +126,33 @@ const OrderList = () => {
                     </div>
                 ))}
             </div>
+
+
+
+
+            {orderList &&
+                <div className={styles.shoppingCartMainContainer}>
+                    < div className={styles.shoppingCartWrapper}>
+                        <Image
+                            src={emptyCart}
+                            alt='Empty Shopping Bag'
+                            // width='256'
+                            // height='256'
+                            className=
+                            {styles.image}
+                        ></Image>
+                        <div>
+                            <div className={styles.heading}>Shopping Cart</div>
+                            <div className={styles.emptyCard}>Your Cart Is Currently Empty.</div>
+
+                            <div className={styles.btns}>
+                                <button className={styles.btn}>SIGN IN</button>
+                                <button className={styles.btn}>Return To Shop</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
         </div>
 
 
