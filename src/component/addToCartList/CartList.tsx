@@ -39,6 +39,7 @@ const CartList: React.FC = () => {
     useTokenExpiration(token);
 
     const fetchCartData = () => {
+        setLoading(true)
         fetch(`${process.env.BASE_URL}/s/cartProduct/cartProductList/${userId}`, {
             method: 'POST',
             headers: {
@@ -58,14 +59,15 @@ const CartList: React.FC = () => {
             })
             .catch(error => {
                 console.error('There was a problem fetching the data:', error);
+            })
+            .finally(() => {
+                setLoading(false)
             });
     };
 
     useEffect(() => {
         fetchCartData();
     }, []);
-
-
 
     const handleQuantityChange = (index: number, newQuantity: number) => {
         if (productDetails) {
@@ -74,8 +76,6 @@ const CartList: React.FC = () => {
             setProductDetails({ ...productDetails, productList: updatedProductList });
         }
     };
-
-
 
     const UpdateCartData = (cartProductId: any, qty: number) => {
         fetch(`${process.env.BASE_URL}/s/cartProduct/${cartProductId}`, {
@@ -166,9 +166,9 @@ const CartList: React.FC = () => {
 
     const [loading, setLoading] = useState(true);
     useEffect(() => {
-        setTimeout(() => {
-            setLoading(false);
-        }, 1000);
+        // setTimeout(() => {
+        setLoading(false);
+        // }, 1000);
     }, []);
 
     return (
