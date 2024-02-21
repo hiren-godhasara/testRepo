@@ -8,7 +8,8 @@ import Cookies from 'js-cookie';
 import { getToken } from '@/getLocalStroageToken';
 import i from '../../imageFolder/SAVE_20240209_093303 (1).jpg'
 import i1 from '../../imageFolder/SAVE_20240209_093303 (2).jpg'
-
+import { Spin } from 'antd';
+import { LoadingOutlined } from '@ant-design/icons';
 interface Product {
     mrp: any;
     _id: any;
@@ -21,7 +22,8 @@ interface Product {
     prod: any
 }
 
-const Card: React.FC = () => {
+const Card = () => {
+    const [isLoading, setIsLoading] = useState(false);
     const token = getToken()
     const router = useRouter();
     const imageWidth = 300;
@@ -29,6 +31,7 @@ const Card: React.FC = () => {
     const [products, setProducts] = useState<Product[]>([]);
 
     useEffect(() => {
+        setIsLoading(true);
         fetch(`${process.env.BASE_URL}/s/productList`, {
             method: 'POST',
             headers: {
@@ -52,11 +55,17 @@ const Card: React.FC = () => {
             })
             .catch(error => {
                 console.error('There was a problem fetching the data:', error);
+            }).finally(() => {
+                setIsLoading(false);
             });
     }, []);
 
     const onBtnClick = (id: number, displayname: string) => {
-        router.push(`/products/${displayname}?id=${id}`);
+        setIsLoading(true);
+        setTimeout(() => {
+            router.push(`/products/${displayname}?id=${id}`);
+            setIsLoading(false);
+        }, 1000);
     };
     const [hoveredCard, setHoveredCard] = useState(null);
 
@@ -71,6 +80,13 @@ const Card: React.FC = () => {
 
     return (
         <div className={styles.cardContainer}>
+            {isLoading && (
+                <div className={styles.overlay}>
+                    <div className={styles.loader}>
+                        <Spin size="large" />
+                    </div>
+                </div>
+            )}
             {products.map((product, index) => (
                 <div key={product._id} className={styles.card}
                     onMouseEnter={() => handleMouseEnter(index)}

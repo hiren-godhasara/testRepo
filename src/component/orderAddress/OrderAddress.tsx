@@ -9,6 +9,7 @@ import emptyCart from '../../imageFolder/emptyCart1-removebg-preview.png'
 import useTokenExpiration from '@/userTokenExpiration';
 import { headerCompanyLogo } from '@/S3Images/S3Images';
 import { ToastNotifications, showSuccessToast, showErrorToast } from '../../toastNotifications'
+import { Spin } from 'antd';
 
 
 declare global {
@@ -61,7 +62,7 @@ const OrderAddresss = () => {
     const token = getToken()
     const router = useRouter();
     useTokenExpiration(token);
-
+    const [loading, setLoading] = useState(true);
 
 
 
@@ -252,6 +253,7 @@ const OrderAddresss = () => {
     const handleSubmit = async (e: any) => {
         e.preventDefault();
         try {
+            setLoading(true)
             const response = await fetch(`${process.env.BASE_URL}/s/address`, {
                 method: 'POST',
                 headers: {
@@ -261,12 +263,17 @@ const OrderAddresss = () => {
                 body: JSON.stringify(formData),
             });
             if (response.ok) {
+                showSuccessToast('Form data sent successfully')
                 console.log('Form data sent successfully');
+
             } else {
+                showErrorToast('Failed to send form data')
                 console.error('Failed to send form data');
             }
         } catch (error: any) {
             console.error('Error sending form data:', error.message);
+        } finally {
+            setLoading(false)
         }
         setFormData({
             userId: userId || '',
@@ -368,7 +375,8 @@ const OrderAddresss = () => {
             body: JSON.stringify(payload),
         }).then(async response => {
             if (!response.ok) {
-                showErrorToast(`Status Code ${response.status} : ${response.statusText}`)
+                showErrorToast(`Select all mandetory field.`)
+                // showErrorToast(`Status Code ${response.status} : ${response.statusText}`)
                 throw new Error('Network response was not ok');
             }
             return response.json();
@@ -560,6 +568,7 @@ const OrderAddresss = () => {
     }
 
     const orderAndPayment = async () => {
+        setLoading(true)
         try {
             const mongoOrderId = await handleOrder();
             console.log(orderId, 'orderId');
@@ -575,6 +584,9 @@ const OrderAddresss = () => {
 
         } catch (error) {
             console.error('Order and payment process failed:', error);
+        } finally {
+            setLoading(false)
+
         }
     };
 
@@ -591,222 +603,237 @@ const OrderAddresss = () => {
     }
 
 
+    useEffect(() => {
+        setTimeout(() => {
+            setLoading(false);
+        }, 1000);
+    }, []);
+
 
     return (
 
         <div className={styles.CenteredContainer}>
-            {token &&
-                <div className={styles.selectedAdd}>
-                    {cartData && <div className={styles.grandtotal}>Grand Total<span>{cartData.totalCartValue} INR</span> </div>}
+            {loading ? (
+                <div className={styles.loaderContainer}>
+                    <Spin size="large" />
+                </div>
+            ) : (
+                <>
+                    {token &&
+                        <div className={styles.selectedAdd}>
+                            {cartData && <div className={styles.grandtotal}>Grand Total<span>{cartData.totalCartValue} INR</span> </div>}
 
-                    <div className={styles.deliverAddress}>DELIVERY ADDRESS</div>
+                            <div className={styles.deliverAddress}>DELIVERY ADDRESS</div>
 
-                    <div className={styles.preAddress}>
-                        {address && address.map((e: any) => (
-                            <div className={`${styles.addressCard} ${selectedAddress === e._id ? styles.selectedAddress : ''}`} key={e._id}>
-                                <input
-                                    type="checkbox"
-                                    name="selectedAddress"
-                                    onChange={() => handleCheckboxChange(e._id)}
-                                    checked={selectedAddress === e._id}
-                                />
-                                <div className={styles.addressContent}>
-                                    <p className={styles.fullName}>
-                                        {e.firstName} {e.lastName}, Mo. {e.mobile}
-                                    </p>
-                                    <p className={styles.addressDetails}>
-                                        {e.addressLine}, {e.pincode}
-                                    </p>
-                                    <p className={styles.addressDetails}>
-                                        {e.city}, {e.state}, {e.country}
-                                    </p>
-                                    <p className={styles.addressType}>Address Type: {e.addressType}</p>
-                                </div>
-                                <div className={styles.buttons}>
-                                    <button className={styles.removeAdd} type="button" onClick={() => handleEdit(e._id)}>Edit</button>
-                                    <button className={styles.removeAdd} type="button" onClick={() => handleRemove(e._id)}>Delete</button>
-                                </div>
+                            <div className={styles.preAddress}>
+                                {address && address.map((e: any) => (
+                                    <div className={`${styles.addressCard} ${selectedAddress === e._id ? styles.selectedAddress : ''}`} key={e._id}>
+                                        <input
+                                            type="checkbox"
+                                            name="selectedAddress"
+                                            onChange={() => handleCheckboxChange(e._id)}
+                                            checked={selectedAddress === e._id}
+                                        />
+                                        <div className={styles.addressContent}>
+                                            <p className={styles.fullName}>
+                                                {e.firstName} {e.lastName}, Mo. {e.mobile}
+                                            </p>
+                                            <p className={styles.addressDetails}>
+                                                {e.addressLine}, {e.pincode}
+                                            </p>
+                                            <p className={styles.addressDetails}>
+                                                {e.city}, {e.state}, {e.country}
+                                            </p>
+                                            <p className={styles.addressType}>Address Type: {e.addressType}</p>
+                                        </div>
+                                        <div className={styles.buttons}>
+                                            <button className={styles.removeAdd} type="button" onClick={() => handleEdit(e._id)}>Edit</button>
+                                            <button className={styles.removeAdd} type="button" onClick={() => handleRemove(e._id)}>Delete</button>
+                                        </div>
+                                    </div>
+
+
+                                ))}
                             </div>
 
 
-                        ))}
-                    </div>
 
+                            {!selectedAddress &&
+                                <label>
+                                    <input
+                                        type="radio"
+                                        name="addAddress"
+                                        checked={showAddressForm}
+                                        onChange={toggleAddressForm}
+                                    />
+                                    <strong>Add New Address</strong>
+                                </label>
+                            }
+                            {showAddressForm && !selectedAddress && (
 
+                                <div className={styles.OrderAddressContainer}>
+                                    <form onSubmit={handleSubmit}>
+                                        <div className={styles.firstRow}>
+                                            <div>
+                                                <label>First Name:</label>
+                                                <input type="text" name="firstName" value={formData.firstName} onChange={handleChange} required />
+                                            </div>
+                                            <div>
+                                                <label>Last Name:</label>
+                                                <input type="text" name="lastName" value={formData.lastName} onChange={handleChange} required />
+                                            </div>
+                                        </div>
+                                        <div className={styles.secondRow}>
+                                            <div>
+                                                <label>Phone Number:</label>
+                                                <input type="text" name="mobile" value={formData.mobile} onChange={handleChange} required />
+                                            </div>
+                                            <div>
+                                                <label>Pincode:</label>
+                                                <input type="text" name="pincode" value={formData.pincode} onChange={handleChange} required />
+                                            </div>
 
-                    {!selectedAddress &&
-                        <label>
-                            <input
-                                type="radio"
-                                name="addAddress"
-                                checked={showAddressForm}
-                                onChange={toggleAddressForm}
-                            />
-                            <strong>Add New Address</strong>
-                        </label>
-                    }
-                    {showAddressForm && !selectedAddress && (
+                                        </div>
 
-                        <div className={styles.OrderAddressContainer}>
-                            <form onSubmit={handleSubmit}>
-                                <div className={styles.firstRow}>
-                                    <div>
-                                        <label>First Name:</label>
-                                        <input type="text" name="firstName" value={formData.firstName} onChange={handleChange} required />
-                                    </div>
-                                    <div>
-                                        <label>Last Name:</label>
-                                        <input type="text" name="lastName" value={formData.lastName} onChange={handleChange} required />
-                                    </div>
+                                        <div className={styles.row}>
+                                            <div>
+                                                <label>Address:</label>
+                                                <textarea className={styles.addresses} name="addressLine" value={formData.addressLine} onChange={handleChange} required rows={2}></textarea>
+                                            </div>
+                                        </div>
+
+                                        <div className={styles.thirdRow}>
+                                            <div>
+                                                <label>City:</label>
+                                                <input type="text" name="city" value={formData.city} onChange={handleChange} required />
+                                            </div>
+                                            <div>
+                                                <label>State:</label>
+                                                <input type="text" name="state" value={formData.state} onChange={handleChange} required />
+                                            </div>
+                                            <div>
+                                                <label>Country:</label>
+                                                <input type="text" name="country" value={formData.country} onChange={handleChange} required />
+                                            </div>
+
+                                        </div>
+
+                                        <div className={styles.fourthRow}>
+                                            <label>Address Type:</label>
+                                            <label style={{ marginRight: '20px' }}>
+                                                <input type="radio" name="addressType" value="Home" checked={formData.addressType === "Home"} onChange={handleChange} required /> Home
+                                            </label>
+                                            <label style={{ marginRight: '20px' }}>
+                                                <input type="radio" name="addressType" value="Office" checked={formData.addressType === "Office"} onChange={handleChange} required /> Office
+                                            </label>
+                                        </div>
+                                        <div>
+                                            <button type="submit" onClick={handleSubmit}>SAVE ADDRESS</button>
+                                            <button type="button" onClick={handleReset}>CANCEL</button>
+                                        </div>
+                                    </form>
                                 </div>
-                                <div className={styles.secondRow}>
-                                    <div>
-                                        <label>Phone Number:</label>
-                                        <input type="text" name="mobile" value={formData.mobile} onChange={handleChange} required />
-                                    </div>
-                                    <div>
-                                        <label>Pincode:</label>
-                                        <input type="text" name="pincode" value={formData.pincode} onChange={handleChange} required />
-                                    </div>
+                            )}
 
-                                </div>
+                            {/* Edit address Section */}
+                            {editFormVisible && (
+                                <div className={styles.OrderAddressContainer}>
+                                    <form onSubmit={handleEditSubmit}>
+                                        <div className={styles.firstRow}>
+                                            <div>
+                                                <label>First Name:</label>
+                                                <input
+                                                    type="text"
+                                                    name="firstName"
+                                                    value={editFormData.firstName}
+                                                    onChange={(e) => handleEditChange(e, true)}
+                                                    required
+                                                />
 
-                                <div className={styles.row}>
-                                    <div>
-                                        <label>Address:</label>
-                                        <textarea className={styles.addresses} name="addressLine" value={formData.addressLine} onChange={handleChange} required rows={2}></textarea>
-                                    </div>
-                                </div>
+                                            </div>
+                                            <div>
+                                                <label>Last Name:</label>
+                                                <input type="text" name="lastName" value={editFormData.lastName} onChange={(e) => handleEditChange(e, true)} required />
+                                            </div>
+                                        </div>
+                                        <div className={styles.secondRow}>
+                                            <div>
+                                                <label>Phone Number:</label>
+                                                <input type="text" name="mobile" value={editFormData.mobile} onChange={(e) => handleEditChange(e, true)} required />
+                                            </div>
+                                            <div>
+                                                <label>Pincode:</label>
+                                                <input type="text" name="pincode" value={editFormData.pincode} onChange={(e) => handleEditChange(e, true)} required />
+                                            </div>
 
-                                <div className={styles.thirdRow}>
-                                    <div>
-                                        <label>City:</label>
-                                        <input type="text" name="city" value={formData.city} onChange={handleChange} required />
-                                    </div>
-                                    <div>
-                                        <label>State:</label>
-                                        <input type="text" name="state" value={formData.state} onChange={handleChange} required />
-                                    </div>
-                                    <div>
-                                        <label>Country:</label>
-                                        <input type="text" name="country" value={formData.country} onChange={handleChange} required />
-                                    </div>
+                                        </div>
 
-                                </div>
+                                        <div className={styles.row}>
+                                            <div>
+                                                <label>Address:</label>
+                                                <textarea className={styles.addresses} name="addressLine" value={editFormData.addressLine} onChange={(e) => handleEditChange(e, true)} required rows={2}></textarea>
+                                            </div>
+                                        </div>
 
-                                <div className={styles.fourthRow}>
-                                    <label>Address Type:</label>
-                                    <label style={{ marginRight: '20px' }}>
-                                        <input type="radio" name="addressType" value="Home" checked={formData.addressType === "Home"} onChange={handleChange} required /> Home
-                                    </label>
-                                    <label style={{ marginRight: '20px' }}>
-                                        <input type="radio" name="addressType" value="Office" checked={formData.addressType === "Office"} onChange={handleChange} required /> Office
-                                    </label>
+                                        <div className={styles.thirdRow}>
+                                            <div>
+                                                <label>City:</label>
+                                                <input type="text" name="city" value={editFormData.city} onChange={(e) => handleEditChange(e, true)} required />
+                                            </div>
+                                            <div>
+                                                <label>State:</label>
+                                                <input type="text" name="state" value={editFormData.state} onChange={(e) => handleEditChange(e, true)} required />
+                                            </div>
+                                            <div>
+                                                <label>Country:</label>
+                                                <input type="text" name="country" value={editFormData.country} onChange={(e) => handleEditChange(e, true)} required />
+                                            </div>
+
+                                        </div>
+                                        <div className={styles.fourthRow}>
+                                            <label>Address Type:</label>
+                                            <label style={{ marginRight: '20px' }}>
+                                                <input type="radio" name="addressType" value="Home" checked={editFormData.addressType === "Home"} onChange={(e) => handleEditChange(e, true)} required /> Home
+                                            </label>
+                                            <label style={{ marginRight: '20px' }}>
+                                                <input type="radio" name="addressType" value="Office" checked={editFormData.addressType === "Office"} onChange={(e) => handleEditChange(e, true)} required /> Office
+                                            </label>
+                                        </div>
+                                        <div>
+                                            <button type="submit">SAVE EDITS</button>
+                                            <button type="button" onClick={handleEditCancel}>CANCEL</button>
+                                        </div>
+                                    </form>
                                 </div>
-                                <div>
-                                    <button type="submit" onClick={handleSubmit}>SAVE ADDRESS</button>
-                                    <button type="button" onClick={handleReset}>CANCEL</button>
-                                </div>
-                            </form>
+                            )}
+
+                            <div className={styles.orderBtn}>
+                                <button type="submit" onClick={orderAndPayment} >PROCEED TO PAYMENT</button>
+                                <button type="button" onClick={OnShopBtn}>CANCEL ORDER</button>
+                            </div>
+
+                        </div>}
+
+                    {!token && <div className={styles.main}>
+                        <Image
+                            src={emptyCart}
+                            alt='Empty Shopping Bag'
+                            width='256'
+                            height='256'
+                        />
+                        <div className={styles.details}>
+                            <div className={styles.heading}>Shopping Cart</div>
+                            <div className={styles.emptyCard}>Your Cart Is Currently Empty.</div>
+
+                            <div className={styles.btns}>
+                                <button onClick={OnSignInBtn} className={styles.btn}>SIGN IN</button>
+                                <button onClick={OnShopBtn} className={styles.btn}>Return To Shop</button>
+                            </div>
                         </div>
-                    )}
+                    </div>}
+                </>
+            )}
 
-                    {/* Edit address Section */}
-                    {editFormVisible && (
-                        <div className={styles.OrderAddressContainer}>
-                            <form onSubmit={handleEditSubmit}>
-                                <div className={styles.firstRow}>
-                                    <div>
-                                        <label>First Name:</label>
-                                        <input
-                                            type="text"
-                                            name="firstName"
-                                            value={editFormData.firstName}
-                                            onChange={(e) => handleEditChange(e, true)}
-                                            required
-                                        />
-
-                                    </div>
-                                    <div>
-                                        <label>Last Name:</label>
-                                        <input type="text" name="lastName" value={editFormData.lastName} onChange={(e) => handleEditChange(e, true)} required />
-                                    </div>
-                                </div>
-                                <div className={styles.secondRow}>
-                                    <div>
-                                        <label>Phone Number:</label>
-                                        <input type="text" name="mobile" value={editFormData.mobile} onChange={(e) => handleEditChange(e, true)} required />
-                                    </div>
-                                    <div>
-                                        <label>Pincode:</label>
-                                        <input type="text" name="pincode" value={editFormData.pincode} onChange={(e) => handleEditChange(e, true)} required />
-                                    </div>
-
-                                </div>
-
-                                <div className={styles.row}>
-                                    <div>
-                                        <label>Address:</label>
-                                        <textarea className={styles.addresses} name="addressLine" value={editFormData.addressLine} onChange={(e) => handleEditChange(e, true)} required rows={2}></textarea>
-                                    </div>
-                                </div>
-
-                                <div className={styles.thirdRow}>
-                                    <div>
-                                        <label>City:</label>
-                                        <input type="text" name="city" value={editFormData.city} onChange={(e) => handleEditChange(e, true)} required />
-                                    </div>
-                                    <div>
-                                        <label>State:</label>
-                                        <input type="text" name="state" value={editFormData.state} onChange={(e) => handleEditChange(e, true)} required />
-                                    </div>
-                                    <div>
-                                        <label>Country:</label>
-                                        <input type="text" name="country" value={editFormData.country} onChange={(e) => handleEditChange(e, true)} required />
-                                    </div>
-
-                                </div>
-                                <div className={styles.fourthRow}>
-                                    <label>Address Type:</label>
-                                    <label style={{ marginRight: '20px' }}>
-                                        <input type="radio" name="addressType" value="Home" checked={editFormData.addressType === "Home"} onChange={(e) => handleEditChange(e, true)} required /> Home
-                                    </label>
-                                    <label style={{ marginRight: '20px' }}>
-                                        <input type="radio" name="addressType" value="Office" checked={editFormData.addressType === "Office"} onChange={(e) => handleEditChange(e, true)} required /> Office
-                                    </label>
-                                </div>
-                                <div>
-                                    <button type="submit">SAVE EDITS</button>
-                                    <button type="button" onClick={handleEditCancel}>CANCEL</button>
-                                </div>
-                            </form>
-                        </div>
-                    )}
-
-                    <div className={styles.orderBtn}>
-                        <button type="submit" onClick={orderAndPayment} >PROCEED TO PAYMENT</button>
-                        <button type="button" onClick={OnShopBtn}>CANCEL ORDER</button>
-                    </div>
-
-                </div>}
-
-            {!token && <div className={styles.main}>
-                <Image
-                    src={emptyCart}
-                    alt='Empty Shopping Bag'
-                    width='256'
-                    height='256'
-                />
-                <div className={styles.details}>
-                    <div className={styles.heading}>Shopping Cart</div>
-                    <div className={styles.emptyCard}>Your Cart Is Currently Empty.</div>
-
-                    <div className={styles.btns}>
-                        <button onClick={OnSignInBtn} className={styles.btn}>SIGN IN</button>
-                        <button onClick={OnShopBtn} className={styles.btn}>Return To Shop</button>
-                    </div>
-                </div>
-            </div>}
         </div >
 
     );

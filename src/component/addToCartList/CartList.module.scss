@@ -159,6 +159,13 @@
     max-width: 250px;
 }
 
+.loaderContainer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 50vh;
+}
+
 .shoppingCartMainContainer {
     width: 100%;
     display: flex;
