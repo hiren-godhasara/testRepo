@@ -18,6 +18,7 @@ interface Product {
     displayName: string;
     price: number
     discount: any
+    prod: any
 }
 
 const Card: React.FC = () => {
@@ -44,9 +45,9 @@ const Card: React.FC = () => {
             })
             .then(data => {
                 console.log(data.data.productData);
-                const comboProducts = data.data.productData.filter((product: { isCombo: boolean; }) => product.isCombo !== true);
-                console.log(comboProducts);
-                setProducts(comboProducts);
+                // const comboProducts = data.data.productData.filter((product: { isCombo: boolean; }) => product.isCombo !== true);
+                // console.log(comboProducts);
+                setProducts(data.data.productData);
 
             })
             .catch(error => {
@@ -103,22 +104,17 @@ const Card: React.FC = () => {
                                 </span>
                             ))}
                         </h2>
+                        <h2 className={styles.prod}>{product.prod}</h2>
                         {(product.discount !== 0) && <del> <p className={styles.mrp}>MRP: {product.mrp} INR</p></del>}
-                        <p className={styles.price}>Price: <b className={styles.grade}>{product.price} INR</b></p>
+                        <p className={`${styles.price} ${product.prod ? styles.prodPrice : ''}`}>Price: <b className={styles.grade}>{product.price} INR</b></p>
 
                         <button
                             onClick={() => onBtnClick(product._id, product.displayName)}
-                            className={`${styles.button} ${product.discount === 0 ? styles.withMargin : ''}`}
+                            className={`${styles.button} ${product.discount === 0 ? styles.withMargin : ''} ${product.prod ? styles.prodMargin : ''}`}
                         >
                             Buy Now
                         </button>
                     </div>
-
-                    {/* {(product.discount !== 0) &&
-                        <div className={styles.discount}>
-                            <p>{product.discount} %</p>
-                        </div>
-                    } */}
                 </div>
             ))}
         </div>
