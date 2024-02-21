@@ -4,16 +4,15 @@ import CartList from '@/component/addToCartList/CartList';
 import Header from '@/component/headerSection/Header';
 import Footer from '@/component/footer/Footer';
 import CopyRight from '@/component/copyRight/CopyRight';
+import TagLine from '@/component/tagLine/TagLine';
 
 export default function CartLists() {
     return (
         <div>
+            <TagLine />
             <Header />
-            {/* <Header /> */}
-
             <CartList />
             <Footer />
-            <CopyRight />
         </div >
     );
 }

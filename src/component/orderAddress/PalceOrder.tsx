@@ -435,6 +435,10 @@ const PlaceOrders = () => {
 
         const razorpayInstance = new window.Razorpay(options);
         razorpayInstance.open();
+
+        razorpayInstance.on('payment.failed', function (e: any) {
+            showErrorToast(e.error.description)
+        })
     }
     const updateCartStatus = (orderData: any) => {
         for (let i = 0; i < orderData.data.productList.length; i++) {

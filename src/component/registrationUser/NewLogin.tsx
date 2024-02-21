@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import styles from './Register.module.scss';
+import styles from './NewLogin.module.scss';
 import Image from 'next/image';
 import logo from '../../imageFolder/myDryFruitLogo-removebg-preview.png';
 import { useRouter, useSearchParams } from 'next/navigation';
@@ -45,6 +45,10 @@ const NewLoginForm = () => {
                 // router.back();
                 setFormVisible(false);
                 window.location.reload();
+                setFormData({
+                    loginId: '',
+                    password: ''
+                });
 
             } else {
                 showErrorToast(data.message)
@@ -52,13 +56,8 @@ const NewLoginForm = () => {
 
         } catch (error) {
             console.error('Error registering:', error);
-        } finally {
-            setFormData({
-                loginId: '',
-                password: ''
-            });
         }
-        setFormData({ loginId: '', password: '' });
+        // setFormData({ loginId: '', password: '' });
     };
 
     const handleReset = () => {
@@ -82,7 +81,6 @@ const NewLoginForm = () => {
         <div className={styles.register}>
             <form onSubmit={handleSubmit}>
                 <div className={styles.companydetails}>
-                    <button onClick={handleCloseForm} className={styles.newClosebtn}>✖</button>
 
                     <Image src={logo} alt={`Company logo`} width={100} height={100} />
                     <div className={styles.details}>
@@ -90,6 +88,7 @@ const NewLoginForm = () => {
                         <p className={styles.bodydetails}>Wholesaler of premium quality dryfruits in India and Abroad</p>
                     </div>
                 </div>
+                <button onClick={handleCloseForm} className={styles.newClosebtn}>✖</button>
                 <div className={styles.registerName}>CUSTOMER LOGIN</div>
 
                 <div>

@@ -1,15 +1,15 @@
 .card {
 
     width: 300px;
-    height: 410px;
+    height: 420px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     box-sizing: border-box;
     margin-bottom: 30px;
     border-radius: 8px;
     transition: box-shadow 0.8s ease-in-out;
+    background-color: white;
+
 }
-
-
 
 .h2 {
     font-size: 16px;
@@ -39,12 +39,10 @@
     color: #FBD449;
     position: relative;
     margin-left: 0px;
-    margin-top: 15px;
+    margin-top: 17px;
     transition: all 0.6s ease;
 
 }
-
-
 
 .button:hover {
     border: 1.5px solid #FBD449;
@@ -52,46 +50,12 @@
     color: #144950;
 }
 
-
-
 .card:hover {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.6);
 }
 
-.image {
-    padding-top: 10px;
-    width: 150px;
-}
-
-.img {
-    object-fit: cover;
-
-}
-
-.cardImg {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-
-
-.card:hover img {
-    transform: scale(1.05);
-}
-
-.card img {
-    transition: transform 1s ease-in-out;
-}
-
-.orgName {
-    font-size: 12px;
-    opacity: 0.6;
-    text-align: center;
-    margin-top: 20px;
-}
-
 .cardInfo {
+    margin-top: -10px;
     text-align: center;
 
 }
@@ -120,24 +84,61 @@
 
 }
 
+
+.withMargin {
+    margin-top: 49px;
+}
+
+.prodMargin {
+    margin-top: 5px;
+
+}
+
+
+.cardImg {
+    position: relative;
+    overflow: hidden;
+    border-radius: 8px;
+
+}
+
+.image {
+    position: relative;
+    padding: 20px;
+
+}
+
+.img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+
+}
+
 .discount {
-    width: 0;
-    height: 0;
-    border-top-left-radius: 10px;
-    border-left: 0px solid transparent;
-    border-right: 70px solid transparent;
-    border-top: 70px solid #144950;
-    margin-top: -382px;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background-color: #FBD449;
+    color: #144950;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 14px;
+    font-weight: bold;
+    z-index: 1;
+    width: 50px;
 
     p {
-        width: 37px;
-        margin-top: -62px;
-        margin-left: 5px;
-        font-weight: 600;
-        color: #ffffff;
+        text-align: center;
     }
 }
 
-.withMargin {
-    margin-top: 44px;
+.prod {
+    font-size: 12px;
+    opacity: 0.8;
+    margin-top: 2px;
+}
+
+.prodPrice {
+    margin-top: 0px;
 }

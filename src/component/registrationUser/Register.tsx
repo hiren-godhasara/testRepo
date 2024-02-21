@@ -4,6 +4,7 @@ import Image from 'next/image';
 import logo from '../../imageFolder/myDryFruitLogo-removebg-preview.png'
 import { useRouter } from 'next/navigation';
 import { ToastNotifications, showSuccessToast, showErrorToast } from '../../toastNotifications'
+import Cookies from 'js-cookie';
 
 
 const RegisterForm = () => {
@@ -36,30 +37,32 @@ const RegisterForm = () => {
                 },
                 body: JSON.stringify(formData)
             });
-            const data = await response.json();
-            console.log(data);
+            console.log(response);
 
-            if (data.data._id) {
-                showSuccessToast(data.message);
-                router.push('/login');
+            if (response) {
+                if (response.ok) {
+                    const data = await response.json();
+                    showSuccessToast(data.message);
+                    setFormData({
+                        firstName: '',
+                        lastName: '',
+                        email: '',
+                        countryCode: '+91',
+                        mobile: '',
+                        password: ''
+                    });
+                    Cookies.set('token', data.data.token, { expires: 1 });
+                    Cookies.set('userId', data.data.userId, { expires: 1 });
+                    router.push('/');
+                } else {
+                    const data = await response.json();
+                    console.log(data);
+                    showErrorToast(data.message)
+                }
             }
-            if (!data.data._id) {
-                showErrorToast(data.message);
 
-            }
         } catch (error: any) {
-            showErrorToast('Something went wrong');
             console.log('Error registering:', error);
-
-        } finally {
-            setFormData({
-                firstName: '',
-                lastName: '',
-                email: '',
-                countryCode: '+91',
-                mobile: '',
-                password: ''
-            });
         }
     };
 
@@ -89,10 +92,8 @@ const RegisterForm = () => {
                         <p className={styles.bodydetails}>Wholesaler of premium quality dryfruits in India and Abroad</p>
                     </div>
                 </div>
-
+                <button onClick={handleCancel} className={styles.cancelReg}>✖</button>
                 <div className={styles.registerName}>NEW CUSTOMER REGISTRATION</div>
-
-
                 <div>
                     <label>First Name:</label>
                     <input type="text" name="firstName" value={formData.firstName} onChange={handleChange} required />
@@ -120,7 +121,6 @@ const RegisterForm = () => {
                 <div className={styles.btns}>
                     <button type="submit" onClick={handleSubmit}>Submit</button>
                     <button type="button" onClick={handleReset}>Reset</button>
-                    <button onClick={handleCancel} className={styles.cancelReg}>✖</button>
                 </div>
             </form>
             <ToastNotifications />

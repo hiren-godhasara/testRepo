@@ -36,9 +36,9 @@ const Footer = () => {
                     <section className={styles.section}>
                         <Link className={styles.linkP} href={whatsappLink}><p>Home</p></Link>
                         <br />
-                        <Link className={styles.linkP} href={`/`}><p>Contact Us</p></Link>
+                        <Link className={styles.linkP} href={`/contactUs`}><p>Contact Us</p></Link>
                         <br />
-                        <Link className={styles.linkP} href={`/`}><p>About Us</p></Link>
+                        <Link className={styles.linkP} href={`/aboutUs`}><p>About Us</p></Link>
                     </section>
                     <section className={styles.section}>
                         <Link className={styles.linkP} href={`/#${encodeURIComponent("products")}`}><p>Product</p></Link>

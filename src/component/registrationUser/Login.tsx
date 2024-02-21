@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import styles from './Register.module.scss';
+import styles from './Login.module.scss';
 import Image from 'next/image';
 import logo from '../../imageFolder/myDryFruitLogo-removebg-preview.png';
 import { useRouter } from 'next/navigation';
@@ -40,19 +40,17 @@ const LoginForm = () => {
                 Cookies.set('userId', data.data.userId, { expires: 1 });
                 showSuccessToast(data.message);
                 router.push('/');
+                setFormData({
+                    loginId: '',
+                    password: ''
+                });
             } else {
                 showErrorToast(data.message)
             }
 
         } catch (error) {
             console.error('Error registering:', error);
-        } finally {
-            setFormData({
-                loginId: '',
-                password: ''
-            });
         }
-        setFormData({ loginId: '', password: '' });
     };
 
     const handleReset = () => {
@@ -76,6 +74,7 @@ const LoginForm = () => {
                         <p className={styles.bodydetails}>Wholesaler of premium quality dryfruits in India and Abroad</p>
                     </div>
                 </div>
+                <button onClick={handleCancel} className={styles.cancelReg}>✖</button>
                 <div className={styles.registerName}>CUSTOMER LOGIN</div>
 
                 <div>

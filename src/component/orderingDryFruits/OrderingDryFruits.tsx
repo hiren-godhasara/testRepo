@@ -121,19 +121,41 @@ export const DryFruitSliderForOrder: React.FC<DryFruitSliderForOrderProps> = (pr
             setShouldRenderRegisterForm(true);
         }
     };
+    const [selectedImage, setSelectedImage] = useState(
+        props.data.imageUrl.length > 0 ? props.data.imageUrl[0].location : null
+    );
 
-
+    const handleImageClick = (imageUrl: any) => {
+        setSelectedImage(imageUrl);
+    };
     return (
-        // <div className={styles.mainDiv} >
         <div className={styles.mainDiv} style={shouldRenderRegisterForm ? { background: 'rgba(0, 0, 0, 0.6)' } : {}}>
-            <div className={styles.carousel}>
-                <Carousel slidesToShow={1} autoplay autoplaySpeed={4500} speed={2000} style={{ width: '475px', height: '600px', margin: '0 auto' }} >
-                    {props.data.imageUrl.map((image: any) => (
-                        <Image key={props.data._id} src={image.location} alt={`Image`} width={475} height={350} className={styles.image} />
+            <div className={styles.mainImg}>
+                <div className={styles.sideImg}>
+                    {props.data.imageUrl.map((image: any, index: any) => (
+                        <Image
+                            key={index}
+                            src={image.location}
+                            alt={`Image`}
+                            width={105}
+                            height={105}
+                            className={styles.image1}
+                            onMouseEnter={() => handleImageClick(image.location)}
+                        />
                     ))}
-                </Carousel>
+                </div>
+                <div className={styles.largeImageContainer}>
+                    {selectedImage && (
+                        <Image
+                            src={selectedImage}
+                            width={555}
+                            height={505}
+                            alt={`Large Image`}
+                            className={styles.largeImage}
+                        />
+                    )}
+                </div>
             </div>
-
             <div className={styles.description}>
                 <p className={styles.name}>{props.data.name}</p>
                 <p className={styles.des}>{props.data.productDescription}</p>

@@ -8,7 +8,6 @@ import { Carousel } from 'antd';
 import Detail from '../../component/allProductsSlider/AllProductsDescription';
 
 
-
 const AllProductSlider: React.FC = () => {
 
 
@@ -34,3 +33,5 @@ const AllProductSlider: React.FC = () => {
 };
 
 export default AllProductSlider;
+
+

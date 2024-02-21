@@ -6,6 +6,7 @@ import Header from '@/component/headerSection/Header';
 import CopyRight from '@/component/copyRight/CopyRight';
 import { useSearchParams } from 'next/navigation';
 import { getToken } from '@/getLocalStroageToken';
+import TagLine from '@/component/tagLine/TagLine';
 
 export interface Product {
     _id: any;
@@ -55,10 +56,10 @@ const Cart = () => {
 
     return (
         <div>
+            <TagLine />
             <div id='header'><Header /></div>
             {productDetails && <DryFruitSliderForOrder data={productDetails} />}
             <Footer />
-            <CopyRight />
         </div>
     );
 };
