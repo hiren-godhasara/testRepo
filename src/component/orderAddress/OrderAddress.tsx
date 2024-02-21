@@ -23,7 +23,7 @@ interface EditFormData {
     mobile: string;
     pincode: string;
     city: string;
-    addressLine: string;
+    addressLine1: string;
     state: string;
     country: string;
     addressType: string;
@@ -36,7 +36,7 @@ interface Address {
     mobile: string;
     pincode: string;
     city: string;
-    addressLine: string;
+    addressLine1: string;
     state: string;
     country: string;
     addressType: string;
@@ -109,7 +109,7 @@ const OrderAddresss = () => {
         mobile: '',
         pincode: '',
         city: '',
-        addressLine: '',
+        addressLine1: '',
         state: '',
         country: '',
         addressType: ''
@@ -122,7 +122,7 @@ const OrderAddresss = () => {
         mobile: '',
         pincode: '',
         city: '',
-        addressLine: '',
+        addressLine1: '',
         state: '',
         country: '',
         addressType: ''
@@ -136,7 +136,7 @@ const OrderAddresss = () => {
             mobile: '',
             pincode: '',
             city: '',
-            addressLine: '',
+            addressLine1: '',
             state: '',
             country: '',
             addressType: ''
@@ -153,7 +153,7 @@ const OrderAddresss = () => {
                 mobile: selectedAddress.mobile,
                 pincode: selectedAddress.pincode,
                 city: selectedAddress.city,
-                addressLine: selectedAddress.addressLine,
+                addressLine1: selectedAddress.addressLine1,
                 state: selectedAddress.state,
                 country: selectedAddress.country,
                 addressType: selectedAddress.addressType,
@@ -183,6 +183,7 @@ const OrderAddresss = () => {
     const handleEditSubmit = async (e: any) => {
         e.preventDefault();
         try {
+            setLoading(true)
             if (!editAddressId) {
                 console.error('No addressId found for edit.');
                 return;
@@ -204,6 +205,8 @@ const OrderAddresss = () => {
             }
         } catch (error: any) {
             console.error('Error updating form data:', error.message);
+        } finally {
+            setLoading(false)
         }
         fetchAddressData();
         setEditFormVisible(false);
@@ -287,7 +290,7 @@ const OrderAddresss = () => {
             mobile: '',
             pincode: '',
             city: '',
-            addressLine: '',
+            addressLine1: '',
             state: '',
             country: '',
             addressType: ''
@@ -305,7 +308,7 @@ const OrderAddresss = () => {
             mobile: '',
             pincode: '',
             city: '',
-            addressLine: '',
+            addressLine1: '',
             state: '',
             country: '',
             addressType: ''
@@ -644,7 +647,7 @@ const OrderAddresss = () => {
                                                 {e.firstName} {e.lastName}, Mo. {e.mobile}
                                             </p>
                                             <p className={styles.addressDetails}>
-                                                {e.addressLine}, {e.pincode}
+                                                {e.addressLine1}, {e.pincode}
                                             </p>
                                             <p className={styles.addressDetails}>
                                                 {e.city}, {e.state}, {e.country}
@@ -703,7 +706,7 @@ const OrderAddresss = () => {
                                         <div className={styles.row}>
                                             <div>
                                                 <label>Address:</label>
-                                                <textarea className={styles.addresses} name="addressLine" value={formData.addressLine} onChange={handleChange} required rows={2}></textarea>
+                                                <textarea className={styles.addresses} name="addressLine1" value={formData.addressLine1} onChange={handleChange} required rows={2}></textarea>
                                             </div>
                                         </div>
 
@@ -776,7 +779,7 @@ const OrderAddresss = () => {
                                         <div className={styles.row}>
                                             <div>
                                                 <label>Address:</label>
-                                                <textarea className={styles.addresses} name="addressLine" value={editFormData.addressLine} onChange={(e) => handleEditChange(e, true)} required rows={2}></textarea>
+                                                <textarea className={styles.addresses} name="addressLine1" value={editFormData.addressLine1} onChange={(e) => handleEditChange(e, true)} required rows={2}></textarea>
                                             </div>
                                         </div>
 
