@@ -1,3 +1,8 @@
+.mediumScreenHeader {
+    background-color: #FFFFFF;
+
+}
+
 .fixedHeader {
     position: fixed;
     top: 33px;
@@ -8,21 +13,87 @@
     box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
 }
 
-.navList {
-    list-style: none;
-    padding: 10px 0;
-    margin: 0;
-    display: flex;
-    gap: 40px
+.marginAuto {
+    margin: auto;
 }
 
-.number {
-    font-weight: 550;
-    letter-spacing: 0.20px;
-    text-decoration: none;
+.mediumScreenHeaderarea {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 4rem;
+    margin: 0 1rem;
+    gap: 10px;
+    position: relative;
+}
+
+.mediumScreenSectionOne {
     display: flex;
     align-items: center;
-    justify-content: center;
+}
+
+.mediumScreenSectionTwo {
+    display: flex;
+    margin-left: 10px;
+}
+
+.fullScreenHeader {
+    padding: 0 11rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.antDrawerBody {
+    color: black;
+    display: flex;
+    flex-direction: column;
+}
+
+.headerLinkWrapper {
+    color: black;
+    display: flex;
+    flex-direction: row;
+    gap: 3rem;
+}
+
+.headerLink:hover {
+    color: #144950;
+    text-decoration: underline;
+}
+
+.drawerMenuItems {
+    li {
+        line-height: 2rem;
+        padding: 0px 1rem;
+    }
+}
+
+.drawerMenuItems {
+    li:hover {
+        background-color: #FBD449;
+    }
+}
+
+.drawerLink:hover {
+    color: #144950;
+    background-color: #FBD449;
+}
+
+.headerButtonsWrapper {
+    display: flex;
+    gap: 1rem;
+}
+
+.antDrawerBtn {
+    margin-top: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+
+    .contactUsBtn {
+        width: 100%;
+    }
 }
 
 .link {
@@ -41,31 +112,20 @@
 .leftSection {
     display: flex;
     align-items: center;
-    width: 265px;
-    height: 80px;
     gap: 10px;
-
 }
 
-.leftSectionName {
+.drawerHeaderNameSection {
     color: #144950;
-    font-size: 27px;
+    font-size: 20px;
     font-weight: 900;
-}
-
-.header {
-    display: flex;
-    flex-grow: 1;
-    justify-content: space-evenly;
-    padding: 0 15px;
-    height: 80px;
-    align-items: center;
 }
 
 .rightSection {
     display: flex;
     align-items: center;
     gap: 15px;
+    margin-left: 15px;
 }
 
 .contactUsBtn {
@@ -114,18 +174,9 @@
     width: 100%;
 }
 
-.antDrawerBody {
-    margin-top: -10px;
-}
-
-.antDrawerBtn {
-    margin-top: 10px;
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-
-    .contactUsBtn {
-        width: 100%;
+.cartDropdownContent :hover {
+    button {
+        background-color: #FBD449;
     }
 }
 
@@ -135,38 +186,32 @@
     gap: 1rem;
 }
 
-.drawerMenuItems {
-    li {
-        line-height: 2rem;
-
-        Link {
-            font-size: 20px;
-        }
-    }
-}
-
-.btnWrapper {
-    width: 100%;
-}
-
 .cartItem {
-    color: #144950;
-    background-color: #FBD449;
-    width: 25px;
-    text-align: center;
-    border-radius: 40px;
-    font-size: 16px;
-    font-weight: 800;
+    // color: #144950;
+    // background-color: #FBD449;
+    // width: 25px;
+    // height: 25px;
+    // text-align: center;
+    // border-radius: 40px;
+    // font-size: 16px;
+    // font-weight: 800;
+    // position: relative;
+    // margin-top: -8px;
+    // margin-left: -18px;
+
+    // background: none;
     position: relative;
-    margin-top: -25px;
-    margin-left: -28px;
+    font-size: 12px;
+    margin-left: -23px;
+    margin-top: 0;
+    font-weight: bold;
+    color: #144950;
 }
 
 .cartDropdownContent {
     position: absolute;
-    top: 100%;
-    // right: 17rem;
-    // left: 73.5%;
+    top: 4rem;
+    right: 1rem;
     background-color: #fff;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     color: #144950;
@@ -191,64 +236,10 @@
     }
 }
 
-@media screen and (max-width :1450px) {
-    .header {
-        justify-content: space-between;
-    }
-
-    .cartDropdownContent {
-        right: 1.5rem;
-    }
-}
-
-@media screen and (max-width :1280px) {
-    .navList {
-        gap: 20px;
-    }
-
-    .header {
-        height: 58px;
-    }
-
-    .leftSection .image {
-        width: 50px;
-        height: 51px;
-    }
-
-    .leftSection {
-        display: flex;
-        align-items: center;
-        width: 200px;
-        height: 80px;
-        gap: 7px;
-    }
-
-    .leftSectionName {
-        color: #144950;
-        font-weight: 900
-    }
-
-    .rightSection {
-        gap: 11px;
-    }
-
-    .contactUsBtn {
-        width: 94px;
-        height: 36px;
-    }
-
-    // .cartItem {
-    //     color: #144950;
-    //     background-color: #FBD449;
-    //     width: 25px;
-    //     text-align: center;
-    //     border-radius: 40px;
-    //     font-size: 16px;
-    //     font-weight: 800;
-    //     position: relative;
-    //     top: -15px;
-    //     left: -250px;
-    // }
+.leftSectionName {
+    color: #144950;
+    font-size: 27px;
+    font-weight: 900
 }
 
 .contactUsBtn:hover {
@@ -260,4 +251,43 @@
 .Header_image__7m03y {
     width: 90px;
     height: 95px
+}
+
+@media screen and (max-width :1450px) {
+    .fullScreenHeader {
+        padding: 0 1rem;
+    }
+}
+
+@media screen and (max-width :1280px) {
+    .leftSection {
+        display: flex;
+        align-items: center;
+        height: 80px;
+        gap: 7px;
+    }
+
+    .headerLinkWrapper {
+        gap: 2rem;
+    }
+
+    .contactUsBtn {
+        width: 94px;
+        height: 36px;
+    }
+}
+
+@media screen and (max-width :1024px) {
+    .mediumScreenSectionOne {
+        position: absolute;
+        left: 50%;
+        transform: translate(-50%, 0);
+    }
+}
+
+@media screen and (max-width :600px) {
+    .mediumScreenSectionOne {
+        left: 40%;
+        transform: translate(-50%, 0);
+    }
 }
