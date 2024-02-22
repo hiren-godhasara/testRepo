@@ -18,7 +18,9 @@ const RegisterForm = () => {
         password: ''
     });
 
-    const returnUrl = localStorage.getItem('returnURL')
+    // const returnUrl = localStorage.getItem('returnURL')
+    const returnUrl = typeof window !== 'undefined' ? localStorage.getItem('returnURL') : null;
+
 
     const handleChange = (e: any) => {
         const { name, value } = e.target;
