@@ -8,6 +8,7 @@ import emptyCart from '../../imageFolder/emptyCart1-removebg-preview.png'
 import { getToken } from '@/getLocalStroageToken';
 import useTokenExpiration from '@/userTokenExpiration';
 import { Spin } from 'antd';
+import Loader from '../AaLoader/Loader';
 
 
 interface Product {
@@ -37,8 +38,11 @@ const CartList: React.FC = () => {
     const userId = getUserId();
     const token = getToken()
     useTokenExpiration(token);
+    const [loading, setLoading] = useState(true);
+
 
     const fetchCartData = () => {
+        setLoading(true)
         fetch(`${process.env.BASE_URL}/s/cartProduct/cartProductList/${userId}`, {
             method: 'POST',
             headers: {
@@ -58,14 +62,15 @@ const CartList: React.FC = () => {
             })
             .catch(error => {
                 console.error('There was a problem fetching the data:', error);
+            })
+            .finally(() => {
+                setLoading(false)
             });
     };
 
     useEffect(() => {
         fetchCartData();
     }, []);
-
-
 
     const handleQuantityChange = (index: number, newQuantity: number) => {
         if (productDetails) {
@@ -74,8 +79,6 @@ const CartList: React.FC = () => {
             setProductDetails({ ...productDetails, productList: updatedProductList });
         }
     };
-
-
 
     const UpdateCartData = (cartProductId: any, qty: number) => {
         fetch(`${process.env.BASE_URL}/s/cartProduct/${cartProductId}`, {
@@ -164,19 +167,14 @@ const CartList: React.FC = () => {
         router.push('/login')
     }
 
-    const [loading, setLoading] = useState(true);
-    useEffect(() => {
-        setTimeout(() => {
-            setLoading(false);
-        }, 1000);
-    }, []);
 
     return (
         <div className={styles.cardContainer}>
             <p>Cart List</p>
             {loading ? (
                 <div className={styles.loaderContainer}>
-                    <Spin size="large" />
+                    {/* <Spin size="large" /> */}
+                    <Loader />
                 </div>
             ) : (
                 <>

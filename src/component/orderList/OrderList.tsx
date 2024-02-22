@@ -6,6 +6,7 @@ import { getToken } from '@/getLocalStroageToken';
 import { useRouter } from 'next/navigation';
 import { Spin } from 'antd';
 import emptyCart from '../../imageFolder/emptyCart1-removebg-preview.png'
+import Loader from '../AaLoader/Loader';
 
 interface OrderData {
     productList: any;
@@ -28,6 +29,7 @@ const OrderList = () => {
 
 
     const fetchAddressData = () => {
+        setLoading(true);
         fetch(`${process.env.BASE_URL}/s/order/orderList/${userId}`, {
             method: 'POST',
             headers: {
@@ -45,10 +47,14 @@ const OrderList = () => {
             .then(data => {
                 setUserList(data.data.userData)
                 setOrderList(data.data.orderListData)
+                setLoading(false);
+
 
             })
             .catch(error => {
                 console.error('There was a problem fetching the data:', error);
+            }).finally(() => {
+                setLoading(false);
             });
     };
 
@@ -56,13 +62,8 @@ const OrderList = () => {
         fetchAddressData();
     }, []);
 
-
-    useEffect(() => {
-        setTimeout(() => {
-            setLoading(false);
-        }, 1000);
-    }, []);
     const reversedOrderList = [...orderList].reverse();
+
     const OnShopBtn = () => {
         router.push('/#products')
     }
@@ -75,7 +76,8 @@ const OrderList = () => {
         <div className={styles.CenteredContainer}>
             {loading ? (
                 <div className={styles.loaderContainer}>
-                    <Spin size="large" />
+                    {/* <Spin size="large" /> */}
+                    <Loader />
                 </div>
             ) : (
                 <>
@@ -86,13 +88,14 @@ const OrderList = () => {
                             <div className={styles.addressCard} key={e._id}>
                                 <div className={styles.row1}>
                                     <p>ORDER No : <strong> {e.orderNumber}</strong></p>
+                                    <p>Order Date : <strong> {new Date(e.createdAt).toLocaleDateString('en-GB')}</strong></p>
                                     <p>ORDER Status : <strong style={{ color: 'green' }}>{e.status.toUpperCase()}</strong></p>
                                     <p>Total Order Value : <strong> {e.totalOrderValue} INR</strong></p>
                                 </div>
 
                                 <div className={styles.row2}>
-                                    <p>Shipping Address : {e.shippingAddressId.addressLine},{e.shippingAddressId.city}-{e.shippingAddressId.pincode},{e.shippingAddressId.state},{e.shippingAddressId.country}</p>
-                                    <p>Billing Address : {e.billingAddressId.addressLine},{e.billingAddressId.city}-{e.billingAddressId.pincode},{e.billingAddressId.state},{e.billingAddressId.country}</p>
+                                    <p><strong>Shipping Address</strong> : {e.shippingAddressId.addressLine},{e.shippingAddressId.city}-{e.shippingAddressId.pincode},{e.shippingAddressId.state},{e.shippingAddressId.country}</p>
+                                    <p><strong>Billing Address</strong> : {e.billingAddressId.addressLine},{e.billingAddressId.city}-{e.billingAddressId.pincode},{e.billingAddressId.state},{e.billingAddressId.country}</p>
                                 </div>
 
                                 <div className={styles.payment}>Payment Method : <strong> UPI Payment</strong></div>
@@ -125,6 +128,7 @@ const OrderList = () => {
                                     </div>
 
                                     <div className={styles.rows}>
+
                                         <p className={styles.head}>Order Summary</p>
 
                                         <div className={styles.value}>
@@ -148,31 +152,32 @@ const OrderList = () => {
                         ))}
                     </div>
 
-                </>
-            )}
 
-            {!reversedOrderList.length &&
-                <div className={styles.shoppingCartMainContainer}>
-                    <div className={styles.shoppingCartWrapper}>
-                        <Image
-                            src={emptyCart}
-                            alt='Empty Shopping Bag'
-                            // width='256'
-                            // height='256'
-                            className={styles.image}
-                        ></Image>
-                        <div>
-                            <div className={styles.heading}>Shopping Cart</div>
-                            <div className={styles.emptyCard}>Your Cart Is Currently Empty.</div>
 
-                            <div className={styles.btns}>
-                                {!token && <button onClick={OnSignInBtn} className={styles.btn}>SIGN IN</button>}
-                                <button onClick={OnShopBtn} className={styles.btn}>Return To Shop</button>
+                    {!reversedOrderList.length &&
+                        <div className={styles.shoppingCartMainContainer}>
+                            <div className={styles.shoppingCartWrapper}>
+                                <Image
+                                    src={emptyCart}
+                                    alt='Empty Shopping Bag'
+                                    // width='256'
+                                    // height='256'
+                                    className={styles.image}
+                                ></Image>
+                                <div>
+                                    <div className={styles.heading}>Shopping Cart</div>
+                                    <div className={styles.emptyCard}>Your Cart Is Currently Empty.</div>
+
+                                    <div className={styles.btns}>
+                                        {!token && <button onClick={OnSignInBtn} className={styles.btn}>SIGN IN</button>}
+                                        <button onClick={OnShopBtn} className={styles.btn}>Return To Shop</button>
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                </div>
-            }
+                    }
+                </>
+            )}
         </div >
 
 

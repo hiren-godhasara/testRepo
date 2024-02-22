@@ -27,15 +27,16 @@ const Cart = () => {
     const [productDetails, setProductDetails] = useState<Product | null>(null);
     const paramId = useSearchParams().get('id');
     const token = getToken()
+
+
+    var productIdFromLocal = localStorage.getItem('productId');
     useEffect(() => {
         getProductDetails();
-    }, [paramId]);
-
+    }, [productIdFromLocal]);
     const getProductDetails = async () => {
-        if (!paramId) return; // If paramId is not available, exit function
-
+        if (!productIdFromLocal) return;
         try {
-            const response = await fetch(`${process.env.BASE_URL}/s/product/${paramId}`, {
+            const response = await fetch(`${process.env.BASE_URL}/s/product/${productIdFromLocal}`, {
                 method: 'GET',
                 headers: {
                     'Content-Type': 'application/json',

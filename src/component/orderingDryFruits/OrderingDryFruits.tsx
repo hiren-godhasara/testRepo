@@ -13,6 +13,7 @@ import emptyCart from '../../imageFolder/emptyCart1-removebg-preview.png'
 import useTokenExpiration from '@/userTokenExpiration';
 import { ToastNotifications, showSuccessToast, showErrorToast } from '../../toastNotifications'
 import NewLoginForm from '../registrationUser/NewLogin';
+import Loader from '../AaLoader/Loader';
 
 interface DryFruitSliderForOrderProps {
     data: Product | any;
@@ -26,6 +27,7 @@ export const DryFruitSliderForOrder: React.FC<DryFruitSliderForOrderProps> = (pr
     const [totalQuantity, setTotalQuantity] = useState<number>(0);
     const params = useSearchParams().get('id')
     const [id, setId] = useState('')
+    const [loading, setLoading] = useState(true)
 
     const token = getToken();
     const userId = getUserId();
@@ -46,11 +48,14 @@ export const DryFruitSliderForOrder: React.FC<DryFruitSliderForOrderProps> = (pr
     const total = price * quantity;
     const roundedTotal = total.toFixed(2);
 
+    var productIdFromLocal = localStorage.getItem('productId');
+
+
     const addToCart = () => {
 
         const productData = {
             userId: userId,
-            productId: params,
+            productId: productIdFromLocal,
             qty: quantity,
             token: token,
             // discount: 10
@@ -97,7 +102,7 @@ export const DryFruitSliderForOrder: React.FC<DryFruitSliderForOrderProps> = (pr
         console.log(token);
         if (token) {
             handleAddToCart();
-            router.push('/cartList')
+            router.push('/cart')
         } else {
             setShouldRenderRegisterForm(true);
         }
@@ -129,7 +134,6 @@ export const DryFruitSliderForOrder: React.FC<DryFruitSliderForOrderProps> = (pr
         setSelectedImage(imageUrl);
     };
 
-    const [loading, setLoading] = useState(true);
     useEffect(() => {
         setTimeout(() => {
             setLoading(false);
@@ -142,7 +146,8 @@ export const DryFruitSliderForOrder: React.FC<DryFruitSliderForOrderProps> = (pr
         <div className={styles.mainDiv} style={shouldRenderRegisterForm ? { background: 'rgba(0, 0, 0, 0.6)' } : {}}>
             {loading ? (
                 <div className={styles.loaderContainer}>
-                    <Spin size="large" />
+                    {/* <Spin size="large" /> */}
+                    <Loader />
                 </div>
             ) : (
                 <>

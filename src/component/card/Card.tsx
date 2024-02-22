@@ -10,6 +10,7 @@ import i from '../../imageFolder/SAVE_20240209_093303 (1).jpg'
 import i1 from '../../imageFolder/SAVE_20240209_093303 (2).jpg'
 import { Spin } from 'antd';
 import { LoadingOutlined } from '@ant-design/icons';
+import Loader from '../AaLoader/Loader';
 interface Product {
     mrp: any;
     _id: any;
@@ -60,12 +61,14 @@ const Card = () => {
             });
     }, []);
 
-    const onBtnClick = (id: number, displayname: string) => {
+    const onBtnClick = (id: any, displayname: string) => {
         setIsLoading(true);
-        setTimeout(() => {
-            router.push(`/products/${displayname}?id=${id}`);
-            setIsLoading(false);
-        }, 1000);
+        // setTimeout(() => {
+        // router.push(`/products/${displayname}?id=${id}`);
+        localStorage.setItem('productId', id);
+        router.push(`/products/${displayname}`);
+        setIsLoading(false);
+        // }, 1000);
     };
     const [hoveredCard, setHoveredCard] = useState(null);
 
@@ -83,7 +86,8 @@ const Card = () => {
             {isLoading && (
                 <div className={styles.overlay}>
                     <div className={styles.loader}>
-                        <Spin size="large" />
+                        {/* <Spin size="large" /> */}
+                        <Loader />
                     </div>
                 </div>
             )}
