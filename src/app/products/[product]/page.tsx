@@ -57,7 +57,7 @@ const Cart = () => {
 
     return (
         <div>
-            <TagLine />
+            {/* <TagLine /> */}
             <Header />
             {productDetails && <DryFruitSliderForOrder data={productDetails} />}
             <Footer />

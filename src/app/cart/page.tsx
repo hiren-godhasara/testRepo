@@ -9,7 +9,6 @@ import TagLine from '@/component/tagLine/TagLine';
 export default function CartLists() {
     return (
         <div>
-            <TagLine />
             <Header />
             <CartList />
             <Footer />
