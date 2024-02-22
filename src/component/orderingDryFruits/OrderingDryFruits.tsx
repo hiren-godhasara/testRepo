@@ -142,17 +142,15 @@ export const DryFruitSliderForOrder: React.FC<DryFruitSliderForOrderProps> = (pr
 
 
     return (
-
-        <div className={styles.mainDiv} style={shouldRenderRegisterForm ? { background: 'rgba(0, 0, 0, 0.6)' } : {}}>
+        <>
             {loading ? (
                 <div className={styles.loaderContainer}>
-                    {/* <Spin size="large" /> */}
                     <Loader />
                 </div>
             ) : (
-                <>
+                <div className={styles.mainDiv} style={shouldRenderRegisterForm ? { filter: "blur(2px)", pointerEvents: 'none' } : {}}>
 
-                    <div className={styles.mainImg}>
+                    <div className={styles.mainImg} >
                         <div className={styles.sideImg}>
                             {props.data.imageUrl.map((image: any, index: any) => (
                                 <Image
@@ -161,7 +159,8 @@ export const DryFruitSliderForOrder: React.FC<DryFruitSliderForOrderProps> = (pr
                                     alt={`Image`}
                                     width={105}
                                     height={105}
-                                    className={styles.image1}
+                                    // className={styles.image1}
+                                    className={`${styles.image1} ${shouldRenderRegisterForm ? styles.blurImage : ''}`}
                                     onMouseEnter={() => handleImageClick(image.location)}
                                 />
                             ))}
@@ -173,7 +172,8 @@ export const DryFruitSliderForOrder: React.FC<DryFruitSliderForOrderProps> = (pr
                                     width={555}
                                     height={505}
                                     alt={`Large Image`}
-                                    className={styles.largeImage}
+                                    className={`${styles.largeImage} ${shouldRenderRegisterForm ? styles.blurImage : ''}`}
+                                // className={styles.largeImage}
                                 />
                             )}
                         </div>
@@ -201,13 +201,13 @@ export const DryFruitSliderForOrder: React.FC<DryFruitSliderForOrderProps> = (pr
                         </div>
                     </div>
 
-                    <div className={styles.reg}>
-                        {shouldRenderRegisterForm && <NewLoginForm />}
-                    </div>
-                    <ToastNotifications />
-                </>
+                </div>
             )}
-        </div>
+            <div className={styles.reg}>
+                {shouldRenderRegisterForm && <NewLoginForm />}
+            </div>
+            <ToastNotifications />
+        </>
     );
 };
 

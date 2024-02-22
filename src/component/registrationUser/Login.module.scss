@@ -12,9 +12,8 @@
         max-width: 500px;
         padding: 20px;
         border: 1px solid #ccc;
-        background-color: rgb(255, 255, 255);
-
-        border-radius: 5px;
+        background-color: #144950;
+        border-radius: 8px;
 
         div {
             margin-bottom: 10px;
@@ -22,7 +21,8 @@
             label {
                 display: block;
                 margin-bottom: 5px;
-                font-weight: bold;
+                margin-top: 30px;
+                color: #FBD449;
             }
 
             input {
@@ -35,8 +35,8 @@
         }
 
         button {
-            color: #FBD449;
-            background-color: #144249;
+            color: #144950;
+            background-color: white;
             font-weight: 700;
             padding: 10px 20px;
             border: none;
@@ -44,7 +44,7 @@
             cursor: pointer;
             margin-right: 10px;
             margin-top: 40px;
-            transition: background-color 0.6s, color 0.6s;
+            transition: background-color 0.3s, color 0.3s;
 
             &:last-child {
                 margin-right: 0;
@@ -53,7 +53,7 @@
 
         button:hover {
             background-color: #FBD449;
-            color: #144249;
+            color: #144950;
         }
 
     }
@@ -71,37 +71,45 @@
 }
 
 .headerdetails {
-    font-size: 18px;
+    margin-left: 10px;
+    font-size: 22px;
     font-weight: 700;
-    color: #144249;
+    color: #FBD449;
 }
 
 .registerName {
-    margin-top: -100px;
+    font-size: 28px;
+    margin-top: -80px;
     text-align: center;
+    font-weight: 700;
+    color: white;
 }
 
 .link {
     margin-bottom: -15px;
-    margin-top: 85px;
+    margin-top: 35px;
     font-size: 14px;
     display: flex;
     justify-content: center;
     align-items: center;
     text-decoration: none;
-    color: black;
+    color: white;
 }
 
 .cancelReg {
     position: relative;
-    top: -150px;
+    top: -125px;
     margin-left: 340px;
-    color: black !important;
+    color: white !important;
     background-color: transparent !important;
 }
 
+.cancelReg:hover {
+    color: #FBD449 !important;
+}
+
 .span {
-    color: blue;
+    color: #FBD449;
     text-decoration: underline;
     cursor: pointer;
 }
@@ -114,12 +122,9 @@
             width: 360px;
             height: 500px;
             border: 1px solid #ccc;
-            background-color: rgb(255, 255, 255);
 
 
             button {
-                color: #FBD449;
-                background-color: #144950;
                 font-weight: 600;
                 padding: 10px 20px;
                 border: none;
@@ -151,7 +156,7 @@
 
         .cancelReg {
             position: relative;
-            top: -120px;
+            top: -90px;
             margin-left: 280px;
 
         }
@@ -164,7 +169,7 @@
         .bodydetails {
             font-size: 14px;
             font-weight: 400;
-            color: #144249;
+            color: #144950;
         }
 
 
