@@ -79,6 +79,9 @@
 
 .reg {
     position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }
 
 .cancel {
@@ -126,4 +129,8 @@
     align-items: center;
     justify-content: center;
     height: 50vh;
+}
+
+.blurImage {
+    filter: blur(2px);
 }

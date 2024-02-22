@@ -140,7 +140,7 @@ const Header = () => {
 
                         {token &&
                             <div className={styles.mediumScreenSectionTwo}>
-                                <Link href='/cartList'>
+                                <Link href='/cart'>
                                     {/* <Image src={cartIcon} width={35} height={35} alt='Cart list' title='Cart List' className={styles.cartIcon} /> */}
                                     <Image src={cart} width={38} height={38} alt='Cart list' title='Cart List' />
                                 </Link>
@@ -217,7 +217,7 @@ const Header = () => {
                         }
                         {token &&
                             <div className={styles.mediumScreenSectionTwo}>
-                                <Link href='/cartList'>
+                                <Link href='/cart'>
                                     <Image src={cart} width={38} height={40} alt='Cart list' title='Cart List' />
                                 </Link>
                                 {productDetails && <p className={styles.cartItem}>{productDetails}</p>}

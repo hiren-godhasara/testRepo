@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import styles from './Register.module.scss';
 import Image from 'next/image';
-import logo from '../../imageFolder/myDryFruitLogo-removebg-preview.png'
+import logo from '../../imageFolder/mdfLogo.png'
 import { useRouter } from 'next/navigation';
 import { ToastNotifications, showSuccessToast, showErrorToast } from '../../toastNotifications'
 import Cookies from 'js-cookie';
@@ -86,14 +86,11 @@ const RegisterForm = () => {
 
             <form onSubmit={handleSubmit}>
                 <div className={styles.companydetails}>
-                    <Image src={logo} alt={`Company logo`} width={100} height={100} />
-                    <div className={styles.details}>
-                        <p className={styles.headerdetails}>MYDRYFRUIT</p>
-                        <p className={styles.bodydetails}>Wholesaler of premium quality dryfruits in India and Abroad</p>
-                    </div>
+                    <Image src={logo} alt={`Company logo`} width={60} height={60} />
+                    <p className={styles.headerdetails}>MYDRYFRUIT</p>
                 </div>
                 <button onClick={handleCancel} className={styles.cancelReg}>✖</button>
-                <div className={styles.registerName}>NEW CUSTOMER REGISTRATION</div>
+                <div className={styles.registerName}>Registration</div>
                 <div>
                     <label>First Name:</label>
                     <input type="text" name="firstName" value={formData.firstName} onChange={handleChange} required />
