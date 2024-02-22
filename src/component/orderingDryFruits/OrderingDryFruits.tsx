@@ -13,7 +13,7 @@ import emptyCart from '../../imageFolder/emptyCart1-removebg-preview.png'
 import useTokenExpiration from '@/userTokenExpiration';
 import { ToastNotifications, showSuccessToast, showErrorToast } from '../../toastNotifications'
 import NewLoginForm from '../registrationUser/NewLogin';
-import Loader from '../AaLoader/Loader';
+import Loader from '../loader/Loader';
 
 interface DryFruitSliderForOrderProps {
     data: Product | any;

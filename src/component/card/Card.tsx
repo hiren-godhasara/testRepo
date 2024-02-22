@@ -10,7 +10,7 @@ import i from '../../imageFolder/SAVE_20240209_093303 (1).jpg'
 import i1 from '../../imageFolder/SAVE_20240209_093303 (2).jpg'
 import { Spin } from 'antd';
 import { LoadingOutlined } from '@ant-design/icons';
-import Loader from '../AaLoader/Loader';
+import Loader from '../loader/Loader';
 interface Product {
     mrp: any;
     _id: any;
