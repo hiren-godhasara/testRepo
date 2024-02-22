@@ -6,6 +6,7 @@ import { useRouter, useSearchParams } from 'next/navigation';
 import Cookies from 'js-cookie';
 import Link from 'next/link';
 import { ToastNotifications, showSuccessToast, showErrorToast } from '../../toastNotifications'
+import { usePathname } from 'next/navigation'
 
 
 const NewLoginForm = () => {
@@ -15,6 +16,10 @@ const NewLoginForm = () => {
         loginId: '',
         password: ''
     });
+
+    // const [returnURL, setReturnURL] = useState<any>('')
+
+    const pathname = usePathname()
 
     const handleChange = (e: any) => {
         const { name, value } = e.target;
@@ -73,6 +78,11 @@ const NewLoginForm = () => {
 
     const inputType = formData.loginId.includes('@') ? 'email' : 'tel';
 
+    const handleLinkClick = () => {
+        localStorage.setItem('returnURL', pathname);
+    };
+
+
     return formVisible ? (
         <div className={styles.register}>
             <form onSubmit={handleSubmit}>
@@ -100,7 +110,7 @@ const NewLoginForm = () => {
                     <button type="submit">Log In</button>
                     <button type="button" onClick={handleCloseForm}>Close</button>
                 </div>
-                <Link className={styles.link} href='/registration'>  New to mydryfruit  ?<span className={styles.span}> Create an account </span></Link>
+                <Link onClick={handleLinkClick} className={styles.link} href='/registration'>  New to mydryfruit  ?<span className={styles.span}> Create an account </span></Link>
             </form>
             <ToastNotifications />
         </div>

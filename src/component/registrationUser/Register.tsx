@@ -18,6 +18,8 @@ const RegisterForm = () => {
         password: ''
     });
 
+    const returnUrl = localStorage.getItem('returnURL')
+
     const handleChange = (e: any) => {
         const { name, value } = e.target;
         setFormData(prevState => ({
@@ -53,7 +55,12 @@ const RegisterForm = () => {
                     });
                     Cookies.set('token', data.data.token, { expires: 1 });
                     Cookies.set('userId', data.data.userId, { expires: 1 });
-                    router.push('/');
+                    if (returnUrl) {
+                        router.push(returnUrl);
+                        localStorage.removeItem('returnURL')
+                    } else {
+                        router.push('/');
+                    }
                 } else {
                     const data = await response.json();
                     console.log(data);
@@ -117,7 +124,7 @@ const RegisterForm = () => {
                 </div>
                 <div className={styles.btns}>
                     <button type="submit" onClick={handleSubmit}>Submit</button>
-                    <button type="button" onClick={handleReset}>Reset</button>
+                    {/* <button type="button" onClick={handleReset}>Reset</button> */}
                 </div>
             </form>
             <ToastNotifications />
