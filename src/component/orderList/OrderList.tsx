@@ -6,7 +6,7 @@ import { getToken } from '@/getLocalStroageToken';
 import { useRouter } from 'next/navigation';
 import { Spin } from 'antd';
 import emptyCart from '../../imageFolder/emptyCart1-removebg-preview.png'
-import Loader from '../AaLoader/Loader';
+import Loader from '../loader/Loader';
 
 interface OrderData {
     productList: any;

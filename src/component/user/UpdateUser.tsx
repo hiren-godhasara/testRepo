@@ -6,7 +6,7 @@ import { useRouter } from 'next/navigation';
 import { getUserId } from '@/getLocalStroageUserId';
 import { getToken } from '@/getLocalStroageToken';
 import { Spin } from 'antd';
-import Loader from '../AaLoader/Loader';
+import Loader from '../loader/Loader';
 
 const UpdateUser = ({ userDetails, onClose, onFormSubmit }: any) => {
     const router = useRouter();

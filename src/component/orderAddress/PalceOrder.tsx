@@ -11,7 +11,7 @@ import useTokenExpiration from '@/userTokenExpiration';
 import { headerCompanyLogo } from '@/S3Images/S3Images';
 import { ToastNotifications, showSuccessToast, showErrorToast } from '../../toastNotifications'
 import { Spin } from 'antd';
-import Loader from '../AaLoader/Loader';
+import Loader from '../loader/Loader';
 
 
 declare global {
