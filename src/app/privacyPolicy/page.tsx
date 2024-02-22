@@ -10,7 +10,7 @@ import React from 'react';
 export default function Cart() {
     return (
         <div>
-            <TagLine />
+            {/* <TagLine /> */}
             <Header />
             <PrivacyPolicy />
             <Footer />

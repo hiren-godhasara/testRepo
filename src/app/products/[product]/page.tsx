@@ -56,8 +56,8 @@ const Cart = () => {
 
     return (
         <div>
-            <TagLine />
-            <div id='header'><Header /></div>
+            {/* <TagLine /> */}
+            <Header />
             {productDetails && <DryFruitSliderForOrder data={productDetails} />}
             <Footer />
         </div>

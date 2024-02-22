@@ -1,8 +1,5 @@
 .header {
     background-color: #FFFFFF;
-    position: sticky;
-    top: 25px;
-    z-index: 2;
 }
 
 .fixedHeader {
@@ -107,6 +104,12 @@
     transition: color 0.5s ease, text-decoration 0.5s ease;
 }
 
+.mainHeaderWrapper {
+    position: sticky;
+    top: 0;
+    z-index: 2;
+}
+
 .link:hover {
     color: #144950;
     text-decoration: underline;
@@ -119,6 +122,7 @@
 }
 
 .drawerHeaderNameSection {
+    margin-right: 4rem;
     color: #144950;
     font-size: 20px;
     font-weight: 900;
@@ -214,7 +218,6 @@
 
 .cartDropdownContent {
     position: absolute;
-    top: 4rem;
     right: 1rem;
     background-color: #fff;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -291,7 +294,7 @@
 
 @media screen and (max-width :600px) {
     .mediumScreenSectionOne {
-        left: 40%;
+        left: 50%;
         transform: translate(-50%, 0);
     }
 }
