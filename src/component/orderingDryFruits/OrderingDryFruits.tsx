@@ -14,7 +14,7 @@ import useTokenExpiration from '@/userTokenExpiration';
 import { ToastNotifications, showSuccessToast, showErrorToast } from '../../toastNotifications'
 import NewLoginForm from '../registrationUser/NewLogin';
 import Loader from '../loader/Loader';
-
+// import { usePathname } from 'next/navigation'
 interface DryFruitSliderForOrderProps {
     data: Product | any;
 }
@@ -31,6 +31,8 @@ export const DryFruitSliderForOrder: React.FC<DryFruitSliderForOrderProps> = (pr
 
     const token = getToken();
     const userId = getUserId();
+
+    // const pathname = usePathname()
 
 
     useTokenExpiration(token);
@@ -104,6 +106,7 @@ export const DryFruitSliderForOrder: React.FC<DryFruitSliderForOrderProps> = (pr
             handleAddToCart();
             router.push('/cart')
         } else {
+            // localStorage.setItem('returnURL', pathname);
             setShouldRenderRegisterForm(true);
         }
     };
