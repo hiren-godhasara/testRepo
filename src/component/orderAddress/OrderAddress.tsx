@@ -10,6 +10,7 @@ import useTokenExpiration from '@/userTokenExpiration';
 import { headerCompanyLogo } from '@/S3Images/S3Images';
 import { ToastNotifications, showSuccessToast, showErrorToast } from '../../toastNotifications'
 import { Spin } from 'antd';
+import Loader from '../AaLoader/Loader';
 
 
 declare global {
@@ -623,7 +624,8 @@ const OrderAddresss = () => {
         <div className={styles.CenteredContainer}>
             {loading ? (
                 <div className={styles.loaderContainer}>
-                    <Spin size="large" />
+                    {/* <Spin size="large" /> */}
+                    <Loader />
                 </div>
             ) : (
                 <>

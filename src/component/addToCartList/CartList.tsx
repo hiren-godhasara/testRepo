@@ -8,6 +8,7 @@ import emptyCart from '../../imageFolder/emptyCart1-removebg-preview.png'
 import { getToken } from '@/getLocalStroageToken';
 import useTokenExpiration from '@/userTokenExpiration';
 import { Spin } from 'antd';
+import Loader from '../AaLoader/Loader';
 
 
 interface Product {
@@ -172,7 +173,8 @@ const CartList: React.FC = () => {
             <p>Cart List</p>
             {loading ? (
                 <div className={styles.loaderContainer}>
-                    <Spin size="large" />
+                    {/* <Spin size="large" /> */}
+                    <Loader />
                 </div>
             ) : (
                 <>
