@@ -6,6 +6,7 @@ import { useRouter } from 'next/navigation';
 import { getUserId } from '@/getLocalStroageUserId';
 import { getToken } from '@/getLocalStroageToken';
 import { Spin } from 'antd';
+import Loader from '../AaLoader/Loader';
 
 const UpdateUser = ({ userDetails, onClose, onFormSubmit }: any) => {
     const router = useRouter();
@@ -78,7 +79,8 @@ const UpdateUser = ({ userDetails, onClose, onFormSubmit }: any) => {
         <div className={styles.register}>
             {loading ? (
                 <div className={styles.loaderContainer}>
-                    <Spin size="large" />
+                    {/* <Spin size="large" /> */}
+                    <Loader />
                 </div>
             ) : (
                 <>

@@ -6,6 +6,7 @@ import { getToken } from '@/getLocalStroageToken';
 import { useRouter } from 'next/navigation';
 import { Spin } from 'antd';
 import emptyCart from '../../imageFolder/emptyCart1-removebg-preview.png'
+import Loader from '../AaLoader/Loader';
 
 interface OrderData {
     productList: any;
@@ -75,7 +76,8 @@ const OrderList = () => {
         <div className={styles.CenteredContainer}>
             {loading ? (
                 <div className={styles.loaderContainer}>
-                    <Spin size="large" />
+                    {/* <Spin size="large" /> */}
+                    <Loader />
                 </div>
             ) : (
                 <>
