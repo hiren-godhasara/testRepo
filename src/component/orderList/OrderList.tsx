@@ -86,13 +86,14 @@ const OrderList = () => {
                             <div className={styles.addressCard} key={e._id}>
                                 <div className={styles.row1}>
                                     <p>ORDER No : <strong> {e.orderNumber}</strong></p>
+                                    <p>Order Date : <strong> {new Date(e.createdAt).toLocaleDateString('en-GB')}</strong></p>
                                     <p>ORDER Status : <strong style={{ color: 'green' }}>{e.status.toUpperCase()}</strong></p>
                                     <p>Total Order Value : <strong> {e.totalOrderValue} INR</strong></p>
                                 </div>
 
                                 <div className={styles.row2}>
-                                    <p>Shipping Address : {e.shippingAddressId.addressLine},{e.shippingAddressId.city}-{e.shippingAddressId.pincode},{e.shippingAddressId.state},{e.shippingAddressId.country}</p>
-                                    <p>Billing Address : {e.billingAddressId.addressLine},{e.billingAddressId.city}-{e.billingAddressId.pincode},{e.billingAddressId.state},{e.billingAddressId.country}</p>
+                                    <p><strong>Shipping Address</strong> : {e.shippingAddressId.addressLine},{e.shippingAddressId.city}-{e.shippingAddressId.pincode},{e.shippingAddressId.state},{e.shippingAddressId.country}</p>
+                                    <p><strong>Billing Address</strong> : {e.billingAddressId.addressLine},{e.billingAddressId.city}-{e.billingAddressId.pincode},{e.billingAddressId.state},{e.billingAddressId.country}</p>
                                 </div>
 
                                 <div className={styles.payment}>Payment Method : <strong> UPI Payment</strong></div>
@@ -125,6 +126,7 @@ const OrderList = () => {
                                     </div>
 
                                     <div className={styles.rows}>
+
                                         <p className={styles.head}>Order Summary</p>
 
                                         <div className={styles.value}>

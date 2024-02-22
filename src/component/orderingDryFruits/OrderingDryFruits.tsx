@@ -26,6 +26,7 @@ export const DryFruitSliderForOrder: React.FC<DryFruitSliderForOrderProps> = (pr
     const [totalQuantity, setTotalQuantity] = useState<number>(0);
     const params = useSearchParams().get('id')
     const [id, setId] = useState('')
+    const [loading, setLoading] = useState(true)
 
     const token = getToken();
     const userId = getUserId();
@@ -129,79 +130,78 @@ export const DryFruitSliderForOrder: React.FC<DryFruitSliderForOrderProps> = (pr
         setSelectedImage(imageUrl);
     };
 
-    const [loading, setLoading] = useState(true);
-    // useEffect(() => {
-    //     setTimeout(() => {
-    //         setLoading(false);
-    //     }, 1000);
-    // }, []);
+    useEffect(() => {
+        setTimeout(() => {
+            setLoading(false);
+        }, 1000);
+    }, []);
 
 
     return (
 
         <div className={styles.mainDiv} style={shouldRenderRegisterForm ? { background: 'rgba(0, 0, 0, 0.6)' } : {}}>
-            {/* {loading ? (
+            {loading ? (
                 <div className={styles.loaderContainer}>
                     <Spin size="large" />
                 </div>
-            ) : ( */}
-            <>
+            ) : (
+                <>
 
-                <div className={styles.mainImg}>
-                    <div className={styles.sideImg}>
-                        {props.data.imageUrl.map((image: any, index: any) => (
-                            <Image
-                                key={index}
-                                src={image.location}
-                                alt={`Image`}
-                                width={105}
-                                height={105}
-                                className={styles.image1}
-                                onMouseEnter={() => handleImageClick(image.location)}
-                            />
-                        ))}
+                    <div className={styles.mainImg}>
+                        <div className={styles.sideImg}>
+                            {props.data.imageUrl.map((image: any, index: any) => (
+                                <Image
+                                    key={index}
+                                    src={image.location}
+                                    alt={`Image`}
+                                    width={105}
+                                    height={105}
+                                    className={styles.image1}
+                                    onMouseEnter={() => handleImageClick(image.location)}
+                                />
+                            ))}
+                        </div>
+                        <div className={styles.largeImageContainer}>
+                            {selectedImage && (
+                                <Image
+                                    src={selectedImage}
+                                    width={555}
+                                    height={505}
+                                    alt={`Large Image`}
+                                    className={styles.largeImage}
+                                />
+                            )}
+                        </div>
                     </div>
-                    <div className={styles.largeImageContainer}>
-                        {selectedImage && (
-                            <Image
-                                src={selectedImage}
-                                width={555}
-                                height={505}
-                                alt={`Large Image`}
-                                className={styles.largeImage}
-                            />
-                        )}
+                    <div className={styles.description}>
+                        <p className={styles.name}>{props.data.name}</p>
+                        <p className={styles.des}>{props.data.productDescription}</p>
+                        <del> <p className={styles.mrp}>MRP : {props.data.mrp} INR</p></del>
+                        <p className={styles.price}>Price : {price} INR</p>
+
+                        <div className={styles.qty}>
+                            <label htmlFor="quantity">Qty :</label>
+                            <input type="number" id="quantity" name="quantity" value={quantity} className={styles.clickable} onChange={handleQuantityChange} />
+                        </div>
+
+                        <div className={styles.total}>
+                            <label htmlFor="total">Total Price  : </label>
+                            <strong><span id="total" className={styles.clickableInput}>{roundedTotal} Rs.</span></strong>
+
+                        </div>
+                        <div className={styles.orderButton}>
+                            <button onClick={handleClick} className={styles.btnOrder}>Add To Cart</button>
+                            <button onClick={handleRouting} className={styles.btnOrder}>Place Order</button>
+
+                        </div>
                     </div>
-                </div>
-                <div className={styles.description}>
-                    <p className={styles.name}>{props.data.name}</p>
-                    <p className={styles.des}>{props.data.productDescription}</p>
-                    <del> <p className={styles.mrp}>MRP : {props.data.mrp} INR</p></del>
-                    <p className={styles.price}>Price : {price} INR</p>
 
-                    <div className={styles.qty}>
-                        <label htmlFor="quantity">Qty :</label>
-                        <input type="number" id="quantity" name="quantity" value={quantity} className={styles.clickable} onChange={handleQuantityChange} />
+                    <div className={styles.reg}>
+                        {shouldRenderRegisterForm && <NewLoginForm />}
                     </div>
-
-                    <div className={styles.total}>
-                        <label htmlFor="total">Total Price  : </label>
-                        <strong><span id="total" className={styles.clickableInput}>{roundedTotal} Rs.</span></strong>
-
-                    </div>
-                    <div className={styles.orderButton}>
-                        <button onClick={handleClick} className={styles.btnOrder}>Add To Cart</button>
-                        <button onClick={handleRouting} className={styles.btnOrder}>Place Order</button>
-
-                    </div>
-                </div>
-
-                <div className={styles.reg}>
-                    {shouldRenderRegisterForm && <NewLoginForm />}
-                </div>
-                <ToastNotifications />
-            </>
-            {/* )} */}
+                    <ToastNotifications />
+                </>
+            )}
         </div>
     );
 };
