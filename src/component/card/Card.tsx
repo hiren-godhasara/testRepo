@@ -100,7 +100,7 @@ const Card = () => {
                         <div className={styles.image}>
                             <Image
                                 key={product._id}
-                                src={hoveredCard === index ? product.imageUrl[1].location : product.imageUrl[0].location}
+                                src={hoveredCard === index ? product.imageUrl[3].location : product.imageUrl[0].location}
                                 alt={"alt"}
                                 width={imageWidth}
                                 height={imageHeight}

@@ -105,12 +105,15 @@
 .image {
     position: relative;
     padding: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 
 }
 
 .img {
-    width: 100%;
-    height: auto;
+    width: 250px;
+    height: 210px;
     border-radius: 8px;
 
 }
