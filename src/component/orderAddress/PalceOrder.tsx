@@ -431,6 +431,9 @@ const PlaceOrders = () => {
                 if (response) {
                     const res = await handleStatusUpdate(mongoOrderId)
                     router.replace('/orderList');
+                    localStorage.removeItem("productId")
+                    localStorage.removeItem("qtys")
+                    localStorage.removeItem("totalOrderCartValue")
                 }
 
             },
