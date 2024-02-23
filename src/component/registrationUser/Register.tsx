@@ -5,7 +5,8 @@ import logo from '../../imageFolder/mdfLogo.png'
 import { useRouter } from 'next/navigation';
 import { ToastNotifications, showSuccessToast, showErrorToast } from '../../toastNotifications'
 import Cookies from 'js-cookie';
-
+import i1 from '../../imageFolder/raw-cashews-nuts-bag-dark-background-PhotoRoom (1) 1.png'
+import i2 from '../../imageFolder/raw-cashews-nuts-bag-dark-background-PhotoRoom (2) 1.png'
 
 const RegisterForm = () => {
     const router = useRouter();
@@ -13,7 +14,7 @@ const RegisterForm = () => {
         firstName: '',
         lastName: '',
         email: '',
-        countryCode: '+91',
+        countryCode: '',
         mobile: '',
         password: ''
     });
@@ -51,7 +52,7 @@ const RegisterForm = () => {
                         firstName: '',
                         lastName: '',
                         email: '',
-                        countryCode: '+91',
+                        countryCode: '',
                         mobile: '',
                         password: ''
                     });
@@ -92,6 +93,8 @@ const RegisterForm = () => {
 
     return (
         <div className={styles.register}>
+            <div className={styles.i1}  ></div>
+            <div className={styles.i2}  ></div>
 
             <form onSubmit={handleSubmit}>
                 <div className={styles.companydetails}>
@@ -102,27 +105,46 @@ const RegisterForm = () => {
                 <div className={styles.registerName}>Registration</div>
                 <div>
                     <label>First Name:</label>
-                    <input type="text" name="firstName" value={formData.firstName} onChange={handleChange} required />
+                    <input type="text" name="firstName" placeholder='Enter your firstname' value={formData.firstName} onChange={handleChange} required />
                 </div>
                 <div>
                     <label>Last Name:</label>
-                    <input type="text" name="lastName" value={formData.lastName} onChange={handleChange} required />
+                    <input type="text" name="lastName" placeholder='Enter your lastname' value={formData.lastName} onChange={handleChange} required />
                 </div>
                 <div>
                     <label>Email:</label>
-                    <input type="email" name="email" value={formData.email} onChange={handleChange} required />
+                    <input type="email" name="email" placeholder='Enter your Email' value={formData.email} onChange={handleChange} required />
                 </div>
                 <div>
                     <label>Phone Number:</label>
                     <div className={styles.num}>
-                        <input className={styles.code} type="tel" name="countryCode" value={formData.countryCode} onChange={handleChange} required />
-                        <input type="tel" name="mobile" value={formData.mobile} onChange={handleChange} required />
+                        <input
+                            className={styles.code}
+                            maxLength={6}
+                            type="tel"
+                            name="countryCode"
+                            value={`+${formData.countryCode.slice(1, 3)}`}
+                            onChange={handleChange}
+                            required
+                        />
+
+                        <input
+                            type="tel"
+                            name="mobile"
+                            placeholder="Phone"
+                            value={formData.mobile}
+                            onChange={handleChange}
+                            maxLength={10}
+                            required
+                        />
+
                     </div>
 
                 </div>
                 <div>
                     <label>Password:</label>
-                    <input type="password" name="password" value={formData.password} onChange={handleChange} required />
+                    <input type="password"
+                        name="password" placeholder='Enter your Password' value={formData.password} onChange={handleChange} required />
                 </div>
                 <div className={styles.btns}>
                     <button type="submit" onClick={handleSubmit}>Submit</button>
