@@ -90,7 +90,7 @@ export const DryFruitSliderForOrder: React.FC<DryFruitSliderForOrderProps> = (pr
 
     const reset = () => {
         setQuantity(1);
-        setTotalQuantity(0);
+        setTotalQuantity(1);
     };
 
     const handleAddToCart = () => {
@@ -106,7 +106,6 @@ export const DryFruitSliderForOrder: React.FC<DryFruitSliderForOrderProps> = (pr
             handleAddToCart();
             router.push('/cart')
         } else {
-            // localStorage.setItem('returnURL', pathname);
             setShouldRenderRegisterForm(true);
         }
     };
@@ -119,11 +118,15 @@ export const DryFruitSliderForOrder: React.FC<DryFruitSliderForOrderProps> = (pr
 
         const token = getToken()
         if (token) {
-            const productId = params;
-            const qtys = quantity;
-            const totalOrderCartValue = total;
+            const productId = productIdFromLocal;
+            const qtys: any = quantity;
+            const totalOrderCartValue: any = total;
             console.log(productId, qtys, totalOrderCartValue);
-            router.push(`/placeOrder?productId=${productId}&qtys=${qtys}&totalOrderCartValue=${totalOrderCartValue}`);
+            localStorage.setItem('qtys', qtys)
+            localStorage.setItem('totalOrderCartValue', totalOrderCartValue)
+            // router.push(`/placeOrder?productId=${productId}&qtys=${qtys}&totalOrderCartValue=${totalOrderCartValue}`);
+            router.push(`/placeOrder`);
+
 
         } else {
             setShouldRenderRegisterForm(true);
@@ -160,8 +163,8 @@ export const DryFruitSliderForOrder: React.FC<DryFruitSliderForOrderProps> = (pr
                                     key={index}
                                     src={image.location}
                                     alt={`Image`}
-                                    width={105}
-                                    height={105}
+                                    width={205}
+                                    height={85}
                                     // className={styles.image1}
                                     className={`${styles.image1} ${shouldRenderRegisterForm ? styles.blurImage : ''}`}
                                     onMouseEnter={() => handleImageClick(image.location)}
@@ -172,7 +175,7 @@ export const DryFruitSliderForOrder: React.FC<DryFruitSliderForOrderProps> = (pr
                             {selectedImage && (
                                 <Image
                                     src={selectedImage}
-                                    width={555}
+                                    width={655}
                                     height={505}
                                     alt={`Large Image`}
                                     className={`${styles.largeImage} ${shouldRenderRegisterForm ? styles.blurImage : ''}`}
@@ -186,7 +189,6 @@ export const DryFruitSliderForOrder: React.FC<DryFruitSliderForOrderProps> = (pr
                         <p className={styles.des}>{props.data.productDescription}</p>
                         <del> <p className={styles.mrp}>MRP : {props.data.mrp} INR</p></del>
                         <p className={styles.price}>Price : {price} INR</p>
-
                         <div className={styles.qty}>
                             <label htmlFor="quantity">Qty :</label>
                             <input type="number" id="quantity" name="quantity" value={quantity} className={styles.clickable} onChange={handleQuantityChange} />

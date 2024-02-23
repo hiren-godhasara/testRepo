@@ -11,6 +11,7 @@ import i1 from '../../imageFolder/SAVE_20240209_093303 (2).jpg'
 import { Spin } from 'antd';
 import { LoadingOutlined } from '@ant-design/icons';
 import Loader from '../loader/Loader';
+import Link from 'next/link';
 interface Product {
     mrp: any;
     _id: any;
@@ -21,6 +22,7 @@ interface Product {
     price: number
     discount: any
     prod: any
+    hsncode: any
 }
 
 const Card = () => {
@@ -104,7 +106,7 @@ const Card = () => {
                                 alt={"alt"}
                                 width={imageWidth}
                                 height={imageHeight}
-                                className={styles.img}
+                                className={hoveredCard === index ? styles.img1 : styles.img}
                             />
                         </div>
 
@@ -115,29 +117,40 @@ const Card = () => {
                         }
                     </div>
 
+
                     <div className={styles.cardInfo}>
-                        <h2 className={styles.productName}>
-                            {product.name.split(',').map((part, index) => (
-                                <span key={index} style={{ fontWeight: index === 1 ? '700' : 'inherit' }}>
-                                    {part}
-                                    {index !== 1 && ','}
-                                </span>
-                            ))}
+                        <h2 className={styles.productName1}>
+                            {product.name}
                         </h2>
+
+                        {/* <Link href={product.name} className={styles.con}>
+                            <h2 className={styles.productName1}>
+                                <span className={styles.ellipsis}>{product.name}</span>
+                            </h2>
+                        </Link> */}
+
+                        <div className={`${styles.con} ${product.name.length < 30 ? styles.con1 : ''}`}>
+                            <h2 className={styles.productName}>
+                                <span className={styles.ellipsis}>{product.hsncode}</span>
+                            </h2>
+                        </div>
+
+
                         <h2 className={styles.prod}>{product.prod}</h2>
-                        {(product.discount !== 0) && <del> <p className={styles.mrp}>MRP: {product.mrp} INR</p></del>}
-                        <p className={`${styles.price} ${product.prod ? styles.prodPrice : ''}`}>Price: <b className={styles.grade}>{product.price} INR</b></p>
+                        {(product.discount !== 0) && <del> <p className={`${styles.mrp} ${product.name.length < 30 ? styles.mrp1 : ''}`}>MRP: {product.mrp} INR</p></del>}
+                        <p className={`${styles.price}  ${product.name.length < 30 ? styles.price1 : ''} ${product.prod ? styles.prodPrice : ''}`}>Price: <b className={styles.grade}>{product.price} INR</b></p>
 
                         <button
                             onClick={() => onBtnClick(product._id, product.displayName)}
-                            className={`${styles.button} ${product.discount === 0 ? styles.withMargin : ''} ${product.prod ? styles.prodMargin : ''}`}
+                            className={`${styles.button}  ${product.name.length < 30 ? styles.newBtn : ''} ${product.discount === 0 ? styles.withMargin : ''} ${product.prod ? styles.prodMargin : ''}`}
                         >
                             Buy Now
                         </button>
                     </div>
                 </div>
-            ))}
-        </div>
+            ))
+            }
+        </div >
     );
 };
 

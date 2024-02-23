@@ -53,9 +53,9 @@ const PlaceOrders = () => {
     const [address, setAddress] = useState<Address[]>([]);
     const [cartData, setCartData] = useState<any>('');
     const userId = getUserId();
-    const prodId = useSearchParams().get('productId');
-    const qtys = useSearchParams().get('qtys');
-    const totalOrderCartValue = useSearchParams().get('totalOrderCartValue');
+    // const prodId = useSearchParams().get('productId');
+    // const qtys = useSearchParams().get('qtys');
+    // const totalOrderCartValue = useSearchParams().get('totalOrderCartValue');
     const [editAddressId, setEditAddressId] = useState<string | null>(null);
     const [editFormVisible, setEditFormVisible] = useState(false);
     const token = getToken()
@@ -64,12 +64,9 @@ const PlaceOrders = () => {
     const [loading, setLoading] = useState(true);
 
 
-
-
-
-
-
-
+    const prodId = localStorage.getItem('productId');
+    const qtys = localStorage.getItem('qtys');
+    const totalOrderCartValue = localStorage.getItem('totalOrderCartValue');
 
     const [editFormData, setEditFormData] = useState<EditFormData>({
         firstName: '',
