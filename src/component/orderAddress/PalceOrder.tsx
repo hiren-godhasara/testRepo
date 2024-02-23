@@ -64,9 +64,10 @@ const PlaceOrders = () => {
     const [loading, setLoading] = useState(true);
 
 
-    const prodId = localStorage.getItem('productId');
-    const qtys = localStorage.getItem('qtys');
-    const totalOrderCartValue = localStorage.getItem('totalOrderCartValue');
+    const prodId = typeof window !== 'undefined' ? localStorage.getItem('productId') : null;
+    const qtys = typeof window !== 'undefined' ? localStorage.getItem('qtys') : null;
+    const totalOrderCartValue = typeof window !== 'undefined' ? localStorage.getItem('totalOrderCartValue') : null;
+
 
     const [editFormData, setEditFormData] = useState<EditFormData>({
         firstName: '',
