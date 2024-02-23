@@ -12,7 +12,6 @@ export default function Home() {
     return (
         <div>
 
-            {/* <TagLine /> */}
             <Header />
             <OrderAddress />
             <Footer />
