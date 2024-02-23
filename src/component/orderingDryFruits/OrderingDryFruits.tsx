@@ -106,7 +106,6 @@ export const DryFruitSliderForOrder: React.FC<DryFruitSliderForOrderProps> = (pr
             handleAddToCart();
             router.push('/cart')
         } else {
-            // localStorage.setItem('returnURL', pathname);
             setShouldRenderRegisterForm(true);
         }
     };
@@ -119,11 +118,15 @@ export const DryFruitSliderForOrder: React.FC<DryFruitSliderForOrderProps> = (pr
 
         const token = getToken()
         if (token) {
-            const productId = params;
-            const qtys = quantity;
-            const totalOrderCartValue = total;
+            const productId = productIdFromLocal;
+            const qtys: any = quantity;
+            const totalOrderCartValue: any = total;
             console.log(productId, qtys, totalOrderCartValue);
-            router.push(`/placeOrder?productId=${productId}&qtys=${qtys}&totalOrderCartValue=${totalOrderCartValue}`);
+            localStorage.setItem('qtys', qtys)
+            localStorage.setItem('totalOrderCartValue', totalOrderCartValue)
+            // router.push(`/placeOrder?productId=${productId}&qtys=${qtys}&totalOrderCartValue=${totalOrderCartValue}`);
+            router.push(`/placeOrder`);
+
 
         } else {
             setShouldRenderRegisterForm(true);
@@ -172,7 +175,7 @@ export const DryFruitSliderForOrder: React.FC<DryFruitSliderForOrderProps> = (pr
                             {selectedImage && (
                                 <Image
                                     src={selectedImage}
-                                    width={555}
+                                    width={655}
                                     height={505}
                                     alt={`Large Image`}
                                     className={`${styles.largeImage} ${shouldRenderRegisterForm ? styles.blurImage : ''}`}
