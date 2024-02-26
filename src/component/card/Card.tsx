@@ -23,6 +23,7 @@ interface Product {
     discount: any
     prod: any
     hsncode: any
+    variantName: string
 }
 
 const Card = () => {
@@ -63,15 +64,14 @@ const Card = () => {
             });
     }, []);
 
-    const onBtnClick = (id: any, displayname: string) => {
+    const onBtnClick = (id: any, displayname: string, variantName: string) => {
         setIsLoading(true);
-        // setTimeout(() => {
-        // router.push(`/products/${displayname}?id=${id}`);
+        localStorage.setItem('variantName', variantName);
         localStorage.setItem('productId', id);
         router.push(`/products/${displayname}`);
         setIsLoading(false);
-        // }, 1000);
     };
+
     const [hoveredCard, setHoveredCard] = useState(null);
 
     const handleMouseEnter = (index: any) => {
@@ -141,7 +141,7 @@ const Card = () => {
                         <p className={`${styles.price}  ${product.name.length < 30 ? styles.price1 : ''} ${product.prod ? styles.prodPrice : ''}`}>Price: <b className={styles.grade}>{product.price} INR</b></p>
 
                         <button
-                            onClick={() => onBtnClick(product._id, product.displayName)}
+                            onClick={() => onBtnClick(product._id, product.displayName, product.variantName)}
                             className={`${styles.button}  ${product.name.length < 30 ? styles.newBtn : ''} ${product.discount === 0 ? styles.withMargin : ''} ${product.prod ? styles.prodMargin : ''}`}
                         >
                             Buy Now

@@ -135,3 +135,49 @@
 .blurImage {
     filter: blur(2px);
 }
+
+// .variantCard {
+//     display: flex;
+//     justify-content: center;
+//     align-items: center;
+// }
+
+
+
+// .variantSubCard {
+//     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+//     padding: 10px;
+//     margin-left: 10px;
+// }
+
+
+.variantCard {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-left: -320px;
+    margin-top: 20px;
+}
+
+.variantSubCard {
+    flex: 0 1 calc(12% - 3px);
+    box-sizing: border-box;
+    margin-bottom: 10px;
+    margin-left: 3px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    background-color: #144249;
+    color: #FBD449;
+    padding: 10px;
+    border-radius: 5px;
+
+    p {
+        text-align: center;
+    }
+}
+
+
+.variantSubCard:hover {
+    color: #144249;
+    background-color: #FBD449;
+    cursor: pointer;
+}
