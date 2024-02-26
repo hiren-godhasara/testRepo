@@ -196,7 +196,7 @@ const Header = () => {
                 }
 
                 {!isMediumScreen &&
-                    <div className={styles.fullScreenHeader}>
+                    <div className={`${styles.fullScreenHeader} maxScreenWidth`}>
                         <div className={styles.leftSection}>
                             <Image src={headerCompanyLogo} width={50} height={50} alt='Home Pagea' className={styles.image} />
                             <div className={styles.leftSectionName}>MYDRYFRUIT</div>

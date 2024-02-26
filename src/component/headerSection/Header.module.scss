@@ -38,7 +38,6 @@
 }
 
 .fullScreenHeader {
-    padding: 0 11rem;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -260,7 +259,7 @@
     height: 95px
 }
 
-@media screen and (max-width :1450px) {
+@media screen and (max-width :1525px) {
     .fullScreenHeader {
         padding: 0 1rem;
     }

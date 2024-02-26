@@ -20,13 +20,20 @@ import Invoices from '@/component/invoice/Invoice';
 import products from '@/data/CardData';
 import CartList from '@/component/addToCartList/CartList';
 import TagLine from '@/component/tagLine/TagLine';
+import HomePage1 from '@/component/homePageSection/smallHomePage';
+import useWindowSize from '@/component/hooks/useWindowsize';
 
 export default function Home() {
+  const isSmallScreen = useWindowSize().smallScreen
+
   return (
     <div>
       {/* <TagLine /> */}
       <Header />
-      <HomePage />
+      {isSmallScreen === false && <HomePage />}
+
+      {isSmallScreen === true && <HomePage1 />}
+
       <div id='products'><BestSelling /></div>
       <Card />
 
