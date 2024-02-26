@@ -40,7 +40,7 @@ export const DryFruitSliderForOrder: React.FC<DryFruitSliderForOrderProps> = (pr
     const handleQuantityChange = (e: ChangeEvent<HTMLInputElement>) => {
         const newQuantity = parseInt(e.target.value);
 
-        if (isNaN(newQuantity) || newQuantity < 0) {
+        if (isNaN(newQuantity) || newQuantity < 1) {
             return;
         }
         setQuantity(newQuantity);
@@ -54,7 +54,7 @@ export const DryFruitSliderForOrder: React.FC<DryFruitSliderForOrderProps> = (pr
 
 
     const addToCart = () => {
-
+        setLoading(true)
         const productData = {
             userId: userId,
             productId: productIdFromLocal,
@@ -80,6 +80,8 @@ export const DryFruitSliderForOrder: React.FC<DryFruitSliderForOrderProps> = (pr
             .then(data => {
                 setMessage(data.message);
                 showSuccessToast(data.message);
+                setLoading(false)
+
             })
             .catch(error => {
                 console.error('There was a problem adding to the cart:', error);
@@ -143,7 +145,7 @@ export const DryFruitSliderForOrder: React.FC<DryFruitSliderForOrderProps> = (pr
     useEffect(() => {
         setTimeout(() => {
             setLoading(false);
-        }, 1000);
+        }, 1500);
     }, []);
 
 

@@ -75,7 +75,7 @@ const LoginForm = () => {
                 <div className={styles.registerName}>Welcome Back</div>
 
                 <div>
-                    <label>Email / Phone Number:</label>
+                    <label>Email / Phone Number: <span style={{ color: 'red' }}>*</span></label>
                     <input
                         type={inputType}
                         name="loginId"
@@ -86,7 +86,7 @@ const LoginForm = () => {
                     />
                 </div>
                 <div>
-                    <label>Password:</label>
+                    <label>Password: <span style={{ color: 'red' }}>*</span></label>
                     <input
                         type="password"
                         name="password"
