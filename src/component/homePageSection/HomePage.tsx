@@ -60,7 +60,9 @@ const HomePage = () => {
                     </div>
 
                     <div className={`${styles.imageWrapper4} ${styles.imageWrapper}`}>
-                        <h3 className={styles.headcombo1}> <span>P</span> <div className={styles.span}>remium</div> </h3>
+                        {/* <h3 className={styles.headcombo1}> <span>P</span> <div className={styles.span}>remium</div> </h3> */}
+                        <h3 className={styles.headcombo1}> Premium </h3>
+
                         <h1 className={styles.headcombo2}>Dry Fruit Combos Are</h1>
                         <h2 className={styles.headcombo3}>Avaialble.....</h2>
                         <button onClick={onBtnClick} className={styles.btncombo1}>Contact Us</button>
