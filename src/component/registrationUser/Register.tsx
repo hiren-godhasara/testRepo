@@ -14,7 +14,7 @@ const RegisterForm = () => {
         firstName: '',
         lastName: '',
         email: '',
-        countryCode: '',
+        countryCode: '+91',
         mobile: '',
         password: ''
     });
@@ -22,9 +22,31 @@ const RegisterForm = () => {
     // const returnUrl = localStorage.getItem('returnURL')
     const returnUrl = typeof window !== 'undefined' ? localStorage.getItem('returnURL') : null;
 
+    const handleCheckEmail: any = () => {
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        const email = emailRegex.test(formData.email);
+        if (email === false) {
+            showErrorToast('Invalid email address');
+            return false
+        }
+        return true
+    }
+
+    const handleCheckMobile: any = () => {
+        const mobileRegex = /^[1-9]\d{9}$/;
+        const mobile = mobileRegex.test(formData.mobile);
+        if (mobile === false) {
+            showErrorToast('Invalid mobile number');
+            return false
+        }
+        return true
+    }
 
     const handleChange = (e: any) => {
         const { name, value } = e.target;
+        if (name === 'mobile' && isNaN(value)) {
+            return;
+        }
         setFormData(prevState => ({
             ...prevState,
             [name]: value
@@ -32,9 +54,15 @@ const RegisterForm = () => {
     };
 
     const handleSubmit = async (e: any) => {
-
         e.preventDefault();
         try {
+            if (!handleCheckEmail()) {
+                return;
+            }
+            if (!handleCheckMobile()) {
+                return;
+            }
+
             const response = await fetch(`${process.env.BASE_URL}/s/register`, {
                 method: 'POST',
                 headers: {
@@ -52,7 +80,7 @@ const RegisterForm = () => {
                         firstName: '',
                         lastName: '',
                         email: '',
-                        countryCode: '',
+                        countryCode: '+91',
                         mobile: '',
                         password: ''
                     });
@@ -81,7 +109,7 @@ const RegisterForm = () => {
             firstName: '',
             lastName: '',
             email: '',
-            countryCode: '',
+            countryCode: '+91',
             mobile: '',
             password: ''
         });
@@ -104,19 +132,19 @@ const RegisterForm = () => {
                 <button onClick={handleCancel} className={styles.cancelReg}>✖</button>
                 <div className={styles.registerName}>Registration</div>
                 <div>
-                    <label>First Name:</label>
+                    <label>First Name: <span style={{ color: 'red' }}>*</span></label>
                     <input type="text" name="firstName" placeholder='Enter your firstname' value={formData.firstName} onChange={handleChange} required />
                 </div>
                 <div>
-                    <label>Last Name:</label>
+                    <label>Last Name:  <span style={{ color: 'red' }}>*</span></label>
                     <input type="text" name="lastName" placeholder='Enter your lastname' value={formData.lastName} onChange={handleChange} required />
                 </div>
                 <div>
-                    <label>Email:</label>
+                    <label>Email: <span style={{ color: 'red' }}>*</span></label>
                     <input type="email" name="email" placeholder='Enter your Email' value={formData.email} onChange={handleChange} required />
                 </div>
                 <div>
-                    <label>Phone Number:</label>
+                    <label>Phone Number: <span style={{ color: 'red' }}>*</span></label>
                     <div className={styles.num}>
                         <input
                             className={styles.code}
@@ -138,11 +166,12 @@ const RegisterForm = () => {
                             required
                         />
 
+
                     </div>
 
                 </div>
                 <div>
-                    <label>Password:</label>
+                    <label>Password: <span style={{ color: 'red' }}>*</span></label>
                     <input type="password"
                         name="password" placeholder='Enter your Password' value={formData.password} onChange={handleChange} required />
                 </div>

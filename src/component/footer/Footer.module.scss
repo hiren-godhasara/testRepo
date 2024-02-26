@@ -147,6 +147,12 @@
 
 .img {
     margin-left: 15px;
+    filter: grayscale(40%);
+
+}
+
+.img:hover {
+    filter: grayscale(0%);
 }
 
 .p4 {
