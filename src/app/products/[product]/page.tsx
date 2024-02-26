@@ -27,12 +27,12 @@ const Cart = () => {
     const [productDetails, setProductDetails] = useState<Product | null>(null);
     const paramId = useSearchParams().get('id');
     const token = getToken()
-
-
     var productIdFromLocal = localStorage.getItem('productId');
+
     useEffect(() => {
         getProductDetails();
-    }, [productIdFromLocal]);
+    }, []);
+
     const getProductDetails = async () => {
         if (!productIdFromLocal) return;
         try {

@@ -6,6 +6,7 @@ import { useRouter, useSearchParams } from 'next/navigation';
 import Cookies from 'js-cookie';
 import Link from 'next/link';
 import { ToastNotifications, showSuccessToast, showErrorToast } from '../../toastNotifications'
+import { usePathname } from 'next/navigation'
 
 
 const NewLoginForm = () => {
@@ -15,6 +16,10 @@ const NewLoginForm = () => {
         loginId: '',
         password: ''
     });
+
+    // const [returnURL, setReturnURL] = useState<any>('')
+
+    const pathname = usePathname()
 
     const handleChange = (e: any) => {
         const { name, value } = e.target;
@@ -42,7 +47,7 @@ const NewLoginForm = () => {
                 Cookies.set('token', data.data.token, { expires: 1 });
                 Cookies.set('userId', data.data.userId, { expires: 1 });
                 showSuccessToast(data.message);
-                // router.back();
+                router.back();
                 setFormVisible(false);
                 window.location.reload();
                 setFormData({
@@ -65,34 +70,24 @@ const NewLoginForm = () => {
     };
 
 
-    const handleCancel = () => {
-        router.back();
-    };
-
     const handleCloseForm = () => {
         setFormVisible(false);
-        window.location.reload();
+        router.push('/');
 
     };
 
     const inputType = formData.loginId.includes('@') ? 'email' : 'tel';
 
+    const handleLinkClick = () => {
+        localStorage.setItem('returnURL', pathname);
+    };
+
+
     return formVisible ? (
         <div className={styles.register}>
             <form onSubmit={handleSubmit}>
-                <div className={styles.companydetails}>
-
-                    <Image src={logo} alt={`Company logo`} width={100} height={100} />
-                    <div className={styles.details}>
-                        <p className={styles.headerdetails}>MYDRYFRUIT</p>
-                        <p className={styles.bodydetails}>Wholesaler of premium quality dryfruits in India and Abroad</p>
-                    </div>
-                </div>
-                <button onClick={handleCloseForm} className={styles.newClosebtn}>✖</button>
-                <div className={styles.registerName}>CUSTOMER LOGIN</div>
-
                 <div>
-                    <label>Email / Phone Number:</label>
+                    <label>Email / Phone Number: <span style={{ color: 'red' }}>*</span></label>
                     <input
                         type={inputType}
                         name="loginId"
@@ -102,7 +97,7 @@ const NewLoginForm = () => {
                     />
                 </div>
                 <div>
-                    <label>Password:</label>
+                    <label>Password: <span style={{ color: 'red' }}>*</span></label>
                     <input
                         type="password"
                         name="password"
@@ -112,10 +107,10 @@ const NewLoginForm = () => {
                     />
                 </div>
                 <div>
-                    <button type="submit">Submit</button>
-                    <button type="button" onClick={handleReset}>Reset</button>
+                    <button type="submit">Log In</button>
+                    <button type="button" onClick={handleCloseForm}>Close</button>
                 </div>
-                <Link className={styles.link} href='/registration'>  New to mydryfruit  ?<span className={styles.span}> Create an account </span></Link>
+                <Link onClick={handleLinkClick} className={styles.link} href='/registration'>  New to mydryfruit  ?<span className={styles.span}> Create an account </span></Link>
             </form>
             <ToastNotifications />
         </div>

@@ -53,9 +53,9 @@ const PlaceOrders = () => {
     const [address, setAddress] = useState<Address[]>([]);
     const [cartData, setCartData] = useState<any>('');
     const userId = getUserId();
-    const prodId = useSearchParams().get('productId');
-    const qtys = useSearchParams().get('qtys');
-    const totalOrderCartValue = useSearchParams().get('totalOrderCartValue');
+    // const prodId = useSearchParams().get('productId');
+    // const qtys = useSearchParams().get('qtys');
+    // const totalOrderCartValue = useSearchParams().get('totalOrderCartValue');
     const [editAddressId, setEditAddressId] = useState<string | null>(null);
     const [editFormVisible, setEditFormVisible] = useState(false);
     const token = getToken()
@@ -64,11 +64,9 @@ const PlaceOrders = () => {
     const [loading, setLoading] = useState(true);
 
 
-
-
-
-
-
+    const prodId = typeof window !== 'undefined' ? localStorage.getItem('productId') : null;
+    const qtys = typeof window !== 'undefined' ? localStorage.getItem('qtys') : null;
+    const totalOrderCartValue = typeof window !== 'undefined' ? localStorage.getItem('totalOrderCartValue') : null;
 
 
     const [editFormData, setEditFormData] = useState<EditFormData>({
@@ -433,6 +431,9 @@ const PlaceOrders = () => {
                 if (response) {
                     const res = await handleStatusUpdate(mongoOrderId)
                     router.replace('/orderList');
+                    localStorage.removeItem("productId")
+                    localStorage.removeItem("qtys")
+                    localStorage.removeItem("totalOrderCartValue")
                 }
 
             },

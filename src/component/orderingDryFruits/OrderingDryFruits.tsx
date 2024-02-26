@@ -14,7 +14,7 @@ import useTokenExpiration from '@/userTokenExpiration';
 import { ToastNotifications, showSuccessToast, showErrorToast } from '../../toastNotifications'
 import NewLoginForm from '../registrationUser/NewLogin';
 import Loader from '../loader/Loader';
-
+// import { usePathname } from 'next/navigation'
 interface DryFruitSliderForOrderProps {
     data: Product | any;
 }
@@ -32,13 +32,15 @@ export const DryFruitSliderForOrder: React.FC<DryFruitSliderForOrderProps> = (pr
     const token = getToken();
     const userId = getUserId();
 
+    // const pathname = usePathname()
+
 
     useTokenExpiration(token);
 
     const handleQuantityChange = (e: ChangeEvent<HTMLInputElement>) => {
         const newQuantity = parseInt(e.target.value);
 
-        if (isNaN(newQuantity) || newQuantity < 0) {
+        if (isNaN(newQuantity) || newQuantity < 1) {
             return;
         }
         setQuantity(newQuantity);
@@ -52,7 +54,7 @@ export const DryFruitSliderForOrder: React.FC<DryFruitSliderForOrderProps> = (pr
 
 
     const addToCart = () => {
-
+        setLoading(true)
         const productData = {
             userId: userId,
             productId: productIdFromLocal,
@@ -78,6 +80,8 @@ export const DryFruitSliderForOrder: React.FC<DryFruitSliderForOrderProps> = (pr
             .then(data => {
                 setMessage(data.message);
                 showSuccessToast(data.message);
+                setLoading(false)
+
             })
             .catch(error => {
                 console.error('There was a problem adding to the cart:', error);
@@ -88,7 +92,7 @@ export const DryFruitSliderForOrder: React.FC<DryFruitSliderForOrderProps> = (pr
 
     const reset = () => {
         setQuantity(1);
-        setTotalQuantity(0);
+        setTotalQuantity(1);
     };
 
     const handleAddToCart = () => {
@@ -116,11 +120,15 @@ export const DryFruitSliderForOrder: React.FC<DryFruitSliderForOrderProps> = (pr
 
         const token = getToken()
         if (token) {
-            const productId = params;
-            const qtys = quantity;
-            const totalOrderCartValue = total;
+            const productId = productIdFromLocal;
+            const qtys: any = quantity;
+            const totalOrderCartValue: any = total;
             console.log(productId, qtys, totalOrderCartValue);
-            router.push(`/placeOrder?productId=${productId}&qtys=${qtys}&totalOrderCartValue=${totalOrderCartValue}`);
+            localStorage.setItem('qtys', qtys)
+            localStorage.setItem('totalOrderCartValue', totalOrderCartValue)
+            // router.push(`/placeOrder?productId=${productId}&qtys=${qtys}&totalOrderCartValue=${totalOrderCartValue}`);
+            router.push(`/placeOrder`);
+
 
         } else {
             setShouldRenderRegisterForm(true);
@@ -137,31 +145,30 @@ export const DryFruitSliderForOrder: React.FC<DryFruitSliderForOrderProps> = (pr
     useEffect(() => {
         setTimeout(() => {
             setLoading(false);
-        }, 1000);
+        }, 1500);
     }, []);
 
 
     return (
-
-        <div className={styles.mainDiv} style={shouldRenderRegisterForm ? { background: 'rgba(0, 0, 0, 0.6)' } : {}}>
+        <>
             {loading ? (
                 <div className={styles.loaderContainer}>
-                    {/* <Spin size="large" /> */}
                     <Loader />
                 </div>
             ) : (
-                <>
+                <div className={styles.mainDiv} style={shouldRenderRegisterForm ? { filter: "blur(2px)", pointerEvents: 'none' } : {}}>
 
-                    <div className={styles.mainImg}>
+                    <div className={styles.mainImg} >
                         <div className={styles.sideImg}>
                             {props.data.imageUrl.map((image: any, index: any) => (
                                 <Image
                                     key={index}
                                     src={image.location}
                                     alt={`Image`}
-                                    width={105}
-                                    height={105}
-                                    className={styles.image1}
+                                    width={205}
+                                    height={85}
+                                    // className={styles.image1}
+                                    className={`${styles.image1} ${shouldRenderRegisterForm ? styles.blurImage : ''}`}
                                     onMouseEnter={() => handleImageClick(image.location)}
                                 />
                             ))}
@@ -170,10 +177,11 @@ export const DryFruitSliderForOrder: React.FC<DryFruitSliderForOrderProps> = (pr
                             {selectedImage && (
                                 <Image
                                     src={selectedImage}
-                                    width={555}
+                                    width={655}
                                     height={505}
                                     alt={`Large Image`}
-                                    className={styles.largeImage}
+                                    className={`${styles.largeImage} ${shouldRenderRegisterForm ? styles.blurImage : ''}`}
+                                // className={styles.largeImage}
                                 />
                             )}
                         </div>
@@ -183,7 +191,6 @@ export const DryFruitSliderForOrder: React.FC<DryFruitSliderForOrderProps> = (pr
                         <p className={styles.des}>{props.data.productDescription}</p>
                         <del> <p className={styles.mrp}>MRP : {props.data.mrp} INR</p></del>
                         <p className={styles.price}>Price : {price} INR</p>
-
                         <div className={styles.qty}>
                             <label htmlFor="quantity">Qty :</label>
                             <input type="number" id="quantity" name="quantity" value={quantity} className={styles.clickable} onChange={handleQuantityChange} />
@@ -201,13 +208,13 @@ export const DryFruitSliderForOrder: React.FC<DryFruitSliderForOrderProps> = (pr
                         </div>
                     </div>
 
-                    <div className={styles.reg}>
-                        {shouldRenderRegisterForm && <NewLoginForm />}
-                    </div>
-                    <ToastNotifications />
-                </>
+                </div>
             )}
-        </div>
+            <div className={styles.reg}>
+                {shouldRenderRegisterForm && <NewLoginForm />}
+            </div>
+            <ToastNotifications />
+        </>
     );
 };
 

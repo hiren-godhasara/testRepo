@@ -11,11 +11,14 @@
  }
 
 
+
  .head {
      text-align: center;
-     font-size: 34px;
+     font-size: clamp(12px, 4vw, 34px);
      font-weight: 600;
  }
+
+
 
  .description {
      font-size: 18px;
@@ -43,9 +46,9 @@
          margin-bottom: 60px;
      }
 
-     .head {
-         font-size: 28px;
-     }
+     //  .head {
+     //      font-size: 28px;
+     //  }
 
      .description {
          text-align: justify;
@@ -60,11 +63,11 @@
          margin-bottom: 50px;
      }
 
-     .head {
-         text-align: center;
-         font-size: 23px;
-         font-weight: 600;
-     }
+     //  .head {
+     //      text-align: center;
+     //      font-size: 23px;
+     //      font-weight: 600;
+     //  }
 
      .description {
          font-size: 15px;
@@ -80,9 +83,9 @@
          margin-bottom: 60px;
      }
 
-     .head {
-         font-size: 18px;
-     }
+     //  .head {
+     //      font-size: 18px;
+     //  }
 
      .description {
          font-size: 14px;

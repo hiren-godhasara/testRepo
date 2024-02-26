@@ -10,7 +10,7 @@
         max-width: 500px;
         padding: 20px;
         border: 1px solid #ccc;
-        background-color: rgb(255, 255, 255);
+        background-color: #144950;
 
         border-radius: 5px;
 
@@ -20,8 +20,10 @@
             label {
                 display: block;
                 margin-bottom: 5px;
-                font-weight: bold;
+                margin-top: 20px;
+                color: #FBD449;
             }
+
 
             input {
                 width: 100%;
@@ -33,14 +35,17 @@
         }
 
         button {
-            color: #FBD449;
-            background-color: #144249;
+            width: 80%;
+            margin-left: 10%;
+            font-size: 20px;
+            color: #144950;
+            background-color: white;
             font-weight: 700;
             padding: 10px 20px;
             border: none;
-            border-radius: 3px;
+            border-radius: 15px;
             cursor: pointer;
-            margin-right: 10px;
+            // margin-right: 10px;
             margin-top: 40px;
             transition: background-color 0.6s, color 0.6s;
 
@@ -51,7 +56,7 @@
 
         button:hover {
             background-color: #FBD449;
-            color: #144249;
+            color: #144950;
         }
 
     }
@@ -69,9 +74,18 @@
 }
 
 .headerdetails {
-    font-size: 25px;
+    margin-left: 10px;
+    font-size: 22px;
     font-weight: 700;
-    color: #144249;
+    color: #FBD449;
+}
+
+.registerName {
+    font-size: 28px;
+    margin-top: -80px;
+    text-align: center;
+    font-weight: 700;
+    color: white;
 }
 
 .bodydetails {
@@ -80,13 +94,7 @@
     color: #144249;
 }
 
-.registerName {
-    margin-top: -90px;
-    text-align: center;
-    background-color: #ffffff;
-    color: #144249;
-    font-size: 16px;
-}
+
 
 
 .num {
@@ -111,16 +119,18 @@
 
 }
 
-
-
 .cancelReg {
-    // margin-left: 375px;
     position: relative;
-    top: -160px;
-    margin-left: 370px;
-    color: black !important;
+    top: -125px;
+    left: 320px;
+    width: auto !important;
+    color: white !important;
     background-color: transparent !important;
 
+}
+
+.cancelReg:hover {
+    color: #FBD449 !important;
 }
 
 .span {
@@ -129,15 +139,7 @@
     cursor: pointer;
 }
 
-.newClosebtn {
-    position: absolute;
-    top: 0;
-    right: 0;
-    margin-right: -20px !important;
-    margin-top: -20px !important;
-    background-color: transparent !important;
-    color: black !important;
-}
+
 
 .btns {
     height: 100px;
@@ -151,19 +153,18 @@
             width: 360px;
             height: 600px;
             border: 1px solid #ccc;
-            background-color: rgb(255, 255, 255);
 
 
             button {
-                color: #FBD449;
-                background-color: #144950;
+                width: 80%;
+                margin-left: 10%;
                 font-weight: 600;
-                padding: 10px 20px;
+                padding: 10px 10px;
                 border: none;
-                border-radius: 3px;
+                border-radius: 15px;
                 cursor: pointer;
                 margin-right: 10px;
-                margin-top: 0px;
+                margin-top: 5px;
                 transition: background-color 0.6s, color 0.6s;
 
                 &:last-child {
@@ -188,8 +189,8 @@
 
         .cancelReg {
             position: relative;
-            top: -130px;
-            margin-left: 280px;
+            top: -100px;
+            left: 260px;
 
         }
 

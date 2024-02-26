@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import styles from './Login.module.scss';
 import Image from 'next/image';
-import logo from '../../imageFolder/myDryFruitLogo-removebg-preview.png';
+import logo from '../../imageFolder/mdfLogo.png';
 import { useRouter } from 'next/navigation';
 import Cookies from 'js-cookie';
 import Link from 'next/link';
@@ -68,17 +68,14 @@ const LoginForm = () => {
         <div className={styles.register}>
             <form onSubmit={handleSubmit}>
                 <div className={styles.companydetails}>
-                    <Image src={logo} alt={`Company logo`} width={100} height={100} />
-                    <div className={styles.details}>
-                        <p className={styles.headerdetails}>MYDRYFRUIT</p>
-                        <p className={styles.bodydetails}>Wholesaler of premium quality dryfruits in India and Abroad</p>
-                    </div>
+                    <Image src={logo} alt={`Company logo`} width={60} height={60} />
+                    <p className={styles.headerdetails}>MYDRYFRUIT</p>
                 </div>
                 <button onClick={handleCancel} className={styles.cancelReg}>✖</button>
-                <div className={styles.registerName}>CUSTOMER LOGIN</div>
+                <div className={styles.registerName}>Welcome Back</div>
 
                 <div>
-                    <label>Email / Phone Number:</label>
+                    <label>Email / Phone Number: <span style={{ color: 'red' }}>*</span></label>
                     <input
                         type={inputType}
                         name="loginId"
@@ -89,7 +86,7 @@ const LoginForm = () => {
                     />
                 </div>
                 <div>
-                    <label>Password:</label>
+                    <label>Password: <span style={{ color: 'red' }}>*</span></label>
                     <input
                         type="password"
                         name="password"
@@ -102,7 +99,7 @@ const LoginForm = () => {
                     />
                 </div>
                 <div>
-                    <button type="submit">Submit</button>
+                    <button type="submit">Log In</button>
                     <button type="button" onClick={handleReset}>Reset</button>
                 </div>
                 <Link className={styles.link} href='/registration'>  New to mydryfruit  ?<span className={styles.span}> Create an account </span></Link>

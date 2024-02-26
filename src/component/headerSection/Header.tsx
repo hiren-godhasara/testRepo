@@ -140,7 +140,7 @@ const Header = () => {
 
                         {token &&
                             <div className={styles.mediumScreenSectionTwo}>
-                                <Link href='/cartList'>
+                                <Link href='/cart'>
                                     {/* <Image src={cartIcon} width={35} height={35} alt='Cart list' title='Cart List' className={styles.cartIcon} /> */}
                                     <Image src={cart} width={38} height={38} alt='Cart list' title='Cart List' />
                                 </Link>
@@ -196,7 +196,7 @@ const Header = () => {
                 }
 
                 {!isMediumScreen &&
-                    <div className={styles.fullScreenHeader}>
+                    <div className={`${styles.fullScreenHeader} maxScreenWidth`}>
                         <div className={styles.leftSection}>
                             <Image src={headerCompanyLogo} width={50} height={50} alt='Home Pagea' className={styles.image} />
                             <div className={styles.leftSectionName}>MYDRYFRUIT</div>
@@ -217,7 +217,7 @@ const Header = () => {
                         }
                         {token &&
                             <div className={styles.mediumScreenSectionTwo}>
-                                <Link href='/cartList'>
+                                <Link href='/cart'>
                                     <Image src={cart} width={38} height={40} alt='Cart list' title='Cart List' />
                                 </Link>
                                 {productDetails && <p className={styles.cartItem}>{productDetails}</p>}

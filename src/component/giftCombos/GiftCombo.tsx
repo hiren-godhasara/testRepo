@@ -132,8 +132,10 @@ const GiftCombo = () => {
             });
     }, []);
 
-    const onBtnClick = (id: number, displayname: string) => {
-        router.push(`/products/${displayname}?id=${id}`);
+    const onBtnClick = (id: any, displayname: string) => {
+        localStorage.setItem('productId', id);
+        router.push(`/products/${displayname}`);
+        // router.push(`/products/${displayname}?id=${id}`);
     };
     const [hoveredCard, setHoveredCard] = useState(null);
 
