@@ -84,7 +84,7 @@ const Card = () => {
 
 
     return (
-        <div className={styles.cardContainer}>
+        <div className={`${styles.cardContainer} maxScreenWidth`}>
             {isLoading && (
                 <div className={styles.overlay}>
                     <div className={styles.loader}>
@@ -119,15 +119,15 @@ const Card = () => {
 
 
                     <div className={styles.cardInfo}>
-                        <h2 className={styles.productName1}>
+                        {/* <h2 className={styles.productName1}>
                             {product.name}
-                        </h2>
+                        </h2> */}
 
-                        {/* <Link href={product.name} className={styles.con}>
+                        <Link href={product.name} className={styles.con}>
                             <h2 className={styles.productName1}>
-                                <span className={styles.ellipsis}>{product.name}</span>
+                                <span className={styles.ellipsis1}>{product.name}</span>
                             </h2>
-                        </Link> */}
+                        </Link>
 
                         <div className={`${styles.con} ${product.name.length < 30 ? styles.con1 : ''}`}>
                             <h2 className={styles.productName}>
