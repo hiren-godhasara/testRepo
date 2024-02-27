@@ -134,6 +134,14 @@
     color: #718096;
 }
 
+.p11 {
+    margin-top: 0.5rem;
+    font-size: 0.85rem;
+    text-align: center;
+    color: #ffffff;
+
+}
+
 .p2 {
     display: flex;
     margin-top: 20px;
@@ -207,6 +215,14 @@
 
 .head {
     color: #ffffff;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    // font-size: 1rem;
+}
+
+.headp {
+    margin-left: -100px;
 }
 
 .text {
@@ -255,5 +271,9 @@
         width: 100%;
         text-align: center;
         margin: 0;
+    }
+
+    .headp {
+        margin-left: -230px;
     }
 }
