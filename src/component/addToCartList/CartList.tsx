@@ -11,6 +11,7 @@ import { Spin } from 'antd';
 import badam from '../../imageFolder/badam.jpg'
 import useWindowSize from '../hooks/useWindowsize';
 import { SP } from 'next/dist/shared/lib/utils';
+import Loader from '../loader/Loader';
 
 interface Product {
     length: number;
@@ -51,7 +52,7 @@ const CartList: React.FC = () => {
         if (productDetails && productDetails.productList) {
             const initialQuantities: { [key: string]: number } = {};
             productDetails.productList.forEach((item: any, index: number) => {
-                initialQuantities[item.cartProductId] = 1; // Initialize with 1 quantity
+                initialQuantities[item.cartProductId] = item.qty;
             });
             setQuantities(initialQuantities);
         }
@@ -84,15 +85,15 @@ const CartList: React.FC = () => {
             });
     };
 
-    const handleQuantityChange = (index: number, newQuantity: number) => {
+    const handleQuantityChange = (cartItemId: number, newQuantity: number) => {
         if (productDetails) {
             const updatedProductList = [...productDetails.productList];
-            updatedProductList[index].qty = newQuantity;
+            // updatedProductList[cartItemId].qty = newQuantity;
             setProductDetails({ ...productDetails, productList: updatedProductList });
         }
     };
 
-    const UpdateCartData = (cartProductId: any, qty: number) => {
+    const UpdateCartData = (cartProductId: any, qty: any) => {
         fetch(`${process.env.BASE_URL}/s/cartProduct/${cartProductId}`, {
             method: 'PUT',
             headers: {
@@ -141,10 +142,6 @@ const CartList: React.FC = () => {
             });
     };
 
-    const handleRemove = (cartProductId: any) => {
-        DeleteCartData(cartProductId)
-    }
-
     const onBtnClick = () => {
         setLoading(true);
         if (productDetails && productDetails.productList) {
@@ -154,6 +151,7 @@ const CartList: React.FC = () => {
             console.error('Product details or product list is not available.');
         }
     };
+
 
     const OnShopBtn = () => {
         router.push('/#products')
@@ -169,6 +167,8 @@ const CartList: React.FC = () => {
             [cartProductId]: (prevQuantities[cartProductId] || 0) + 1,
         }));
         handleQuantityChange(cartProductId, quantities[cartProductId] + 1);
+        const qty = quantities[cartProductId] + 1
+        UpdateCartData(cartProductId, qty)
     };
 
     const handleDecrement = (cartProductId: number) => {
@@ -178,6 +178,8 @@ const CartList: React.FC = () => {
                 [cartProductId]: (prevQuantities[cartProductId] || 0) - 1,
             }));
             handleQuantityChange(cartProductId, quantities[cartProductId] - 1);
+            const qty = quantities[cartProductId] - 1
+            UpdateCartData(cartProductId, qty)
         }
     };
 
@@ -186,14 +188,12 @@ const CartList: React.FC = () => {
             <div className={styles.cartItemCount}>
                 <div><button onClick={() => handleDecrement(cartProductId)}>-</button></div>
                 <div><p>{quantities[cartProductId] || 0}</p></div>
-                {/* <div> <input type="text" value={quantities[cartProductId] || 0} readOnly /></div> */}
                 <div><button onClick={() => handleIncrement(cartProductId)}>+</button></div>
             </div>
         );
     };
 
     const handleCartItemRemove = (cartProductId: any) => {
-        console.log('remove');
         DeleteCartData(cartProductId);
     }
     const calculateTotalCartValue = (): number => {
@@ -223,7 +223,7 @@ const CartList: React.FC = () => {
             </div>
             {loading ?
                 <div className={styles.loaderContainer}>
-                    <Spin size="large" />
+                    <Loader />
                 </div>
                 :
                 isSmallScreen ?
@@ -248,7 +248,6 @@ const CartList: React.FC = () => {
                                                             height={70}
                                                         />
                                                         <div style={{ fontSize: '0.8rem' }}>
-                                                            {/* <p>Premium Almond, 1kgPremium Almond, 1kgPremium Almond, 1kgPremium Almond, 1kgPremium Almond, 1kgPremium Almond, 1kg</p> */}
                                                             <p>{item.product.name.length > 30 ? (
                                                                 <span>{item.product.name.slice(0, 30)}...</span>
                                                             ) :
@@ -280,7 +279,6 @@ const CartList: React.FC = () => {
                                     <div className={styles.totalPriceArea}>
                                         <div className={styles.label}>Total Cart Value:</div>
                                         <div className={styles.value}>{calculateTotalCartValue()} items</div>
-                                        {/* <div className={styles.value}>{productDetails.totalCartValue} INR</div> */}
                                     </div>
                                     <div className={styles.totalPriceArea}>
                                         <div className={styles.label}>Total Shipping Value:</div>
@@ -293,12 +291,6 @@ const CartList: React.FC = () => {
                                         ? "0 INR"
                                         : `${calculateTotalCost()} INR`}
                                 </div>
-                                {/* <div className={styles.totalValueContainer}>
-                                    <div className={styles.label}>Total Grand Value:</div>
-                                    {isNaN(productDetails.totalCartValue + (productDetails.totalShippingValue || 0))
-                                        ? "0 INR"
-                                        : `${productDetails.totalCartValue + (productDetails.totalShippingValue || 0)} INR`}
-                                </div> */}
                                 <div className={styles.placeOrderBtn}>
                                     <button onClick={onBtnClick} className={styles.button}>PLACE ORDER</button>
                                 </div>
@@ -319,7 +311,6 @@ const CartList: React.FC = () => {
                                         <th className={styles.tableHeading5}></th>
                                     </tr>
                                 </thead>
-                                {/* {(productDetails && productDetails.productList.length > 0) && */}
                                 <tbody style={{ width: '100%' }}>
                                     {productDetails.productList.map((item: any, index: number) => {
                                         return (
@@ -334,7 +325,12 @@ const CartList: React.FC = () => {
                                                             className={styles.productImage}
                                                         />
                                                         <div style={{ fontSize: '0.9rem' }}>
-                                                            <p>{item.product.name}</p>
+                                                            <p>{item.product.name.length > 30 ? (
+                                                                <span>{item.product.name.slice(0, 30)}...</span>
+                                                            ) :
+                                                                <span>{item.product.name}   </span>
+                                                            }
+                                                            </p>
                                                             <p><b>WEIGHT :</b>{item.product.weight}</p>
                                                         </div>
                                                     </div>
@@ -353,7 +349,6 @@ const CartList: React.FC = () => {
                                         )
                                     })}
                                 </tbody>
-                                {/* } */}
                             </table>
                         </div>
                         {productDetails &&
@@ -363,7 +358,6 @@ const CartList: React.FC = () => {
                                     <div className={styles.totalPriceArea}>
                                         <div className={styles.label}>Total Cart Value:</div>
                                         <div className={styles.value}>{calculateTotalCartValue()} items</div>
-                                        {/* <div className={styles.value}>{productDetails.totalCartValue} INR</div> */}
                                     </div>
                                     <div className={styles.totalPriceArea}>
                                         <div className={styles.label}>Total Shipping Value:</div>
@@ -376,12 +370,6 @@ const CartList: React.FC = () => {
                                         ? "0 INR"
                                         : `${calculateTotalCost()} INR`}
                                 </div>
-                                {/* <div className={styles.totalValueContainer}>
-                                    <div className={styles.label}>Total Grand Value:</div>
-                                    {isNaN(productDetails.totalCartValue + (productDetails.totalShippingValue || 0))
-                                        ? "0 INR"
-                                        : `${productDetails.totalCartValue + (productDetails.totalShippingValue || 0)} INR`}
-                                </div> */}
                                 <div className={styles.placeOrderBtn}>
                                     <button onClick={onBtnClick} className={styles.button}>PLACE ORDER</button>
                                 </div>
