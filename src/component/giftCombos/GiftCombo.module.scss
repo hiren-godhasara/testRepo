@@ -217,3 +217,37 @@
         min-width: 165px;
     }
 }
+
+@media (max-width: 380px) {
+    .card {
+        font-size: 11px;
+        min-width: 150px;
+    }
+}
+
+@media (max-width: 364px) {
+    .card {
+        font-size: 11px;
+        min-width: 143px;
+    }
+}
+
+@media (max-width: 337px) {
+    .card {
+        font-size: 11px;
+        min-width: 135px;
+    }
+}
+
+@media (max-width: 320px) {
+    .cardContainer {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .card {
+        font-size: 13px;
+        min-width: 260px;
+    }
+}
