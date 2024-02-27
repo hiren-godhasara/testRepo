@@ -160,7 +160,8 @@
 .placeOrderContainer {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     width: 30%;
-    background: #f0f2f0;
+    background-color: #ffffff;
+    // background: #f0f2f0;
     // height: fit-content;
     position: relative;
 }
@@ -193,7 +194,9 @@
 }
 
 .totalValueContainer {
-    background-color: #d9d9d9;
+    // background-color: #d9d9d9;
+    // background-color: #dfeed080;
+    background-color: rgb(223 238 208 / 32%);
     padding: 0.5rem 1rem;
     line-height: 3rem;
     display: flex;
@@ -316,6 +319,7 @@
 .mediumScreenCartContainer {
     display: flex;
     padding: 15px;
+    color: #000000;
     justify-content: space-between;
     // box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     // margin: 1rem;
@@ -361,6 +365,9 @@
         width: 50%;
     }
 
+    .placeOrderBtn {
+        position: inherit;
+    }
 
     // .tableRow {
     //     &:last-child {
