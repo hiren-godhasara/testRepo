@@ -23,9 +23,7 @@ const HomePage = () => {
     return (
         <div className={styles.home}>
             <div className={styles.productCarousel}>
-                <Carousel slidesToShow={1} autoplay autoplaySpeed={3000} speed={1500}  >
-
-
+                <Carousel slidesToShow={1} autoplay draggable autoplaySpeed={3000} speed={1000}  >
                     <div className={`${styles.imageWrapper1} ${styles.imageWrapper}`}>
                         <div className={styles.flex}>
                             <Image src={vector} className={styles.leftImage} alt="Almonds" />
