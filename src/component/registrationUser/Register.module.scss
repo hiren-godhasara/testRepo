@@ -31,6 +31,7 @@
                 border-radius: 3px;
                 border: 1px solid #ccc;
                 box-sizing: border-box;
+                color: black;
             }
         }
 
@@ -154,6 +155,11 @@
             height: 600px;
             border: 1px solid #ccc;
 
+            div {
+                input {
+                    color: black;
+                }
+            }
 
             button {
                 width: 80%;
