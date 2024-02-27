@@ -24,7 +24,7 @@ const HomePage1 = () => {
     return (
         <div className={styles.home}>
             <div className={styles.productCarousel}>
-                <Carousel slidesToShow={1} autoplay autoplaySpeed={300000} speed={1500}  >
+                <Carousel slidesToShow={1} autoplay autoplaySpeed={30000000} speed={1500}  >
 
 
                     <div className={`${styles.imageWrapper1} ${styles.imageWrapper}`}>
@@ -78,9 +78,9 @@ const HomePage1 = () => {
                         <button onClick={onBtnClick} className={styles.btndetails1}>Contact Us</button>
                     </div>
 
-                    <div className={`${styles.imageWrapper6} ${styles.imageWrapper}`}>
+                    {/* <div className={`${styles.imageWrapper6} ${styles.imageWrapper}`}>
                         <button onClick={onBtnClick} className={styles.btnnut1}>Contact Us</button>
-                    </div>
+                    </div> */}
 
 
                     {/* <Image src={i2} alt={`Image`} width={1920} height={640} className={styles.image} />

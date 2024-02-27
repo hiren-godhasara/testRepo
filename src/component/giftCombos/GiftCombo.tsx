@@ -1,94 +1,18 @@
-// import Image from 'next/image';
-// import styles from './GiftCombo.module.scss';
-// import image from '../../imageFolder/image 8.png';
-// import { giftComboAlmond, giftComboBackground, giftComboCashew, giftComboDates1, giftComboDates2 } from '@/S3Images/S3Images';
-
-// const GiftCombo: React.FC = () => {
-
-//     return (
-//         <div className={styles.giftComboContainer}>
-//             <div className={styles.backgroundImageContainer}>
-//                 <Image src={giftComboBackground} alt='Home Page' width={1870} height={751} className={styles.backgroundImage} />
-//             </div>
-
-//             <div className={styles.contentContainer}>
-//                 <h1 className={styles.h1}>Gift Combos</h1>
-
-//                 <div className={styles.cardsContainer}>
-
-//                     <div className={styles.cardRow}>
-//                         <div className={styles.card}>
-//                             <div className={styles.left}>
-//                                 <h3>Premium Dates</h3>
-//                                 <h4>Grade: A+</h4>
-//                                 <div className={styles.h5}><h5>10% Off</h5></div>
-//                             </div>
-//                             <div className={styles.right}>
-//                                 <Image src={giftComboDates1} alt='' width={118} height={118} className={styles.rightImage} />
-//                             </div>
-//                         </div>
-
-//                         <div className={styles.card}>
-//                             <div className={styles.left}>
-//                                 <h3>Premium Dates</h3>
-//                                 <h4>Grade: A+</h4>
-//                                 <div className={styles.h5}><h5>10% Off</h5></div>
-//                             </div>
-//                             <div className={styles.right}>
-//                                 <Image src={giftComboDates2} alt='' width={118} height={118} className={styles.rightImage} />
-//                             </div>
-//                         </div>
-//                     </div>
-
-//                     {/* Second Row of Cards */}
-//                     <div className={styles.cardRow}>
-//                         <div className={styles.card}>
-//                             <div className={styles.left}>
-//                                 <h3>Premium Almond</h3>
-//                                 <h4>Grade: A+</h4>
-//                                 <div className={styles.h5}><h5>10% Off</h5></div>
-//                             </div>
-//                             <div className={styles.right}>
-//                                 <Image src={giftComboAlmond} alt='' width={118} height={118} className={styles.rightImage} />
-//                             </div>
-//                         </div>
-
-//                         <div className={styles.card}>
-//                             <div className={styles.left}>
-//                                 <h3>Premium Cashew</h3>
-//                                 <h4>Grade: A+</h4>
-//                                 <div className={styles.h5}><h5>10% Off</h5></div>
-//                             </div>
-//                             <div className={styles.right}>
-//                                 <Image src={giftComboCashew} alt='' width={118} height={118} className={styles.rightImage} />
-//                             </div>
-//                         </div>
-//                     </div>
-
-//                 </div>
-//             </div>
-//         </div>
-//     );
-// };
-
-// export default GiftCombo;
-
-
-
-
-
-
-
-
-
 import { useState, useEffect, Key } from 'react';
 import Image, { StaticImageData } from 'next/image';
 import styles from './GiftCombo.module.scss';
 import { useRouter } from 'next/navigation';
+import { Carousel } from 'antd';
+import { StaticImport } from 'next/dist/shared/lib/get-img-props';
+import Cookies from 'js-cookie';
 import { getToken } from '@/getLocalStroageToken';
-
+import i from '../../imageFolder/SAVE_20240209_093303 (1).jpg'
+import i1 from '../../imageFolder/SAVE_20240209_093303 (2).jpg'
+import { Spin } from 'antd';
+import { LoadingOutlined } from '@ant-design/icons';
+import Loader from '../loader/Loader';
+import Link from 'next/link';
 interface Product {
-    prod: any
     mrp: any;
     _id: any;
     imageUrl: any | string | StaticImageData;
@@ -97,9 +21,13 @@ interface Product {
     displayName: string;
     price: number
     discount: any
+    prod: any
+    hsncode: any
+    variantName: string
 }
 
 const GiftCombo = () => {
+    const [isLoading, setIsLoading] = useState(false);
     const token = getToken()
     const router = useRouter();
     const imageWidth = 300;
@@ -107,10 +35,12 @@ const GiftCombo = () => {
     const [products, setProducts] = useState<Product[]>([]);
 
     useEffect(() => {
+        setIsLoading(true);
         fetch(`${process.env.BASE_URL}/s/productList`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
+                // 'Authorization': `Bearer ${token}`,
             },
             body: JSON.stringify({}),
         })
@@ -121,22 +51,27 @@ const GiftCombo = () => {
                 return response.json();
             })
             .then(data => {
-                console.log(data, 'data');
                 console.log(data.data.productData);
                 const comboProducts = data.data.productData.filter((product: { isCombo: boolean; }) => product.isCombo === true);
                 console.log(comboProducts);
                 setProducts(comboProducts);
+
             })
             .catch(error => {
                 console.error('There was a problem fetching the data:', error);
+            }).finally(() => {
+                setIsLoading(false);
             });
     }, []);
 
-    const onBtnClick = (id: any, displayname: string) => {
+    const onBtnClick = (id: any, displayname: string, variantName: string) => {
+        setIsLoading(true);
+        localStorage.setItem('variantName', variantName);
         localStorage.setItem('productId', id);
         router.push(`/products/${displayname}`);
-        // router.push(`/products/${displayname}?id=${id}`);
+        setIsLoading(false);
     };
+
     const [hoveredCard, setHoveredCard] = useState(null);
 
     const handleMouseEnter = (index: any) => {
@@ -150,8 +85,17 @@ const GiftCombo = () => {
 
     return (
         <>
-            <h1 className={styles.giftHead}>Gift Combos</h1>
-            <div className={styles.cardContainer}>
+            <p className={styles.comboHead}>Gift Combos</p>
+            <div className={`${styles.cardContainer} maxScreenWidth`}>
+                {isLoading && (
+                    <div className={styles.overlay}>
+                        <div className={styles.loader}>
+                            {/* <Spin size="large" /> */}
+                            <Loader />
+                        </div>
+                    </div>
+                )}
+
                 {products.map((product, index) => (
                     <div key={product._id} className={styles.card}
                         onMouseEnter={() => handleMouseEnter(index)}
@@ -165,7 +109,7 @@ const GiftCombo = () => {
                                     alt={"alt"}
                                     width={imageWidth}
                                     height={imageHeight}
-                                    className={styles.img}
+                                    className={hoveredCard === index ? styles.img1 : styles.img}
                                 />
                             </div>
 
@@ -176,29 +120,40 @@ const GiftCombo = () => {
                             }
                         </div>
 
+
                         <div className={styles.cardInfo}>
-                            <h2 className={styles.productName}>
-                                {product.name.split(',').map((part, index) => (
-                                    <span key={index} style={{ fontWeight: index === 1 ? '700' : 'inherit' }}>
-                                        {part}
-                                        {index !== 1 && ','}
-                                    </span>
-                                ))}
-                            </h2>
-                            <h2 className={styles.prod}>{product.prod}</h2>
-                            {(product.discount !== 0) && <del> <p className={styles.mrp}>MRP: {product.mrp} INR</p></del>}
-                            <p className={styles.price}>Price: <b className={styles.grade}>{product.price} INR</b></p>
+                            {/* <h2 className={styles.productName1}>
+                            {product.name}
+                        </h2> */}
+
+                            <Link href={product.name} className={styles.con}>
+                                <h2 className={styles.productName1}>
+                                    <span className={styles.ellipsis1}>{product.name}</span>
+                                </h2>
+                            </Link>
+
+                            <div className={`${styles.con} ${product.name.length < 30 ? styles.con1 : ''}`}>
+                                <h2 className={styles.productName}>
+                                    <span className={styles.ellipsis}>{product.prod}</span>
+                                </h2>
+                            </div>
+
+
+                            {/* <h2 className={styles.prod}>{product.prod}</h2> */}
+                            {(product.discount !== 0) && <del> <p className={`${styles.mrp} ${product.name.length < 30 ? styles.mrp1 : ''}`}>MRP: {product.mrp} INR</p></del>}
+                            <p className={`${styles.price}  ${product.name.length < 30 ? styles.price1 : ''} ${product.prod ? styles.prodPrice : ''}`}>Price: <b className={styles.grade}>{product.price} INR</b></p>
 
                             <button
-                                onClick={() => onBtnClick(product._id, product.displayName)}
-                                className={`${styles.button} ${product.discount === 0 ? styles.withMargin : ''}`}
+                                onClick={() => onBtnClick(product._id, product.displayName, product.variantName)}
+                                className={`${styles.button}  ${product.name.length < 30 ? styles.newBtn : ''} ${product.discount === 0 ? styles.withMargin : ''} ${product.prod ? styles.prodMargin : ''}`}
                             >
                                 Buy Now
                             </button>
                         </div>
                     </div>
-                ))}
-            </div>
+                ))
+                }
+            </div >
         </>
     );
 };

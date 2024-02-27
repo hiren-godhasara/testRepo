@@ -77,9 +77,9 @@ const HomePage = () => {
                         <button onClick={onBtnClick} className={styles.btndetails1}>Contact Us</button>
                     </div>
 
-                    <div className={`${styles.imageWrapper6} ${styles.imageWrapper}`}>
+                    {/* <div className={`${styles.imageWrapper6} ${styles.imageWrapper}`}>
                         <button onClick={onBtnClick} className={styles.btnnut1}>Contact Us</button>
-                    </div>
+                    </div> */}
 
 
                     {/* <Image src={i2} alt={`Image`} width={1920} height={640} className={styles.image} />
