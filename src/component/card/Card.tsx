@@ -35,7 +35,7 @@ const Card = () => {
     const [products, setProducts] = useState<Product[]>([]);
 
     useEffect(() => {
-        setIsLoading(true);
+        // setIsLoading(true);
         fetch(`${process.env.BASE_URL}/s/productList`, {
             method: 'POST',
             headers: {
@@ -60,7 +60,7 @@ const Card = () => {
             .catch(error => {
                 console.error('There was a problem fetching the data:', error);
             }).finally(() => {
-                setIsLoading(false);
+                // setIsLoading(false);
             });
     }, []);
 

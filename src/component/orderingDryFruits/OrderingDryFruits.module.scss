@@ -195,3 +195,96 @@
 
     cursor: pointer;
 }
+
+
+@media (max-width:1024px) {
+    .mainDiv {
+        padding-top: 100px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        margin-bottom: 50px;
+    }
+
+}
+
+
+@media (max-width:800px) {
+    .mainDiv {
+        margin-left: 5vw;
+    }
+
+    .largeImageContainer {
+        margin-left: 50px;
+    }
+}
+
+
+@media (max-width:555px) {
+    .mainDiv {
+        margin-left: 5vw;
+    }
+
+    .largeImageContainer {
+        margin-left: 100px;
+    }
+
+    .name {
+        font-size: 15px;
+    }
+
+
+
+    .description {
+        margin-left: 10px;
+        font-size: 14px;
+    }
+
+    .btnOrder {
+        width: 120px;
+        height: 40px;
+        font-size: 15px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-weight: 800;
+        border: 1px solid black;
+        padding: 10px;
+        transition: background-color 0.4s, color 0.4s;
+        border-radius: 4px;
+    }
+
+    .image1 {
+        border-radius: 3px;
+
+    }
+}
+
+
+@media (max-width:550px) {
+    .mainImg {
+        margin-left: 30px;
+    }
+
+}
+
+@media (max-width:500px) {
+    .des {
+        font-size: 13px;
+        width: 80vw;
+        height: auto;
+    }
+}
+
+@media (max-width:415px) {
+
+    .mainImg {
+        margin-left: 10px;
+    }
+
+    .sideImg {
+        margin-right: 30px;
+    }
+
+}
