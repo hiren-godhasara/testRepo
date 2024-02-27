@@ -34,7 +34,7 @@
 }
 
 .btnOrder:hover {
-    color: #144249;
+    color: #144950;
     background-color: #FBD449;
 }
 
@@ -46,7 +46,7 @@
     input {
         width: 130px;
         height: 40px;
-        color: #144249;
+        color: #144950;
         font-weight: 800;
         background-color: #ffffff;
         border-radius: 4px;
@@ -57,7 +57,7 @@
 }
 
 .price {
-    color: #144249;
+    color: #144950;
     font-weight: 700;
     margin-top: 10px;
 
@@ -72,7 +72,7 @@
 }
 
 .name {
-    color: #144249;
+    color: #144950;
     font-size: 23px;
     font-weight: 700;
     margin-bottom: 0px;
@@ -96,6 +96,9 @@
     margin-top: 30px;
 }
 
+.weight {
+    margin-top: 15px;
+}
 
 .image1 {
     // margin-left: -30px;
@@ -165,10 +168,12 @@
     margin-bottom: 10px;
     margin-left: 3px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    background-color: #144249;
-    color: #FBD449;
+    // background-color: #144950;
+    // color: #FBD449;
     padding: 10px;
     border-radius: 5px;
+    background-color: transparent;
+    border: 1px solid gray;
 
     p {
         text-align: center;
@@ -176,8 +181,17 @@
 }
 
 
+.selectedVariant {
+    border: 2px solid #144950;
+    color: #144950;
+    font-weight: 650;
+
+}
+
 .variantSubCard:hover {
-    color: #144249;
-    background-color: #FBD449;
+    // color: #144950;
+    // background-color: #FBD449;
+    border: 2px solid #144950;
+
     cursor: pointer;
 }
