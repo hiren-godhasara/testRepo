@@ -34,7 +34,7 @@
 
         button {
             color: #FBD449;
-            background-color: #144249;
+            background-color: #144950;
             font-weight: 700;
             padding: 10px 20px;
             transition: background-color 0.5s, color 0.5s;
@@ -51,7 +51,7 @@
 
         button:hover {
             background-color: #FBD449;
-            color: #144249;
+            color: #144950;
         }
     }
 }
@@ -69,19 +69,19 @@
 .headerdetails {
     font-size: 25px;
     font-weight: 700;
-    color: #144249;
+    color: #144950;
 }
 
 .bodydetails {
     font-size: 16px;
     font-weight: 400;
-    color: #144249;
+    color: #144950;
 }
 
 .registerName {
     text-align: center;
     background-color: #ffffff;
-    color: #144249;
+    color: #144950;
     font-size: 16px;
 }
 
@@ -101,7 +101,7 @@
     top: 241px;
     left: 1124px;
     // color: #FBD449;
-    // background-color: #144249;
+    // background-color: #144950;
     font-weight: 500;
     padding: 10px 20px;
     border: none;
@@ -113,5 +113,5 @@
 
 .close:hover {
     background-color: #FBD449;
-    color: #144249;
+    color: #144950;
 }

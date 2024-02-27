@@ -29,6 +29,7 @@ export const DryFruitSliderForOrder: React.FC<DryFruitSliderForOrderProps> = (pr
     const [data, setData] = useState<any>([])
     const [loading, setLoading] = useState(true)
     const [variantData, setVariantData] = useState([])
+    const [selectedVariant, setSelectedVariant] = useState<any>(localStorage.getItem("productId"));
 
     const token = getToken();
     const userId = getUserId();
@@ -192,8 +193,7 @@ export const DryFruitSliderForOrder: React.FC<DryFruitSliderForOrderProps> = (pr
 
 
     const handleVariantClick = async (id: any, displayname: string, variantName: string) => {
-        console.log(id, displayname, variantName);
-
+        setSelectedVariant(id);
         localStorage.setItem('variantName', variantName);
         localStorage.setItem('productId', id);
 
@@ -282,7 +282,11 @@ export const DryFruitSliderForOrder: React.FC<DryFruitSliderForOrderProps> = (pr
                             )}
                             <div className={styles.variantCard} >
                                 {variantData.map((e: any) => (
-                                    <div className={styles.variantSubCard} key={e._id} onClick={() => handleVariantClick(e._id, e.displayName, e.variantName)}>
+                                    <div
+                                        // className={styles.variantSubCard}
+                                        className={`${styles.variantSubCard} ${selectedVariant === e._id ? styles.selectedVariant : ''}`}
+                                        key={e._id}
+                                        onClick={() => handleVariantClick(e._id, e.displayName, e.variantName)}>
                                         <p>{e.weight}</p>
                                     </div>
                                 ))}
@@ -295,6 +299,8 @@ export const DryFruitSliderForOrder: React.FC<DryFruitSliderForOrderProps> = (pr
                     <div className={styles.description}>
                         <p className={styles.name}>{(data.length === 0) ? props.data.name : data.name}</p>
                         <p className={styles.des}>{(data.length === 0) ? props.data.productDescription : data.productDescription}</p>
+                        <p className={styles.weight}>Weight : <strong> {(data.length === 0) ? props.data.weight : data.weight}</strong></p>
+
                         <del> <p className={styles.mrp}>MRP : {(data.length === 0) ? props.data.mrp : data.mrp} INR</p></del>
                         <p className={styles.price}>Price : {price} INR</p>
                         <div className={styles.qty}>
