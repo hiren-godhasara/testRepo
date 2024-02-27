@@ -50,14 +50,11 @@ export const DryFruitSliderForOrder: React.FC<DryFruitSliderForOrderProps> = (pr
 
 
     const variantProducts = () => {
-        setLoading(true)
 
         const variantName = localStorage.getItem('variantName')
+        const name = { variantName: variantName }
 
-        const name = {
-            variantName: variantName
-        }
-
+        setLoading(true)
         fetch(`${process.env.BASE_URL}/s/productListByVariant`, {
             method: 'POST',
             headers: {
@@ -73,10 +70,7 @@ export const DryFruitSliderForOrder: React.FC<DryFruitSliderForOrderProps> = (pr
                 return response.json();
             })
             .then(data => {
-                console.log(data);
-                console.log(data.data.productData);
                 setVariantData(data.data.productData);
-
                 setLoading(false)
 
             })
@@ -222,15 +216,12 @@ export const DryFruitSliderForOrder: React.FC<DryFruitSliderForOrderProps> = (pr
         }
 
     };
-    console.log(data);
-    console.log(data.length);
 
-    console.log(props.data);
-
-
-
-
-
+    useEffect(() => {
+        setTimeout(() => {
+            setLoading(false);
+        }, 2000);
+    }, []);
 
     return (
         <>
