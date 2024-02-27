@@ -211,6 +211,10 @@
     text-align: center;
     color: #ffffff;
     padding-bottom: 0.5rem;
+
+    .span {
+        color: #fbd449;
+    }
 }
 
 .head {
@@ -274,6 +278,12 @@
     }
 
     .headp {
-        margin-left: -230px;
+        margin-left: -43vw;
+    }
+}
+
+@media only screen and (max-width: 460px) {
+    .headp {
+        margin-left: -33vw;
     }
 }

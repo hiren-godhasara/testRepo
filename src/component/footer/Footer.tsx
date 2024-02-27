@@ -206,7 +206,7 @@ export default function FooterDemo() {
 
                 <p className={styles.pcopy}>
 
-                    @2024 All rights reserved by your website.
+                    @2024 All rights reserved by <Link className={styles.span} href={webSiteLink}> www.mydryfruit.com</Link>
                 </p>
             </div>
         </footer >
