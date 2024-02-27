@@ -35,7 +35,7 @@ export default function Home() {
 
       {isSmallScreen === true && <HomePage1 />} */}
 
-      <div id='products'><BestSelling /></div>
+      {!isSmallScreen && <div id='products'><BestSelling /></div>}
       <Card />
 
       {/* <div id='allProductSlider'><AllProductSlider /></div> */}

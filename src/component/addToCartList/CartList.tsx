@@ -357,7 +357,7 @@ const CartList: React.FC = () => {
                                 <div className={styles.orderSummaryDetails}>
                                     <div className={styles.totalPriceArea}>
                                         <div className={styles.label}>Total Cart Value:</div>
-                                        <div className={styles.value}>{calculateTotalCartValue()} items</div>
+                                        <div className={styles.value}>{calculateTotalCartValue()} INR</div>
                                     </div>
                                     <div className={styles.totalPriceArea}>
                                         <div className={styles.label}>Total Shipping Value:</div>
