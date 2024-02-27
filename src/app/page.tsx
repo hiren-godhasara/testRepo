@@ -30,9 +30,10 @@ export default function Home() {
     <div>
       {/* <TagLine /> */}
       <Header />
-      {isSmallScreen === false && <HomePage />}
+      <HomePage />
+      {/* {isSmallScreen === false && <HomePage />}
 
-      {isSmallScreen === true && <HomePage1 />}
+      {isSmallScreen === true && <HomePage1 />} */}
 
       <div id='products'><BestSelling /></div>
       <Card />
