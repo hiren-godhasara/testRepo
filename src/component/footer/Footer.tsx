@@ -74,9 +74,10 @@ import styles from './Footer.module.scss'
 import insta from '../../imageFolder/footerInsta.png'
 import fb from '../../imageFolder/footerFb.png'
 import wp from '../../imageFolder/footerWp.png'
+import logo from "../../imageFolder/mdfLogo.png";
 
 const whatsappLink = 'https://wa.me/+919157059719';
-const webSiteLink = 'http://www.mydryfruits.com'
+const webSiteLink = 'http://www.mydryfruit.com'
 const faceBookLink = 'https://www.facebook.com/mydryfruit'
 const instagramLink = 'https://instagram.com/mydryfruit_com'
 
@@ -88,11 +89,20 @@ export default function FooterDemo() {
                 <div className={styles.main}>
 
                     <Link href={webSiteLink} className={styles.head}>
-                        My Dry Fruit
+                        <Image
+                            src={logo}
+                            alt='logo'
+                            width={35}
+                            height={35}
+                        />
+                        <p className={styles.headp}>My Dry Fruit</p>
                     </Link>
-                    <p className={styles.p1}>
+                    <p className={styles.p11}>
+                        BITSSHADOW LLP
+                    </p>
 
-                        517-518 MBC, Lajamni Chowk, Shanti Niketan Society, Mota Varachha, Surat, Gujarat 394101
+                    <p className={styles.p1}>
+                        519-521 Meridian Business Center, Mota Varachha, Surat, Gujarat 394101
                     </p>
 
                     <div className={styles.p3}>
