@@ -200,7 +200,7 @@ const CartList: React.FC = () => {
         if (productDetails) {
             return productDetails.productList.reduce((total: any, item: any) => {
                 const itemQuantity = quantities[item.cartProductId] || 0;
-                return total + itemQuantity * item.product.price;
+                return total + itemQuantity * item.product.mrp;
             }, 0);
         }
         return 0;
@@ -255,6 +255,8 @@ const CartList: React.FC = () => {
                                                             }
                                                             </p>
                                                             <p><b>WEIGHT : </b>{item.product.weight}</p>
+                                                            <del> <p>MRP :{item.product.mrp} INR</p></del>
+                                                            <p className={styles.discount}>Discount :{item.product.discount}%</p>
                                                             <p><b>PRICE : </b>{item.product.price}  INR</p>
                                                         </div>
                                                     </div>
@@ -277,20 +279,26 @@ const CartList: React.FC = () => {
                                 <p className={styles.orderSummaryLabel}>ORDER SUMMARY</p>
                                 <div className={styles.orderSummaryDetails}>
                                     <div className={styles.totalPriceArea}>
-                                        <div className={styles.label}>Total Cart Value:</div>
-                                        <div className={styles.value}>{calculateTotalCartValue()} items</div>
+                                        <div className={styles.label}>Cart Value:</div>
+                                        <div className={styles.value}>{calculateTotalCartValue()} INR</div>
                                     </div>
                                     <div className={styles.totalPriceArea}>
-                                        <div className={styles.label}>Total Shipping Value:</div>
-                                        <div className={styles.value}>{productDetails.totalShippingValue || 0} INR</div>
+                                        <div className={styles.label}>Total Discount:</div>
+                                        <div className={styles.valueDiscount}>{calculateTotalCost() - calculateTotalCartValue()} INR</div>
+                                    </div>
+                                    <div className={styles.totalPriceArea}>
+                                        <div className={styles.label}>Total Shipping Charge:</div>
+                                        <div className={styles.shipValue}>{productDetails.totalShippingValue || "Free"} </div>
+
                                     </div>
                                 </div>
                                 <div className={styles.totalValueContainer}>
-                                    <div className={styles.label}>Total Grand Value:</div>
+                                    <div className={styles.label}><b>Total Amount:</b></div>
                                     {isNaN(calculateTotalCost())
                                         ? "0 INR"
-                                        : `${calculateTotalCost()} INR`}
+                                        : <b>{`${calculateTotalCost()} INR`}</b>}
                                 </div>
+                                <div className={styles.disSen}>You will save {-calculateTotalCost() + calculateTotalCartValue()} INR on this order.</div>
                                 <div className={styles.placeOrderBtn}>
                                     <button onClick={onBtnClick} className={styles.button}>PLACE ORDER</button>
                                 </div>
@@ -332,6 +340,8 @@ const CartList: React.FC = () => {
                                                             }
                                                             </p>
                                                             <p><b>WEIGHT :</b>{item.product.weight}</p>
+                                                            <del> <p>MRP :{item.product.mrp} INR</p></del>
+                                                            <p className={styles.discount}>Discount :{item.product.discount}%</p>
                                                         </div>
                                                     </div>
                                                 </td>
@@ -356,20 +366,27 @@ const CartList: React.FC = () => {
                                 <p className={styles.orderSummaryLabel}>ORDER SUMMARY</p>
                                 <div className={styles.orderSummaryDetails}>
                                     <div className={styles.totalPriceArea}>
-                                        <div className={styles.label}>Total Cart Value:</div>
-                                        <div className={styles.value}>{calculateTotalCartValue()} items</div>
+                                        <div className={styles.label}>Cart Value:</div>
+                                        <div className={styles.value}>{calculateTotalCartValue()} INR</div>
                                     </div>
+
                                     <div className={styles.totalPriceArea}>
-                                        <div className={styles.label}>Total Shipping Value:</div>
-                                        <div className={styles.value}>{productDetails.totalShippingValue || 0} INR</div>
+                                        <div className={styles.label}>Total Discount:</div>
+                                        <div className={styles.valueDiscount}>{calculateTotalCost() - calculateTotalCartValue()} INR</div>
+                                    </div>
+
+                                    <div className={styles.totalPriceArea}>
+                                        <div className={styles.label}>Total Shipping Charge:</div>
+                                        <div className={styles.shipValue}>{productDetails.totalShippingValue || "Free"} </div>
                                     </div>
                                 </div>
                                 <div className={styles.totalValueContainer}>
-                                    <div className={styles.label}>Total Grand Value:</div>
+                                    <div className={styles.label}><b> Total Amount:</b></div>
                                     {isNaN(calculateTotalCost())
                                         ? "0 INR"
-                                        : `${calculateTotalCost()} INR`}
+                                        : <b>{`${calculateTotalCost()} INR`}</b>}
                                 </div>
+                                <div className={styles.disSen}>You will save {-calculateTotalCost() + calculateTotalCartValue()} INR on this order.</div>
                                 <div className={styles.placeOrderBtn}>
                                     <button onClick={onBtnClick} className={styles.button}>PLACE ORDER</button>
                                 </div>
