@@ -120,28 +120,27 @@ const RegisterForm = () => {
     };
 
     return (
+    <div className={styles.backImg}>
         <div className={styles.register}>
             <div className={styles.i1}  ></div>
             <div className={styles.i2}  ></div>
 
             <form onSubmit={handleSubmit}>
-                <div className={styles.companydetails}>
-                    <Image src={logo} alt={`Company logo`} width={60} height={60} />
-                    <p className={styles.headerdetails}>MYDRYFRUIT</p>
+                <div className={styles.imgDiv}>
+                    <Image src={logo} alt={`Company logo`} fill={true} objectFit='contain'/>
                 </div>
-                <button onClick={handleCancel} className={styles.cancelReg}>✖</button>
-                <div className={styles.registerName}>Registration</div>
+                <div className={styles.registerName}>Sign up</div>
                 <div>
-                    <label>First Name: <span style={{ color: 'red' }}>*</span></label>
-                    <input type="text" name="firstName" placeholder='Enter your firstname' value={formData.firstName} onChange={handleChange} required />
+                    <label>Name: <span style={{ color: 'red' }}>*</span></label>
+                    <div className={styles.num}>
+                    <input   className={styles.firstName} type="text" name="firstName" placeholder='First Name' value={formData.firstName} onChange={handleChange} required />
+                    <input type="text" name="lastName" placeholder='Last Name' value={formData.lastName} onChange={handleChange} required />
+                    </div>
                 </div>
-                <div>
-                    <label>Last Name:  <span style={{ color: 'red' }}>*</span></label>
-                    <input type="text" name="lastName" placeholder='Enter your lastname' value={formData.lastName} onChange={handleChange} required />
-                </div>
+              
                 <div>
                     <label>Email: <span style={{ color: 'red' }}>*</span></label>
-                    <input type="email" name="email" placeholder='Enter your Email' value={formData.email} onChange={handleChange} required />
+                    <input type="email" name="email" placeholder='Enter Email' value={formData.email} onChange={handleChange} required />
                 </div>
                 <div>
                     <label>Phone Number: <span style={{ color: 'red' }}>*</span></label>
@@ -159,7 +158,7 @@ const RegisterForm = () => {
                         <input
                             type="tel"
                             name="mobile"
-                            placeholder="Phone"
+                            placeholder="Enter Phone"
                             value={formData.mobile}
                             onChange={handleChange}
                             maxLength={10}
@@ -173,15 +172,15 @@ const RegisterForm = () => {
                 <div>
                     <label>Password: <span style={{ color: 'red' }}>*</span></label>
                     <input type="password"
-                        name="password" placeholder='Enter your Password' value={formData.password} onChange={handleChange} required />
+                        name="password" placeholder='Enter Password' value={formData.password} onChange={handleChange} required />
                 </div>
-                <div className={styles.btns}>
-                    <button type="submit" onClick={handleSubmit}>Submit</button>
-                    {/* <button type="button" onClick={handleReset}>Reset</button> */}
+                <div >
+                    <button type="submit" className={styles.btn} onClick={handleSubmit}>Submit</button>
                 </div>
             </form>
             <ToastNotifications />
         </div>
+    </div>
     );
 };
 
