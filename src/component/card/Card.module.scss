@@ -275,8 +275,30 @@
     right: 10px;
 }
 
-.button {
+// .button {
 
+//     color: #144950;
+//     border: 1.5px solid #144950;
+//     border-radius: 7px;
+//     cursor: pointer;
+//     width: calc(100% - 60px);
+//     height: 40px;
+//     background-color: #144950;
+//     color: #FBD449;
+//     position: relative;
+//     margin-left: 30px;
+//     margin-bottom: 25px;
+//     margin-top: 27px;
+//     font-size: 17px;
+//     transition: all 0.6s ease;
+
+// }
+
+.button {
+    position: absolute;
+    bottom: 5%;
+    left: 50%;
+    transform: translateX(-50%);
     color: #144950;
     border: 1.5px solid #144950;
     border-radius: 7px;
@@ -285,17 +307,8 @@
     height: 40px;
     background-color: #144950;
     color: #FBD449;
-    position: relative;
-    margin-left: 30px;
-    margin-bottom: 25px;
-    margin-top: 27px;
     font-size: 17px;
     transition: all 0.6s ease;
-
-}
-
-.withMargin {
-    margin-top: 30px;
 }
 
 .button:hover {
@@ -343,7 +356,7 @@
 }
 
 .mrp {
-    margin-top: 5px;
+    margin-top: 15px;
     text-align: center;
     opacity: 0.7;
 }
@@ -351,6 +364,15 @@
 .price {
     text-align: center;
     margin-top: 5px;
+    margin-bottom: 80px;
+    color: #144950;
+    font-weight: 550;
+    font-size: 16px;
+}
+
+.grade {
+    color: #144950;
+
 }
 
 @media (max-width: 1525px) {
@@ -359,9 +381,7 @@
         gap: 0.5rem;
     }
 
-    .withMargin {
-        margin-top: 32px;
-    }
+
 }
 
 @media (max-width: 1250px) {
@@ -375,9 +395,6 @@
         min-width: 240px;
     }
 
-    .withMargin {
-        margin-top: 52px;
-    }
 }
 
 
@@ -387,14 +404,14 @@
         gap: 0.1rem;
     }
 
+    .button {
+        font-size: 15px;
+    }
 
     .card {
         min-width: 190px;
     }
 
-    .withMargin {
-        margin-top: 52px;
-    }
 }
 
 @media (max-width: 633px) {
