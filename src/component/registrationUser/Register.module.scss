@@ -48,7 +48,7 @@
                 border-radius: 3px;
                 border: 2px solid #ccc;
                 box-sizing: border-box;
-                
+                color: black;
             }
             input:focus{
                 border-color:#144950 ;
@@ -165,6 +165,11 @@
             width: 360px;
             border: 1px solid #ccc;
 
+            div {
+                input {
+                    color: black;
+                }
+            }
 
             button {
                 font-weight: 600;

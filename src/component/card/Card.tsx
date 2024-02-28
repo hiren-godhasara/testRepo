@@ -24,6 +24,7 @@ interface Product {
     prod: any
     hsncode: any
     variantName: string
+    details: string
 }
 
 const Card = () => {
@@ -35,7 +36,7 @@ const Card = () => {
     const [products, setProducts] = useState<Product[]>([]);
 
     useEffect(() => {
-        setIsLoading(true);
+        // setIsLoading(true);
         fetch(`${process.env.BASE_URL}/s/productList`, {
             method: 'POST',
             headers: {
@@ -60,7 +61,7 @@ const Card = () => {
             .catch(error => {
                 console.error('There was a problem fetching the data:', error);
             }).finally(() => {
-                setIsLoading(false);
+                // setIsLoading(false);
             });
     }, []);
 
@@ -131,14 +132,14 @@ const Card = () => {
 
                         <div className={`${styles.con} ${product.name.length < 30 ? styles.con1 : ''}`}>
                             <h2 className={styles.productName}>
-                                <span className={styles.ellipsis}>{product.prod}</span>
+                                <span className={styles.ellipsis}>{product.details}</span>
                             </h2>
                         </div>
 
 
                         {/* <h2 className={styles.prod}>{product.hsncode}</h2> */}
                         {(product.discount !== 0) && <del> <p className={`${styles.mrp} ${product.name.length < 30 ? styles.mrp1 : ''}`}>MRP: {product.mrp} INR</p></del>}
-                        <p className={`${styles.price}  ${product.name.length < 30 ? styles.price1 : ''} ${product.prod ? styles.prodPrice : ''}`}>Price: <b className={styles.grade}>{product.price} INR</b></p>
+                        <p className={`${styles.price}  ${product.name.length < 30 ? styles.price1 : ''} ${product.details ? styles.prodPrice : ''}`}>Price: <b className={styles.grade}>{product.price} INR</b></p>
 
                         <button
                             onClick={() => onBtnClick(product._id, product.displayName, product.variantName)}

@@ -50,14 +50,11 @@ export const DryFruitSliderForOrder: React.FC<DryFruitSliderForOrderProps> = (pr
 
 
     const variantProducts = () => {
-        setLoading(true)
 
         const variantName = localStorage.getItem('variantName')
+        const name = { variantName: variantName }
 
-        const name = {
-            variantName: variantName
-        }
-
+        setLoading(true)
         fetch(`${process.env.BASE_URL}/s/productListByVariant`, {
             method: 'POST',
             headers: {
@@ -73,10 +70,7 @@ export const DryFruitSliderForOrder: React.FC<DryFruitSliderForOrderProps> = (pr
                 return response.json();
             })
             .then(data => {
-                console.log(data);
-                console.log(data.data.productData);
                 setVariantData(data.data.productData);
-
                 setLoading(false)
 
             })
@@ -91,6 +85,15 @@ export const DryFruitSliderForOrder: React.FC<DryFruitSliderForOrderProps> = (pr
     }, []);
 
     const price = (data.length === 0) ? props.data.price : data.price
+    const discount = (data.length === 0) ? props.data.discount : data.discount
+    const convertedWeight = (data.length === 0) ? props.data.weight : data.weight
+    let weight;
+    if (convertedWeight >= 1000) {
+        weight = convertedWeight / 1000 + ' Kg';
+    } else {
+        weight = convertedWeight + ' g';
+    }
+
     const total = price * quantity;
     const roundedTotal = total.toFixed(2);
 
@@ -104,7 +107,7 @@ export const DryFruitSliderForOrder: React.FC<DryFruitSliderForOrderProps> = (pr
             productId: productIdFromLocal,
             qty: quantity,
             token: token,
-            // discount: 10
+            discount: discount
         };
 
         fetch(`${process.env.BASE_URL}/s/cartProduct`, {
@@ -222,15 +225,12 @@ export const DryFruitSliderForOrder: React.FC<DryFruitSliderForOrderProps> = (pr
         }
 
     };
-    console.log(data);
-    console.log(data.length);
 
-    console.log(props.data);
-
-
-
-
-
+    useEffect(() => {
+        setTimeout(() => {
+            setLoading(false);
+        }, 2000);
+    }, []);
 
     return (
         <>
@@ -280,17 +280,21 @@ export const DryFruitSliderForOrder: React.FC<DryFruitSliderForOrderProps> = (pr
                                     className={`${styles.largeImage} ${shouldRenderRegisterForm ? styles.blurImage : ''}`}
                                 />
                             )}
-                            <div className={styles.variantCard} >
-                                {variantData.map((e: any) => (
-                                    <div
-                                        // className={styles.variantSubCard}
-                                        className={`${styles.variantSubCard} ${selectedVariant === e._id ? styles.selectedVariant : ''}`}
-                                        key={e._id}
-                                        onClick={() => handleVariantClick(e._id, e.displayName, e.variantName)}>
-                                        <p>{e.weight}</p>
-                                    </div>
-                                ))}
+                            <div className={styles.variantCard}>
+                                {variantData.map((e: any) => {
+                                    const weightDisplay = e.weight >= 1000 ? `${(e.weight / 1000)} kg` : `${e.weight} g`;
+
+                                    return (
+                                        <div
+                                            className={`${styles.variantSubCard} ${selectedVariant === e._id ? styles.selectedVariant : ''}`}
+                                            key={e._id}
+                                            onClick={() => handleVariantClick(e._id, e.displayName, e.variantName)}>
+                                            <p>{weightDisplay}</p>
+                                        </div>
+                                    );
+                                })}
                             </div>
+
                         </div>
                     </div>
 
@@ -299,9 +303,10 @@ export const DryFruitSliderForOrder: React.FC<DryFruitSliderForOrderProps> = (pr
                     <div className={styles.description}>
                         <p className={styles.name}>{(data.length === 0) ? props.data.name : data.name}</p>
                         <p className={styles.des}>{(data.length === 0) ? props.data.productDescription : data.productDescription}</p>
-                        <p className={styles.weight}>Weight : <strong> {(data.length === 0) ? props.data.weight : data.weight}</strong></p>
+                        <p className={styles.weight}>Weight : <strong> {weight}</strong></p>
 
                         <del> <p className={styles.mrp}>MRP : {(data.length === 0) ? props.data.mrp : data.mrp} INR</p></del>
+                        <p className={styles.discount}>Discount : {(data.length === 0) ? props.data.discount : data.discount} %</p>
                         <p className={styles.price}>Price : {price} INR</p>
                         <div className={styles.qty}>
                             <label htmlFor="quantity">Qty :</label>

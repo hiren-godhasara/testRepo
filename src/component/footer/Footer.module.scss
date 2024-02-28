@@ -134,6 +134,14 @@
     color: #718096;
 }
 
+.p11 {
+    margin-top: 0.5rem;
+    font-size: 0.85rem;
+    text-align: center;
+    color: #ffffff;
+
+}
+
 .p2 {
     display: flex;
     margin-top: 20px;
@@ -203,9 +211,22 @@
     text-align: center;
     color: #ffffff;
     padding-bottom: 0.5rem;
+
+    .span {
+        color: #fbd449;
+    }
 }
 
 .head {
+    color: #ffffff;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    // font-size: 1rem;
+}
+
+.headp {
+    margin-left: -100px;
     color: #ffffff;
 }
 
@@ -255,5 +276,15 @@
         width: 100%;
         text-align: center;
         margin: 0;
+    }
+
+    .headp {
+        margin-left: -43vw;
+    }
+}
+
+@media only screen and (max-width: 460px) {
+    .headp {
+        margin-left: -33vw;
     }
 }

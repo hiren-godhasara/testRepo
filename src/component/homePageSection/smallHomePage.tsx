@@ -24,7 +24,7 @@ const HomePage1 = () => {
     return (
         <div className={styles.home}>
             <div className={styles.productCarousel}>
-                <Carousel slidesToShow={1} autoplay autoplaySpeed={30000000} speed={1500}  >
+                <Carousel slidesToShow={1} autoplay draggable autoplaySpeed={3000} speed={1000}  >
 
 
                     <div className={`${styles.imageWrapper1} ${styles.imageWrapper}`}>
