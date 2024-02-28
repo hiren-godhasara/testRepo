@@ -27,7 +27,7 @@ const Cart = () => {
     const [productDetails, setProductDetails] = useState<Product | null>(null);
     const paramId = useSearchParams().get('id');
     const token = getToken()
-    var productIdFromLocal = localStorage.getItem('productId');
+    const productIdFromLocal = typeof window !== 'undefined' ? localStorage.getItem('productId') : null;
 
     useEffect(() => {
         getProductDetails();
