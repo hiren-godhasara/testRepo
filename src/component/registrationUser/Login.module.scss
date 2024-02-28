@@ -1,64 +1,97 @@
+
+.backImg {
+    position: relative;
+}
+
+.backImg::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-image: url('../../imageFolder/dryfruit-vector.png');
+    opacity: 0.1; /* Adjust the opacity value as needed (0 to 1) */
+    /* Other background properties can be added as needed */
+    background-size: cover; /* Optional: adjust to your preference */
+    background-position: center; /* Optional: adjust to your preference */
+    background-repeat: no-repeat; /* Optional: adjust to your preference */
+    z-index: -1;
+}
+
 .register {
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
-
-
     form {
-        width: 420px;
-        height: 500px;
-        margin-top: 20px;
+        width: 380px;
         max-width: 500px;
         padding: 20px;
-        border: 1px solid #ccc;
-        background-color: #144950;
+        background-color: #ffff;
         border-radius: 8px;
 
         div {
-            margin-bottom: 10px;
+            // margin-bottom: 10px;
+            margin: 20px 0 20px 0 ;
 
             label {
-                display: block;
-                margin-bottom: 5px;
-                margin-top: 30px;
-                color: #FBD449;
+                margin-bottom: 20px;
+                color: #144950;
+                font-weight: 600;
+                font-size: 15px;
             }
-
+            
             input {
                 width: 100%;
                 padding: 8px;
                 border-radius: 3px;
-                border: 1px solid #ccc;
+                margin-top: 10px;
+                border: 2px solid #ccc;
                 box-sizing: border-box;
+                
             }
-        }
-
-        button {
-            color: #144950;
-            background-color: white;
-            font-weight: 700;
-            padding: 10px 20px;
-            border: none;
-            border-radius: 3px;
-            cursor: pointer;
-            margin-right: 10px;
-            margin-top: 40px;
-            transition: background-color 0.3s, color 0.3s;
-
-            &:last-child {
-                margin-right: 0;
+            input:focus{
+                border-color:#144950 ;
             }
+            input:hover{
+                border-color:#144950 ;
+            };
         }
 
-        button:hover {
-            background-color: #FBD449;
-            color: #144950;
-        }
 
     }
 }
+.imgDiv{
+    height: 100px;
+}
 
+.btn {
+    width: 100%;
+    color: #ffff;
+    background-color: #144950;
+    font-weight: 700;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+    margin-right: 10px;
+    margin-top: 40px;
+    transition: background-color 0.3s, color 0.3s;
+
+    &:last-child {
+        margin-right: 0;
+    }
+}
+
+.btn:hover {
+    background-color: #FBD449;
+    color: #144950;
+}
+
+.registerBtn{
+    margin-top: 0px!important; 
+}
 .companydetails {
     display: flex;
     justify-content: center;
@@ -79,10 +112,9 @@
 
 .registerName {
     font-size: 28px;
-    margin-top: -80px;
     text-align: center;
     font-weight: 700;
-    color: white;
+    color: black;
 }
 
 .link {
@@ -120,7 +152,6 @@
 
         form {
             width: 360px;
-            height: 500px;
             border: 1px solid #ccc;
 
 
@@ -162,7 +193,6 @@
         }
 
         .registerName {
-            margin-top: -65px;
             font-size: 14px;
         }
 
@@ -177,5 +207,9 @@
             margin-bottom: -15px;
             margin-top: 135px;
         }
+    }
+
+    .imgDiv{
+        height: 70px;
     }
 }

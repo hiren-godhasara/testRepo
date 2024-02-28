@@ -6,6 +6,7 @@ import { useRouter } from 'next/navigation';
 import Cookies from 'js-cookie';
 import Link from 'next/link';
 import { ToastNotifications, showSuccessToast, showErrorToast } from '../../toastNotifications'
+import Header from '../headerSection/Header';
 
 
 const LoginForm = () => {
@@ -64,48 +65,53 @@ const LoginForm = () => {
 
     const inputType = formData.loginId.includes('@') ? 'email' : "text";
 
-    return (
+    return (<>
+    <div className={styles.backImg}>
         <div className={styles.register}>
             <form onSubmit={handleSubmit}>
                 <div className={styles.companydetails}>
-                    <Image src={logo} alt={`Company logo`} width={60} height={60} />
-                    <p className={styles.headerdetails}>MYDRYFRUIT</p>
+                    <div className={styles.imgDiv}>
+                    <Image src={logo} alt={`Company logo`} fill={true} objectFit='contain'/>
+                    </div>
                 </div>
-                <button onClick={handleCancel} className={styles.cancelReg}>✖</button>
-                <div className={styles.registerName}>Welcome Back</div>
+                <div className={styles.registerName}>Welcome Back !</div>
 
                 <div>
                     <label>Email / Phone Number: <span style={{ color: 'red' }}>*</span></label>
                     <input
                         type={inputType}
+                        placeholder="Enter Email Or Phone"
                         name="loginId"
                         value={formData.loginId}
                         onChange={handleChange}
                         required
-                        style={{ color: "black" }}
-                    />
+                        />
                 </div>
                 <div>
                     <label>Password: <span style={{ color: 'red' }}>*</span></label>
                     <input
                         type="password"
                         name="password"
+                        placeholder="Enter Password"
                         value={formData.password}
                         onChange={handleChange}
                         required
-                        style={{
-                            color: "black"
-                        }}
-                    />
+                        
+                        />
                 </div>
                 <div>
-                    <button type="submit">Log In</button>
-                    <button type="button" onClick={handleReset}>Reset</button>
+                    <button type="submit"  className={styles.btn}>Sign In</button>
                 </div>
-                <Link className={styles.link} href='/registration'>  New to mydryfruit  ?<span className={styles.span}> Create an account </span></Link>
+                <div style={{textAlign:"center",margin:"0 0 10px 0",color:"#a9a9a9"}}>Don't have an account? </div>
+                <div>
+                    <Link href='/registration'>  
+                    <button className={`${styles.btn} ${styles.registerBtn}`} >Create account</button>
+                    </Link>
+                </div>
             </form>
             <ToastNotifications />
         </div>
+</div>                        </>
     );
 };
 
