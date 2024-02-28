@@ -110,6 +110,7 @@ const Header = () => {
                 if (data) {
                     removeToken();
                     removeUserId();
+                    localStorage.clear();
                     window.location.reload();
                     window.location.href = '/'
                 }

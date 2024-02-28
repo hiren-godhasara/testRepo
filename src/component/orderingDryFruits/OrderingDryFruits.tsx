@@ -12,7 +12,6 @@ import LoginForm from '../registrationUser/Login';
 import emptyCart from '../../imageFolder/emptyCart1-removebg-preview.png'
 import useTokenExpiration from '@/userTokenExpiration';
 import { ToastNotifications, showSuccessToast, showErrorToast } from '../../toastNotifications'
-import NewLoginForm from '../registrationUser/NewLogin';
 import Loader from '../loader/Loader';
 // import { usePathname } from 'next/navigation'
 interface DryFruitSliderForOrderProps {
@@ -51,7 +50,7 @@ export const DryFruitSliderForOrder: React.FC<DryFruitSliderForOrderProps> = (pr
 
     const variantProducts = () => {
 
-        const variantName = localStorage.getItem('variantName')
+        const variantName = typeof window !== 'undefined' ? localStorage.getItem('variantName') : null
         const name = { variantName: variantName }
 
         setLoading(true)
@@ -97,7 +96,7 @@ export const DryFruitSliderForOrder: React.FC<DryFruitSliderForOrderProps> = (pr
     const total = price * quantity;
     const roundedTotal = total.toFixed(2);
 
-    var productIdFromLocal = localStorage.getItem('productId');
+    var productIdFromLocal = typeof window !== 'undefined' ? localStorage.getItem('productId') : null
 
 
     const addToCart = () => {
@@ -154,12 +153,10 @@ export const DryFruitSliderForOrder: React.FC<DryFruitSliderForOrderProps> = (pr
             handleAddToCart();
             router.push('/cart')
         } else {
+            localStorage.setItem('isOrderRedirecting', "true");
             setShouldRenderRegisterForm(true);
+            router.push('/login')
         }
-    };
-
-    const handleCancelClick = () => {
-        setShouldRenderRegisterForm(false);
     };
 
     const handleRouting = () => {
@@ -177,7 +174,10 @@ export const DryFruitSliderForOrder: React.FC<DryFruitSliderForOrderProps> = (pr
 
 
         } else {
+            localStorage.setItem('isOrderRedirecting', "true");
             setShouldRenderRegisterForm(true);
+            router.push('/login')
+
         }
     };
     const [selectedImage, setSelectedImage] = useState(
@@ -346,9 +346,9 @@ export const DryFruitSliderForOrder: React.FC<DryFruitSliderForOrderProps> = (pr
 
                 </div >
             )}
-            <div className={styles.reg}>
-                {shouldRenderRegisterForm && <NewLoginForm />}
-            </div>
+            {/* <div className={styles.reg}>
+                {shouldRenderRegisterForm && <LoginForm />}
+            </div> */}
             <ToastNotifications />
         </>
 
