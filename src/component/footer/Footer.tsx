@@ -66,7 +66,7 @@
 // export default Footer;
 
 
-
+'use client'
 import Link from "next/link"
 import Image from 'next/image';
 import styles from './Footer.module.scss'
@@ -80,7 +80,7 @@ const webSiteLink = 'http://www.mydryfruit.com'
 const faceBookLink = 'https://www.facebook.com/mydryfruit'
 const instagramLink = 'https://instagram.com/mydryfruit_com'
 
-export default function FooterDemo() {
+export default function Footer() {
     return (
         <footer className={styles.container}>
             <div

@@ -1,3 +1,5 @@
+'use client'
+
 import React, { useState } from 'react';
 import styles from './Login.module.scss';
 import Image from 'next/image';
@@ -46,10 +48,11 @@ const LoginForm = () => {
                 Cookies.set('userId', data.data.userId, { expires: 1 });
                 showSuccessToast(data.message);
                 if (isOrderRedirecting === "true") {
-                    router.back();
+                    window.history.back();
                     productIdFromLocal
                 } else {
-                    router.push('/');
+                    window.location.reload()
+                    window.location.href = '/'
                 }
                 setFormData({
                     loginId: '',

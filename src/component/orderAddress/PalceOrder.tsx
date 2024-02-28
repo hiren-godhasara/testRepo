@@ -1,5 +1,4 @@
-
-
+'use client'
 import { Suspense, useEffect, useState } from 'react';
 import styles from './OrderAddress.module.scss';
 import { getUserId } from '@/getLocalStroageUserId';

@@ -1,3 +1,4 @@
+'use client'
 import { headerCompanyLogo } from '@/S3Images/S3Images'
 import styles from './Header.module.scss';
 import Image from 'next/image'

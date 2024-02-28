@@ -1,3 +1,5 @@
+'use client'
+
 import { useState, useEffect, Key } from 'react';
 import Image, { StaticImageData } from 'next/image';
 import styles from './GiftCombo.module.scss';
