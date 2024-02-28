@@ -342,6 +342,24 @@
     font-size: 12px;
 }
 
+.discount {
+    color: rgb(2, 108, 2);
+    font-weight: 650;
+}
+
+.shipValue,
+.valueDiscount {
+    color: rgb(2, 108, 2);
+    font-weight: 650;
+}
+
+.disSen {
+    margin-top: 5px;
+    text-align: center;
+    color: rgb(2, 108, 2);
+    font-weight: 650;
+}
+
 @media only screen and (max-width: 1300px) {
     .emptyCard {
         font-size: 28px;

@@ -85,6 +85,8 @@ export const DryFruitSliderForOrder: React.FC<DryFruitSliderForOrderProps> = (pr
     }, []);
 
     const price = (data.length === 0) ? props.data.price : data.price
+    const discount = (data.length === 0) ? props.data.discount : data.discount
+
     const total = price * quantity;
     const roundedTotal = total.toFixed(2);
 
@@ -98,7 +100,7 @@ export const DryFruitSliderForOrder: React.FC<DryFruitSliderForOrderProps> = (pr
             productId: productIdFromLocal,
             qty: quantity,
             token: token,
-            // discount: 10
+            discount: discount
         };
 
         fetch(`${process.env.BASE_URL}/s/cartProduct`, {
@@ -293,6 +295,7 @@ export const DryFruitSliderForOrder: React.FC<DryFruitSliderForOrderProps> = (pr
                         <p className={styles.weight}>Weight : <strong> {(data.length === 0) ? props.data.weight : data.weight}</strong></p>
 
                         <del> <p className={styles.mrp}>MRP : {(data.length === 0) ? props.data.mrp : data.mrp} INR</p></del>
+                        <p className={styles.discount}>Discount : {(data.length === 0) ? props.data.discount : data.discount} %</p>
                         <p className={styles.price}>Price : {price} INR</p>
                         <div className={styles.qty}>
                             <label htmlFor="quantity">Qty :</label>
