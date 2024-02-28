@@ -200,6 +200,13 @@
     margin-top: 5px;
 }
 
+.outOfStock {
+    color: red;
+    font-weight: 500;
+    margin-top: 10px;
+    text-align: center;
+}
+
 @media (max-width:1024px) {
     .mainDiv {
         padding-top: 10px;

@@ -232,6 +232,11 @@ export const DryFruitSliderForOrder: React.FC<DryFruitSliderForOrderProps> = (pr
         }, 2000);
     }, []);
 
+
+
+    const isButtonDisabled = (data.length === 0 && (props.data.isAvailable === false) || (data.isAvailable === false));
+
+
     return (
         <>
             {loading ? (
@@ -312,13 +317,26 @@ export const DryFruitSliderForOrder: React.FC<DryFruitSliderForOrderProps> = (pr
                             <label htmlFor="quantity">Qty :</label>
                             <input type="number" id="quantity" name="quantity" value={quantity} className={styles.clickable} onChange={handleQuantityChange} />
                         </div>
-                        <div className={styles.total}>
-                            <label htmlFor="total">Total Price  : </label>
-                            <strong><span id="total" className={styles.clickableInput}>{roundedTotal} Rs.</span></strong>
-                        </div>
+
+                        {isButtonDisabled && <div className={styles.outOfStock}>This Item is currently out of stock !</div>}
+
                         <div className={styles.orderButton}>
-                            <button onClick={handleClick} className={styles.btnOrder}>Add To Cart</button>
-                            <button onClick={handleRouting} className={styles.btnOrder}>Place Order</button>
+                            <button
+                                onClick={handleClick}
+                                className={styles.btnOrder}
+                                disabled={isButtonDisabled}
+                                style={{ cursor: isButtonDisabled ? 'not-allowed' : 'pointer' }}
+                            >
+                                Add To Cart
+                            </button>
+                            <button
+                                onClick={handleRouting}
+                                className={styles.btnOrder}
+                                disabled={isButtonDisabled}
+                                style={{ cursor: isButtonDisabled ? 'not-allowed' : 'pointer' }}
+                            >
+                                Place Order
+                            </button>
                         </div>
                     </div>
 
@@ -326,7 +344,7 @@ export const DryFruitSliderForOrder: React.FC<DryFruitSliderForOrderProps> = (pr
 
 
 
-                </div>
+                </div >
             )}
             <div className={styles.reg}>
                 {shouldRenderRegisterForm && <NewLoginForm />}
