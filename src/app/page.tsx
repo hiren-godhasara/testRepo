@@ -1,4 +1,5 @@
-'use client'
+// 'use client'
+
 import React from 'react';
 import BestSelling from "../component/bestSellingSection/BestSellingProducts";
 import Header from "../component/headerSection/Header";
@@ -21,21 +22,19 @@ import products from '@/data/CardData';
 import CartList from '@/component/addToCartList/CartList';
 import TagLine from '@/component/tagLine/TagLine';
 import HomePage1 from '@/component/homePageSection/smallHomePage';
-import useWindowSize from '@/component/hooks/useWindowsize';
 
 export default function Home() {
-  const isSmallScreen = useWindowSize().smallScreen
 
   return (
     <div>
       {/* <TagLine /> */}
-      <Header />
+      {/* <Header /> */}
       <HomePage />
       {/* {isSmallScreen === false && <HomePage />}
 
       {isSmallScreen === true && <HomePage1 />} */}
 
-      {!isSmallScreen && <div id='products'><BestSelling /></div>}
+      <div id='products'><BestSelling /></div>
       <Card />
 
       {/* <div id='allProductSlider'><AllProductSlider /></div> */}
@@ -44,12 +43,12 @@ export default function Home() {
 
       {/* <div id='store'><Storing /></div> */}
 
-      {/* <div id='reviews'><ReviewSlider /></div> */}
+      <div id='reviews'><ReviewSlider /></div>
       <div id='gifting'> <GiftCombo /></div>
 
       {/* <InstagramFeeds />
       <HashtagInstagramFeeds /> */}
-      <Footer />
+      {/* <Footer /> */}
       {/* <OrderAddress />
       <Invoices />
       <CartList /> */}

@@ -1,3 +1,5 @@
+'use client'
+
 import React, { useState, ChangeEvent, useEffect } from 'react';
 import Image from 'next/image';
 import { Carousel, Spin } from 'antd';

@@ -1,3 +1,4 @@
+'use client'
 import { useEffect, useState } from 'react';
 import styles from './OrderList.module.scss';
 import { getUserId } from '@/getLocalStroageUserId';

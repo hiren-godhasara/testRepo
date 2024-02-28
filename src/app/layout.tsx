@@ -4,6 +4,9 @@ import "./globals.scss";
 import Script from "next/script";
 import Head from "next/head";
 import TagLine from "@/component/tagLine/TagLine";
+import Header from "@/component/headerSection/Header";
+import Footer from '@/component/footer/Footer';
+
 
 
 const inter = Inter({ subsets: ["latin"] });
@@ -37,8 +40,9 @@ export default function RootLayout({
           <meta name="viewport" content="initial-scale=1, maximum-scale=1" />
         </Head>
         <body className={inter.className}>
+          <Header />
           {children}
-
+          <Footer />
         </body>
       </html>
       <Script src="https://checkout.razorpay.com/v1/checkout.js" />

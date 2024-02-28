@@ -1,3 +1,5 @@
+'use client'
+
 import { Carousel } from 'antd';
 import styles from './smallHomepage.module.scss';
 import Image from 'next/image';

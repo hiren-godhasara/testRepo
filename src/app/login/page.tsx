@@ -1,4 +1,3 @@
-'use client'
 import LoginForm from '@/component/registrationUser/Login';
 import React from 'react';
 

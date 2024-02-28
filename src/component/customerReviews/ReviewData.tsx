@@ -47,6 +47,7 @@
 
 // export default ReviewData;
 
+'use client'
 
 import React, { useState, useEffect } from 'react';
 import styles from './ReviewData.module.scss';

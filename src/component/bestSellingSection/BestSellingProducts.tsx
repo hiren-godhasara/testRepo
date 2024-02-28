@@ -1,3 +1,5 @@
+'use client'
+
 import styles from './BestSellingProducts.module.scss';
 
 const BestSelling = () => {
