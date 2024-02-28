@@ -138,12 +138,12 @@ const Card = () => {
 
 
                         {/* <h2 className={styles.prod}>{product.hsncode}</h2> */}
-                        {(product.discount !== 0) && <del> <p className={`${styles.mrp} ${product.name.length < 30 ? styles.mrp1 : ''}`}>MRP: {product.mrp} INR</p></del>}
-                        <p className={`${styles.price}  ${product.name.length < 30 ? styles.price1 : ''} ${product.details ? styles.prodPrice : ''}`}>Price: <b className={styles.grade}>{product.price} INR</b></p>
+                        {(product.discount !== 0) && <del> <p className={styles.mrp}>MRP: {product.mrp} INR</p></del>}
+                        <p className={styles.price} >Price: <b className={styles.grade}>{product.price} INR</b></p>
 
                         <button
                             onClick={() => onBtnClick(product._id, product.displayName, product.variantName)}
-                            className={`${styles.button}  ${product.name.length < 30 ? styles.newBtn : ''} ${product.discount === 0 ? styles.withMargin : ''} ${product.prod ? styles.prodMargin : ''}`}
+                            className={styles.button}
                         >
                             Buy Now
                         </button>
