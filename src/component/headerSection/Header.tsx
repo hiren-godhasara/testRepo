@@ -122,10 +122,26 @@ const Header = () => {
             });
     };
 
+
+    const [isHeaderSticky, setIsHeaderSticky] = useState(false);
+
+    useEffect(() => {
+        const handleScroll = () => {
+            const scrollY = window.scrollY;
+            setIsHeaderSticky(scrollY > window.innerHeight * 0);
+        };
+
+        window.addEventListener('scroll', handleScroll);
+
+        return () => {
+            window.removeEventListener('scroll', handleScroll);
+        };
+    }, []);
+
     return (
         <div className={styles.mainHeaderWrapper}>
             <TagLine />
-            <div className={styles.header}>
+            <div className={`${styles.header} ${isHeaderSticky ? styles.stickyHeader : ''}`}>
                 {isMediumScreen &&
                     <div className={styles.mediumScreenHeaderarea}>
                         <div style={{ cursor: 'pointer' }} onClick={() => handleDrawerOpen()}>
