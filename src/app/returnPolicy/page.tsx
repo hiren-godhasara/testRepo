@@ -3,7 +3,7 @@ import ReturnPolicy from '@/component/GeneralPages/ReturnPolicy';
 
 export default function Cart() {
     return (
-        <div>
+        <div style={{ backgroundColor: 'white' }}>
             <ReturnPolicy />
         </div>
     );

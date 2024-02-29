@@ -52,7 +52,7 @@ const Cart = () => {
     };
 
     return (
-        <div>
+        <div style={{ backgroundColor: 'white' }}>
             {productDetails && <DryFruitSliderForOrder data={productDetails} />}
         </div>
     );

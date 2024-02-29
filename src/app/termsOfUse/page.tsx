@@ -3,7 +3,7 @@ import TermsOfUse from '@/component/GeneralPages/TermsOfUse';
 
 export default function Cart() {
     return (
-        <div>
+        <div style={{ backgroundColor: 'white' }}>
             <TermsOfUse />
         </div>
     );

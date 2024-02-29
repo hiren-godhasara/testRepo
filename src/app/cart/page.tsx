@@ -3,7 +3,7 @@ import CartList from '@/component/addToCartList/CartList';
 
 export default function CartLists() {
     return (
-        <div>
+        <div style={{ backgroundColor: 'white' }}>
             <CartList />
         </div >
     );
