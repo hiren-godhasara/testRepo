@@ -198,12 +198,11 @@ const Header = () => {
                         }>
                         <div className={styles.antDrawerBody}>
                             <ul className={styles.drawerMenuItems}>
-                                <li><Link className={styles.drawerLink} onClick={() => setIsMenuShown(false)} href="/">Home</Link></li>
-                                <li><Link className={styles.drawerLink} onClick={() => setIsMenuShown(false)} href="/#about">About Us</Link></li>
                                 <li><Link className={styles.drawerLink} onClick={() => setIsMenuShown(false)} href="/#products">Products</Link></li>
-                                <li><Link className={styles.drawerLink} onClick={() => setIsMenuShown(false)} href="/#deals">Best Deals</Link></li>
-                                <li><Link className={styles.drawerLink} onClick={() => setIsMenuShown(false)} href="/#store">Store</Link></li>
                                 <li><Link className={styles.drawerLink} onClick={() => setIsMenuShown(false)} href="/#gifting">Gifting</Link></li>
+                                <li><Link className={styles.drawerLink} onClick={() => setIsMenuShown(false)} href="/#deals">Best Deals</Link></li>
+                                <li><Link className={styles.drawerLink} onClick={() => setIsMenuShown(false)} href="/aboutUs">About Us</Link></li>
+                                <li><Link className={styles.drawerLink} onClick={() => setIsMenuShown(false)} href="/contactUs">Contact Us</Link></li>
                             </ul>
                             <div className={styles.antDrawerBtn}>
                                 {!token && <Link className={styles.contactUsBtn} href='/registration'>Register</Link>}
@@ -220,12 +219,11 @@ const Header = () => {
                             <div className={styles.leftSectionName}>MYDRYFRUIT</div>
                         </div>
                         <div className={styles.headerLinkWrapper}>
-                            <Link className={styles.headerLink} onClick={() => setIsMenuShown(false)} href="/">Home</Link>
-                            <Link className={styles.headerLink} onClick={() => setIsMenuShown(false)} href="/#about">About Us</Link>
                             <Link className={styles.headerLink} onClick={() => setIsMenuShown(false)} href="/#products">Products</Link>
-                            <Link className={styles.headerLink} onClick={() => setIsMenuShown(false)} href="/#deals">Best Deals</Link>
-                            <Link className={styles.headerLink} onClick={() => setIsMenuShown(false)} href="/#store">Store</Link>
                             <Link className={styles.headerLink} onClick={() => setIsMenuShown(false)} href="/#gifting">Gifting</Link>
+                            <Link className={styles.headerLink} onClick={() => setIsMenuShown(false)} href="/#deals">Best Deals</Link>
+                            <Link className={styles.headerLink} onClick={() => setIsMenuShown(false)} href="/aboutUs">About Us</Link>
+                            <Link className={styles.headerLink} onClick={() => setIsMenuShown(false)} href="/contactUs">Contact Us</Link>
                         </div>
                         {!token &&
                             <div className={styles.headerButtonsWrapper}>

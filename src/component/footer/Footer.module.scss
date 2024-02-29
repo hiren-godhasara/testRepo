@@ -130,7 +130,7 @@
 .p1 {
     margin-top: 0.5rem;
     font-size: 0.75rem;
-    text-align: justify;
+    text-align: center;
     color: #718096;
 }
 
@@ -217,18 +217,17 @@
     }
 }
 
+
 .head {
-    color: #ffffff;
+    height: 80px;
     display: flex;
-    justify-content: space-around;
+    justify-content: center;
     align-items: center;
-    // font-size: 1rem;
+    position: relative;
+    margin-top: 0 !important;
 }
 
-.headp {
-    margin-left: -100px;
-    color: #ffffff;
-}
+
 
 .text {
     color: #ffffff;
