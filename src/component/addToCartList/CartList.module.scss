@@ -29,6 +29,7 @@
     justify-content: center;
     color: #144950;
     font-weight: 700;
+    margin-top: 65px;
 }
 
 .loaderContainer {
@@ -368,6 +369,14 @@
     .leftContainer {
         padding: 1rem;
     }
+
+
+}
+
+@media (max-width:1278px) {
+    .cartHeding {
+        margin-top: 80px;
+    }
 }
 
 @media screen and (max-width: 1140px) {
@@ -426,6 +435,10 @@
     .itemsCardContainer {
         grid-template-columns: repeat(2, minmax(0, 1fr));
         height: calc(100vh - 325px);
+    }
+
+    .cartHeding {
+        margin-top: 60px;
     }
 }
 
