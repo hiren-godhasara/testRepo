@@ -26,7 +26,7 @@ import HomePage1 from '@/component/homePageSection/smallHomePage';
 export default function Home() {
 
   return (
-    <div>
+    <div style={{ backgroundColor: 'white' }}>
       {/* <TagLine /> */}
       {/* <Header /> */}
       <HomePage />
