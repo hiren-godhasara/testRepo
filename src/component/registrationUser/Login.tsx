@@ -76,7 +76,7 @@ const LoginForm = () => {
         router.back();
     };
 
-    const inputType = formData.loginId.includes('@') ? 'email' : "text";
+    const inputType = formData.loginId.includes('@') ? 'text' : "text";
 
     return (
         <>
