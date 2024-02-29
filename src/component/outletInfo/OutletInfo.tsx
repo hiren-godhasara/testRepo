@@ -14,7 +14,7 @@ const Info: React.FC = () => {
         };
 
         updateValue();
-        const intervalId = setInterval(updateValue, 86400000);
+        const intervalId = setInterval(updateValue, 86400);
         return () => clearInterval(intervalId);
     }, []);
     return (
