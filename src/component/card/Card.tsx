@@ -98,6 +98,7 @@ const Card = () => {
             )}
             {products.map((product, index) => (
                 <div key={product._id} className={styles.card}
+                    onClick={() => onBtnClick(product._id, product.displayName, product.variantName)}
                     onMouseEnter={() => handleMouseEnter(index)}
                     onMouseLeave={handleMouseLeave}>
 

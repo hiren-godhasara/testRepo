@@ -91,14 +91,13 @@ export default function Footer() {
                         <Image
                             src={logo}
                             alt='logo'
-                            width={35}
-                            height={35}
+                            fill={true} objectFit='contain'
                         />
-                        <p className={styles.headp}>My Dry Fruit</p>
+                        {/* <p className={styles.headp}>My Dry Fruit</p> */}
                     </Link>
-                    <p className={styles.p11}>
+                    <Link href='/' className={styles.p11}>
                         BITSSHADOW LLP
-                    </p>
+                    </Link>
 
                     <p className={styles.p1}>
                         519-521 Meridian Business Center, Mota Varachha, Surat, Gujarat 394101
@@ -169,7 +168,7 @@ export default function Footer() {
                             </li>
                             <li>
                                 <Link href={"/"} className={styles.gray}>
-                                    Link 4
+                                    Best Deals
                                 </Link>
                             </li>
                         </ul>
@@ -194,7 +193,7 @@ export default function Footer() {
                             </li>
                             <li>
                                 <Link href={"/"} className={styles.gray}>
-                                    Link 4
+                                    Gifting
                                 </Link>
                             </li>
                         </ul>
