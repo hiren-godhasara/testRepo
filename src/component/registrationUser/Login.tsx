@@ -33,6 +33,13 @@ const LoginForm = () => {
 
     const handleSubmit = async (e: any) => {
         e.preventDefault();
+        if (
+            formData.loginId.trim() === '' ||
+            formData.password.trim() === ''
+        ) {
+            showErrorToast("Fill all mandetory field")
+            return;
+        }
         try {
             const response = await fetch(`${process.env.BASE_URL}/s/login`, {
                 method: 'POST',
@@ -98,7 +105,7 @@ const LoginForm = () => {
                                 name="loginId"
                                 value={formData.loginId}
                                 onChange={handleChange}
-                                required
+                            // required
                             />
                         </div>
                         <div>
@@ -109,7 +116,7 @@ const LoginForm = () => {
                                 placeholder="Enter Password"
                                 value={formData.password}
                                 onChange={handleChange}
-                                required
+                            // required
 
                             />
                         </div>

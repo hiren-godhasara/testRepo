@@ -19,12 +19,26 @@ const ContactUs = () => {
         message: '',
     });
 
-    // const handleChange = (e: { target: { name: any; value: any; }; }) => {
-    //     if (name === 'mobile' && isNaN(value)) {
-    //         return;
-    //     }
-    //     setFormData({ ...formData, [e.target.name]: e.target.value });
-    // };
+
+    const handleCheckEmail: any = () => {
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        const email = emailRegex.test(formData.email);
+        if (email === false) {
+            showErrorToast('Invalid email address');
+            return false
+        }
+        return true
+    }
+
+    const handleCheckMobile: any = () => {
+        const mobileRegex = /^[1-9]\d{9}$/;
+        const mobile = mobileRegex.test(formData.mobile);
+        if (mobile === false) {
+            showErrorToast('Invalid mobile number');
+            return false
+        }
+        return true
+    }
 
     const handleChange = (e: any) => {
         const { name, value } = e.target;
@@ -37,7 +51,23 @@ const ContactUs = () => {
 
     const handleSubmit = async (e: any) => {
         e.preventDefault();
+        if (
+            formData.name.trim() === '' ||
+            formData.email.trim() === '' ||
+            formData.mobile.trim() === '' ||
+            formData.countryCode.trim() === '' ||
+            formData.message.trim() === ''
+        ) {
+            showErrorToast("Fill all mandetory field")
+            return;
+        }
         try {
+            if (!handleCheckEmail()) {
+                return;
+            }
+            if (!handleCheckMobile()) {
+                return;
+            }
             const response = await fetch(`${process.env.BASE_URL}/s/contactUs`, {
                 method: 'POST',
                 headers: {

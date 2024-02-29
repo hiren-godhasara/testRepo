@@ -58,6 +58,17 @@ const RegisterForm = () => {
 
     const handleSubmit = async (e: any) => {
         e.preventDefault();
+        if (
+            formData.firstName.trim() === '' ||
+            formData.lastName.trim() === '' ||
+            formData.email.trim() === '' ||
+            formData.countryCode.trim() === '' ||
+            formData.mobile.trim() === '' ||
+            formData.password.trim() === ''
+        ) {
+            showErrorToast("Fill all mandetory field")
+            return;
+        }
         try {
             if (!handleCheckEmail()) {
                 return;
