@@ -103,11 +103,30 @@
     transition: color 0.5s ease, text-decoration 0.5s ease;
 }
 
+// .mainHeaderWrapper {
+//     position: sticky;
+//     top: 0;
+//     z-index: 1000;
+// }
+
 .mainHeaderWrapper {
-    position: sticky;
-    top: 0;
-    z-index: 1000;
+    position: relative;
 }
+
+
+
+.header {
+    position: fixed;
+    top: 4vh;
+    width: 100%;
+    background-color: #ffffff;
+    z-index: 2;
+}
+
+.stickyHeader {
+    top: 0;
+}
+
 
 .link:hover {
     color: #144950;

@@ -1,23 +1,3 @@
-.rightSection {
-    position: absolute;
-    background-color: #FBD449;
-    width: 14%;
-    height: 3.6vw;
-    border-radius: 1.9vw;
-    margin-left: 6%;
-    margin-top: -10.4vw;
-    cursor: pointer;
-    color: #144950;
-    font-weight: 700;
-    font-size: 1vw;
-    transition: background-color 0.6s, color 0.6s;
-}
-
-.rightSection:hover {
-    background-color: #ffffff;
-    // color: #FBD449;
-}
-
 .productCarousel {
     width: 100%;
     height: auto;
@@ -30,13 +10,9 @@
     object-fit: cover;
 }
 
-// @media (max-width: 1280px) {
-//     .home {
-//         padding-top: 58px;
-//     }
-// }
-
-
+.home {
+    padding-top: 65px;
+}
 
 
 .imageWrapper {
