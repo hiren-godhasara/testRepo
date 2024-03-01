@@ -39,7 +39,7 @@ export default function RootLayout({
           <link href="https://fonts.googleapis.com/css2?family=Cedarville+Cursive&family=Dancing+Script:wght@400..700&family=Kalam:wght@300;400;700&family=Protest+Riot&display=swap" rel="stylesheet" />
           <meta name="viewport" content="initial-scale=1, maximum-scale=1" />
         </Head>
-        <body className={inter.className}>
+        <body style={{ backgroundColor: 'white' }} className={inter.className}>
           <Header />
           {children}
           <Footer />
