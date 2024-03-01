@@ -165,7 +165,7 @@ const RegisterForm = () => {
                                 maxLength={6}
                                 type="tel"
                                 name="countryCode"
-                                value={`+${formData.countryCode.slice(1, 3)}`}
+                                value='+91'
                                 onChange={handleChange}
                                 required
                             />
