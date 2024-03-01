@@ -159,10 +159,35 @@ const PlaceOrders = () => {
         }
     };
 
+    const handleCheckMobile: any = () => {
+        const mobileRegex = /^[1-9]\d{9}$/;
+        const mobile = mobileRegex.test(formData.mobile);
+        if (mobile === false) {
+            showErrorToast('Invalid mobile number');
+            return false
+        }
+        return true
+    }
+    const handleCheckPincode: any = () => {
+        const pinRegex = /^[1-9]\d{5}$/;
+        const pinCode = pinRegex.test(formData.pincode);
+        if (pinCode === false) {
+            showErrorToast('Invalid pinCode number');
+            return false
+        }
+        return true
+    }
+
 
     const handleEditSubmit = async (e: any) => {
         e.preventDefault();
         try {
+            if (!handleCheckMobile()) {
+                return;
+            }
+            if (!handleCheckPincode()) {
+                return;
+            }
             if (!editAddressId) {
                 console.error('No addressId found for edit.');
                 return;
@@ -194,6 +219,12 @@ const PlaceOrders = () => {
 
     const handleChange = (e: any) => {
         const { name, value } = e.target;
+        if (name === 'mobile' && isNaN(value)) {
+            return;
+        }
+        if (name === 'pincode' && isNaN(value)) {
+            return;
+        }
         setFormData(prevState => ({
             ...prevState,
             [name]: value
@@ -240,9 +271,9 @@ const PlaceOrders = () => {
         if (
             formData.firstName.trim() === '' ||
             formData.lastName.trim() === '' ||
-            formData.pincode.trim() === '' ||
+            // formData.pincode.trim() === '' ||
             formData.countryCode.trim() === '' ||
-            formData.mobile.trim() === '' ||
+            // formData.mobile.trim() === '' ||
             formData.state.trim() === '' ||
             formData.addressLine1.trim() === '' ||
             formData.city.trim() === '' ||
@@ -252,6 +283,12 @@ const PlaceOrders = () => {
             return;
         }
         try {
+            if (!handleCheckMobile()) {
+                return;
+            }
+            if (!handleCheckPincode()) {
+                return;
+            }
             setLoading(true);
             const response = await fetch(`${process.env.BASE_URL}/s/address`, {
                 method: 'POST',
@@ -711,6 +748,8 @@ const PlaceOrders = () => {
 
                                 <div className={`${styles.overlay} ${styles.OrderAddressContainer}`}>
                                     <div className={styles.popup}>
+                                        <h1 className={styles.h1}>ADDRESS DETAILS</h1>
+
                                         <form onSubmit={handleSubmit}>
                                             <div className={styles.firstRow}>
                                                 <div>
@@ -767,7 +806,7 @@ const PlaceOrders = () => {
                                             <div className={styles.thirdRow}>
                                                 <div>
                                                     <label>Pincode: <span style={{ color: 'red' }}>*</span></label>
-                                                    <input type="text" name="pincode" value={formData.pincode} onChange={handleChange} required />
+                                                    <input type="text" name="pincode" maxLength={6} value={formData.pincode} onChange={handleChange} required />
                                                 </div>
                                                 <div>
                                                     <label>City: <span style={{ color: 'red' }}>*</span></label>
@@ -795,7 +834,7 @@ const PlaceOrders = () => {
                                                 </label>
                                             </div>
                                             <div>
-                                                <button type="button" onClick={() => setShowAddressForm(false)}>CLOSE</button>
+                                                <button type="button" onClick={() => setShowAddressForm(false)}>CANCEL</button>
                                                 <button type="submit" onClick={handleSubmit}>SAVE ADDRESS</button>
                                             </div>
                                         </form>
@@ -807,6 +846,7 @@ const PlaceOrders = () => {
                             {editFormVisible && (
                                 <div className={`${styles.overlay} ${styles.OrderAddressContainer}`}>
                                     <div className={styles.popup}>
+                                        <h1 className={styles.h1}>ADDRESS DETAILS</h1>
                                         <form onSubmit={handleEditSubmit}>
                                             <div className={styles.firstRow}>
                                                 <div>
@@ -891,7 +931,7 @@ const PlaceOrders = () => {
                                                 </label>
                                             </div>
                                             <div>
-                                                <button type="button" onClick={handleEditCancel}>CLOSE</button>
+                                                <button type="button" onClick={handleEditCancel}>CANCEL</button>
                                                 <button type="submit">SAVE EDITS</button>
                                             </div>
                                         </form>
@@ -899,7 +939,7 @@ const PlaceOrders = () => {
                                 </div>
                             )}
 
-                            <div className={styles.orderBtn}>
+                            <div className={`${styles.orderBtn} ${!selectedAddress ? styles.selectedAddressPayment : ''}`}>
                                 <button type="submit" onClick={orderAndPayment} >PROCEED TO PAYMENT</button>
                             </div>
 
