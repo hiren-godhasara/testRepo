@@ -16,6 +16,9 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    margin-bottom: 160px;
+    position: relative;
+    top: 100px;
 }
 
 .shoppingCartWrapper {
@@ -165,11 +168,12 @@
 }
 
 .deliverAddress {
-    margin-top: 84px;
     font-weight: 700;
     color: #144950;
     font-size: 32px;
     text-align: center;
+    position: relative;
+    top: 100px;
 }
 
 .loaderContainer {
@@ -302,7 +306,25 @@
 
         }
     }
+
+    .heading {
+        font-size: 18px;
+    }
+
+    .emptyCard {
+        font-size: 18px;
+    }
+
 }
+
+@media (max-width:533px) {
+    .shoppingCartWrapper {
+        .image {
+            display: none;
+        }
+    }
+}
+
 
 @media only screen and (max-width: 462px) {
 

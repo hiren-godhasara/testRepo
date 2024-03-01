@@ -138,6 +138,10 @@ const Header = () => {
         };
     }, []);
 
+    const handleGoToCart = () => {
+        router.push('/cart')
+    }
+
     return (
         <div className={styles.mainHeaderWrapper}>
             <TagLine />
@@ -158,7 +162,7 @@ const Header = () => {
 
                         {token &&
                             <div className={styles.mediumScreenSectionTwo}>
-                                <Link href='/cart'>
+                                <Link onClick={handleGoToCart} href='/cart'>
                                     {/* <Image src={cartIcon} width={35} height={35} alt='Cart list' title='Cart List' className={styles.cartIcon} /> */}
                                     <Image src={cart} width={38} height={38} alt='Cart list' title='Cart List' />
                                 </Link>

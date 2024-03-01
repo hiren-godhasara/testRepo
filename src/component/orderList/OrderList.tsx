@@ -161,22 +161,22 @@ const OrderList = () => {
                                 <Image
                                     src={emptyCart}
                                     alt='Empty Shopping Bag'
-                                    // width='256'
-                                    // height='256'
+                                    objectFit='cover'
                                     className={styles.image}
                                 ></Image>
                                 <div>
-                                    <div className={styles.heading}>Shopping Cart</div>
-                                    <div className={styles.emptyCard}>Your Cart Is Currently Empty.</div>
+                                    <div className={styles.heading}>Your Orders</div>
+                                    <div className={styles.emptyCard}>There are no any orders.</div>
 
                                     <div className={styles.btns}>
-                                        {!token && <button onClick={OnSignInBtn} className={styles.btn}>SIGN IN</button>}
                                         <button onClick={OnShopBtn} className={styles.btn}>Return To Shop</button>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     }
+
+                    {!token && router.push('/login')}
                 </>
             )}
         </div >

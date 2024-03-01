@@ -107,6 +107,7 @@ const ReviewData: React.FC<ReviewSliderProps> = ({ reviews }) => {
             autoplaySpeed={3000}
             speed={1500}
             dots={false}
+            draggable
         >
             {reviews.map((product, index) => (
                 <div key={index} className={styles.cardContainer} style={{ width: `${cardWidth}px` }}>
