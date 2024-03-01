@@ -833,9 +833,10 @@ const PlaceOrders = () => {
                                                     <input type="radio" name="addressType" value="Office" checked={formData.addressType === "Office"} onChange={handleChange} required /> Office
                                                 </label>
                                             </div>
-                                            <div>
-                                                <button type="button" onClick={() => setShowAddressForm(false)}>CANCEL</button>
-                                                <button type="submit" onClick={handleSubmit}>SAVE ADDRESS</button>
+
+                                            <div className={styles.bts}>
+                                                <button className={styles.bt1} type="button" onClick={() => setShowAddressForm(false)}>CANCEL</button>
+                                                <button className={styles.bt2} type="submit" onClick={handleSubmit}>SAVE ADDRESS</button>
                                             </div>
                                         </form>
                                     </div>

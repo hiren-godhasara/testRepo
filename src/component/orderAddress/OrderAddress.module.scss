@@ -207,6 +207,7 @@
     margin-bottom: 30px;
     font-size: 26px;
     color: #144950;
+    text-align: center;
     font-weight: 600;
 }
 
@@ -449,6 +450,27 @@
             font-size: 14px;
         }
     }
+
+    .deliverAddress {
+        font-size: 22px;
+    }
+
+    .grandtotal {
+        width: 60vw;
+        padding: 10px;
+        font-size: 18px;
+        margin-top: 90px;
+        margin-bottom: 30px;
+        width: 70vw;
+        margin-left: 10vw;
+
+
+        span {
+            font-size: 18px;
+            color: #144950;
+            font-weight: 600;
+        }
+    }
 }
 
 @media (max-width:470px) {
@@ -458,6 +480,41 @@
             font-size: 13px;
         }
     }
+
+    .label1 {
+        margin-left: -100px;
+    }
+
+    .label2 {
+        position: relative;
+        left: -100px;
+    }
+
+}
+
+
+@media (max-width:410px) {
+    .label1 {
+        margin-left: -80px;
+    }
+
+    .label2 {
+        position: relative;
+        left: -80px;
+    }
+
+}
+
+@media (max-width:380px) {
+    .label1 {
+        margin-left: -40px;
+    }
+
+    .label2 {
+        position: relative;
+        left: -40px;
+    }
+
 }
 
 @media (max-width:427px) {
@@ -472,6 +529,104 @@
     .addressContent {
         p {
             font-size: 11px;
+        }
+    }
+}
+
+@media (max-width:375px) {
+    .bts {
+        width: 350px !important;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-left: -60px;
+
+        .bt {
+            font-size: 13px;
+
+        }
+
+        .bt1 {
+            font-size: 13px;
+
+        }
+    }
+
+
+
+    .OrderAddressContainer {
+        // width: 400px;
+        // margin: auto;
+        // padding: 20px;
+        // border: 1px solid #ccc;
+        // box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+
+        form {
+            display: flex;
+            flex-direction: column;
+
+            .firstRow,
+            .secondRow,
+            .thirdRow,
+            .fourthRow {
+
+
+                div {
+                    flex-grow: 1;
+                    margin-right: 10px;
+
+                    label {
+                        display: block;
+                        margin-bottom: 5px;
+                        font-weight: bold;
+                        font-size: 13px;
+                    }
+
+                    input,
+                    textarea,
+                    select {
+                        width: 100%;
+                        padding: 8px;
+                        margin-bottom: 10px;
+                        border: 1px solid #ccc;
+                        border-radius: 4px;
+                    }
+
+                    input:focus {
+                        border-color: #144950;
+                    }
+
+                    input:hover {
+                        border-color: #144950;
+                    }
+                }
+            }
+
+            .row {
+                margin-bottom: 15px;
+
+                div {
+                    width: 100%;
+
+                    label {
+                        display: block;
+                        margin-bottom: 5px;
+                        font-weight: bold;
+                        font-size: 13px;
+
+                    }
+
+                    input {
+                        width: 100%;
+                        padding: 8px;
+                        margin-bottom: 10px;
+                        border: 1px solid #ccc;
+                        border-radius: 4px;
+                    }
+
+                }
+            }
+
         }
     }
 }
