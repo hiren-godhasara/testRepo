@@ -91,9 +91,9 @@ const PlaceOrders = () => {
 
     const [formData, setFormData] = useState({
         userId: userId || '',
-        firstName: userDetails.firstName,
-        lastName: userDetails.lastName,
-        mobile: userDetails.mobile,
+        firstName: userDetails ? userDetails.firstName : '',
+        lastName: userDetails ? userDetails.lastName : '',
+        mobile: userDetails ? userDetails.mobile : '',
         pincode: '',
         city: '',
         addressLine1: '',
