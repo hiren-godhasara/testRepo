@@ -127,9 +127,9 @@ const OrderAddresss = () => {
 
     const [formData, setFormData] = useState({
         userId: userId || '',
-        firstName: userDetails ? userDetails.firstName : '',
-        lastName: userDetails ? userDetails.lastName : '',
-        mobile: userDetails ? userDetails.mobile : '',
+        firstName: userDetails.firstName,
+        lastName: userDetails.lastName,
+        mobile: userDetails.mobile,
         pincode: '',
         city: '',
         addressLine1: '',
@@ -198,9 +198,36 @@ const OrderAddresss = () => {
     };
 
 
+
+    const handleCheckMobile: any = () => {
+        const mobileRegex = /^[1-9]\d{9}$/;
+        const mobile = mobileRegex.test(formData.mobile);
+        if (mobile === false) {
+            showErrorToast('Invalid mobile number');
+            return false
+        }
+        return true
+    }
+    const handleCheckPincode: any = () => {
+        const pinRegex = /^[1-9]\d{5}$/;
+        const pinCode = pinRegex.test(formData.pincode);
+        if (pinCode === false) {
+            showErrorToast('Invalid pinCode number');
+            return false
+        }
+        return true
+    }
+
     const handleEditSubmit = async (e: any) => {
         e.preventDefault();
         try {
+
+            if (!handleCheckMobile()) {
+                return;
+            }
+            if (!handleCheckPincode()) {
+                return;
+            }
             setLoading(true)
             if (!editAddressId) {
                 console.error('No addressId found for edit.');
@@ -235,6 +262,12 @@ const OrderAddresss = () => {
 
     const handleChange = (e: any) => {
         const { name, value } = e.target;
+        if (name === 'mobile' && isNaN(value)) {
+            return;
+        }
+        if (name === 'pincode' && isNaN(value)) {
+            return;
+        }
         setFormData(prevState => ({
             ...prevState,
             [name]: value
@@ -281,9 +314,9 @@ const OrderAddresss = () => {
         if (
             formData.firstName.trim() === '' ||
             formData.lastName.trim() === '' ||
-            formData.pincode.trim() === '' ||
+            // formData.pincode.trim() === '' ||
             formData.countryCode.trim() === '' ||
-            formData.mobile.trim() === '' ||
+            // formData.mobile.trim() === '' ||
             formData.state.trim() === '' ||
             formData.addressLine1.trim() === '' ||
             formData.city.trim() === '' ||
@@ -293,6 +326,13 @@ const OrderAddresss = () => {
             return;
         }
         try {
+
+            if (!handleCheckMobile()) {
+                return;
+            }
+            if (!handleCheckPincode()) {
+                return;
+            }
             setLoading(true)
             const response = await fetch(`${process.env.BASE_URL}/s/address`, {
                 method: 'POST',
@@ -303,11 +343,10 @@ const OrderAddresss = () => {
                 body: JSON.stringify(formData),
             });
             if (response.ok) {
-                showSuccessToast('Form data sent successfully')
-                console.log('Form data sent successfully');
+                showSuccessToast('Address add successfully')
 
             } else {
-                showErrorToast('Failed to send form data')
+                showErrorToast('Failed to add address')
                 console.error('Failed to send form data');
             }
         } catch (error: any) {
@@ -751,6 +790,8 @@ const OrderAddresss = () => {
 
                                 <div className={`${styles.overlay} ${styles.OrderAddressContainer}`}>
                                     <div className={styles.popup}>
+                                        <h1 className={styles.h1}>ADDRESS DETAILS</h1>
+
                                         <form onSubmit={handleSubmit}>
                                             <div className={styles.firstRow}>
                                                 <div>
@@ -807,7 +848,7 @@ const OrderAddresss = () => {
                                             <div className={styles.thirdRow}>
                                                 <div>
                                                     <label>Pincode: <span style={{ color: 'red' }}>*</span></label>
-                                                    <input type="text" name="pincode" value={formData.pincode} onChange={handleChange} required />
+                                                    <input maxLength={6} type="text" name="pincode" value={formData.pincode} onChange={handleChange} required />
                                                 </div>
                                                 <div>
                                                     <label>City: <span style={{ color: 'red' }}>*</span></label>
@@ -835,7 +876,7 @@ const OrderAddresss = () => {
                                                 </label>
                                             </div>
                                             <div>
-                                                <button type="button" onClick={() => setShowAddressForm(false)}>CLOSE</button>
+                                                <button type="button" onClick={() => setShowAddressForm(false)}>CANCEL</button>
                                                 <button type="submit" onClick={handleSubmit}>SAVE ADDRESS</button>
                                             </div>
                                         </form>
@@ -847,6 +888,8 @@ const OrderAddresss = () => {
                             {editFormVisible && (
                                 <div className={`${styles.overlay} ${styles.OrderAddressContainer}`}>
                                     <div className={styles.popup}>
+                                        <h1 className={styles.h1}>ADDRESS DETAILS</h1>
+
                                         <form onSubmit={handleEditSubmit}>
                                             <div className={styles.firstRow}>
                                                 <div>
@@ -931,7 +974,7 @@ const OrderAddresss = () => {
                                                 </label>
                                             </div>
                                             <div>
-                                                <button type="button" onClick={handleEditCancel}>CLOSE</button>
+                                                <button type="button" onClick={handleEditCancel}>CANCEL</button>
                                                 <button type="submit">SAVE EDITS</button>
                                             </div>
                                         </form>
@@ -939,7 +982,7 @@ const OrderAddresss = () => {
                                 </div>
                             )}
 
-                            <div className={styles.orderBtn}>
+                            <div className={`${styles.orderBtn} ${!selectedAddress ? styles.selectedAddressPayment : ''}`}>
                                 <button type="submit" onClick={orderAndPayment} >PROCEED TO PAYMENT</button>
                             </div>
 

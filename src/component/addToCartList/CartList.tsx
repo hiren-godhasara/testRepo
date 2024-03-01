@@ -301,7 +301,7 @@ const CartList: React.FC = () => {
                                         : <b>{`${calculateTotalCost()} INR`}</b>}
                                 </div>
                                 <div className={styles.disSen}>You will save {-calculateTotalCost() + calculateTotalCartValue()} INR on this order.</div>
-                                <div className={styles.placeOrderBtn}>
+                                <div onClick={onBtnClick} className={styles.placeOrderBtn}>
                                     <button onClick={onBtnClick} className={styles.button}>PLACE ORDER</button>
                                 </div>
                             </div>
@@ -389,7 +389,7 @@ const CartList: React.FC = () => {
                                         : <b>{`${calculateTotalCost()} INR`}</b>}
                                 </div>
                                 <div className={styles.disSen}>You will save {-calculateTotalCost() + calculateTotalCartValue()} INR on this order.</div>
-                                <div className={styles.placeOrderBtn}>
+                                <div onClick={onBtnClick} className={styles.placeOrderBtn}>
                                     <button onClick={onBtnClick} className={styles.button}>PLACE ORDER</button>
                                 </div>
                             </div>
