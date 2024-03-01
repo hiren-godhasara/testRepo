@@ -86,11 +86,14 @@ const PlaceOrders = () => {
         addressType: ''
     });
 
+    const userDatas: any = typeof window !== 'undefined' ? localStorage.getItem('userData') : null;
+    const userDetails = JSON.parse(userDatas)
+
     const [formData, setFormData] = useState({
         userId: userId || '',
-        firstName: '',
-        lastName: '',
-        mobile: '',
+        firstName: userDetails.firstName,
+        lastName: userDetails.lastName,
+        mobile: userDetails.mobile,
         pincode: '',
         city: '',
         addressLine1: '',

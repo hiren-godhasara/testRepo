@@ -1,6 +1,6 @@
 'use client'
 
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import styles from './Login.module.scss';
 import Image from 'next/image';
 import logo from '../../imageFolder/mdfLogo.png';
@@ -27,9 +27,28 @@ const LoginForm = () => {
     };
 
 
-    const isOrderRedirecting = typeof window !== 'undefined' ? localStorage.getItem('isOrderRedirecting') : null
-    const productIdFromLocal = typeof window !== 'undefined' ? localStorage.getItem('isOrderRedirecting') : null;
+    const handleUserData = async (userID: any, token: any) => {
+        try {
+            const response = await fetch(`${process.env.BASE_URL}/s/user/${userID}`, {
+                method: 'GET',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${token}`,
+                },
+            });
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            const data = await response.json();
+            var jsonString = JSON.stringify(data.data);
+            localStorage.setItem('userData', jsonString)
 
+        } catch (error) {
+            console.error('There was a problem fetching the data:', error);
+        }
+    }
+
+    const isOrderRedirecting = typeof window !== 'undefined' ? localStorage.getItem('isOrderRedirecting') : null
 
     const handleSubmit = async (e: any) => {
         e.preventDefault();
@@ -53,10 +72,10 @@ const LoginForm = () => {
             if ((data.data && Object.keys(data.data).length > 0)) {
                 Cookies.set('token', data.data.token, { expires: 1 });
                 Cookies.set('userId', data.data.userId, { expires: 1 });
+                await handleUserData(data.data.userId, data.data.token)
                 showSuccessToast(data.message);
                 if (isOrderRedirecting === "true") {
                     window.history.back();
-                    productIdFromLocal
                 } else {
                     window.location.reload()
                     window.location.href = '/'
