@@ -127,6 +127,9 @@ const OrderAddresss = () => {
 
     const [formData, setFormData] = useState({
         userId: userId || '',
+        // firstName: userDetails ? userDetails.firstName : '',
+        // lastName: userDetails ? userDetails.lastName : '',
+        // mobile: userDetails ? userDetails.mobile : '',
         firstName: userDetails.firstName,
         lastName: userDetails.lastName,
         mobile: userDetails.mobile,
@@ -857,7 +860,7 @@ const OrderAddresss = () => {
                                                 <div>
                                                     <label>State: <span style={{ color: 'red' }}>*</span></label>
                                                     <select name="state" value={formData.state} onChange={handleChange} required>
-                                                        <option value="" disabled>Select your state</option>
+                                                        <option value="" disabled>State</option>
                                                         {indianStates.map((state, index) => (
                                                             <option key={index} value={state}>{state}</option>
                                                         ))}
@@ -875,9 +878,9 @@ const OrderAddresss = () => {
                                                     <input type="radio" name="addressType" value="Office" checked={formData.addressType === "Office"} onChange={handleChange} required /> Office
                                                 </label>
                                             </div>
-                                            <div>
-                                                <button type="button" onClick={() => setShowAddressForm(false)}>CANCEL</button>
-                                                <button type="submit" onClick={handleSubmit}>SAVE ADDRESS</button>
+                                            <div className={styles.bts}>
+                                                <button className={styles.bt} type="button" onClick={() => setShowAddressForm(false)}>CANCEL</button>
+                                                <button className={styles.bt1} type="submit" onClick={handleSubmit}>SAVE ADDRESS</button>
                                             </div>
                                         </form>
                                     </div>
