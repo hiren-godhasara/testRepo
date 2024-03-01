@@ -25,9 +25,11 @@ interface EditFormData {
     pincode: string;
     city: string;
     addressLine1: string;
+    addressLine2: string;
     state: string;
     country: string;
     addressType: string;
+    countryCode: any
 }
 
 interface Address {
@@ -38,8 +40,10 @@ interface Address {
     pincode: string;
     city: string;
     addressLine1: string;
+    addressLine2: string;
     state: string;
     country: string;
+    countryCode: any;
     addressType: string;
 }
 
@@ -111,6 +115,8 @@ const OrderAddresss = () => {
         pincode: '',
         city: '',
         addressLine1: '',
+        addressLine2: '',
+        countryCode: '+91',
         state: '',
         country: '',
         addressType: ''
@@ -124,6 +130,8 @@ const OrderAddresss = () => {
         pincode: '',
         city: '',
         addressLine1: '',
+        addressLine2: '',
+        countryCode: '+91',
         state: '',
         country: '',
         addressType: ''
@@ -138,6 +146,8 @@ const OrderAddresss = () => {
             pincode: '',
             city: '',
             addressLine1: '',
+            addressLine2: '',
+            countryCode: '+91',
             state: '',
             country: '',
             addressType: ''
@@ -155,9 +165,11 @@ const OrderAddresss = () => {
                 pincode: selectedAddress.pincode,
                 city: selectedAddress.city,
                 addressLine1: selectedAddress.addressLine1,
+                addressLine2: selectedAddress.addressLine2,
                 state: selectedAddress.state,
                 country: selectedAddress.country,
                 addressType: selectedAddress.addressType,
+                countryCode: selectedAddress.countryCode,
             });
             setEditAddressId(addressId);
         }
@@ -166,6 +178,8 @@ const OrderAddresss = () => {
 
     const handleEditChange = (e: any, isEditForm: boolean) => {
         const { name, value, type, checked } = e.target;
+        console.log(e);
+
 
         if (isEditForm) {
             setEditFormData((prevEditFormData: any) => ({
@@ -261,6 +275,20 @@ const OrderAddresss = () => {
 
     const handleSubmit = async (e: any) => {
         e.preventDefault();
+        if (
+            formData.firstName.trim() === '' ||
+            formData.lastName.trim() === '' ||
+            formData.pincode.trim() === '' ||
+            formData.countryCode.trim() === '' ||
+            formData.mobile.trim() === '' ||
+            formData.state.trim() === '' ||
+            formData.addressLine1.trim() === '' ||
+            formData.city.trim() === '' ||
+            formData.addressType.trim() === ''
+        ) {
+            showErrorToast("Fill all mandetory field")
+            return;
+        }
         try {
             setLoading(true)
             const response = await fetch(`${process.env.BASE_URL}/s/address`, {
@@ -292,7 +320,9 @@ const OrderAddresss = () => {
             pincode: '',
             city: '',
             addressLine1: '',
+            addressLine2: '',
             state: '',
+            countryCode: '+91',
             country: '',
             addressType: ''
         });
@@ -308,8 +338,10 @@ const OrderAddresss = () => {
             lastName: '',
             mobile: '',
             pincode: '',
+            countryCode: '+91',
             city: '',
             addressLine1: '',
+            addressLine2: '',
             state: '',
             country: '',
             addressType: ''
@@ -331,6 +363,10 @@ const OrderAddresss = () => {
     const toggleAddressForm = () => {
         setShowAddressForm(!showAddressForm);
     };
+
+    const handleNewAddress = () => {
+        setShowAddressForm(true)
+    }
 
     const DeleteCartAddress = (addressId: any) => {
         fetch(`${process.env.BASE_URL}/s/address/${addressId}`, {
@@ -606,11 +642,24 @@ const OrderAddresss = () => {
     const OnSignInBtn = () => {
         router.push('/login')
     }
-
+    const [showConfirmation, setShowConfirmation] = useState(false);
+    const [addressIdToDelete, setAddressIdToDelete] = useState(null);
+    // const handleRemove = (addressId: any) => {
+    //     DeleteCartAddress(addressId)
+    // }
     const handleRemove = (addressId: any) => {
-        DeleteCartAddress(addressId)
-    }
+        DeleteCartAddress(addressId);
+        setShowConfirmation(false);
+    };
 
+    const showConfirmationDialog = (addressId: any) => {
+        setAddressIdToDelete(addressId);
+        setShowConfirmation(true);
+    };
+
+    const closeConfirmationDialog = () => {
+        setShowConfirmation(false);
+    };
 
     // useEffect(() => {
     //     // setTimeout(() => {
@@ -618,7 +667,11 @@ const OrderAddresss = () => {
     //     // }, 1000);
     // }, []);
 
-
+    const indianStates = [
+        'Andhra Pradesh', 'Arunachal Pradesh', 'Assam', 'Bihar', 'Chhattisgarh', 'Goa', 'Gujarat', 'Haryana', 'Himachal Pradesh', 'Jharkhand', 'Karnataka', 'Kerala', 'Madhya Pradesh',
+        'Maharashtra', 'Manipur', 'Meghalaya', 'Mizoram', 'Nagaland', 'Odisha', 'Punjab', 'Rajasthan', 'Sikkim', 'Tamil Nadu', 'Telangana', 'Tripura', 'Uttar Pradesh', 'Uttarakhand', 'West Bengal', 'Andaman and Nicobar Islands', 'Chandigarh', 'Dadra and Nagar Haveli and Daman and Diu',
+        'Lakshadweep', 'Delhi', 'Puducherry'
+    ];
     return (
 
         <div className={styles.CenteredContainer}>
@@ -643,13 +696,14 @@ const OrderAddresss = () => {
                                             name="selectedAddress"
                                             onChange={() => handleCheckboxChange(e._id)}
                                             checked={selectedAddress === e._id}
+                                            style={{ cursor: 'pointer' }}
                                         />
                                         <div className={styles.addressContent}>
                                             <p className={styles.fullName}>
                                                 {e.firstName} {e.lastName}, Mo. {e.mobile}
                                             </p>
                                             <p className={styles.addressDetails}>
-                                                {e.addressLine1}, {e.pincode}
+                                                {e.addressLine1}{e.addressLine2}, {e.pincode}
                                             </p>
                                             <p className={styles.addressDetails}>
                                                 {e.city}, {e.state}, {e.country}
@@ -658,7 +712,14 @@ const OrderAddresss = () => {
                                         </div>
                                         <div className={styles.buttons}>
                                             <button className={styles.removeAdd} type="button" onClick={() => handleEdit(e._id)}>Edit</button>
-                                            <button className={styles.removeAdd} type="button" onClick={() => handleRemove(e._id)}>Delete</button>
+                                            <button
+                                                className={styles.removeAdd}
+                                                type="button"
+                                                onClick={() => showConfirmationDialog(e._id)}
+                                            >
+                                                Delete
+                                            </button>
+
                                         </div>
                                     </div>
 
@@ -667,159 +728,216 @@ const OrderAddresss = () => {
                             </div>
 
 
+                            {showConfirmation && (
+                                <>
+                                    <div className={styles.over}>
+                                        <div className={styles.modalDel}>
+                                            <p>Are you sure to delete the address?</p>
+                                            <div className={styles.btns}>
+                                                <button onClick={() => handleRemove(addressIdToDelete)}>Yes</button>
+                                                <button onClick={closeConfirmationDialog}>No</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </>
 
-                            {!selectedAddress &&
-                                <label>
-                                    <input
-                                        type="radio"
-                                        name="addAddress"
-                                        checked={showAddressForm}
-                                        onChange={toggleAddressForm}
-                                    />
-                                    <strong>Add New Address</strong>
-                                </label>
-                            }
+                            )}
+
+                            <p className={styles.toggleP} onClick={() => handleNewAddress()}>+ Add New Address</p>
                             {showAddressForm && !selectedAddress && (
 
-                                <div className={styles.OrderAddressContainer}>
-                                    <form onSubmit={handleSubmit}>
-                                        <div className={styles.firstRow}>
-                                            <div>
-                                                <label>First Name:</label>
-                                                <input type="text" name="firstName" value={formData.firstName} onChange={handleChange} required />
+                                <div className={`${styles.overlay} ${styles.OrderAddressContainer}`}>
+                                    <div className={styles.popup}>
+                                        <form onSubmit={handleSubmit}>
+                                            <div className={styles.firstRow}>
+                                                <div>
+                                                    <label>First Name: <span style={{ color: 'red' }}>*</span></label>
+                                                    <input type="text" name="firstName" value={formData.firstName} onChange={handleChange} required />
+                                                </div>
+                                                <div>
+                                                    <label>Last Name: <span style={{ color: 'red' }}>*</span></label>
+                                                    <input type="text" name="lastName" value={formData.lastName} onChange={handleChange} required />
+                                                </div>
                                             </div>
-                                            <div>
-                                                <label>Last Name:</label>
-                                                <input type="text" name="lastName" value={formData.lastName} onChange={handleChange} required />
-                                            </div>
-                                        </div>
-                                        <div className={styles.secondRow}>
-                                            <div>
-                                                <label>Phone Number:</label>
-                                                <input type="text" name="mobile" value={formData.mobile} onChange={handleChange} required />
-                                            </div>
-                                            <div>
-                                                <label>Pincode:</label>
-                                                <input type="text" name="pincode" value={formData.pincode} onChange={handleChange} required />
+                                            <div className={styles.secondRow}>
+                                                <div>
+                                                    <label>Phone Number: <span style={{ color: 'red' }}>*</span></label>
+                                                    <div className={styles.num}>
+                                                        <input
+                                                            className={styles.code}
+                                                            maxLength={6}
+                                                            type="tel"
+                                                            name="countryCode"
+                                                            value={`+${formData.countryCode.slice(1, 3)}`}
+                                                            required
+                                                        />
+
+                                                        <input
+                                                            type="tel"
+                                                            name="mobile"
+                                                            placeholder="Enter Phone"
+                                                            value={formData.mobile}
+                                                            onChange={handleChange}
+                                                            maxLength={10}
+                                                            required
+                                                        />
+
+
+                                                    </div>
+
+                                                </div>
                                             </div>
 
-                                        </div>
-
-                                        <div className={styles.row}>
-                                            <div>
-                                                <label>Address:</label>
-                                                <textarea className={styles.addresses} name="addressLine1" value={formData.addressLine1} onChange={handleChange} required rows={2}></textarea>
+                                            <div className={styles.row}>
+                                                <div>
+                                                    <label>Address1: <span style={{ color: 'red' }}>*</span></label>
+                                                    <input className={styles.addresses} name="addressLine1" value={formData.addressLine1} onChange={handleChange} required ></input>
+                                                </div>
                                             </div>
-                                        </div>
-
-                                        <div className={styles.thirdRow}>
-                                            <div>
-                                                <label>City:</label>
-                                                <input type="text" name="city" value={formData.city} onChange={handleChange} required />
-                                            </div>
-                                            <div>
-                                                <label>State:</label>
-                                                <input type="text" name="state" value={formData.state} onChange={handleChange} required />
-                                            </div>
-                                            <div>
-                                                <label>Country:</label>
-                                                <input type="text" name="country" value={formData.country} onChange={handleChange} required />
+                                            <div className={styles.row}>
+                                                <div>
+                                                    <label>Address2:</label>
+                                                    <input className={styles.addresses} name="addressLine2" value={formData.addressLine2} onChange={handleChange} required ></input>
+                                                </div>
                                             </div>
 
-                                        </div>
+                                            <div className={styles.thirdRow}>
+                                                <div>
+                                                    <label>Pincode: <span style={{ color: 'red' }}>*</span></label>
+                                                    <input type="text" name="pincode" value={formData.pincode} onChange={handleChange} required />
+                                                </div>
+                                                <div>
+                                                    <label>City: <span style={{ color: 'red' }}>*</span></label>
+                                                    <input type="text" name="city" value={formData.city} onChange={handleChange} required />
+                                                </div>
+                                                <div>
+                                                    <label>State: <span style={{ color: 'red' }}>*</span></label>
+                                                    <select name="state" value={formData.state} onChange={handleChange} required>
+                                                        <option value="" disabled>Select your state</option>
+                                                        {indianStates.map((state, index) => (
+                                                            <option key={index} value={state}>{state}</option>
+                                                        ))}
+                                                    </select>
+                                                </div>
 
-                                        <div className={styles.fourthRow}>
-                                            <label>Address Type:</label>
-                                            <label style={{ marginRight: '20px' }}>
-                                                <input type="radio" name="addressType" value="Home" checked={formData.addressType === "Home"} onChange={handleChange} required /> Home
-                                            </label>
-                                            <label style={{ marginRight: '20px' }}>
-                                                <input type="radio" name="addressType" value="Office" checked={formData.addressType === "Office"} onChange={handleChange} required /> Office
-                                            </label>
-                                        </div>
-                                        <div>
-                                            <button type="submit" onClick={handleSubmit}>SAVE ADDRESS</button>
-                                            <button type="button" onClick={handleReset}>CANCEL</button>
-                                        </div>
-                                    </form>
+                                            </div>
+
+                                            <div className={styles.fourthRow}>
+                                                <label>Address Type: <span style={{ color: 'red' }}>*</span></label>
+                                                <label className={styles.label1}>
+                                                    <input type="radio" name="addressType" value="Home" checked={formData.addressType === "Home"} onChange={handleChange} required /> Home
+                                                </label>
+                                                <label className={styles.label2}>
+                                                    <input type="radio" name="addressType" value="Office" checked={formData.addressType === "Office"} onChange={handleChange} required /> Office
+                                                </label>
+                                            </div>
+                                            <div>
+                                                <button type="button" onClick={() => setShowAddressForm(false)}>CLOSE</button>
+                                                <button type="submit" onClick={handleSubmit}>SAVE ADDRESS</button>
+                                            </div>
+                                        </form>
+                                    </div>
                                 </div>
                             )}
 
                             {/* Edit address Section */}
                             {editFormVisible && (
-                                <div className={styles.OrderAddressContainer}>
-                                    <form onSubmit={handleEditSubmit}>
-                                        <div className={styles.firstRow}>
-                                            <div>
-                                                <label>First Name:</label>
-                                                <input
-                                                    type="text"
-                                                    name="firstName"
-                                                    value={editFormData.firstName}
-                                                    onChange={(e) => handleEditChange(e, true)}
-                                                    required
-                                                />
+                                <div className={`${styles.overlay} ${styles.OrderAddressContainer}`}>
+                                    <div className={styles.popup}>
+                                        <form onSubmit={handleEditSubmit}>
+                                            <div className={styles.firstRow}>
+                                                <div>
+                                                    <label>First Name: <span style={{ color: 'red' }}>*</span></label>
+                                                    <input type="text" name="firstName" value={editFormData.firstName} onChange={(e) => handleEditChange(e, true)} required />
+                                                </div>
+                                                <div>
+                                                    <label>Last Name: <span style={{ color: 'red' }}>*</span></label>
+                                                    <input type="text" name="lastName" value={editFormData.lastName} onChange={(e) => handleEditChange(e, true)} required />
+                                                </div>
+                                            </div>
+                                            <div className={styles.secondRow}>
+                                                <div>
+                                                    <label>Phone Number: <span style={{ color: 'red' }}>*</span></label>
+                                                    <div className={styles.num}>
+                                                        <input
+                                                            className={styles.code}
+                                                            maxLength={6}
+                                                            type="tel"
+                                                            name="countryCode"
+                                                            value='+91'
+                                                            // onChange={(e) => handleEditChange(e, true)}
+                                                            required
+                                                        />
 
-                                            </div>
-                                            <div>
-                                                <label>Last Name:</label>
-                                                <input type="text" name="lastName" value={editFormData.lastName} onChange={(e) => handleEditChange(e, true)} required />
-                                            </div>
-                                        </div>
-                                        <div className={styles.secondRow}>
-                                            <div>
-                                                <label>Phone Number:</label>
-                                                <input type="text" name="mobile" value={editFormData.mobile} onChange={(e) => handleEditChange(e, true)} required />
-                                            </div>
-                                            <div>
-                                                <label>Pincode:</label>
-                                                <input type="text" name="pincode" value={editFormData.pincode} onChange={(e) => handleEditChange(e, true)} required />
-                                            </div>
+                                                        <input
+                                                            type="tel"
+                                                            name="mobile"
+                                                            placeholder="Enter Phone"
+                                                            value={editFormData.mobile}
+                                                            onChange={(e) => handleEditChange(e, true)}
+                                                            maxLength={10}
+                                                            required
+                                                        />
 
-                                        </div>
 
-                                        <div className={styles.row}>
-                                            <div>
-                                                <label>Address:</label>
-                                                <textarea className={styles.addresses} name="addressLine1" value={editFormData.addressLine1} onChange={(e) => handleEditChange(e, true)} required rows={2}></textarea>
-                                            </div>
-                                        </div>
+                                                    </div>
 
-                                        <div className={styles.thirdRow}>
-                                            <div>
-                                                <label>City:</label>
-                                                <input type="text" name="city" value={editFormData.city} onChange={(e) => handleEditChange(e, true)} required />
-                                            </div>
-                                            <div>
-                                                <label>State:</label>
-                                                <input type="text" name="state" value={editFormData.state} onChange={(e) => handleEditChange(e, true)} required />
-                                            </div>
-                                            <div>
-                                                <label>Country:</label>
-                                                <input type="text" name="country" value={editFormData.country} onChange={(e) => handleEditChange(e, true)} required />
+                                                </div>
                                             </div>
 
-                                        </div>
-                                        <div className={styles.fourthRow}>
-                                            <label>Address Type:</label>
-                                            <label style={{ marginRight: '20px' }}>
-                                                <input type="radio" name="addressType" value="Home" checked={editFormData.addressType === "Home"} onChange={(e) => handleEditChange(e, true)} required /> Home
-                                            </label>
-                                            <label style={{ marginRight: '20px' }}>
-                                                <input type="radio" name="addressType" value="Office" checked={editFormData.addressType === "Office"} onChange={(e) => handleEditChange(e, true)} required /> Office
-                                            </label>
-                                        </div>
-                                        <div>
-                                            <button type="submit">SAVE EDITS</button>
-                                            <button type="button" onClick={handleEditCancel}>CANCEL</button>
-                                        </div>
-                                    </form>
+                                            <div className={styles.row}>
+                                                <div>
+                                                    <label>Address1: <span style={{ color: 'red' }}>*</span></label>
+                                                    <input className={styles.addresses} name="addressLine1" value={editFormData.addressLine1} onChange={(e) => handleEditChange(e, true)} required ></input>
+                                                </div>
+                                            </div>
+                                            <div className={styles.row}>
+                                                <div>
+                                                    <label>Address2:</label>
+                                                    <input className={styles.addresses} name="addressLine2" value={editFormData.addressLine2} onChange={(e) => handleEditChange(e, true)} required ></input>
+                                                </div>
+                                            </div>
+
+                                            <div className={styles.thirdRow}>
+                                                <div>
+                                                    <label>Pincode: <span style={{ color: 'red' }}>*</span></label>
+                                                    <input type="text" name="pincode" value={editFormData.pincode} onChange={(e) => handleEditChange(e, true)} required />
+                                                </div>
+                                                <div>
+                                                    <label>City: <span style={{ color: 'red' }}>*</span></label>
+                                                    <input type="text" name="city" value={editFormData.city} onChange={(e) => handleEditChange(e, true)} required />
+                                                </div>
+                                                <div>
+                                                    <label>State: <span style={{ color: 'red' }}>*</span></label>
+                                                    <select name="state" value={editFormData.state} onChange={(e) => handleEditChange(e, true)} required>
+                                                        <option value="" disabled>Select your state</option>
+                                                        {indianStates.map((state, index) => (
+                                                            <option key={index} value={state}>{state}</option>
+                                                        ))}
+                                                    </select>
+                                                </div>
+                                            </div>
+
+                                            <div className={styles.fourthRow}>
+                                                <label>Address Type: <span style={{ color: 'red' }}>*</span></label>
+                                                <label className={styles.label1}>
+                                                    <input type="radio" name="addressType" value="Home" checked={editFormData.addressType === "Home"} onChange={(e) => handleEditChange(e, true)} required /> Home
+                                                </label>
+                                                <label className={styles.label2}>
+                                                    <input type="radio" name="addressType" value="Office" checked={editFormData.addressType === "Office"} onChange={(e) => handleEditChange(e, true)} required /> Office
+                                                </label>
+                                            </div>
+                                            <div>
+                                                <button type="button" onClick={handleEditCancel}>CLOSE</button>
+                                                <button type="submit">SAVE EDITS</button>
+                                            </div>
+                                        </form>
+                                    </div>
                                 </div>
                             )}
 
                             <div className={styles.orderBtn}>
                                 <button type="submit" onClick={orderAndPayment} >PROCEED TO PAYMENT</button>
-                                <button type="button" onClick={OnShopBtn}>CANCEL ORDER</button>
                             </div>
 
                         </div>}
@@ -842,7 +960,8 @@ const OrderAddresss = () => {
                         </div>
                     </div>}
                 </>
-            )}
+            )
+            }
 
         </div >
 
