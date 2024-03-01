@@ -32,9 +32,7 @@ interface Product {
     productList: any;
 }
 
-const dummayData = [
 
-]
 const CartList: React.FC = () => {
     const router = useRouter();
     const [productDetails, setProductDetails] = useState<Product | null>(null);
@@ -306,9 +304,13 @@ const CartList: React.FC = () => {
                                 </div>
                             </div>
                         }
+                        {/* {!token && (() => { router.push('/login'); return null; })()} */}
+
                     </>
                     :
                     (productDetails && productDetails.productList.length > 0) &&
+
+
                     <div className={styles.cartContainer}>
                         <div className={styles.tablefixHeightContainer}>
                             <table className={styles.tableContainer}>
@@ -363,7 +365,10 @@ const CartList: React.FC = () => {
                                 </tbody>
                             </table>
                         </div>
+
                         {productDetails &&
+
+
                             <div className={styles.placeOrderContainer}>
                                 <p className={styles.orderSummaryLabel}>ORDER SUMMARY</p>
                                 <div className={styles.orderSummaryDetails}>
@@ -393,10 +398,12 @@ const CartList: React.FC = () => {
                                     <button onClick={onBtnClick} className={styles.button}>PLACE ORDER</button>
                                 </div>
                             </div>
+
                         }
                     </div>
             }
-            {(!productDetails && !loading) &&
+
+            {!productDetails && !loading && (
                 <div className={styles.emptyCardContainer}>
                     <div className={styles.emptyCardWrapper}>
                         <div>
@@ -410,13 +417,15 @@ const CartList: React.FC = () => {
                             <div className={styles.heading}>Shopping Cart</div>
                             <div className={styles.emptyCard}>Your Cart Is Currently Empty.</div>
                             <div className={styles.btns}>
-                                {!token && <button onClick={OnSignInBtn} className={styles.btn}>SIGN IN</button>}
                                 <button onClick={OnShopBtn} className={styles.btn}>Return To Shop</button>
                             </div>
                         </div>
                     </div>
                 </div>
-            }
+            )}
+
+            {!token && typeof window !== 'undefined' && (() => { router.push('/login'); return null; })()}
+
         </div>
     )
 }

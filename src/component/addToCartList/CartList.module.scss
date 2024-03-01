@@ -235,6 +235,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
+
 }
 
 .emptyCardWrapper {
@@ -244,6 +245,7 @@
     width: 50%;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     margin: 4rem 0;
+    margin-bottom: 150px;
 }
 
 
@@ -530,6 +532,22 @@
     }
 }
 
+@media (max-width:655px) {
+    .emptyCardContainer {
+        margin-bottom: -200px;
+
+        .emptyCardWrapper {
+            margin-top: -700px;
+
+        }
+
+        .image {
+            display: none;
+        }
+    }
+
+}
+
 @media only screen and (max-width: 480px) {
     .shoppingCartMainContainer {
         flex-direction: column;
@@ -578,5 +596,12 @@
 
     .rightContainer {
         margin-top: 2rem;
+    }
+
+    .emptyCardContainer {
+        .emptyCardWrapper {
+            width: 300px;
+        }
+
     }
 }

@@ -162,6 +162,7 @@ const OrderList = () => {
                                     src={emptyCart}
                                     alt='Empty Shopping Bag'
                                     objectFit='cover'
+                                    fill
                                     className={styles.image}
                                 ></Image>
                                 <div>
@@ -176,7 +177,9 @@ const OrderList = () => {
                         </div>
                     }
 
-                    {!token && router.push('/login')}
+                    {/* {!token && router.push('/login')} */}
+                    {!token && typeof window !== 'undefined' && (() => { router.push('/login'); return null; })()}
+
                 </>
             )}
         </div >
