@@ -180,7 +180,7 @@ const OrderList = () => {
                     }
 
                     {/* {!token && router.push('/login')} */}
-                    {!token && typeof window !== 'undefined' && (() => { router.push('/login'); return null; })()}
+                    {/* {!token && typeof window !== 'undefined' && (() => { router.push('/login'); return null; })()} */}
 
                 </>
             )}
