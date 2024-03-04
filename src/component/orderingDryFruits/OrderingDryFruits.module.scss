@@ -1,13 +1,59 @@
 .mainDiv {
-    padding-top: 80px;
+    margin-top: 5rem;
     display: flex;
     justify-content: center;
+    // align-items: center;
+    width: 100%;
+    gap: 2rem;
+    margin-bottom: 1rem;
+    padding: 1.5rem;
+}
+
+.mainImg {
+
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    width: 40%;
+    // gap: 30px;
+
+}
+
+.sideImg {
+    margin-top: 33px;
+    width: 30%;
+    display: flex;
     align-items: center;
+    flex-direction: column;
+
+}
+
+.image1 {
+    // margin-left: -30px;
+    margin-bottom: 10px;
+    width: 60%;
+
+    padding: 0 1rem 0 1rem;
+    height: auto;
+    object-fit: cover;
+    border-radius: 10px;
+
+}
+
+.largeImageContainer {
+    // margin-bottom: 50px;
+    width: 70%
+}
+
+.largeImage {
+    border-radius: 10px;
+    // margin-left: -160px;
 }
 
 .description {
-    margin-left: -90px;
-    margin-top: -40px;
+    // margin-left: -90px;
+    // margin-top: -40px;
+    width: 40%;
 }
 
 .orderButton {
@@ -15,7 +61,7 @@
     gap: 50px;
     justify-content: center;
     align-items: center;
-    margin-top: 55px;
+    margin-top: 1.5rem;
 
 }
 
@@ -68,7 +114,8 @@
 }
 
 .des {
-    width: 450px;
+    // width: 450px;
+    margin-top: 1rem;
 }
 
 .name {
@@ -100,33 +147,7 @@
     margin-top: 15px;
 }
 
-.image1 {
-    // margin-left: -30px;
-    margin-bottom: 10px;
-    width: 25%;
-    height: auto;
-    object-fit: cover;
-    border-radius: 10px;
 
-}
-
-.largeImage {
-    border-radius: 10px;
-    margin-left: -160px;
-}
-
-.largeImageContainer {
-    margin-bottom: 50px;
-}
-
-.mainImg {
-    margin-top: 20px;
-    display: flex;
-}
-
-.sideImg {
-    margin-top: 33px;
-}
 
 .loaderContainer {
     display: flex;
@@ -157,20 +178,25 @@
 .variantCard {
     display: flex;
     flex-wrap: wrap;
+    gap: 0.5rem;
+    width: 100%;
     justify-content: center;
-    margin-left: -320px;
+    // margin-left: -320px;
     margin-top: 20px;
 }
 
 .variantSubCard {
-    flex: 0 1 calc(12% - 3px);
+    // flex: 0 1 calc(12% - 3px);
     box-sizing: border-box;
     margin-bottom: 10px;
     margin-left: 3px;
+    align-items: center;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     // background-color: #144950;
     // color: #FBD449;
-    padding: 10px;
+    line-height: 1rem;
+
+    padding: 0.5rem;
     border-radius: 5px;
     background-color: transparent;
     border: 1px solid gray;
@@ -212,6 +238,15 @@
     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
 }
 
+@media (max-width:1190px) {
+    .variantCard {
+        justify-content: start;
+    }
+
+
+}
+
+
 @media (max-width:1024px) {
     .mainDiv {
         padding-top: 70px;
@@ -219,170 +254,283 @@
         flex-direction: column;
         justify-content: center;
         align-items: center;
-        margin-bottom: 50px;
-    }
 
-}
-
-
-@media (max-width:800px) {
-    .mainDiv {
-        margin-left: 5vw;
-        padding-top: 50px;
-
-    }
-
-    .largeImageContainer {
-        margin-left: 50px;
-    }
-
-    .orderButton {
-        margin-top: 15px;
-    }
-
-    .qty {
-        margin-top: 10px;
-    }
-
-    .total {
-        margin-top: 10px;
-    }
-
-    .mrp {
-        margin-top: 5px;
-    }
-}
-
-
-@media (max-width:555px) {
-    .mainDiv {
-        padding-top: 60px;
-        margin-left: 5vw;
-    }
-
-    .largeImageContainer {
-        margin-left: 100px;
     }
 
     .name {
-        font-size: 15px;
+        font-size: 18px;
     }
 
-
-
-    .description {
-        margin-left: 10px;
-        font-size: 14px;
-    }
-
-    .btnOrder {
-        width: 120px;
-        height: 40px;
-        font-size: 15px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        font-weight: 800;
-        border: 1px solid black;
-        padding: 10px;
-        transition: background-color 0.4s, color 0.4s;
-        border-radius: 4px;
-    }
-
-    .image1 {
-        border-radius: 3px;
-
-    }
-
-    .orderButton {
-        margin-top: 15px;
-    }
-
-    .qty {
-        margin-top: 10px;
-    }
-
-    .total {
-        margin-top: 10px;
-    }
-
-    .mrp {
-        margin-top: 5px;
-    }
-}
-
-
-@media (max-width:550px) {
-    .mainImg {
-        margin-left: 30px;
-    }
-
-    .orderButton {
-        margin-top: 15px;
-    }
-
-    .qty {
-        margin-top: 10px;
-    }
-
-    .total {
-        margin-top: 10px;
-    }
-
-    .mrp {
-        margin-top: 5px;
-    }
-
-}
-
-@media (max-width:500px) {
     .des {
-        font-size: 13px;
-        width: 80vw;
-        height: auto;
-    }
+        font-size: 15px;
 
-    .orderButton {
-        margin-top: 15px;
     }
-
-    .qty {
-        margin-top: 10px;
-    }
-
-    .total {
-        margin-top: 10px;
-    }
-
-    .mrp {
-        margin-top: 5px;
-    }
-}
-
-@media (max-width:415px) {
 
     .mainImg {
-        margin-left: 10px;
+        width: 70%;
+    }
+
+    .variantCard {
+        justify-content: start;
     }
 
     .sideImg {
-        margin-right: 30px;
+        margin-top: 0px;
     }
+
+    .image1 {
+        width: 55%;
+        align-items: start;
+        padding-left: 0px;
+        border-radius: 0px;
+
+    }
+
+    .largeImage {
+        width: 80%;
+    }
+
+    .description {
+        width: 70%;
+    }
+
+    .variantSubCard {
+        font-size: 13px;
+    }
+}
+
+@media (max-width:768PX) {
+    .sideImg {
+        align-items: start;
+    }
+
+    .image1 {
+        width: 65%;
+    }
+
+    // .name {
+    //     font-size: 20px;
+    // }
+
+    .mainDiv {
+        margin-top: 0;
+    }
+
+    .largeImage {
+        width: 85%;
+    }
+}
+
+@media (max-width:550px) {
+    // .mainDiv {
+    //     padding-left: 3rem;
+    //     padding-right: 3rem;
+    // }
+
+    .image1 {
+        width: 50%;
+    }
+
+    .des {
+        font-size: 13px;
+    }
+
+    .description {
+        width: 100%;
+    }
+
+    // .name {
+    //     font-size: 19px;
+    // }
+
+
+    .mainImg {
+        width: 100%;
+    }
+
+    .largeImage {
+        width: 70%;
+    }
+}
+
+@media (max-width:480px) {
+    .image1 {
+        width: 75%;
+    }
+
+    .largeImage {
+        width: 90%;
+    }
+
+    // .name {
+    //     font-size: 17px;
+    // }
 
     .orderButton {
-        margin-top: 15px;
-    }
-
-    .qty {
-        margin-top: 10px;
-    }
-
-    .total {
-        margin-top: 10px;
-    }
-
-    .mrp {
-        margin-top: 5px;
+        gap: 17PX;
     }
 
 }
+
+
+// @media (max-width:800px) {
+//     .mainDiv {
+//         margin-left: 5vw;
+//         padding-top: 50px;
+
+//     }
+
+//     .largeImageContainer {
+//         margin-left: 50px;
+//     }
+
+//     .orderButton {
+//         margin-top: 15px;
+//     }
+
+//     .qty {
+//         margin-top: 10px;
+//     }
+
+//     .total {
+//         margin-top: 10px;
+//     }
+
+//     .mrp {
+//         margin-top: 5px;
+//     }
+// }
+
+
+// @media (max-width:555px) {
+//     .mainDiv {
+//         padding-top: 60px;
+//         margin-left: 5vw;
+//     }
+
+//     .largeImageContainer {
+//         margin-left: 100px;
+//     }
+
+//     .name {
+//         font-size: 15px;
+//     }
+
+
+
+//     .description {
+//         margin-left: 10px;
+//         font-size: 14px;
+//     }
+
+//     .btnOrder {
+//         width: 120px;
+//         height: 40px;
+//         font-size: 15px;
+//         display: flex;
+//         justify-content: center;
+//         align-items: center;
+//         font-weight: 800;
+//         border: 1px solid black;
+//         padding: 10px;
+//         transition: background-color 0.4s, color 0.4s;
+//         border-radius: 4px;
+//     }
+
+//     .image1 {
+//         border-radius: 3px;
+
+//     }
+
+//     .orderButton {
+//         margin-top: 15px;
+//     }
+
+//     .qty {
+//         margin-top: 10px;
+//     }
+
+//     .total {
+//         margin-top: 10px;
+//     }
+
+//     .mrp {
+//         margin-top: 5px;
+//     }
+// }
+
+
+// @media (max-width:550px) {
+//     .mainImg {
+//         margin-left: 30px;
+//     }
+
+//     .orderButton {
+//         margin-top: 15px;
+//     }
+
+//     .qty {
+//         margin-top: 10px;
+//     }
+
+//     .total {
+//         margin-top: 10px;
+//     }
+
+//     .mrp {
+//         margin-top: 5px;
+//     }
+
+// }
+
+// @media (max-width:500px) {
+//     .des {
+//         font-size: 13px;
+//         width: 80vw;
+//         height: auto;
+//     }
+
+//     .orderButton {
+//         margin-top: 15px;
+//     }
+
+//     .qty {
+//         margin-top: 10px;
+//     }
+
+//     .total {
+//         margin-top: 10px;
+//     }
+
+//     .mrp {
+//         margin-top: 5px;
+//     }
+// }
+
+// @media (max-width:415px) {
+
+//     .mainImg {
+//         margin-left: 10px;
+//     }
+
+//     .sideImg {
+//         margin-right: 30px;
+//     }
+
+//     .orderButton {
+//         margin-top: 15px;
+//     }
+
+//     .qty {
+//         margin-top: 10px;
+//     }
+
+//     .total {
+//         margin-top: 10px;
+//     }
+
+//     .mrp {
+//         margin-top: 5px;
+//     }
+
+// }
