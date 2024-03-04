@@ -51,6 +51,8 @@ const PlaceOrders = () => {
     const [userData, setUserData] = useState<any>({});
     const [cartProducts, setCartProducts] = useState([]);
     const [orderId, setOrderId] = useState('');
+    const [orderAmount, setOrderAmount] = useState();
+
     const [selectedAddress, setSelectedAddress] = useState<string | null>(null);
     const [showAddressForm, setShowAddressForm] = useState(false);
     const [address, setAddress] = useState<Address[]>([]);
@@ -417,13 +419,14 @@ const PlaceOrders = () => {
             }
             return response.json();
         }).then(data => {
+            setOrderAmount(data.data.orderData.orderAmount)
 
             setOrderId(data.data.orderData._id)
-            console.log(data.data.orderData._id);
+            console.log(data.data.orderData);
 
             setSelectedAddress(null);
             showSuccessToast(data.message);
-            return data.data.orderData._id
+            return data.data.orderData
         }).catch(error => {
             console.error('There was a problem with the fetch operation:', error);
 
@@ -431,7 +434,7 @@ const PlaceOrders = () => {
     }
 
 
-    const handlePayment = async () => {
+    const handlePayment = async (e: any) => {
         setLoading(true);
 
         return fetch(`${process.env.BASE_URL}/s/order/payment`, {
@@ -441,7 +444,7 @@ const PlaceOrders = () => {
                 'Authorization': `Bearer ${token}`
             },
             body: JSON.stringify({
-                amount: totalOrderCartValue,
+                amount: e,
                 currency: 'INR'
 
             }),
@@ -457,7 +460,7 @@ const PlaceOrders = () => {
 
     };
 
-    const openPaymentGateway = (razorpayData: any, mongoOrderId: any) => {
+    const openPaymentGateway = (razorpayData: any, _ID: any) => {
 
         fetch(`${process.env.BASE_URL}/s/user/${userId}`, {
             method: 'GET',
@@ -496,7 +499,7 @@ const PlaceOrders = () => {
             handler: async function (response: any) {
                 console.log(response);
                 if (response) {
-                    const res = await handleStatusUpdate(mongoOrderId)
+                    const res = await handleStatusUpdate(_ID)
                     router.replace('/orderList');
                     localStorage.removeItem("productId")
                     localStorage.removeItem("qtys")
@@ -507,7 +510,7 @@ const PlaceOrders = () => {
             modal: {
                 ondismiss: async function () {
                     console.log('Payment failed or user closed the popup.');
-                    const orderData = await handleIsOrderUpdate(mongoOrderId)
+                    const orderData = await handleIsOrderUpdate(_ID)
                     console.log(orderData);
 
                     if (!orderData) return;
@@ -554,11 +557,11 @@ const PlaceOrders = () => {
 
         }
     }
-    const handleIsOrderUpdate = (mongoOrderId: any) => {
+    const handleIsOrderUpdate = (_ID: any) => {
 
-        console.log(mongoOrderId);
+        console.log(_ID);
 
-        return fetch(`${process.env.BASE_URL}/s/order/${mongoOrderId}`, {
+        return fetch(`${process.env.BASE_URL}/s/order/${_ID}`, {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
@@ -579,9 +582,9 @@ const PlaceOrders = () => {
                 console.error('There was a problem with the fetch operation:', error);
             });
     }
-    const handleStatusUpdate = (mongoOrderId: any) => {
+    const handleStatusUpdate = (_ID: any) => {
 
-        return fetch(`${process.env.BASE_URL}/s/order/${mongoOrderId}`, {
+        return fetch(`${process.env.BASE_URL}/s/order/${_ID}`, {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json',
@@ -612,16 +615,19 @@ const PlaceOrders = () => {
             setLoading(true);
 
             const mongoOrderId = await handleOrder();
+            const _ID = await mongoOrderId._id
+            console.log(_ID, '_IDs');
+
             console.log(orderId, 'orderId');
-            if (!mongoOrderId) {
+            if (!_ID) {
                 throw new Error('orderId not found.')
             }
 
-            const razorpayResponse = await handlePayment();
+            const razorpayResponse = await handlePayment(mongoOrderId.totalOrderValue);
             if (!razorpayResponse.data.id) {
                 throw new Error('please try adain later.')
             }
-            openPaymentGateway(razorpayResponse, mongoOrderId)
+            openPaymentGateway(razorpayResponse, _ID)
 
         } catch (error) {
             console.error('Order and payment process failed:', error);

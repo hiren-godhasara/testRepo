@@ -1015,7 +1015,7 @@ const OrderAddresss = () => {
                     } */}
 
                     {!token && router.push('/login')}
-                    {!cartData && router.push("/")}
+                    {/* {!cartData && router.push("/")} */}
 
                 </>
             )
