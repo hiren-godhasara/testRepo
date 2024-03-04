@@ -71,7 +71,6 @@ const PlaceOrders = () => {
     const qtys = typeof window !== 'undefined' ? localStorage.getItem('qtys') : null;
     const totalOrderCartValue = typeof window !== 'undefined' ? localStorage.getItem('totalOrderCartValue') : null;
 
-
     const [editFormData, setEditFormData] = useState<EditFormData>({
         firstName: '',
         lastName: '',
@@ -946,7 +945,7 @@ const PlaceOrders = () => {
 
                         </div>}
 
-                    {!token && <div className={styles.main}>
+                    {/* {!token && <div className={styles.main}>
                         <Image
                             src={emptyCart}
                             alt='Empty Shopping Bag'
@@ -962,7 +961,9 @@ const PlaceOrders = () => {
                                 <button onClick={OnShopBtn} className={styles.btn}>Return To Shop</button>
                             </div>
                         </div>
-                    </div>}
+                    </div>} */}
+                    {!token && router.push('/login')}
+                    {(totalOrderCartValue === null) && router.push("/")}
                 </>
             )}
         </div >

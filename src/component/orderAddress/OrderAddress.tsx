@@ -127,12 +127,12 @@ const OrderAddresss = () => {
 
     const [formData, setFormData] = useState({
         userId: userId || '',
-        // firstName: userDetails ? userDetails.firstName : '',
-        // lastName: userDetails ? userDetails.lastName : '',
-        // mobile: userDetails ? userDetails.mobile : '',
-        firstName: userDetails.firstName,
-        lastName: userDetails.lastName,
-        mobile: userDetails.mobile,
+        firstName: userDetails ? userDetails.firstName : '',
+        lastName: userDetails ? userDetails.lastName : '',
+        mobile: userDetails ? userDetails.mobile : '',
+        // firstName: userDetails.firstName,
+        // lastName: userDetails.lastName,
+        // mobile: userDetails.mobile,
         pincode: '',
         city: '',
         addressLine1: '',
@@ -717,6 +717,10 @@ const OrderAddresss = () => {
         'Maharashtra', 'Manipur', 'Meghalaya', 'Mizoram', 'Nagaland', 'Odisha', 'Punjab', 'Rajasthan', 'Sikkim', 'Tamil Nadu', 'Telangana', 'Tripura', 'Uttar Pradesh', 'Uttarakhand', 'West Bengal', 'Andaman and Nicobar Islands', 'Chandigarh', 'Dadra and Nagar Haveli and Daman and Diu',
         'Lakshadweep', 'Delhi', 'Puducherry'
     ];
+
+
+    console.log(cartData);
+
     return (
 
         <div className={styles.CenteredContainer}>
@@ -991,7 +995,7 @@ const OrderAddresss = () => {
 
                         </div>}
 
-                    {!token && <div className={styles.main}>
+                    {/* {!token && <div className={styles.main}>
                         <Image
                             src={emptyCart}
                             alt='Empty Shopping Bag'
@@ -1007,7 +1011,12 @@ const OrderAddresss = () => {
                                 <button onClick={OnShopBtn} className={styles.btn}>Return To Shop</button>
                             </div>
                         </div>
-                    </div>}
+                    </div>
+                    } */}
+
+                    {!token && router.push('/login')}
+                    {!cartData && router.push("/")}
+
                 </>
             )
             }
