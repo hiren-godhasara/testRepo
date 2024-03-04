@@ -46,6 +46,8 @@ const OrderList = () => {
                 return response.json();
             })
             .then(data => {
+                console.log(data);
+
                 setUserList(data.data.userData)
                 setOrderList(data.data.orderListData)
                 setLoading(false);
@@ -161,8 +163,8 @@ const OrderList = () => {
                                 <Image
                                     src={emptyCart}
                                     alt='Empty Shopping Bag'
-                                    objectFit='cover'
-                                    fill
+                                    // objectFit='cover'
+                                    // fill
                                     className={styles.image}
                                 ></Image>
                                 <div>
