@@ -22,8 +22,12 @@ import products from '@/data/CardData';
 import CartList from '@/component/addToCartList/CartList';
 import TagLine from '@/component/tagLine/TagLine';
 import HomePage1 from '@/component/homePageSection/smallHomePage';
+import GoogleLogin from '@/component/googleLogin/GoogleLogin';
+import dynamic from 'next/dynamic';
+
 
 export default function Home() {
+  const MyComponent = dynamic(() => import('../component/googleLogin/GoogleLogin'), { ssr: false });
 
   return (
     <div style={{ backgroundColor: 'white' }}>
@@ -45,6 +49,8 @@ export default function Home() {
 
       <div id='reviews'><ReviewSlider /></div>
       <div id='gifting'> <GiftCombo /></div>
+
+      <MyComponent />
 
       {/* <InstagramFeeds />
       <HashtagInstagramFeeds /> */}
