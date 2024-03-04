@@ -245,7 +245,7 @@
     width: 50%;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     margin: 4rem 0;
-    margin-bottom: 150px;
+    // margin-bottom: 150px;
 }
 
 
@@ -497,7 +497,7 @@
     }
 
     .mediumScreenCartItemList {
-        height: calc(100vh - 292px);
+        height: calc(100vh - 392px);
         overflow-x: auto;
         scrollbar-width: thin;
         scrollbar-color: #888 #f1f1f1;
@@ -533,20 +533,17 @@
 }
 
 @media (max-width:655px) {
-    .emptyCardContainer {
-        margin-bottom: -200px;
-
-        .emptyCardWrapper {
-            margin-top: -700px;
-
-        }
-
-        .image {
-            display: none;
-        }
+    .emptyCardWrapper {
+        position: absolute;
+        top: 20%;
     }
 
+    .image {
+        display: none;
+    }
 }
+
+
 
 @media only screen and (max-width: 480px) {
     .shoppingCartMainContainer {
@@ -594,9 +591,6 @@
         margin-top: 0.5rem;
     }
 
-    .rightContainer {
-        margin-top: 2rem;
-    }
 
     .emptyCardContainer {
         .emptyCardWrapper {
