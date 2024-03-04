@@ -316,7 +316,7 @@ export const DryFruitSliderForOrder: React.FC<DryFruitSliderForOrderProps> = (pr
                         <p className={styles.discount}>Discount : {(data.length === 0) ? props.data.discount : data.discount} %</p>
                         <p className={styles.price}>Price : {price} INR</p>
                         <div className={styles.qty}>
-                            <label htmlFor="quantity">Qty :</label>
+                            <label htmlFor="quantity">Quantity :</label>
                             <input type="number" id="quantity" name="quantity" value={quantity} className={styles.clickable} onChange={handleQuantityChange} />
                         </div>
 
