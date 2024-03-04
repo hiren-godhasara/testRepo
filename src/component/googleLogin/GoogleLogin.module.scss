@@ -1,0 +1,19 @@
+.box {
+    position: fixed;
+    top: 35px;
+    right: 35px;
+    width: 30px;
+    height: 30px;
+    background-color: red;
+    z-index: 10000;
+}
+
+.box1 {
+    position: fixed;
+    bottom: 141px;
+    right: 5px;
+    width: 30px;
+    height: 30px;
+    background-color: yellow;
+    z-index: 10000;
+}

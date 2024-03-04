@@ -10,7 +10,7 @@ const getUserId = () => {
 
 const removeUserId = () => {
     if (typeof Cookies !== 'undefined') {
-        Cookies.remove('token');
+        Cookies.remove('userId');
     }
 };
 
