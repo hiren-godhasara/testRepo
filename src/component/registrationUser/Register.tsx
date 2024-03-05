@@ -56,6 +56,28 @@ const RegisterForm = () => {
         }));
     };
 
+
+    const handleUserData = async (userID: any, token: any) => {
+        try {
+            const response = await fetch(`${process.env.BASE_URL}/s/user/${userID}`, {
+                method: 'GET',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${token}`,
+                },
+            });
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            const data = await response.json();
+            var jsonString = JSON.stringify(data.data);
+            localStorage.setItem('userData', jsonString)
+
+        } catch (error) {
+            console.error('There was a problem fetching the data:', error);
+        }
+    }
+
     const handleSubmit = async (e: any) => {
         e.preventDefault();
         if (
@@ -100,6 +122,7 @@ const RegisterForm = () => {
                     });
                     Cookies.set('token', data.data.token, { expires: 1 });
                     Cookies.set('userId', data.data.userId, { expires: 1 });
+                    await handleUserData(data.data.userId, data.data.token)
                     if (returnUrl === "true") {
                         window.history.go(-2);
                         localStorage.removeItem('isOrderRedirecting')
@@ -107,6 +130,7 @@ const RegisterForm = () => {
                         window.location.reload()
                         window.location.href = '/'
                     }
+
                 } else {
                     const data = await response.json();
                     console.log(data);
