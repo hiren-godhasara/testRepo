@@ -363,6 +363,92 @@
     font-weight: 650;
 }
 
+
+.modalDel {
+    width: 300px;
+    max-width: 100%;
+    background-color: #144950;
+    padding: 10px;
+    border-radius: 5px;
+    font-size: 16px;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    p {
+
+        color: #ffffff;
+    }
+}
+
+
+.btnss {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.btnss {
+    width: 150px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 30px;
+    margin-left: 70px;
+
+    button {
+        padding: 5px;
+        width: 70px;
+        border-radius: 6px;
+        font-weight: 600;
+        background-color: #FBD449;
+        transition: background-color 0.3s;
+
+    }
+
+    button:hover {
+        background-color: #ffffff;
+
+    }
+}
+
+.over {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(238, 238, 238, 0.8);
+    justify-content: center;
+    align-items: center;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 @media only screen and (max-width: 1300px) {
     .emptyCard {
         font-size: 28px;
