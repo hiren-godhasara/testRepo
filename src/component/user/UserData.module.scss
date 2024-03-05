@@ -12,9 +12,9 @@
 
 .mainSection {
     background: #eae7e7;
-    width: 30%;
+    width: 35%;
     height: 35%;
-    padding: 30px;
+    padding: 15px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     border-radius: 5px;
 }
@@ -23,7 +23,7 @@
 .btn {
     display: flex;
     gap: 10px;
-    margin-top: 60px;
+    margin-top: 50px;
 
 }
 
@@ -69,4 +69,24 @@
     font-size: 20px;
     font-weight: 700;
     color: #144950;
+    text-align: center;
+}
+
+
+@media (max-width:1024px) {
+    .mainSection {
+        width: 90%;
+        height: 30%;
+    }
+
+    .section {
+        p {
+            font-size: 14px;
+
+            strong {
+                font-size: 15px;
+            }
+        }
+    }
+
 }

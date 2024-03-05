@@ -3,7 +3,7 @@
 import React, { useState } from 'react';
 import styles from './UpdateUser.module.scss';
 import Image from 'next/image';
-import logo from '../../imageFolder/myDryFruitLogo-removebg-preview.png'
+import logo from '../../imageFolder/mdfLogo.png'
 import { useRouter } from 'next/navigation';
 import { getUserId } from '@/getLocalStroageUserId';
 import { getToken } from '@/getLocalStroageToken';
@@ -86,7 +86,7 @@ const UpdateUser = ({ userDetails, onClose, onFormSubmit }: any) => {
                 </div>
             ) : (
                 <>
-                    <form onSubmit={handleSubmit}>
+                    <form className={styles.form} onSubmit={handleSubmit}>
                         <div className={styles.companydetails}>
                             <Image src={logo} alt={`Company logo`} width={100} height={100} />
                             <div className={styles.details}>
