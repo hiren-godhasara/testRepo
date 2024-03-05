@@ -18,8 +18,6 @@ export interface Product {
 }
 
 const Cart = () => {
-
-
     const [productDetails, setProductDetails] = useState<Product | null>(null);
     const paramId = useSearchParams().get('id');
     const token = getToken()
@@ -30,6 +28,11 @@ const Cart = () => {
     }, []);
 
     const getProductDetails = async () => {
+        const isOrderRedirecting = typeof window !== 'undefined' ? localStorage.getItem("isOrderRedirecting") : null;
+        if (isOrderRedirecting === "true") {
+            window.location.reload()
+            localStorage.removeItem("isOrderRedirecting")
+        }
         if (!productIdFromLocal) return;
         try {
             const response = await fetch(`${process.env.BASE_URL}/s/product/${productIdFromLocal}`, {
