@@ -143,8 +143,8 @@ const GiftCombo = () => {
 
 
                             {/* <h2 className={styles.details}>{product.details}</h2> */}
-                            {(product.discount !== 0) && <del> <p className={`${styles.mrp} ${product.name.length < 30 ? styles.mrp1 : ''}`}>MRP: {product.mrp} INR</p></del>}
-                            <p className={`${styles.price}  ${product.name.length < 30 ? styles.price1 : ''} ${product.details ? styles.prodPrice : ''}`}>Price: <b className={styles.grade}>{product.price} INR</b></p>
+                            {(product.discount !== 0) && <del> <p className={`${styles.mrp} ${product.name.length < 30 ? styles.mrp1 : ''}`}>MRP: {product.mrp} ₹</p></del>}
+                            <p className={`${styles.price}  ${product.name.length < 30 ? styles.price1 : ''} ${product.details ? styles.prodPrice : ''}`}>Price: <b className={styles.grade}>{product.price} ₹</b></p>
 
                             <button
                                 onClick={() => onBtnClick(product._id, product.displayName, product.variantName)}
@@ -295,8 +295,8 @@ export default GiftCombo;
 
 
 //                             {/* <h2 className={styles.details}>{product.details}</h2> */}
-//                             {(product.discount !== 0) && <del> <p className={`${styles.mrp} ${product.name.length < 30 ? styles.mrp1 : ''}`}>MRP: {product.mrp} INR</p></del>}
-//                             <p className={`${styles.price}  ${product.name.length < 30 ? styles.price1 : ''} ${product.details ? styles.prodPrice : ''}`}>Price: <b className={styles.grade}>{product.price} INR</b></p>
+//                             {(product.discount !== 0) && <del> <p className={`${styles.mrp} ${product.name.length < 30 ? styles.mrp1 : ''}`}>MRP: {product.mrp} ₹</p></del>}
+//                             <p className={`${styles.price}  ${product.name.length < 30 ? styles.price1 : ''} ${product.details ? styles.prodPrice : ''}`}>Price: <b className={styles.grade}>{product.price} ₹</b></p>
 
 //                             <button
 //                                 onClick={() => onBtnClick(product._id, product.displayName, product.variantName)}

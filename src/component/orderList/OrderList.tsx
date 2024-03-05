@@ -66,6 +66,8 @@ const OrderList = () => {
     }, []);
 
     const reversedOrderList = [...orderList].reverse();
+    console.log(reversedOrderList);
+
 
     const OnShopBtn = () => {
         router.push('/#products')
@@ -93,7 +95,7 @@ const OrderList = () => {
                                     <p>ORDER No : <strong> {e.orderNumber}</strong></p>
                                     <p>Order Date : <strong> {new Date(e.createdAt).toLocaleDateString('en-GB')}</strong></p>
                                     <p>ORDER Status : <strong style={{ color: 'green' }}>{e.status.toUpperCase()}</strong></p>
-                                    <p>Total Order Value : <strong> {e.totalOrderValue} INR</strong></p>
+                                    <p>Total Order Value : <strong> {e.totalOrderValue} ₹</strong></p>
                                 </div>
 
                                 <div className={styles.row2}>
@@ -119,8 +121,8 @@ const OrderList = () => {
                                                 </div>
                                                 <div className={styles.prodDet}>
                                                     <p>{cartProduct.cartProductId.productId.name}</p>
-                                                    <p>Weight : {cartProduct.cartProductId.productId.weight}</p>
-                                                    <p>Price : {cartProduct.cartProductId.productId.price} INR</p>
+                                                    <p>Weight : {cartProduct.cartProductId.productId.weight} g</p>
+                                                    <p>Price : {cartProduct.cartProductId.productId.price} ₹</p>
                                                     <p>Qty : {cartProduct.cartProductId.qty}</p>
                                                 </div>
 
@@ -136,15 +138,15 @@ const OrderList = () => {
 
                                         <div className={styles.value}>
                                             <p>Total Cart Value : </p>
-                                            <strong> {e.totalCartValue} INR </strong>
+                                            <strong> {e.totalCartValue} ₹ </strong>
                                         </div>
                                         <div className={styles.value}>
                                             <p>Total Shipping Charge : </p>
-                                            <strong> {e.shippingCharge} INR </strong>
+                                            <strong> {e.shippingCharge} ₹ </strong>
                                         </div>
                                         <div className={styles.value}>
                                             <p>Total Order Value : </p>
-                                            <strong> {e.totalOrderValue} INR </strong>
+                                            <strong> {e.totalOrderValue} ₹ </strong>
                                         </div>
                                     </div>
 

@@ -231,6 +231,8 @@ const CartList: React.FC = () => {
                         <div className={styles.mediumScreenCartItemList}>
                             {productDetails &&
                                 productDetails.productList.map((item: any, index: number) => {
+                                    const weightInGrams = item.product.weight;
+                                    const displayWeight = weightInGrams / 1000 < 1 ? `${weightInGrams} g` : `${weightInGrams / 1000} kg`;
                                     return (
                                         <>
                                             <div className={styles.cartItemWrapper}>
@@ -254,10 +256,10 @@ const CartList: React.FC = () => {
                                                                 <span>{item.product.name}</span>
                                                             }
                                                             </p>
-                                                            <p><b>WEIGHT : </b>{item.product.weight}</p>
-                                                            <del> <p>MRP :{item.product.mrp} INR</p></del>
+                                                            <p><b>WEIGHT : </b>{displayWeight}</p>
+                                                            <del> <p>MRP :{item.product.mrp} ₹</p></del>
                                                             <p className={styles.discount}>Discount :{item.product.discount}%</p>
-                                                            <p><b>PRICE : </b>{item.product.price}  INR</p>
+                                                            <p><b>PRICE : </b>{item.product.price}  ₹</p>
                                                         </div>
                                                     </div>
                                                     <div className={styles.mediumScreenTotalItemPrice}>
@@ -265,7 +267,7 @@ const CartList: React.FC = () => {
                                                             {quantityInput({ cartProductId: item.cartProductId })}
                                                         </div>
                                                         <div className={styles.mediumScreenTotal}>
-                                                            <p><b>{quantities[item.cartProductId] * item.product.price} INR</b></p>
+                                                            <p><b>{quantities[item.cartProductId] * item.product.price} ₹</b></p>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -280,11 +282,11 @@ const CartList: React.FC = () => {
                                 <div className={styles.orderSummaryDetails}>
                                     <div className={styles.totalPriceArea}>
                                         <div className={styles.label}>Cart Value:</div>
-                                        <div className={styles.value}>{calculateTotalCartValue()} INR</div>
+                                        <div className={styles.value}>{calculateTotalCartValue()} ₹</div>
                                     </div>
                                     <div className={styles.totalPriceArea}>
                                         <div className={styles.label}>Total Discount:</div>
-                                        <div className={styles.valueDiscount}>{calculateTotalCost() - calculateTotalCartValue()} INR</div>
+                                        <div className={styles.valueDiscount}>{calculateTotalCost() - calculateTotalCartValue()} ₹</div>
                                     </div>
                                     <div className={styles.totalPriceArea}>
                                         <div className={styles.label}>Total Shipping Charge:</div>
@@ -295,10 +297,10 @@ const CartList: React.FC = () => {
                                 <div className={styles.totalValueContainer}>
                                     <div className={styles.label}><b>Total Amount:</b></div>
                                     {isNaN(calculateTotalCost())
-                                        ? "0 INR"
-                                        : <b>{`${calculateTotalCost()} INR`}</b>}
+                                        ? "0 ₹"
+                                        : <b>{`${calculateTotalCost()} ₹`}</b>}
                                 </div>
-                                <div className={styles.disSen}>You will save {-calculateTotalCost() + calculateTotalCartValue()} INR on this order.</div>
+                                <div className={styles.disSen}>You will save {-calculateTotalCost() + calculateTotalCartValue()} ₹ on this order.</div>
                                 <div onClick={onBtnClick} className={styles.placeOrderBtn}>
                                     <button onClick={onBtnClick} className={styles.button}>PLACE ORDER</button>
                                 </div>
@@ -325,6 +327,8 @@ const CartList: React.FC = () => {
                                 </thead>
                                 <tbody style={{ width: '100%' }}>
                                     {productDetails.productList.map((item: any, index: number) => {
+                                        const weightInGrams = item.product.weight;
+                                        const displayWeight = weightInGrams / 1000 < 1 ? `${weightInGrams} g` : `${weightInGrams / 1000} kg`;
                                         return (
                                             <tr key={`product${index}`} className={styles.tableRow}>
                                                 <td className={styles.productDetailsItem}>
@@ -343,15 +347,15 @@ const CartList: React.FC = () => {
                                                                 <span>{item.product.name}   </span>
                                                             }
                                                             </p>
-                                                            <p><b>WEIGHT :</b>{item.product.weight}</p>
-                                                            <del> <p>MRP :{item.product.mrp} INR</p></del>
+                                                            <p><b>WEIGHT :</b>{displayWeight}</p>
+                                                            <del> <p>MRP :{item.product.mrp} ₹</p></del>
                                                             <p className={styles.discount}>Discount :{item.product.discount}%</p>
                                                         </div>
                                                     </div>
                                                 </td>
-                                                <td>{item.product.price}  INR</td>
+                                                <td>{item.product.price}  ₹</td>
                                                 <td>{quantityInput({ cartProductId: item.cartProductId })}</td>
-                                                <td><b>{quantities[item.cartProductId] * item.product.price}  INR</b></td>
+                                                <td><b>{quantities[item.cartProductId] * item.product.price}  ₹</b></td>
                                                 <td>
                                                     <div className={styles.closeIconWrapper} onClick={() => handleCartItemRemove(item.cartProductId)}>
                                                         <svg width={10} height={10} viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -374,12 +378,12 @@ const CartList: React.FC = () => {
                                 <div className={styles.orderSummaryDetails}>
                                     <div className={styles.totalPriceArea}>
                                         <div className={styles.label}>Cart Value:</div>
-                                        <div className={styles.value}>{calculateTotalCartValue()} INR</div>
+                                        <div className={styles.value}>{calculateTotalCartValue()} ₹</div>
                                     </div>
 
                                     <div className={styles.totalPriceArea}>
                                         <div className={styles.label}>Total Discount:</div>
-                                        <div className={styles.valueDiscount}>{calculateTotalCost() - calculateTotalCartValue()} INR</div>
+                                        <div className={styles.valueDiscount}>{calculateTotalCost() - calculateTotalCartValue()} ₹</div>
                                     </div>
 
                                     <div className={styles.totalPriceArea}>
@@ -390,10 +394,10 @@ const CartList: React.FC = () => {
                                 <div className={styles.totalValueContainer}>
                                     <div className={styles.label}><b> Total Amount:</b></div>
                                     {isNaN(calculateTotalCost())
-                                        ? "0 INR"
-                                        : <b>{`${calculateTotalCost()} INR`}</b>}
+                                        ? "0 ₹"
+                                        : <b>{`${calculateTotalCost()} ₹`}</b>}
                                 </div>
-                                <div className={styles.disSen}>You will save {-calculateTotalCost() + calculateTotalCartValue()} INR on this order.</div>
+                                <div className={styles.disSen}>You will save {-calculateTotalCost() + calculateTotalCartValue()} ₹ on this order.</div>
                                 <div onClick={onBtnClick} className={styles.placeOrderBtn}>
                                     <button onClick={onBtnClick} className={styles.button}>PLACE ORDER</button>
                                 </div>
