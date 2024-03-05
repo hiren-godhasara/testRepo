@@ -138,11 +138,15 @@ const OrderList = () => {
 
                                         <div className={styles.value}>
                                             <p>Total Cart Value : </p>
-                                            <strong> {e.totalCartValue} ₹ </strong>
+                                            <div> {e.totalCartValue} ₹ </div>
+                                        </div>
+                                        <div className={styles.value}>
+                                            <p>Total Discount : </p>
+                                            <strong style={{ color: 'green' }}> {e.totalDiscount} ₹ </strong>
                                         </div>
                                         <div className={styles.value}>
                                             <p>Total Shipping Charge : </p>
-                                            <strong> {e.shippingCharge} ₹ </strong>
+                                            <del>{e.shippingCharge} ₹</del>
                                         </div>
                                         <div className={styles.value}>
                                             <p>Total Order Value : </p>
