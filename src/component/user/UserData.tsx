@@ -84,11 +84,11 @@ const UserDetails = ({ onClose }: any) => {
                         </div>
 
                         <div className={styles.btn}>
-                            <button className={styles.editButton} onClick={handleEditClick}>
-                                Edit Details
-                            </button>
                             <button className={styles.closeButton} onClick={handleClose}>
                                 Close
+                            </button>
+                            <button className={styles.editButton} onClick={handleEditClick}>
+                                Edit Details
                             </button>
                         </div>
                     </div>

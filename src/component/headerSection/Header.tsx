@@ -182,6 +182,9 @@ const Header = () => {
                                 </div>
                             </div>
                         }
+                        {isUserDetailsModalOpen && (
+                            <UserDetails onClose={closeUserDetailsModal} />
+                        )}
                     </div>
                 }
                 {isMenuShown &&
