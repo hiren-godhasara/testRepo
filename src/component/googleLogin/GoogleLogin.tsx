@@ -11,6 +11,34 @@ function GoogleLogin() {
     const [showPopup, setShowPopup] = useState(true);
     const token = getToken()
 
+
+
+    const handleUserData = async (userID: any, token: any) => {
+        try {
+            const response = await fetch(`${process.env.BASE_URL}/s/user/${userID}`, {
+                method: 'GET',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${token}`,
+                },
+            });
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            const data = await response.json();
+            const newUserData: any = {
+                countryCode: data.data.countryCode,
+                email: data.data.email,
+                firstName: data.data.firstName,
+                lastName: data.data.lastName
+            };
+            const jsonString = JSON.stringify(newUserData)
+            localStorage.setItem('userData', jsonString)
+        } catch (error) {
+            console.error('There was a problem fetching the data:', error);
+        }
+    }
+
     const PopUpLogin = () => {
 
         useGoogleOneTapLogin({
@@ -44,9 +72,11 @@ function GoogleLogin() {
 
                                     Cookies.set('token', data.data.token, { expires: 1 });
                                     Cookies.set('userId', data.data.userId, { expires: 1 });
-                                    if (typeof window !== 'undefined') {
-                                        window.location.reload()
-                                    }
+                                    await handleUserData(data.data.userId, data.data.token)
+
+                                    // if (typeof window !== 'undefined') {
+                                    //     window.location.reload()
+                                    // }
                                 } else {
                                     const data = await responses.json();
                                     console.log(data);
