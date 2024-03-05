@@ -214,6 +214,34 @@ const OrderAddresss = () => {
     const handleCheckPincode: any = () => {
         const pinRegex = /^[1-9]\d{5}$/;
         const pinCode = pinRegex.test(formData.pincode);
+        console.log(formData.pincode);
+
+        console.log(pinCode);
+
+        if (pinCode === false) {
+            showErrorToast('Invalid pinCode number');
+            return false
+        }
+        return true
+    }
+
+    const handleEditCheckMobile: any = () => {
+        const mobileRegex = /^[1-9]\d{9}$/;
+        const mobile = mobileRegex.test(editFormData.mobile);
+        if (mobile === false) {
+            showErrorToast('Invalid mobile number');
+            return false
+        }
+        return true
+    }
+
+    const handleEditCheckPincode: any = () => {
+        const pinRegex = /^[1-9]\d{5}$/;
+        const pinCode = pinRegex.test(editFormData.pincode);
+        console.log(formData.pincode);
+
+        console.log(pinCode);
+
         if (pinCode === false) {
             showErrorToast('Invalid pinCode number');
             return false
@@ -225,10 +253,10 @@ const OrderAddresss = () => {
         e.preventDefault();
         try {
 
-            if (!handleCheckMobile()) {
+            if (!handleEditCheckMobile()) {
                 return;
             }
-            if (!handleCheckPincode()) {
+            if (!handleEditCheckPincode()) {
                 return;
             }
             setLoading(true)
@@ -733,7 +761,7 @@ const OrderAddresss = () => {
                 <>
                     {token &&
                         <div className={styles.selectedAdd}>
-                            {cartData && <div className={styles.grandtotal}>Grand Total<span>{cartData.totalCartValue} INR</span> </div>}
+                            {cartData && <div className={styles.grandtotal}>Grand Total<span>{cartData.totalCartValue} ₹</span> </div>}
 
                             <div className={styles.deliverAddress}>DELIVERY ADDRESS</div>
 
@@ -954,7 +982,7 @@ const OrderAddresss = () => {
                                             <div className={styles.thirdRow}>
                                                 <div>
                                                     <label>Pincode: <span style={{ color: 'red' }}>*</span></label>
-                                                    <input type="text" name="pincode" value={editFormData.pincode} onChange={(e) => handleEditChange(e, true)} required />
+                                                    <input type="text" maxLength={6} name="pincode" value={editFormData.pincode} onChange={(e) => handleEditChange(e, true)} required />
                                                 </div>
                                                 <div>
                                                     <label>City: <span style={{ color: 'red' }}>*</span></label>

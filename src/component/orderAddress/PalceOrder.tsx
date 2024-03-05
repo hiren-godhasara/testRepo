@@ -179,14 +179,38 @@ const PlaceOrders = () => {
         return true
     }
 
+    const handleEditCheckMobile: any = () => {
+        const mobileRegex = /^[1-9]\d{9}$/;
+        const mobile = mobileRegex.test(editFormData.mobile);
+        if (mobile === false) {
+            showErrorToast('Invalid mobile number');
+            return false
+        }
+        return true
+    }
+
+    const handleEditCheckPincode: any = () => {
+        const pinRegex = /^[1-9]\d{5}$/;
+        const pinCode = pinRegex.test(editFormData.pincode);
+        console.log(formData.pincode);
+
+        console.log(pinCode);
+
+        if (pinCode === false) {
+            showErrorToast('Invalid pinCode number');
+            return false
+        }
+        return true
+    }
+
 
     const handleEditSubmit = async (e: any) => {
         e.preventDefault();
         try {
-            if (!handleCheckMobile()) {
+            if (!handleEditCheckMobile()) {
                 return;
             }
-            if (!handleCheckPincode()) {
+            if (!handleEditCheckPincode()) {
                 return;
             }
             if (!editAddressId) {
@@ -688,7 +712,7 @@ const PlaceOrders = () => {
                 <>
                     {token &&
                         <div className={styles.selectedAdd}>
-                            <div className={styles.grandtotal}>Grand Total<span>{totalOrderCartValue} INR</span> </div>
+                            <div className={styles.grandtotal}>Grand Total<span>{totalOrderCartValue} ₹</span> </div>
 
                             <div className={styles.deliverAddress}>DELIVERY ADDRESS</div>
 

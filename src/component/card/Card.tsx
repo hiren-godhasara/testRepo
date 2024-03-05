@@ -141,8 +141,8 @@ const Card = () => {
 
 
                         {/* <h2 className={styles.prod}>{product.hsncode}</h2> */}
-                        {(product.discount !== 0) && <del> <p className={styles.mrp}>MRP: {product.mrp} INR</p></del>}
-                        <p className={styles.price} >Price: <b className={styles.grade}>{product.price} INR</b></p>
+                        {(product.discount !== 0) && <del> <p className={styles.mrp}>MRP: {product.mrp} ₹</p></del>}
+                        <p className={styles.price} >Price: <b className={styles.grade}>{product.price} ₹</b></p>
 
                         <button
                             onClick={() => onBtnClick(product._id, product.displayName, product.variantName)}
@@ -282,8 +282,8 @@ export default Card;
 
 
 //                         {/* <h2 className={styles.prod}>{product.hsncode}</h2> */}
-//                         {(product.discount !== 0) && <del> <p className={styles.mrp}>MRP: {product.mrp} INR</p></del>}
-//                         <p className={styles.price} >Price: <b className={styles.grade}>{product.price} INR</b></p>
+//                         {(product.discount !== 0) && <del> <p className={styles.mrp}>MRP: {product.mrp} ₹</p></del>}
+//                         <p className={styles.price} >Price: <b className={styles.grade}>{product.price} ₹</b></p>
 
 //                         <button
 //                             onClick={() => onBtnClick(product._id, product.displayName, product.variantName)}

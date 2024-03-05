@@ -113,16 +113,16 @@ const Invoices = () => {
                             <div className={styles.column}>{item.product}</div>
                             <div className={styles.column}>{item.packetWeight}</div>
                             <div className={styles.column}>{item.quantity}</div>
-                            <div className={styles.column}>{item.pricePerKg} INR</div>
-                            <div className={styles.column}>{item.totalPrice} INR</div>
+                            <div className={styles.column}>{item.pricePerKg} ₹</div>
+                            <div className={styles.column}>{item.totalPrice} ₹</div>
                         </div>
                     ))}
                 </div>
 
                 <div className={styles.grandTotal}>
-                    <div className={styles.total}>Total: <strong>{totalSum} INR</strong></div>
-                    <div className={styles.shippingCharge}>Shipping Charges: <del>{shippingCharge} INR</del> <strong>FREE</strong></div>
-                    <div className={styles.billTotal}>Grand Total: <strong>{totalSum}INR</strong></div>
+                    <div className={styles.total}>Total: <strong>{totalSum} ₹</strong></div>
+                    <div className={styles.shippingCharge}>Shipping Charges: <del>{shippingCharge} ₹</del> <strong>FREE</strong></div>
+                    <div className={styles.billTotal}>Grand Total: <strong>{totalSum}₹</strong></div>
                 </div >
 
                 <div className={styles.horizontalLine}></div>
