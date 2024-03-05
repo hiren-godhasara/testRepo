@@ -24,40 +24,51 @@ import TagLine from '@/component/tagLine/TagLine';
 import HomePage1 from '@/component/homePageSection/smallHomePage';
 import GoogleLogin from '@/component/googleLogin/GoogleLogin';
 import dynamic from 'next/dynamic';
+import { GoogleOAuthProvider } from '@react-oauth/google';
+import { getToken } from '@/getLocalStroageToken';
 
 
 export default function Home() {
-  const MyComponent = dynamic(() => import('../component/googleLogin/GoogleLogin'), { ssr: false });
+
+
 
   return (
     <div style={{ backgroundColor: 'white' }}>
-      {/* <TagLine /> */}
-      {/* <Header /> */}
-      <HomePage />
-      {/* {isSmallScreen === false && <HomePage />}
+
+      <GoogleOAuthProvider clientId="1027485564712-nm6m9eifqopa3eqq2pnmj83vljb0e74c.apps.googleusercontent.com">
+        <GoogleLogin />
+
+        {/* <TagLine /> */}
+        {/* <Header /> */}
+        <HomePage />
+        {/* {isSmallScreen === false && <HomePage />}
 
       {isSmallScreen === true && <HomePage1 />} */}
 
-      <div id='products'><BestSelling /></div>
-      <Card />
+        <div id='products'><BestSelling /></div>
+        <Card />
 
-      {/* <div id='allProductSlider'><AllProductSlider /></div> */}
+        {/* <div id='allProductSlider'><AllProductSlider /></div> */}
 
-      <div id='about'><Info /></div>
+        <div id='about'><Info /></div>
 
-      {/* <div id='store'><Storing /></div> */}
+        {/* <div id='store'><Storing /></div> */}
 
-      <div id='reviews'><ReviewSlider /></div>
-      <div id='gifting'> <GiftCombo /></div>
+        <div id='reviews'><ReviewSlider /></div>
+        <div id='gifting'> <GiftCombo /></div>
 
-      <MyComponent />
 
-      {/* <InstagramFeeds />
+        {/* <InstagramFeeds />
       <HashtagInstagramFeeds /> */}
-      {/* <Footer /> */}
-      {/* <OrderAddress />
+        {/* <Footer /> */}
+        {/* <OrderAddress />
       <Invoices />
       <CartList /> */}
-    </div >
+
+
+
+
+
+      </GoogleOAuthProvider>; </div >
   );
 }

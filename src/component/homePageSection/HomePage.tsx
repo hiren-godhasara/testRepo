@@ -24,7 +24,7 @@ const HomePage = () => {
                 {isSmallScreen ?
                     <HomePage1 />
                     :
-                    <Carousel slidesToShow={1} autoplay draggable autoplaySpeed={3000} speed={1500}  >
+                    <Carousel slidesToShow={1} autoplay dots={false} draggable autoplaySpeed={3000} speed={1500}  >
                         <div className={`${styles.imageWrapper1} ${styles.imageWrapper}`}>
                             <div className={styles.flex}>
                                 <Image src={vector} className={styles.leftImage} alt="Almonds" />
