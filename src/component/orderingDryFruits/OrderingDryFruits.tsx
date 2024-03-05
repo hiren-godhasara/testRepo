@@ -41,13 +41,15 @@ export const DryFruitSliderForOrder: React.FC<DryFruitSliderForOrderProps> = (pr
     useTokenExpiration(token);
 
     const handleQuantityChange = (e: ChangeEvent<HTMLInputElement>) => {
-        const newQuantity = parseInt(e.target.value);
+        const inputText = e.target.value;
 
-        if (isNaN(newQuantity) || newQuantity < 1) {
-            return;
+        if (/^\d*$/.test(inputText)) {
+            const newQuantity = parseInt(inputText, 10);
+            setQuantity(isNaN(newQuantity) ? 0 : newQuantity);
         }
-        setQuantity(newQuantity);
     };
+
+
 
 
     const variantProducts = () => {
@@ -325,17 +327,17 @@ export const DryFruitSliderForOrder: React.FC<DryFruitSliderForOrderProps> = (pr
                         <div className={styles.orderButton}>
                             <button
                                 onClick={handleClick}
-                                className={styles.btnOrder}
+                                className={`${isButtonDisabled ? styles.notbtnOrder : styles.btnOrder} ${quantity === 0 ? styles.disablebtnOrder : styles.btnOrder}`}
                                 disabled={isButtonDisabled}
-                                style={{ cursor: isButtonDisabled ? 'not-allowed' : 'pointer' }}
+                            // style={{ cursor: isButtonDisabled ? 'not-allowed' : 'pointer' }}
                             >
                                 Add To Cart
                             </button>
                             <button
                                 onClick={handleRouting}
-                                className={styles.btnOrder}
+                                className={`${isButtonDisabled ? styles.notbtnOrder : styles.btnOrder} ${quantity === 0 ? styles.disablebtnOrder : styles.btnOrder}`}
                                 disabled={isButtonDisabled}
-                                style={{ cursor: isButtonDisabled ? 'not-allowed' : 'pointer' }}
+                            // style={{ cursor: isButtonDisabled ? 'not-allowed' : 'pointer' }}
                             >
                                 Place Order
                             </button>

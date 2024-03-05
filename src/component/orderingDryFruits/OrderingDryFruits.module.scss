@@ -72,8 +72,9 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    font-weight: 800;
-    border: 1px solid black;
+    font-weight: 700;
+    background-color: #144950;
+    color: #FBD449;
     padding: 10px;
     transition: background-color 0.4s, color 0.4s;
     border-radius: 4px;
@@ -82,6 +83,7 @@
 .btnOrder:hover {
     color: #144950;
     background-color: #FBD449;
+    font-weight: 700;
 }
 
 .qty {
@@ -373,164 +375,17 @@
 }
 
 
-// @media (max-width:800px) {
-//     .mainDiv {
-//         margin-left: 5vw;
-//         padding-top: 50px;
 
-//     }
+.disablebtnOrder {
+    color: #ffffff !important;
+    background-color: #788183 !important;
+    pointer-events: none;
 
-//     .largeImageContainer {
-//         margin-left: 50px;
-//     }
+}
 
-//     .orderButton {
-//         margin-top: 15px;
-//     }
+.disablebtnOrder:hover {
+    color: #ffffff !important;
+    background-color: #788183 !important;
+    pointer-events: none;
 
-//     .qty {
-//         margin-top: 10px;
-//     }
-
-//     .total {
-//         margin-top: 10px;
-//     }
-
-//     .mrp {
-//         margin-top: 5px;
-//     }
-// }
-
-
-// @media (max-width:555px) {
-//     .mainDiv {
-//         padding-top: 60px;
-//         margin-left: 5vw;
-//     }
-
-//     .largeImageContainer {
-//         margin-left: 100px;
-//     }
-
-//     .name {
-//         font-size: 15px;
-//     }
-
-
-
-//     .description {
-//         margin-left: 10px;
-//         font-size: 14px;
-//     }
-
-//     .btnOrder {
-//         width: 120px;
-//         height: 40px;
-//         font-size: 15px;
-//         display: flex;
-//         justify-content: center;
-//         align-items: center;
-//         font-weight: 800;
-//         border: 1px solid black;
-//         padding: 10px;
-//         transition: background-color 0.4s, color 0.4s;
-//         border-radius: 4px;
-//     }
-
-//     .image1 {
-//         border-radius: 3px;
-
-//     }
-
-//     .orderButton {
-//         margin-top: 15px;
-//     }
-
-//     .qty {
-//         margin-top: 10px;
-//     }
-
-//     .total {
-//         margin-top: 10px;
-//     }
-
-//     .mrp {
-//         margin-top: 5px;
-//     }
-// }
-
-
-// @media (max-width:550px) {
-//     .mainImg {
-//         margin-left: 30px;
-//     }
-
-//     .orderButton {
-//         margin-top: 15px;
-//     }
-
-//     .qty {
-//         margin-top: 10px;
-//     }
-
-//     .total {
-//         margin-top: 10px;
-//     }
-
-//     .mrp {
-//         margin-top: 5px;
-//     }
-
-// }
-
-// @media (max-width:500px) {
-//     .des {
-//         font-size: 13px;
-//         width: 80vw;
-//         height: auto;
-//     }
-
-//     .orderButton {
-//         margin-top: 15px;
-//     }
-
-//     .qty {
-//         margin-top: 10px;
-//     }
-
-//     .total {
-//         margin-top: 10px;
-//     }
-
-//     .mrp {
-//         margin-top: 5px;
-//     }
-// }
-
-// @media (max-width:415px) {
-
-//     .mainImg {
-//         margin-left: 10px;
-//     }
-
-//     .sideImg {
-//         margin-right: 30px;
-//     }
-
-//     .orderButton {
-//         margin-top: 15px;
-//     }
-
-//     .qty {
-//         margin-top: 10px;
-//     }
-
-//     .total {
-//         margin-top: 10px;
-//     }
-
-//     .mrp {
-//         margin-top: 5px;
-//     }
-
-// }
+}
