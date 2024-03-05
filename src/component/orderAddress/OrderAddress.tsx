@@ -524,7 +524,7 @@ const OrderAddresss = () => {
                 console.error('Error fetching data:', error);
             });
         const options: any = {
-            key: 'rzp_test_i7OU6XSO1iyCX6',
+            key: process.env.RAZOR_PAY_KEYID,
             amount: razorpayData.data.amount,
             currency: razorpayData.data.currency,
             name: 'MY DRY FRUIT',
