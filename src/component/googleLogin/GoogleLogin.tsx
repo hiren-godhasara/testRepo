@@ -74,9 +74,9 @@ function GoogleLogin() {
                                     Cookies.set('userId', data.data.userId, { expires: 1 });
                                     await handleUserData(data.data.userId, data.data.token)
 
-                                    // if (typeof window !== 'undefined') {
-                                    //     window.location.reload()
-                                    // }
+                                    if (typeof window !== 'undefined') {
+                                        window.location.reload()
+                                    }
                                 } else {
                                     const data = await responses.json();
                                     console.log(data);
