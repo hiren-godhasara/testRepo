@@ -315,34 +315,42 @@ export const DryFruitSliderForOrder: React.FC<DryFruitSliderForOrderProps> = (pr
                         <p className={styles.des}>{(data.length === 0) ? props.data.productDescription : data.productDescription}</p>
                         <p className={styles.weight}>Weight : <strong> {weight}</strong></p>
 
-                        <del> <p className={styles.mrp}>MRP : {(data.length === 0) ? props.data.mrp : data.mrp} ₹</p></del>
-                        <p className={styles.discount}>Discount : {(data.length === 0) ? props.data.discount : data.discount}%</p>
-                        <p className={styles.price}>Price :{price} ₹</p>
-                        <div className={styles.qty}>
-                            <label htmlFor="quantity">Quantity :</label>
-                            <input type="number" id="quantity" name="quantity" value={quantity} className={styles.clickable} onChange={handleQuantityChange} />
+
+                        <div className={styles.mobileOrder}>
+                            <div className={styles.priceAndStock}>
+                                <p className={styles.price}>{price} ₹</p>
+                                <p className={styles.discount}>{(data.length === 0) ? props.data.discount : data.discount}% Off</p>
+                                <del> <p className={styles.mrp}>MRP : {(data.length === 0) ? props.data.mrp : data.mrp} ₹</p></del>
+                            </div>
+
+                            <div className={styles.qty}>
+                                <label htmlFor="quantity">Quantity :</label>
+                                <input type="number" id="quantity" name="quantity" value={quantity} className={styles.clickable} onChange={handleQuantityChange} />
+                            </div>
+
+                            {isButtonDisabled && <div className={styles.outOfStock}>This Item is currently out of stock !</div>}
+
+                            <div className={styles.orderButton}>
+                                <button
+                                    onClick={handleClick}
+                                    className={`${isButtonDisabled ? styles.notbtnOrder : styles.btnOrder} ${quantity === 0 ? styles.disablebtnOrder : styles.btnOrder}`}
+                                    disabled={isButtonDisabled}
+                                // style={{ cursor: isButtonDisabled ? 'not-allowed' : 'pointer' }}
+                                >
+                                    Add To Cart
+                                </button>
+                                <button
+                                    onClick={handleRouting}
+                                    className={`${isButtonDisabled ? styles.notbtnOrder : styles.btnOrder} ${quantity === 0 ? styles.disablebtnOrder : styles.btnOrder}`}
+                                    disabled={isButtonDisabled}
+                                // style={{ cursor: isButtonDisabled ? 'not-allowed' : 'pointer' }}
+                                >
+                                    Place Order
+                                </button>
+                            </div>
                         </div>
 
-                        {isButtonDisabled && <div className={styles.outOfStock}>This Item is currently out of stock !</div>}
 
-                        <div className={styles.orderButton}>
-                            <button
-                                onClick={handleClick}
-                                className={`${isButtonDisabled ? styles.notbtnOrder : styles.btnOrder} ${quantity === 0 ? styles.disablebtnOrder : styles.btnOrder}`}
-                                disabled={isButtonDisabled}
-                            // style={{ cursor: isButtonDisabled ? 'not-allowed' : 'pointer' }}
-                            >
-                                Add To Cart
-                            </button>
-                            <button
-                                onClick={handleRouting}
-                                className={`${isButtonDisabled ? styles.notbtnOrder : styles.btnOrder} ${quantity === 0 ? styles.disablebtnOrder : styles.btnOrder}`}
-                                disabled={isButtonDisabled}
-                            // style={{ cursor: isButtonDisabled ? 'not-allowed' : 'pointer' }}
-                            >
-                                Place Order
-                            </button>
-                        </div>
                     </div>
 
 
