@@ -76,7 +76,7 @@
 @media (max-width:1024px) {
     .mainSection {
         width: 90%;
-        height: 30%;
+        height: 40%;
     }
 
     .section {
@@ -87,6 +87,12 @@
                 font-size: 15px;
             }
         }
+
+    }
+
+    .btn {
+        margin-top: 20px;
+
     }
 
 }
