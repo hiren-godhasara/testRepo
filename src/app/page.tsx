@@ -26,11 +26,10 @@ import GoogleLogin from '@/component/googleLogin/GoogleLogin';
 import dynamic from 'next/dynamic';
 import { GoogleOAuthProvider } from '@react-oauth/google';
 import { getToken } from '@/getLocalStroageToken';
+import SlidingCarousel from '@/component/keyWords/KeyWords';
 
 
 export default function Home() {
-
-
 
   return (
     <div style={{ backgroundColor: 'white' }}>
@@ -41,6 +40,7 @@ export default function Home() {
         {/* <TagLine /> */}
         {/* <Header /> */}
         <HomePage />
+        <SlidingCarousel />
         {/* {isSmallScreen === false && <HomePage />}
 
       {isSmallScreen === true && <HomePage1 />} */}

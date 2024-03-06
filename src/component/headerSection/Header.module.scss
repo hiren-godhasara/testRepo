@@ -29,6 +29,7 @@
 .mediumScreenSectionOne {
     display: flex;
     align-items: center;
+    gap: 15px;
 }
 
 .mediumScreenSectionTwo {
@@ -181,9 +182,17 @@
     text-decoration: underline;
 }
 
-.leftSection .image {
-    width: 65px;
+.image {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 50px;
+    // height: 65px;
+}
+
+.leftSection {
     height: 65px;
+    gap: 20px;
 }
 
 .smallScreenHeader {
@@ -290,7 +299,7 @@
         display: flex;
         align-items: center;
         height: 80px;
-        gap: 7px;
+        gap: 20px;
     }
 
     .headerLinkWrapper {
