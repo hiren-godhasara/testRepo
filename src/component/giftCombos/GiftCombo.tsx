@@ -129,29 +129,33 @@ const GiftCombo = () => {
                             {product.name}
                         </h2> */}
 
-                            <Link href={product.name} className={styles.con}>
+                            <Link href={product.displayName} className={styles.con}>
                                 <h2 className={styles.productName1}>
                                     <span className={styles.ellipsis1}>{product.name}</span>
                                 </h2>
                             </Link>
 
-                            <div className={`${styles.con} ${product.name.length < 30 ? styles.con1 : ''}`}>
-                                <h2 className={styles.productName}>
-                                    <span className={styles.ellipsis}>{product.details}</span>
-                                </h2>
-                            </div>
+                            <Link href={product.displayName}>
+                                <div className={`${styles.con} ${product.name.length < 30 ? styles.con1 : ''}`}>
+                                    <h2 className={styles.productName}>
+                                        <span className={styles.ellipsis}>{product.details}</span>
+                                    </h2>
+                                </div>
+                            </Link>
 
 
                             {/* <h2 className={styles.details}>{product.details}</h2> */}
                             {(product.discount !== 0) && <del> <p className={`${styles.mrp} ${product.name.length < 30 ? styles.mrp1 : ''}`}>MRP: {product.mrp} ₹</p></del>}
                             <p className={`${styles.price}  ${product.name.length < 30 ? styles.price1 : ''} ${product.details ? styles.prodPrice : ''}`}>Price: <b className={styles.grade}>{product.price} ₹</b></p>
 
-                            <button
-                                onClick={() => onBtnClick(product._id, product.displayName, product.variantName)}
-                                className={`${styles.button}  ${product.name.length < 30 ? styles.newBtn : ''} ${product.discount === 0 ? styles.withMargin : ''} ${product.prod ? styles.prodMargin : ''}`}
-                            >
-                                Buy Now
-                            </button>
+                            <Link href={product.displayName}>
+                                <button
+                                    onClick={() => onBtnClick(product._id, product.displayName, product.variantName)}
+                                    className={`${styles.button}  ${product.name.length < 30 ? styles.newBtn : ''} ${product.discount === 0 ? styles.withMargin : ''} ${product.prod ? styles.prodMargin : ''}`}
+                                >
+                                    Buy Now
+                                </button>
+                            </Link>
                         </div>
                     </div>
                 ))
