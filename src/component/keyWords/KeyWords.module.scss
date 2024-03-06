@@ -1,0 +1,31 @@
+.container {
+    overflow: hidden;
+    background-color: #fbd449;
+
+    p {
+        padding: 6px;
+        margin-left: 30px;
+        color: #144950;
+        font-size: 18px;
+        font-weight: 700;
+    }
+}
+
+
+
+@keyframes slide {
+    0% {
+        transform: translateX(100%);
+    }
+
+    100% {
+        transform: translateX(-100%);
+    }
+}
+
+
+@media (max-width:654px) {
+    .container {
+        margin-top: -2px;
+    }
+}
