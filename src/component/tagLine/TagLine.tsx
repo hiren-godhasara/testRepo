@@ -22,7 +22,7 @@ const TagLine = () => {
                 return response.json();
             })
             .then(data => {
-                console.log(data.data);
+                // console.log(data.data);
                 setTagLineList(data.data);
             })
             .catch(error => {
@@ -43,13 +43,15 @@ const TagLine = () => {
     }, [tagLineList]);
 
     return (
-        <div className={styles.container}>
-            {tagLineList.length > 0 && (
-                <div className={styles.p}>
-                    {(tagLineList[currentTagLineIndex].tagLine)}
-                </div>
-            )}
-        </div>
+        <>
+            <div className={styles.container}>
+                {tagLineList.length > 0 && (
+                    <p className={styles.p}>
+                        {(tagLineList[currentTagLineIndex].tagLine)}
+                    </p>
+                )}
+            </div>
+        </>
     );
 };
 

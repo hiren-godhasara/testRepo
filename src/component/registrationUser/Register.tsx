@@ -224,9 +224,9 @@ const RegisterForm = () => {
                     </div>
                 </div>
             }
-            {!authToken === false &&
-                router.push('/')
-            }
+            {!authToken === false && (
+                window.location.href = '/'
+            )}
         </>
     );
 };

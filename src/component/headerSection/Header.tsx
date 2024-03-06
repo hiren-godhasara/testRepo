@@ -26,13 +26,17 @@ const Header = () => {
     const token = getToken();
     const userId = getUserId();
 
+
     useEffect(() => {
-        fetchCartData();
-        document.addEventListener('click', handleDocumentClick);
-        return () => {
-            document.removeEventListener('click', handleDocumentClick);
-        };
-    }, []);
+        if (userId) {
+            fetchCartData();
+            document.addEventListener('click', handleDocumentClick);
+            return () => {
+                document.removeEventListener('click', handleDocumentClick);
+            };
+        }
+    }, [userId]);
+
 
     const fetchCartData = () => {
         fetch(`${process.env.BASE_URL}/s/cartProduct/cartProductList/${userId}`, {
@@ -51,8 +55,10 @@ const Header = () => {
             })
             .then(data => {
 
-                const cartProductIds = data.data.productList.map((item: any) => item.cartProductId);
-                if (data.data.productList) {
+                // if (data && data.length == 0) return
+
+                if (data && data.length != 0 && data.data.productList) {
+                    const cartProductIds = data.data.productList.map((item: any) => item.cartProductId);
                     const cartItems = cartProductIds.length
                     setProductDetails(cartItems);
                     console.log(cartItems);
@@ -65,6 +71,7 @@ const Header = () => {
                 console.error('There was a problem fetching the data:', error);
             });
     };
+
     const handleDocumentClick = (event: any) => {
         if (cartButtonRef.current && !cartButtonRef.current.contains(event.target)) {
             setIsCartDropdownOpen(false);
