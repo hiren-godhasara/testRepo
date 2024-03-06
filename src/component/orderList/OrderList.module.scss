@@ -106,7 +106,7 @@
 .prod {
     padding: 10px;
     display: flex;
-    justify-content: center;
+    // justify-content: center;
     align-items: center;
     width: calc(100% - 20px);
     margin-bottom: 20px;
@@ -115,10 +115,11 @@
 }
 
 .prodImg {
-    width: 30%;
+    // width: 30%;
     height: auto;
     margin-top: 20px;
     margin-right: 20px;
+    background-color: #144950;
 }
 
 .row2 {
