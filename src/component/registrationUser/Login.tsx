@@ -158,9 +158,9 @@ const LoginForm = () => {
                 </div>
             }
 
-            {!authToken === false &&
-                router.push('/')
-            }
+            {!authToken === false && (
+                window.location.href = '/'
+            )}
         </>
     );
 };

@@ -54,9 +54,9 @@ const GiftCombo = () => {
                 return response.json();
             })
             .then(data => {
-                console.log(data.data.productData);
+                // console.log(data.data.productData);
                 const comboProducts = data.data.productData.filter((product: { isCombo: boolean; }) => product.isCombo === true);
-                console.log(comboProducts);
+                // console.log(comboProducts);
                 setProducts(comboProducts);
 
             })
