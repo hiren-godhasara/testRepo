@@ -62,7 +62,7 @@ const HomePage = () => {
                                 <button onClick={onBtnClick} className={styles.btna1}>Contact Us</button>
                             </div>
 
-                            {/* <div className={`${styles.imageWrapper}`}>
+                            <div className={`${styles.imageWrapper}`}>
                                 <div className={`${styles.imageWrapper2}`}>
                                     <Image src={i2} alt={` Image`} objectFit='cover' className={styles.imageWrapper} priority />
 
@@ -119,7 +119,7 @@ const HomePage = () => {
                                 <h1 className={styles.headdetails2}>Eat healthy,Live well!</h1>
                                 <h2 className={styles.headdetails3}>Packed with good fats,micronutrients and antioxidants,our premium quality dry fruits make an excellent snack and are perfect festival gifts.</h2>
                                 <button onClick={onBtnClick} className={styles.btndetails1}>Contact Us</button>
-                            </div> */}
+                            </div>
                         </Carousel>
                     }
                 </div>

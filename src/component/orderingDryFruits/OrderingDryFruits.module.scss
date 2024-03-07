@@ -100,6 +100,12 @@
         text-align: center;
         margin-left: 10px;
         font-size: 22px;
+        appearance: none;
+
+        &::-webkit-inner-spin-button,
+        &::-webkit-outer-spin-button {
+            appearance: none;
+        }
     }
 }
 
@@ -202,7 +208,7 @@
     padding: 0.5rem;
     border-radius: 5px;
     background-color: transparent;
-    border: 1px solid gray;
+    border: 2px solid gray;
 
     p {
         text-align: center;
@@ -211,6 +217,7 @@
 
 
 .selectedVariant {
+    transition: border 0.5s;
     border: 2px solid #144950;
     color: #144950;
     font-weight: 650;

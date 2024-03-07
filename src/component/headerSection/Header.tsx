@@ -161,11 +161,13 @@ const Header = () => {
                                 <path d="M21 1L1 1" stroke="black" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
                             </svg>
                         </div>
-                        <div className={styles.mediumScreenSectionOne} >
-                            <Image src={headerCompanyLogo} width={45} height={45} alt='Home Pagea' className={styles.image} />
+                        <Link href={'/'} >
+                            <div className={styles.mediumScreenSectionOne} >
+                                <Image src={headerCompanyLogo} width={45} height={45} alt='Home Pagea' className={styles.image} />
 
-                            <div className={styles.drawerHeaderNameSection}>MYDRYFRUIT</div>
-                        </div>
+                                <div className={styles.drawerHeaderNameSection}>MYDRYFRUIT</div>
+                            </div>
+                        </Link>
 
                         {token &&
                             <div className={styles.mediumScreenSectionTwo}>
@@ -228,10 +230,12 @@ const Header = () => {
 
                 {!isMediumScreen &&
                     <div className={`${styles.fullScreenHeader} maxScreenWidth`}>
-                        <div className={styles.leftSection}>
-                            <Image src={headerCompanyLogo} width={50} height={50} alt='Home Pagea' className={styles.image} />
-                            <div className={styles.leftSectionName}>MYDRYFRUIT</div>
-                        </div>
+                        <Link href={'/'} >
+                            <div className={styles.leftSection}>
+                                <Image src={headerCompanyLogo} width={50} height={50} alt='Home Pagea' className={styles.image} />
+                                <div className={styles.leftSectionName}>MYDRYFRUIT</div>
+                            </div>
+                        </Link>
                         <div className={styles.headerLinkWrapper}>
                             <Link className={styles.headerLink} onClick={() => setIsMenuShown(false)} href="/#products">Products</Link>
                             <Link className={styles.headerLink} onClick={() => setIsMenuShown(false)} href="/#gifting">Gifting</Link>
