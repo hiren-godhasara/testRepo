@@ -5,14 +5,10 @@ import Image from 'next/image';
 import styles from './CartList.module.scss';
 import { useRouter } from 'next/navigation';
 import { getUserId } from '../../getLocalStroageUserId'
-import url from 'url';
 import emptyCart from '../../imageFolder/emptyCart1-removebg-preview.png'
 import { getToken } from '@/getLocalStroageToken';
 import useTokenExpiration from '@/userTokenExpiration';
-import { Spin } from 'antd';
-import badam from '../../imageFolder/badam.jpg'
 import useWindowSize from '../hooks/useWindowsize';
-import { SP } from 'next/dist/shared/lib/utils';
 import Loader from '../loader/Loader';
 
 interface Product {

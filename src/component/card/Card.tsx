@@ -4,14 +4,7 @@ import { useState, useEffect, Key } from 'react';
 import Image, { StaticImageData } from 'next/image';
 import styles from './Card.module.scss';
 import { useRouter } from 'next/navigation';
-import { Carousel } from 'antd';
-import { StaticImport } from 'next/dist/shared/lib/get-img-props';
-import Cookies from 'js-cookie';
 import { getToken } from '@/getLocalStroageToken';
-import i from '../../imageFolder/SAVE_20240209_093303 (1).jpg'
-import i1 from '../../imageFolder/SAVE_20240209_093303 (2).jpg'
-import { Spin } from 'antd';
-import { LoadingOutlined } from '@ant-design/icons';
 import Loader from '../loader/Loader';
 import Link from 'next/link';
 interface Product {

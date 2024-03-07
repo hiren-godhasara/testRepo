@@ -58,11 +58,6 @@ const OrderAddresss = () => {
     const [cartData, setCartData] = useState<any>('');
 
     const userId = getUserId();
-    const paramId = useSearchParams().get('cartProductIds');
-    const cartValue = useSearchParams().get('totalCartValue');
-    const totalCartValue = Number(cartValue)
-    const sCharge = useSearchParams().get('shippingCharge');
-    const shippingCharge = Number(sCharge)
     const [editAddressId, setEditAddressId] = useState<string | null>(null);
     const [editFormVisible, setEditFormVisible] = useState(false);
     const token = getToken()

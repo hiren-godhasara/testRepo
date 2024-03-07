@@ -1,10 +1,9 @@
 'use client'
 import React, { useState, useEffect } from 'react';
-// import { useGoogleOneTapLogin } from "react-google-one-tap-login"
 import styles from './GoogleLogin.module.scss'
 import { getToken } from '@/getLocalStroageToken';
 import Cookies from 'js-cookie';
-import { useGoogleOneTapLogin, GoogleOAuthProvider } from '@react-oauth/google';
+import { useGoogleOneTapLogin } from '@react-oauth/google';
 const jwt = require('jsonwebtoken');
 
 function GoogleLogin() {
@@ -43,7 +42,7 @@ function GoogleLogin() {
 
         useGoogleOneTapLogin({
 
-            onSuccess: async (response) => {
+            onSuccess: async (response: any) => {
                 setShowPopup(true);
                 const credential = response.credential;
                 const clientId = response.clientId;
