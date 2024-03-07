@@ -40,7 +40,6 @@ export default function Home() {
         {/* <TagLine /> */}
         {/* <Header /> */}
         <HomePage />
-        <SlidingCarousel />
         {/* {isSmallScreen === false && <HomePage />}
 
       {isSmallScreen === true && <HomePage1 />} */}
@@ -66,6 +65,7 @@ export default function Home() {
       <CartList /> */}
 
 
+        {/* <SlidingCarousel /> */}
 
 
 

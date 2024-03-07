@@ -3,8 +3,8 @@
 import { Carousel } from 'antd';
 import styles from './HomePage.module.scss';
 import Image from 'next/image';
-import vector from '../../imageFolder/HomePageImage1.png'
-import vector1 from '../../imageFolder/HomePageImage2.png'
+import vector from '../../imageFolder/111xxxhdpi.png'
+import vector1 from '../../imageFolder/Asset 1xxxhdpi.png'
 import vector2 from '../../imageFolder/HomePageImage3.png'
 import vector3 from '../../imageFolder/HomePageImage4.png'
 import vector4 from '../../imageFolder/HomePageImage5.png'
