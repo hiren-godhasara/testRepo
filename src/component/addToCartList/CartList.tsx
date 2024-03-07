@@ -250,7 +250,7 @@ const CartList: React.FC = () => {
                             {productDetails &&
                                 productDetails.productList.map((item: any, index: number) => {
                                     const weightInGrams = item.product.weight;
-                                    const displayWeight = weightInGrams / 1000 < 1 ? `${weightInGrams} g` : `${weightInGrams / 1000} kg`;
+                                    const displayWeight = weightInGrams / 1000 < 1 ? `${weightInGrams}g` : `${weightInGrams / 1000}Kg`;
                                     return (
                                         <>
                                             <div className={styles.cartItemWrapper}>
@@ -271,13 +271,13 @@ const CartList: React.FC = () => {
                                                             height={70}
                                                         />
                                                         <div style={{ fontSize: '0.8rem' }}>
-                                                            <p>{item.product.name.length > 30 ? (
-                                                                <span>{item.product.name.slice(0, 30)}...</span>
+                                                            <p>{item.product.name.length > 40 ? (
+                                                                <span>{item.product.name.slice(0, 40)}...</span>
                                                             ) :
                                                                 <span>{item.product.name}</span>
                                                             }
                                                             </p>
-                                                            <p><b>WEIGHT : </b>{displayWeight}</p>
+                                                            <p>Weight{displayWeight}</p>
                                                             <del> <p>MRP :{item.product.mrp} ₹</p></del>
                                                             <p className={styles.discount}>Discount :{item.product.discount}%</p>
                                                             <p><b>PRICE : </b>{item.product.price}  ₹</p>
@@ -347,7 +347,7 @@ const CartList: React.FC = () => {
                                 <tbody style={{ width: '100%' }}>
                                     {productDetails.productList.map((item: any, index: number) => {
                                         const weightInGrams = item.product.weight;
-                                        const displayWeight = weightInGrams / 1000 < 1 ? `${weightInGrams} g` : `${weightInGrams / 1000} kg`;
+                                        const displayWeight = weightInGrams / 1000 < 1 ? `${weightInGrams}g` : `${weightInGrams / 1000}Kg`;
                                         return (
                                             <tr key={`product${index}`} className={styles.tableRow}>
                                                 <td className={styles.productDetailsItem}>
@@ -360,13 +360,13 @@ const CartList: React.FC = () => {
                                                             className={styles.productImage}
                                                         />
                                                         <div style={{ fontSize: '0.9rem' }}>
-                                                            <p>{item.product.name.length > 30 ? (
-                                                                <span>{item.product.name.slice(0, 30)}...</span>
+                                                            <p>{item.product.name.length > 40 ? (
+                                                                <span>{item.product.name.slice(0, 40)}...</span>
                                                             ) :
                                                                 <span>{item.product.name}   </span>
                                                             }
                                                             </p>
-                                                            <p><b>WEIGHT :</b>{displayWeight}</p>
+                                                            <p>Weight:{displayWeight}</p>
                                                             <del> <p>MRP :{item.product.mrp} ₹</p></del>
                                                             <p className={styles.discount}>Discount :{item.product.discount}%</p>
                                                         </div>
