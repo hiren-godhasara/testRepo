@@ -54,8 +54,8 @@ export const DryFruitSliderForOrder: React.FC<DryFruitSliderForOrderProps> = (pr
 
     const variantProducts = () => {
 
-        const variantName = typeof window !== 'undefined' ? localStorage.getItem('variantName') : null
-        const name = { variantName: variantName }
+        // const variantName = typeof window !== 'undefined' ? localStorage.getItem('variantName') : null
+        const name = { variantName: props.data.variantName }
 
         setLoading(true)
         fetch(`${process.env.BASE_URL}/s/productListByVariant`, {
