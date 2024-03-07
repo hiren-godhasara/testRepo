@@ -68,11 +68,11 @@ const Card = () => {
     }, []);
 
     const onBtnClick = (id: any, displayname: string, variantName: string) => {
-        setIsLoading(true);
+        // setIsLoading(true);
         localStorage.setItem('variantName', variantName);
         localStorage.setItem('productId', id);
-        router.push(`/products/${displayname}`);
-        setIsLoading(false);
+        // router.push(`/products/${displayname}`);
+        // setIsLoading(false);
     };
 
     const [hoveredCard, setHoveredCard] = useState(null);
@@ -98,13 +98,13 @@ const Card = () => {
             )}
             {products.map((product, index) => (
                 <div key={product._id} className={styles.card}
-                    onClick={() => onBtnClick(product._id, product.displayName, product.variantName)}
+                    // onClick={() => onBtnClick(product._id, product.displayName, product.variantName)}
                     onMouseEnter={() => handleMouseEnter(index)}
                     onMouseLeave={handleMouseLeave}>
 
                     <div className={styles.cardImg}>
                         <div className={styles.image}>
-                            <Link href={product.displayName}>
+                            <Link href={`/products/${product.displayName}`}>
                                 <Image
                                     key={product._id}
                                     src={hoveredCard === index ? product.imageUrl[1].location : product.imageUrl[0].location}
@@ -112,6 +112,8 @@ const Card = () => {
                                     width={imageWidth}
                                     height={imageHeight}
                                     className={hoveredCard === index ? styles.img1 : styles.img}
+                                    onClick={() => onBtnClick(product._id, product.displayName, product.variantName)}
+
                                 />
                             </Link>
                         </div>
@@ -125,18 +127,22 @@ const Card = () => {
 
 
                     <div className={styles.cardInfo}>
-                        {/* <h2 className={styles.productName1}>
-                {product.name}
-            </h2> */}
 
-                        <Link href={product.displayName} className={styles.con}>
+                        <Link
+                            href={`/products/${product.displayName}`}
+                            onClick={() => onBtnClick(product._id, product.displayName, product.variantName)}
+                            className={styles.con}>
                             <h2 className={styles.productName1}>
                                 <span className={styles.ellipsis1}>{product.name}</span>
                             </h2>
                         </Link>
 
-                        <Link href={product.displayName}>
-                            <div className={`${styles.con} ${product.name.length < 30 ? styles.con1 : ''}`}>
+
+                        <Link
+                            href={`/products/${product.displayName}`}>
+                            <div
+                                onClick={() => onBtnClick(product._id, product.displayName, product.variantName)}
+                                className={`${styles.con} ${product.name.length < 30 ? styles.con1 : ''}`}>
                                 <h2 className={styles.productName}>
                                     <span className={styles.ellipsis}>{product.details}</span>
                                 </h2>
@@ -148,7 +154,7 @@ const Card = () => {
                         {(product.discount !== 0) && <del> <p className={styles.mrp}>MRP: {product.mrp} ₹</p></del>}
                         <p className={styles.price} >Price: <b className={styles.grade}>{product.price} ₹</b></p>
 
-                        <Link href={product.displayName}>
+                        <Link href={`/products/${product.displayName}`}>
                             <button
                                 onClick={() => onBtnClick(product._id, product.displayName, product.variantName)}
                                 className={styles.button}
