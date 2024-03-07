@@ -92,9 +92,9 @@ export const DryFruitSliderForOrder: React.FC<DryFruitSliderForOrderProps> = (pr
     const convertedWeight = (data.length === 0) ? props.data.weight : data.weight
     let weight;
     if (convertedWeight >= 1000) {
-        weight = convertedWeight / 1000 + ' Kg';
+        weight = convertedWeight / 1000 + 'Kg';
     } else {
-        weight = convertedWeight + ' g';
+        weight = convertedWeight + 'g';
     }
 
     const total = price * quantity;
@@ -291,7 +291,7 @@ export const DryFruitSliderForOrder: React.FC<DryFruitSliderForOrderProps> = (pr
                             )}
                             <div className={styles.variantCard}>
                                 {variantData.map((e: any) => {
-                                    const weightDisplay = e.weight >= 1000 ? `${(e.weight / 1000)} kg` : `${e.weight} g`;
+                                    const weightDisplay = e.weight >= 1000 ? `${(e.weight / 1000)}Kg` : `${e.weight}g`;
 
                                     return (
                                         <div

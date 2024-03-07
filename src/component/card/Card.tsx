@@ -151,8 +151,11 @@ const Card = () => {
 
 
                         {/* <h2 className={styles.prod}>{product.hsncode}</h2> */}
+                        <p className={styles.price1} >Free Shipping Available</p>
                         {(product.discount !== 0) && <del> <p className={styles.mrp}>MRP: {product.mrp} ₹</p></del>}
                         <p className={styles.price} >Price: <b className={styles.grade}>{product.price} ₹</b></p>
+
+
 
                         <Link href={`/products/${product.displayName}`}>
                             <button

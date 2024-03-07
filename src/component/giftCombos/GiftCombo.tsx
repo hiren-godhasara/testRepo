@@ -68,11 +68,11 @@ const GiftCombo = () => {
     }, []);
 
     const onBtnClick = (id: any, displayname: string, variantName: string) => {
-        setIsLoading(true);
+        // setIsLoading(true);
         localStorage.setItem('variantName', variantName);
         localStorage.setItem('productId', id);
-        router.push(`/products/${displayname}`);
-        setIsLoading(false);
+        // router.push(`/products/${displayname}`);
+        // setIsLoading(false);
     };
 
     const [hoveredCard, setHoveredCard] = useState(null);
@@ -106,14 +106,19 @@ const GiftCombo = () => {
 
                         <div className={styles.cardImg}>
                             <div className={styles.image}>
-                                <Image
-                                    key={product._id}
-                                    src={hoveredCard === index ? product.imageUrl[1].location : product.imageUrl[0].location}
-                                    alt={"alt"}
-                                    width={imageWidth}
-                                    height={imageHeight}
-                                    className={hoveredCard === index ? styles.img1 : styles.img}
-                                />
+
+                                <Link href={`/products/${product.displayName}`}>
+                                    <Image
+                                        key={product._id}
+                                        src={hoveredCard === index ? product.imageUrl[1].location : product.imageUrl[0].location}
+                                        alt={"alt"}
+                                        width={imageWidth}
+                                        height={imageHeight}
+                                        className={hoveredCard === index ? styles.img1 : styles.img}
+                                        onClick={() => onBtnClick(product._id, product.displayName, product.variantName)}
+
+                                    />
+                                </Link>
                             </div>
 
                             {(product.discount !== 0) &&
@@ -125,17 +130,18 @@ const GiftCombo = () => {
 
 
                         <div className={styles.cardInfo}>
-                            {/* <h2 className={styles.productName1}>
-                            {product.name}
-                        </h2> */}
+                            <Link href={`/products/${product.displayName}`}
+                                onClick={() => onBtnClick(product._id, product.displayName, product.variantName)}
 
-                            <Link href={product.displayName} className={styles.con}>
+                                className={styles.con}>
                                 <h2 className={styles.productName1}>
                                     <span className={styles.ellipsis1}>{product.name}</span>
                                 </h2>
                             </Link>
 
-                            <Link href={product.displayName}>
+                            <Link href={`/products/${product.displayName}`}
+                                onClick={() => onBtnClick(product._id, product.displayName, product.variantName)}>
+
                                 <div className={`${styles.con} ${product.name.length < 30 ? styles.con1 : ''}`}>
                                     <h2 className={styles.productName}>
                                         <span className={styles.ellipsis}>{product.details}</span>
@@ -144,11 +150,12 @@ const GiftCombo = () => {
                             </Link>
 
 
-                            {/* <h2 className={styles.details}>{product.details}</h2> */}
+                            <p className={styles.price2} >Free Shipping Available</p>
+
                             {(product.discount !== 0) && <del> <p className={`${styles.mrp} ${product.name.length < 30 ? styles.mrp1 : ''}`}>MRP: {product.mrp} ₹</p></del>}
                             <p className={`${styles.price}  ${product.name.length < 30 ? styles.price1 : ''} ${product.details ? styles.prodPrice : ''}`}>Price: <b className={styles.grade}>{product.price} ₹</b></p>
 
-                            <Link href={product.displayName}>
+                            <Link href={`/products/${product.displayName}`}>
                                 <button
                                     onClick={() => onBtnClick(product._id, product.displayName, product.variantName)}
                                     className={`${styles.button}  ${product.name.length < 30 ? styles.newBtn : ''} ${product.discount === 0 ? styles.withMargin : ''} ${product.prod ? styles.prodMargin : ''}`}
