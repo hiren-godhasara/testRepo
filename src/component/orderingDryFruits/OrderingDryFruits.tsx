@@ -204,12 +204,11 @@ export const DryFruitSliderForOrder: React.FC<DryFruitSliderForOrderProps> = (pr
         setSelectedVariant(id);
         localStorage.setItem('variantName', variantName);
         localStorage.setItem('productId', id);
+        localStorage.setItem('displayname', displayname);
+        window.history.pushState({ path: displayname }, '', displayname);
 
-
-
-        // router.push(`/products/${displayname}`);
         try {
-            const response = await fetch(`${process.env.BASE_URL}/s/product/${id}`, {
+            const response = await fetch(`${process.env.BASE_URL}/s/product/${displayname}`, {
                 method: 'GET',
                 headers: {
                     'Content-Type': 'application/json',
@@ -222,7 +221,7 @@ export const DryFruitSliderForOrder: React.FC<DryFruitSliderForOrderProps> = (pr
             }
 
             const data = await response.json();
-            setData(data.data)
+            setData(data.data[0])
 
             // window.location.reload();
         } catch (error) {
