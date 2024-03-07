@@ -7,7 +7,8 @@ import { getToken } from '@/getLocalStroageToken';
 import Image from 'next/image';
 import emptyCart from '../../imageFolder/emptyCart1-removebg-preview.png'
 import useTokenExpiration from '@/userTokenExpiration';
-import { headerCompanyLogo } from '@/S3Images/S3Images';
+import headerCompanyLogo from '../../imageFolder/mdfLogo.png';
+
 import { ToastNotifications, showSuccessToast, showErrorToast } from '../../toastNotifications'
 import { Spin } from 'antd';
 import Loader from '../loader/Loader';

@@ -1,4 +1,4 @@
-import { allProdSliderAlmond, allProdSliderCashew, allProdSliderFard, allProdSliderFigs, allProdSliderKhalas, allProdSliderMazafati, allProdSliderMedjool, allProdSliderPistachio } from "@/S3Images/S3Images";
+// import { allProdSliderAlmond, allProdSliderCashew, allProdSliderFard, allProdSliderFigs, allProdSliderKhalas, allProdSliderMazafati, allProdSliderMedjool, allProdSliderPistachio } from "@/S3Images/S3Images";
 import a2 from '../imageFolder/Rectangle 772.jpg'
 const infoProductsData = [
     {

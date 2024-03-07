@@ -1,5 +1,5 @@
 'use client'
-import { headerCompanyLogo } from '@/S3Images/S3Images'
+import headerCompanyLogo from '../../imageFolder/mdfLogo.png';
 import styles from './Header.module.scss';
 import Image from 'next/image'
 import React, { useEffect, useRef, useState } from 'react'

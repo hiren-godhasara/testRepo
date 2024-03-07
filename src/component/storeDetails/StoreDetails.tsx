@@ -1,6 +1,6 @@
 import Image from 'next/image';
 import styles from './StoreDetails.module.scss';
-import { storeDataPageImage } from '@/S3Images/S3Images';
+// import { storeDataPageImage } from '@/S3Images/S3Images';
 
 const Storing: React.FC = () => {
     const imageWidth = 519
@@ -27,7 +27,7 @@ const Storing: React.FC = () => {
                     <div className={styles.layer}>
                         <p className={styles.layerText}>Dry Fruits And Nuts</p>
                     </div>
-                    <Image src={storeDataPageImage} alt='' width={imageWidth} height={imageHeight} className={styles.image} />
+                    {/* <Image src={storeDataPageImage} alt='' width={imageWidth} height={imageHeight} className={styles.image} /> */}
 
                 </div>
 

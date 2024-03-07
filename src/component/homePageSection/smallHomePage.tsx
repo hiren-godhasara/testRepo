@@ -3,7 +3,6 @@
 import { Carousel } from 'antd';
 import styles from './smallHomepage.module.scss';
 import Image from 'next/image';
-import { homePage1, homePage2, homePage3, homePage4, homePage5, homePage6 } from '@/S3Images/S3Images';
 import i1 from '../../imageFolder/01-01.png'
 import i2 from '../../imageFolder/01-02.png'
 import i3 from '../../imageFolder/01-03.png'
