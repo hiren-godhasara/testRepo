@@ -1,7 +1,9 @@
 import React, { useRef } from 'react';
 import styles from '../invoice/Invoice.module.scss';
 import Image from 'next/image';
-import { headerCompanyLogo } from '@/S3Images/S3Images';
+import headerCompanyLogo from '../../imageFolder/mdfLogo.png';
+
+
 
 
 const apiResponse = [

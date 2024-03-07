@@ -1,4 +1,4 @@
-import { bestSellingCard1, bestSellingCard2, bestSellingCard3, bestSellingCard4, bestSellingCard5, bestSellingCard6, bestSellingCard7, bestSellingCard8 } from "@/S3Images/S3Images";
+// import { bestSellingCard1, bestSellingCard2, bestSellingCard3, bestSellingCard4, bestSellingCard5, bestSellingCard6, bestSellingCard7, bestSellingCard8 } from "@/S3Images/S3Images";
 import image from '../imageFolder/almodProduct22.png'
 const products = [
     {

@@ -1,14 +1,3 @@
-import {
-    OrderingDryFruitsAlmond1, OrderingDryFruitsAlmond2, OrderingDryFruitsAlmond3, OrderingDryFruitsAlmond4,
-    OrderingDryFruitsCashew1, OrderingDryFruitsCashew2, OrderingDryFruitsCashew3, OrderingDryFruitsCashew4,
-    OrderingDryFruitsFard1, OrderingDryFruitsFard2, OrderingDryFruitsFard3, OrderingDryFruitsFard4,
-    OrderingDryFruitsFigs1, OrderingDryFruitsFigs2, OrderingDryFruitsFigs3, OrderingDryFruitsFigs4,
-    OrderingDryFruitsKhalas1, OrderingDryFruitsKhalas2, OrderingDryFruitsKhalas3, OrderingDryFruitsKhalas4,
-    OrderingDryFruitsMazafati1, OrderingDryFruitsMazafati2, OrderingDryFruitsMazafati3, OrderingDryFruitsMazafati4,
-    OrderingDryFruitsMedjool1, OrderingDryFruitsMedjool2, OrderingDryFruitsMedjool3, OrderingDryFruitsMedjool4,
-    OrderingDryFruitsPistachio1, OrderingDryFruitsPistachio2, OrderingDryFruitsPistachio3, OrderingDryFruitsPistachio4,
-} from "@/S3Images/S3Images";
-
 import image from '../imageFolder/almodProduct22.png'
 
 export const productData = {
