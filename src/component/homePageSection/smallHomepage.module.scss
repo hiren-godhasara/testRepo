@@ -40,35 +40,46 @@
 
 
 .imageWrapper {
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
+    // background-size: cover;
+    // background-position: center;
+    // background-repeat: no-repeat;
     width: 100vw;
-    height: auto;
+    max-height: 100vh;
+    position: relative;
+
 }
 
-
-
-
-.imageWrapper1 {
-    background-image: url('../../imageFolder/Mobile/Web\ Phone-01.png');
-}
-
-.imageWrapper2 {
-    background-image: url('../../imageFolder/Mobile/Web\ Phone-02.png');
-}
-
-.imageWrapper3 {
-    background-image: url('../../imageFolder/Mobile/Web\ Phone-03.png');
-}
-
-.imageWrapper4 {
-    background-image: url('../../imageFolder/Mobile/Web\ Phone-04.png');
-}
-
+.imageWrapper1,
+.imageWrapper2,
+.imageWrapper3,
+.imageWrapper4,
 .imageWrapper5 {
-    background-image: url('../../imageFolder/Mobile/Web\ Phone-05.png');
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    z-index: -1;
 }
+
+
+// .imageWrapper1 {
+//     background-image: url('../../imageFolder/Mobile/Web\ Phone-01.png');
+// }
+
+// .imageWrapper2 {
+//     background-image: url('../../imageFolder/Mobile/Web\ Phone-02.png');
+// }
+
+// .imageWrapper3 {
+//     background-image: url('../../imageFolder/Mobile/Web\ Phone-03.png');
+// }
+
+// .imageWrapper4 {
+//     background-image: url('../../imageFolder/Mobile/Web\ Phone-04.png');
+// }
+
+// .imageWrapper5 {
+//     background-image: url('../../imageFolder/Mobile/Web\ Phone-05.png');
+// }
 
 // .imageWrapper6 {
 //     background-image: url('../../imageFolder/Mobile/Web\ Phone-01.png');
