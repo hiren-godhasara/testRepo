@@ -6,10 +6,10 @@ import Image from 'next/image';
 import vector from '../../imageFolder/111xxxhdpi.png'
 import vector1 from '../../imageFolder/Asset 1xxxhdpi.png'
 import i1 from '../../imageFolder/HomePageImages/HomePageImage1.webp'
-import i2 from '../../imageFolder/HomePageImages/HomePageImage1.webp'
-import i3 from '../../imageFolder/HomePageImages/HomePageImage1.webp'
-import i4 from '../../imageFolder/HomePageImages/HomePageImage1.webp'
-import i5 from '../../imageFolder/HomePageImages/HomePageImage1.webp'
+import i2 from '../../imageFolder/HomePageImages/HomePageImage2.webp'
+import i3 from '../../imageFolder/HomePageImages/HomePageImage3.webp'
+import i4 from '../../imageFolder/HomePageImages/HomePageImage4.webp'
+import i5 from '../../imageFolder/HomePageImages/HomePageImage5.webp'
 
 import { useRouter } from 'next/navigation';
 import useWindowSize from '@/component/hooks/useWindowsize';
