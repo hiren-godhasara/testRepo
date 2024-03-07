@@ -9,8 +9,8 @@ import i3 from '../../imageFolder/01-03.png'
 import i4 from '../../imageFolder/01-04.png'
 import i5 from '../../imageFolder/01-05.png'
 import i6 from '../../imageFolder/01-06.png'
-import vector from '../../imageFolder/Mobile/Web Phone-01.webp'
-import vector1 from '../../imageFolder/Mobile/Web Phone-02.webp'
+import vector from '../../imageFolder/111xxxhdpi.png'
+import vector1 from '../../imageFolder/Asset 1xxxhdpi.png'
 
 import { useRouter } from 'next/navigation';
 import Loader from '../loader/Loader';
