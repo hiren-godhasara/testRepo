@@ -1,7 +1,7 @@
 'use client'
 import React, { useEffect, useState } from 'react';
 import { DryFruitSliderForOrder } from '@/component/orderingDryFruits/OrderingDryFruits';
-import { useSearchParams } from 'next/navigation';
+import { useSearchParams, usePathname } from 'next/navigation';
 import { getToken } from '@/getLocalStroageToken';
 
 export interface Product {
@@ -18,10 +18,14 @@ export interface Product {
 }
 
 const Cart = () => {
+
+
     const [productDetails, setProductDetails] = useState<Product | null>(null);
-    const paramId = useSearchParams().get('id');
+    const desiredPart = usePathname();
+    const parts = desiredPart.split('/products/');
+    const paramId = parts[1];
+
     const token = getToken()
-    const productIdFromLocal = typeof window !== 'undefined' ? localStorage.getItem('productId') : null;
 
     useEffect(() => {
         getProductDetails();
@@ -33,9 +37,9 @@ const Cart = () => {
             window.location.reload()
             localStorage.removeItem("isOrderRedirecting")
         }
-        if (!productIdFromLocal) return;
+        if (!paramId) return;
         try {
-            const response = await fetch(`${process.env.BASE_URL}/s/product/${productIdFromLocal}`, {
+            const response = await fetch(`${process.env.BASE_URL}/s/product/${paramId}`, {
                 method: 'GET',
                 headers: {
                     'Content-Type': 'application/json',
@@ -48,7 +52,7 @@ const Cart = () => {
             }
 
             const data = await response.json();
-            setProductDetails(data.data);
+            setProductDetails(data.data[0]);
         } catch (error) {
             console.error('There was a problem fetching the data:', error);
         }
