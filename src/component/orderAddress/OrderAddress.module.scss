@@ -94,6 +94,8 @@
 
         .row {
             margin-bottom: 15px;
+            flex-grow: 1;
+            margin-right: 10px;
 
             div {
                 width: 100%;
@@ -323,12 +325,37 @@
 
 
 .label1 {
-    margin-left: -150px;
+    // display: flex;
+    // justify-content: center;
+    // align-items: center;
+    border: 2px solid gray;
+    border-radius: 5px;
+    margin-left: -120px;
+    padding: 4px;
+    opacity: 0.8;
+}
+
+.label11 {
+    border: 2px solid #144950;
+    font-weight: 700;
+    color: #144950;
+    opacity: 1;
 }
 
 .label2 {
+    border: 2px solid gray;
+    padding: 4px;
+    border-radius: 6px;
     position: relative;
-    left: -150px;
+    opacity: 0.8;
+    left: -110px;
+}
+
+.label22 {
+    border: 2px solid #144950;
+    font-weight: 700;
+    color: #144950;
+    opacity: 1;
 }
 
 .num {
@@ -492,10 +519,10 @@
 
 }
 
+@media (max-width:440px) {
 
-@media (max-width:410px) {
     .label1 {
-        margin-left: -80px;
+        margin-left: -90px;
     }
 
     .label2 {
@@ -505,14 +532,27 @@
 
 }
 
-@media (max-width:380px) {
+
+@media (max-width:410px) {
     .label1 {
-        margin-left: -40px;
+        margin-left: -50px;
     }
 
     .label2 {
         position: relative;
-        left: -40px;
+        left: -50px;
+    }
+
+}
+
+@media (max-width:380px) {
+    .label1 {
+        margin-left: -10px;
+    }
+
+    .label2 {
+        position: relative;
+        left: -10px;
     }
 
 }

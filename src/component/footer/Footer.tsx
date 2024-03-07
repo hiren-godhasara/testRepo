@@ -105,15 +105,15 @@ export default function Footer() {
 
                     <div className={styles.p3}>
 
-                        <Link href={instagramLink}>
+                        <Link href={instagramLink} target="_blank" rel="noopener noreferrer">
                             <Image src={insta} className={styles.img} alt="Insta" width={35} height={35} />
                         </Link>
 
-                        <Link href={faceBookLink}>
+                        <Link href={faceBookLink} target="_blank" rel="noopener noreferrer">
                             <Image src={fb} className={styles.img} alt="Fb" width={35} height={35} />
                         </Link>
 
-                        <Link href={whatsappLink}>
+                        <Link href={whatsappLink} target="_blank" rel="noopener noreferrer">
                             <Image src={wp} className={styles.img} alt="Wp" width={35} height={35} />
                         </Link>
 

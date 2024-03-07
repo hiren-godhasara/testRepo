@@ -141,7 +141,7 @@ const OrderAddresss = () => {
         countryCode: '+91',
         state: '',
         country: '',
-        addressType: ''
+        addressType: 'Home'
 
     });
 
@@ -748,8 +748,6 @@ const OrderAddresss = () => {
     ];
 
 
-    console.log(cartData);
-
     return (
 
         <div className={styles.CenteredContainer}>
@@ -904,10 +902,18 @@ const OrderAddresss = () => {
 
                                             <div className={styles.fourthRow}>
                                                 <label>Address Type: <span style={{ color: 'red' }}>*</span></label>
-                                                <label className={styles.label1}>
-                                                    <input type="radio" name="addressType" value="Home" checked={formData.addressType === "Home"} onChange={handleChange} required /> Home
+                                                <label className={`${styles.label1} ${formData.addressType === "Home" ? styles.label11 : ''}`}>
+                                                    <input
+                                                        type="radio"
+                                                        name="addressType"
+                                                        value="Home"
+                                                        checked={formData.addressType === "Home"}
+                                                        onChange={handleChange}
+                                                        required
+                                                    /> Home
                                                 </label>
-                                                <label className={styles.label2}>
+
+                                                <label className={`${styles.label2} ${formData.addressType === "Office" ? styles.label22 : ''}`}>
                                                     <input type="radio" name="addressType" value="Office" checked={formData.addressType === "Office"} onChange={handleChange} required /> Office
                                                 </label>
                                             </div>
@@ -1002,10 +1008,19 @@ const OrderAddresss = () => {
 
                                             <div className={styles.fourthRow}>
                                                 <label>Address Type: <span style={{ color: 'red' }}>*</span></label>
-                                                <label className={styles.label1}>
-                                                    <input type="radio" name="addressType" value="Home" checked={editFormData.addressType === "Home"} onChange={(e) => handleEditChange(e, true)} required /> Home
+                                                <label className={`${styles.label1} ${editFormData.addressType === "Home" ? styles.label11 : ''}`}>
+                                                    <input
+                                                        type="radio"
+                                                        name="addressType"
+                                                        value="Home"
+                                                        checked={editFormData.addressType === "Home"}
+                                                        onChange={(e) => handleEditChange(e, true)}
+                                                        required
+                                                    /> Home
                                                 </label>
-                                                <label className={styles.label2}>
+
+                                                <label className={`${styles.label2} ${editFormData.addressType === "Office" ? styles.label22 : ''}`}>
+
                                                     <input type="radio" name="addressType" value="Office" checked={editFormData.addressType === "Office"} onChange={(e) => handleEditChange(e, true)} required /> Office
                                                 </label>
                                             </div>
