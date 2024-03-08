@@ -1,62 +1,67 @@
 'use client'
-
 import React, { useState, ChangeEvent, useEffect } from 'react';
 import Image from 'next/image';
-import { Carousel, Spin } from 'antd';
 import styles from './OrderingDryFruits.module.scss';
-import Carts, { Product } from '@/app/products/[product]/page';
-import { useRouter, useSearchParams } from 'next/navigation';
-import Cookies from 'js-cookie';
+import { useRouter } from 'next/navigation';
 import { getToken } from '@/getLocalStroageToken';
 import { getUserId } from '@/getLocalStroageUserId';
-import RegisterForm from '../registrationUser/Register';
-import LoginForm from '../registrationUser/Login';
-import emptyCart from '../../imageFolder/emptyCart1-removebg-preview.png'
 import useTokenExpiration from '@/userTokenExpiration';
 import { ToastNotifications, showSuccessToast, showErrorToast } from '../../toastNotifications'
 import Loader from '../loader/Loader';
-// import { usePathname } from 'next/navigation'
-interface DryFruitSliderForOrderProps {
-    data: Product | any;
-}
 
-export const DryFruitSliderForOrder: React.FC<DryFruitSliderForOrderProps> = (props: any) => {
+export const DryFruitSliderForOrder: any = (props: any) => {
+    const productDisplayName = props.data
     const router = useRouter();
     const [quantity, setQuantity] = useState<number>(1);
     const [shouldRenderRegisterForm, setShouldRenderRegisterForm] = useState(false);
-    const [message, setMessage] = useState('');
-    const [totalQuantity, setTotalQuantity] = useState<number>(0);
-    const params = useSearchParams().get('id')
-    const [data, setData] = useState<any>([])
-    const [loading, setLoading] = useState(true)
+    const [id, setId] = useState<any>()
+    const [loading, setLoading] = useState(false)
     const [variantData, setVariantData] = useState([])
-    const [selectedVariant, setSelectedVariant] = useState<any>(localStorage.getItem("productId"));
-
+    const [selectedVariant, setSelectedVariant] = useState<any>(id);
+    const [productDetails, setProductDetails] = useState<any>(null);
     const token = getToken();
     const userId = getUserId();
-
-    // const pathname = usePathname()
-
-
+    const [selectedImage, setSelectedImage] = useState(null)
     useTokenExpiration(token);
 
-    const handleQuantityChange = (e: ChangeEvent<HTMLInputElement>) => {
-        const inputText = e.target.value;
+    useEffect(() => {
+        getProductDetails(productDisplayName);
+    }, [productDisplayName]);
 
-        if (/^\d*$/.test(inputText)) {
-            const newQuantity = parseInt(inputText, 10);
-            setQuantity(isNaN(newQuantity) ? 0 : newQuantity);
+    const getProductDetails = async (productDisplayName: string) => {
+        setLoading(true)
+        const isOrderRedirecting = typeof window !== 'undefined' ? localStorage.getItem("isOrderRedirecting") : null;
+        if (isOrderRedirecting === "true") {
+            window.location.reload()
+            localStorage.removeItem("isOrderRedirecting")
+        }
+        if (!productDisplayName) return;
+        try {
+            const response = await fetch(`${process.env.BASE_URL}/s/product/${productDisplayName}`, {
+                method: 'GET',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${token}`,
+                },
+            });
+
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+
+            const data = await response.json();
+            setProductDetails(data.data[0]);
+            await variantProducts(data.data[0].variantName);
+            setSelectedImage(data.data[0].imageUrl[0].location)
+            setId(data.data[0]._id)
+            setSelectedVariant(data.data[0]._id)
+            setLoading(false)
+        } catch (error) {
+            console.error('There was a problem fetching the data:', error);
         }
     };
 
-
-
-
-    const variantProducts = () => {
-
-        // const variantName = typeof window !== 'undefined' ? localStorage.getItem('variantName') : null
-        const name = { variantName: props.data.variantName }
-
+    const variantProducts = async (e: any) => {
         setLoading(true)
         fetch(`${process.env.BASE_URL}/s/productListByVariant`, {
             method: 'POST',
@@ -64,7 +69,7 @@ export const DryFruitSliderForOrder: React.FC<DryFruitSliderForOrderProps> = (pr
                 'Content-Type': 'application/json',
                 'Authorization': `Bearer ${token}`,
             },
-            body: JSON.stringify(name),
+            body: JSON.stringify({ "variantName": e }),
         })
             .then(response => {
                 if (!response.ok) {
@@ -75,39 +80,37 @@ export const DryFruitSliderForOrder: React.FC<DryFruitSliderForOrderProps> = (pr
             .then(data => {
                 setVariantData(data.data.productData);
                 setLoading(false)
-
             })
             .catch(error => {
                 showErrorToast('Failed to loadData');
             });
     };
 
+    const handleQuantityChange = (e: ChangeEvent<HTMLInputElement>) => {
+        const inputText = e.target.value;
 
-    useEffect(() => {
-        variantProducts();
-    }, []);
+        if (/^\d*$/.test(inputText)) {
+            const newQuantity = parseInt(inputText, 10);
+            setQuantity(isNaN(newQuantity) ? 0 : newQuantity);
+        }
+    };
 
-    const price = (data.length === 0) ? props.data.price : data.price
-    const discount = (data.length === 0) ? props.data.discount : data.discount
-    const convertedWeight = (data.length === 0) ? props.data.weight : data.weight
+    const price = productDetails?.price
+    const discount = productDetails?.discount
+    const convertedWeight = productDetails?.weight
     let weight;
     if (convertedWeight >= 1000) {
         weight = convertedWeight / 1000 + 'Kg';
     } else {
         weight = convertedWeight + 'g';
     }
-
     const total = price * quantity;
-    const roundedTotal = total.toFixed(2);
-
-    var productIdFromLocal = typeof window !== 'undefined' ? localStorage.getItem('productId') : null
-
 
     const addToCart = () => {
         setLoading(true)
         const productData = {
             userId: userId,
-            productId: productIdFromLocal,
+            productId: id,
             qty: quantity,
             token: token,
             discount: discount
@@ -128,7 +131,6 @@ export const DryFruitSliderForOrder: React.FC<DryFruitSliderForOrderProps> = (pr
                 return response.json();
             })
             .then(data => {
-                setMessage(data.message);
                 showSuccessToast(data.message);
                 setLoading(false)
 
@@ -141,14 +143,12 @@ export const DryFruitSliderForOrder: React.FC<DryFruitSliderForOrderProps> = (pr
 
     const reset = () => {
         setQuantity(1);
-        setTotalQuantity(1);
     };
 
     const handleAddToCart = () => {
         addToCart();
         reset();
     };
-
 
     const handleClick = () => {
         const token = getToken()
@@ -165,46 +165,28 @@ export const DryFruitSliderForOrder: React.FC<DryFruitSliderForOrderProps> = (pr
     };
 
     const handleRouting = () => {
-
         const token = getToken()
         if (token) {
-            const productId = productIdFromLocal;
+            const productId = id;
             const qtys: any = quantity;
             const totalOrderCartValue: any = total;
             console.log(productId, qtys, totalOrderCartValue);
             localStorage.setItem('qtys', qtys)
             localStorage.setItem('totalOrderCartValue', totalOrderCartValue)
-            // router.push(`/placeOrder?productId=${productId}&qtys=${qtys}&totalOrderCartValue=${totalOrderCartValue}`);
             router.push(`/placeOrder`);
-
-
         } else {
             localStorage.setItem('isOrderRedirecting', "true");
             setShouldRenderRegisterForm(true);
             router.push('/login')
-
         }
     };
-    const [selectedImage, setSelectedImage] = useState(
-        props.data.imageUrl.length > 0 ? props.data.imageUrl[0].location : null
-    );
 
     const handleImageClick = (imageUrl: any) => {
         setSelectedImage(imageUrl);
     };
 
-    useEffect(() => {
-        setTimeout(() => {
-            setLoading(false);
-        }, 1500);
-    }, []);
-
-
     const handleVariantClick = async (id: any, displayname: string, variantName: string) => {
         setSelectedVariant(id);
-        localStorage.setItem('variantName', variantName);
-        localStorage.setItem('productId', id);
-        localStorage.setItem('displayname', displayname);
         window.history.pushState({ path: displayname }, '', displayname);
 
         try {
@@ -221,26 +203,15 @@ export const DryFruitSliderForOrder: React.FC<DryFruitSliderForOrderProps> = (pr
             }
 
             const data = await response.json();
-            setData(data.data[0])
-
-            // window.location.reload();
+            setProductDetails(data.data[0])
+            setSelectedVariant(data.data[0]._id);
         } catch (error) {
             console.error('There was a problem fetching the data:', error);
         }
 
     };
 
-    useEffect(() => {
-        setTimeout(() => {
-            setLoading(false);
-        }, 2000);
-    }, []);
-
-
-
-    const isButtonDisabled = (data.length === 0 && (props.data.isAvailable === false) || (data.isAvailable === false));
-
-
+    const isButtonDisabled = (productDetails?.isAvailable === false)
     return (
         <>
             {loading ? (
@@ -252,21 +223,8 @@ export const DryFruitSliderForOrder: React.FC<DryFruitSliderForOrderProps> = (pr
 
                     <div className={styles.mainImg} >
                         <div className={styles.sideImg}>
-                            {(data.length === 0) ? (
-                                props.data.imageUrl.map((image: any, index: any) => (
-                                    <Image
-                                        key={index}
-                                        src={image.location}
-                                        alt={`Image`}
-                                        width={205}
-                                        height={85}
-                                        className={`${styles.image1} ${shouldRenderRegisterForm ? styles.blurImage : ''}`}
-                                        onMouseEnter={() => handleImageClick(image.location)}
-                                    />
-                                ))
-                            ) : (
-                                (data.length != 0) &&
-                                data.imageUrl.map((image: any, index: any) => (
+                            {(
+                                productDetails?.imageUrl.map((image: any, index: any) => (
                                     <Image
                                         key={index}
                                         src={image.location}
@@ -310,16 +268,16 @@ export const DryFruitSliderForOrder: React.FC<DryFruitSliderForOrderProps> = (pr
 
 
                     <div className={styles.description}>
-                        <p className={styles.name}>{(data.length === 0) ? props.data.name : data.name}</p>
-                        <p className={styles.des}>{(data.length === 0) ? props.data.productDescription : data.productDescription}</p>
+                        <p className={styles.name}>{productDetails?.name}</p>
+                        <p className={styles.des}>{productDetails?.productDescription}</p>
                         <p className={styles.weight}>Weight : <strong> {weight}</strong></p>
 
 
                         <div className={styles.mobileOrder}>
                             <div className={styles.priceAndStock}>
                                 <p className={styles.price}>{price} ₹</p>
-                                <p className={styles.discount}>{(data.length === 0) ? props.data.discount : data.discount}% Off</p>
-                                <del> <p className={styles.mrp}>MRP : {(data.length === 0) ? props.data.mrp : data.mrp} ₹</p></del>
+                                <p className={styles.discount}>{productDetails?.discount}% Off</p>
+                                <del> <p className={styles.mrp}>MRP : {productDetails?.mrp} ₹</p></del>
                             </div>
 
                             <div className={styles.qty}>
@@ -334,7 +292,6 @@ export const DryFruitSliderForOrder: React.FC<DryFruitSliderForOrderProps> = (pr
                                     onClick={handleClick}
                                     className={`${isButtonDisabled ? styles.notbtnOrder : styles.btnOrder} ${quantity === 0 ? styles.disablebtnOrder : styles.btnOrder}`}
                                     disabled={isButtonDisabled}
-                                // style={{ cursor: isButtonDisabled ? 'not-allowed' : 'pointer' }}
                                 >
                                     Add To Cart
                                 </button>
@@ -342,25 +299,14 @@ export const DryFruitSliderForOrder: React.FC<DryFruitSliderForOrderProps> = (pr
                                     onClick={handleRouting}
                                     className={`${isButtonDisabled ? styles.notbtnOrder : styles.btnOrder} ${quantity === 0 ? styles.disablebtnOrder : styles.btnOrder}`}
                                     disabled={isButtonDisabled}
-                                // style={{ cursor: isButtonDisabled ? 'not-allowed' : 'pointer' }}
                                 >
                                     Place Order
                                 </button>
                             </div>
                         </div>
-
-
                     </div>
-
-
-
-
-
                 </div >
             )}
-            {/* <div className={styles.reg}>
-                {shouldRenderRegisterForm && <LoginForm />}
-            </div> */}
             <ToastNotifications />
         </>
 
