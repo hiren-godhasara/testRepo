@@ -81,6 +81,11 @@ const CartList: React.FC = () => {
             })
             .then(data => {
                 setProductDetails(data.data);
+                const addToCart = typeof window !== "undefined" ? localStorage.getItem("addToCart") : null;
+                if (addToCart) {
+                    window.location.href = '/cart';
+                    localStorage.removeItem("addToCart");
+                }
             })
             .catch(error => {
                 console.error('There was a problem fetching the data:', error);
