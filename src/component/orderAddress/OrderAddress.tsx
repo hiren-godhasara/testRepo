@@ -50,7 +50,7 @@ interface Address {
 
 const OrderAddresss = () => {
     const [userData, setUserData] = useState<any>({});
-    const [cartProducts, setCartProducts] = useState([]);
+    const [cartProducts, setCartProducts] = useState<any>([]);
     const [orderId, setOrderId] = useState('');
     const [selectedAddress, setSelectedAddress] = useState<string | null>(null);
     const [showAddressForm, setShowAddressForm] = useState(false);
@@ -503,8 +503,33 @@ const OrderAddresss = () => {
             showSuccessToast(data.message);
             return data.data.orderData._id
         }).catch(error => {
-            console.error('There was a problem with the fetch operation:', error);
 
+            // not updating status for isOrder=true
+            fetch(`${process.env.BASE_URL}/s/cartProduct/${cartProducts[0].cartProductId}`, {
+                method: 'PUT',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${token}`,
+                },
+                body: JSON.stringify({
+                    isOrder: false,
+
+                }),
+            })
+                .then(async response => {
+                    if (!response.ok) {
+                        throw new Error('Network response was not ok');
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    console.log(data);
+                    return data;
+                })
+                .catch(error => {
+                    console.error('There was a problem with the fetch operation:', error);
+                });
+            console.error('There was a problem with the fetch operation:', error);
         });
     }
 
