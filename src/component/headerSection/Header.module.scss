@@ -75,6 +75,42 @@
     }
 }
 
+.drawer1 {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.drawerMain2 {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-left: -10px;
+    font-size: 13px;
+}
+
+.div {
+    font-weight: 700 !important;
+    color: #144950;
+}
+
+.image11 {
+    margin-right: 5px;
+}
+
+
+.drawerLink {
+    font-size: 15px;
+    color: #144950;
+    font-weight: 600;
+
+}
+
+.drawer {
+    background-color: #144950;
+}
+
+
 .drawerLink:hover {
     color: #144950;
     background-color: #FBD449;
