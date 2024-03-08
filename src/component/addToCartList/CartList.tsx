@@ -42,16 +42,16 @@ const CartList: React.FC = () => {
     const token = getToken()
     useTokenExpiration(token);
 
-    const addToCart = typeof window !== "undefined" ? localStorage.getItem("addToCart") : null;
-
-    if (addToCart) {
-        window.location.href = '/cart';
-        localStorage.removeItem("addToCart");
-    }
-
     useEffect(() => {
         fetchCartData();
     }, [userId]);
+    // const addToCart = typeof window !== "undefined" ? localStorage.getItem("addToCart") : null;
+
+    // if (addToCart) {
+    //     window.location.href = '/cart';
+    //     localStorage.removeItem("addToCart");
+    // }
+
 
     useEffect(() => {
         if (productDetails && productDetails.productList) {
