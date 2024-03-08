@@ -324,6 +324,15 @@
 @media screen and (max-width :600px) {
     .mediumScreenSectionOne {
         left: 50%;
+        top: 25%;
         transform: translate(-50%, 0);
+    }
+
+    .drawerHeaderNameSection {
+        font-size: 18px;
+    }
+
+    .image {
+        width: 35px !important;
     }
 }
