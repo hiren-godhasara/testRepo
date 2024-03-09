@@ -175,7 +175,7 @@ const Header = () => {
                                     {/* <Image src={cartIcon} width={35} height={35} alt='Cart list' title='Cart List' className={styles.cartIcon} /> */}
                                     <Image src={cart} width={38} height={38} alt='Cart list' title='Cart List' />
                                 </Link>
-                                {productDetails && <p className={styles.cartItem}>{productDetails}</p>}
+                                {productDetails && <p onClick={handleGoToCart} className={styles.cartItem}>{productDetails}</p>}
                                 <div className={styles.rightSection}>
                                     <button ref={cartButtonRef}
                                         onClick={handleCartButtonClick}>
@@ -259,7 +259,7 @@ const Header = () => {
                                 <Link href='/cart'>
                                     <Image src={cart} width={38} height={40} alt='Cart list' title='Cart List' />
                                 </Link>
-                                {productDetails && <p className={styles.cartItem}>{productDetails}</p>}
+                                {productDetails && <p onClick={handleGoToCart} className={styles.cartItem}>{productDetails}</p>}
                                 <div className={styles.rightSection}>
                                     <button ref={cartButtonRef}
                                         onClick={handleCartButtonClick}>

@@ -115,3 +115,21 @@
     background-color: #FBD449;
     color: #144950;
 }
+
+@media (max-width:480px) {
+    .register {
+        form {
+            width: 350px;
+
+        }
+    }
+}
+
+@media (max-width:370px) {
+    .register {
+        form {
+            width: 330px;
+
+        }
+    }
+}
