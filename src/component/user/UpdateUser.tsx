@@ -74,6 +74,7 @@ const UpdateUser = ({ userDetails, onClose, onFormSubmit }: any) => {
             mobile: '',
             email: '',
         });
+        onClose()
     };
 
 
@@ -89,10 +90,6 @@ const UpdateUser = ({ userDetails, onClose, onFormSubmit }: any) => {
                     <form className={styles.form} onSubmit={handleSubmit}>
                         <div className={styles.companydetails}>
                             <Image src={logo} alt={`Company logo`} width={100} height={100} />
-                            <div className={styles.details}>
-                                <p className={styles.headerdetails}>MYDRYFRUIT</p>
-                                <p className={styles.bodydetails}>Wholesaler of premium quality dryfruits in India and Abroad</p>
-                            </div>
                         </div>
 
                         <div className={styles.registerName}>CUSTOMER EDIT DETAILS</div>
@@ -107,12 +104,11 @@ const UpdateUser = ({ userDetails, onClose, onFormSubmit }: any) => {
                             <input type="text" name="lastName" value={formData.lastName} onChange={handleChange} required />
                         </div>
                         <div>
+                            <button type="button" onClick={handleReset}>Close</button>
                             <button type="submit" onClick={handleSubmit}>Submit</button>
-                            <button type="button" onClick={handleReset}>Reset</button>
                         </div>
 
                     </form>
-                    <button onClick={onClose} className={styles.close}>✖</button>
                 </>
             )
             }
