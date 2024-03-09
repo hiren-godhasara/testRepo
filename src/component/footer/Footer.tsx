@@ -136,7 +136,7 @@ export default function Footer() {
 
                 <p className={styles.pcopy}>
 
-                    @2024 All rights reserved by <Link className={styles.span} href={webSiteLink}> www.mydryfruit.com</Link>
+                    @2024 <Link className={styles.span} href={webSiteLink}>MYDRYFRUIT</Link>  All Rights Reserved.
                 </p>
             </div>
         </footer >
