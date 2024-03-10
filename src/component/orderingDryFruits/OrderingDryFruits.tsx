@@ -2,15 +2,17 @@
 import React, { useState, ChangeEvent, useEffect } from 'react';
 import Image from 'next/image';
 import styles from './OrderingDryFruits.module.scss';
-import { useRouter } from 'next/navigation';
+import { usePathname, useRouter } from 'next/navigation';
 import { getToken } from '@/getLocalStroageToken';
 import { getUserId } from '@/getLocalStroageUserId';
 import useTokenExpiration from '@/userTokenExpiration';
 import { ToastNotifications, showSuccessToast, showErrorToast } from '../../toastNotifications'
 import Loader from '../loader/Loader';
 
-export const DryFruitSliderForOrder: any = (props: any) => {
-    const productDisplayName = props.data
+export const DryFruitSliderForOrder: any = () => {
+    const desiredPart = usePathname();
+    const parts = desiredPart.split('/products/');
+    const paramId = parts[1];
     const router = useRouter();
     const [quantity, setQuantity] = useState<number>(1);
     const [shouldRenderRegisterForm, setShouldRenderRegisterForm] = useState(false);
@@ -25,19 +27,19 @@ export const DryFruitSliderForOrder: any = (props: any) => {
     useTokenExpiration(token);
 
     useEffect(() => {
-        getProductDetails(productDisplayName);
-    }, [productDisplayName]);
+        getProductDetails(paramId);
+    }, [paramId]);
 
-    const getProductDetails = async (productDisplayName: string) => {
+    const getProductDetails = async (paramId: string) => {
         setLoading(true)
         const isOrderRedirecting = typeof window !== 'undefined' ? localStorage.getItem("isOrderRedirecting") : null;
         if (isOrderRedirecting === "true") {
             window.location.reload()
             localStorage.removeItem("isOrderRedirecting")
         }
-        if (!productDisplayName) return;
+        if (!paramId) return;
         try {
-            const response = await fetch(`${process.env.BASE_URL}/s/product/${productDisplayName}`, {
+            const response = await fetch(`${process.env.BASE_URL}/s/product/${paramId}`, {
                 method: 'GET',
                 headers: {
                     'Content-Type': 'application/json',
