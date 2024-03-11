@@ -51,7 +51,10 @@ const HomePage = () => {
                         <Carousel slidesToShow={1} autoplay dots={false} draggable autoplaySpeed={3000} speed={1500}  >
                             <div className={`${styles.imageWrapper}`}>
                                 <div className={`${styles.imageWrapper1}`}>
-                                    <Image src={i1} alt="Image" objectFit='contain' priority />
+                                    <Image src={i1} alt="Image"
+                                        // style={{ objectFit: "contain" }}
+                                        style={{ objectFit: "cover" }}
+                                        priority />
                                 </div>
                                 <div className={styles.flex}>
                                     <Image src={vector} className={styles.leftImage} alt="Almonds" />
@@ -67,7 +70,8 @@ const HomePage = () => {
 
                             <div className={`${styles.imageWrapper}`}>
                                 <div className={`${styles.imageWrapper2}`}>
-                                    <Image src={i2} alt="Image" objectFit='cover' className={styles.imageWrapper} priority />
+                                    <Image src={i2} alt="Image" style={{ objectFit: "cover" }}
+                                        className={styles.imageWrapper} priority={true} />
 
                                 </div>
 
@@ -85,7 +89,8 @@ const HomePage = () => {
 
                             <div className={`${styles.imageWrapper} `}>
                                 <div className={`${styles.imageWrapper3}`}>
-                                    <Image src={i3} alt="Image" objectFit='cover' className={styles.imageWrapper} priority />
+                                    <Image src={i3} alt="Image" style={{ objectFit: "cover" }}
+                                        className={styles.imageWrapper} priority={true} />
 
                                 </div>
 
@@ -103,7 +108,8 @@ const HomePage = () => {
 
                             <div className={`${styles.imageWrapper} `}>
                                 <div className={`${styles.imageWrapper4}`}>
-                                    <Image src={i4} alt="Image" objectFit='cover' className={styles.imageWrapper} priority />
+                                    <Image src={i4} alt="Image" style={{ objectFit: "cover" }}
+                                        className={styles.imageWrapper} priority={true} />
 
                                 </div>
 
@@ -119,7 +125,8 @@ const HomePage = () => {
 
                             <div className={`${styles.imageWrapper} `}>
                                 <div className={`${styles.imageWrapper5}`}>
-                                    <Image src={i5} alt="Image" objectFit='cover' className={styles.imageWrapper} priority />
+                                    <Image src={i5} alt="Image" style={{ objectFit: "cover" }}
+                                        className={styles.imageWrapper} priority={true} />
 
                                 </div>
 

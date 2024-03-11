@@ -96,7 +96,7 @@ const Card = () => {
                     onMouseLeave={handleMouseLeave}>
 
                     <div className={styles.cardImg}>
-                        <div className={styles.image}>
+                        <div className={styles.image} >
                             <Link href={`/products/${product.displayName}`}>
                                 <Image
                                     key={product._id}

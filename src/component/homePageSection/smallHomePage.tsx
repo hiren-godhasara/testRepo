@@ -48,7 +48,7 @@ const HomePage1 = () => {
                         <Link href='/products/natural-premium-california-almond-200gm'>
                             <div className={` ${styles.imageWrapper}`}>
                                 <div className={`${styles.imageWrapper1}`}>
-                                    <Image src={i1} alt="Image" objectFit='contain' />
+                                    <Image src={i1} alt="Image" style={{ objectFit: "contain" }} />
                                 </div>
                                 <div className={styles.flex}>
                                     <Image src={vector} className={styles.leftImage} alt="Almonds" />
@@ -64,7 +64,7 @@ const HomePage1 = () => {
                         <Link href='/products/buy-premium-Whole-Cashew(kaju)-Nuts-200gm'>
                             <div className={` ${styles.imageWrapper}`}>
                                 <div className={`${styles.imageWrapper2}`}>
-                                    <Image src={i2} alt="Image" objectFit='contain' />
+                                    <Image src={i2} alt="Image" style={{ objectFit: "contain" }} />
                                 </div>
                                 <div className={styles.flex}>
                                     <Image src={vector} className={styles.leftImage} alt="Almonds" />
@@ -80,7 +80,7 @@ const HomePage1 = () => {
                         <Link href='/products/buy-freshly-roasted-salted-pista-200gm'>
                             <div className={` ${styles.imageWrapper}`}>
                                 <div className={`${styles.imageWrapper3}`}>
-                                    <Image src={i3} alt="Image" objectFit='contain' />
+                                    <Image src={i3} alt="Image" style={{ objectFit: "contain" }} />
                                 </div>
                                 <div className={styles.flex}>
                                     <Image src={vector} className={styles.leftImage} alt="Almonds" />
@@ -95,7 +95,7 @@ const HomePage1 = () => {
                         <Link href='/products/natural-premium-california-almond-200gm'>
                             <div className={` ${styles.imageWrapper}`}>
                                 <div className={`${styles.imageWrapper4}`}>
-                                    <Image src={i4} alt="Image" objectFit='contain' />
+                                    <Image src={i4} alt="Image" style={{ objectFit: "contain" }} />
                                 </div>
                                 <h3 className={styles.headcombo1}> Premium </h3>
                                 <h1 className={styles.headcombo2}>Dry Fruit Combos Are</h1>
@@ -106,7 +106,7 @@ const HomePage1 = () => {
 
                         <div className={` ${styles.imageWrapper}`}>
                             <div className={`${styles.imageWrapper5}`}>
-                                <Image src={i5} alt="Image" objectFit='contain' />
+                                <Image src={i5} alt="Image" style={{ objectFit: "contain" }} />
                             </div>
                             <h3 className={styles.headdetails1}>The Finest Dryfruits</h3>
                             <hr className={styles.hr} />

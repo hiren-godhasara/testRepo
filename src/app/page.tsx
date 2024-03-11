@@ -27,8 +27,9 @@ export default function Home() {
 
         <InstagramFeeds />
         <HashtagInstagramFeeds />
-        {/* <Invoices /> */}
+        {/* <Invoices /> 
         {/* <SlidingCarousel /> */}
-      </GoogleOAuthProvider>; </div >
+      </GoogleOAuthProvider>
+    </div >
   );
 }

@@ -69,7 +69,6 @@ const HashtagInstagramFeeds: React.FC = () => {
             .then((data) => setFeeds(data))
             .catch((error) => console.error('Error setting Instagram feeds:', error));
     }, []);
-    console.log(feeds);
 
     const filteredArray = feeds.filter(obj => obj.caption && obj.caption.includes("#feedback"));
     const ary = [...filteredArray]
@@ -102,7 +101,7 @@ const HashtagInstagramFeeds: React.FC = () => {
                                     </div>
                                 </div>
                                 <div className={styles.feedBackImageArea}>
-                                    <Image src={feed.media_url} width={220} height={205} alt={feed.caption} className={styles.feedImg} />
+                                    <Image src={feed.media_url} width={220} height={205} alt={feed.caption || 'imagesInsta'} className={styles.feedImg} />
                                 </div>
                                 <div className={styles.mainIcon}>
                                     <div className={styles.icons}>

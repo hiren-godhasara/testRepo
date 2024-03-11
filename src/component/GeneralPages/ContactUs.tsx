@@ -119,7 +119,7 @@ const ContactUs = () => {
                 <div className={styles.contactContainer}>
                     <div className={styles.leftSection}>
                         <h1 className={styles.h1}>
-                            <Image src={logo} alt="Company logo" fill={true} objectFit='contain' />
+                            <Image src={logo} alt="Company logo" fill={true} style={{ objectFit: "contain" }} />
                         </h1>
                         <p><strong>Address:</strong> 517-518 Meridian Business Center, Mota Varachha, Surat, Gujarat 394101</p>
                         <p><strong>Email:</strong> <Link href="mailto:mydryfruitinfo@gmail.com">mydryfruitinfo@gmail.com</Link></p>
