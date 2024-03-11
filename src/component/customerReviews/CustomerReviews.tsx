@@ -1,4 +1,4 @@
-'use client'
+
 import React from 'react';
 import styles from './CustomerReviews.module.scss';
 import reviews from '../../data/CustomerReviews';

@@ -8,8 +8,9 @@ import { getUserId } from '@/getLocalStroageUserId';
 import useTokenExpiration from '@/userTokenExpiration';
 import { ToastNotifications, showSuccessToast, showErrorToast } from '../../toastNotifications'
 import Loader from '../loader/Loader';
+import dynamic from 'next/dynamic';
 
-export const DryFruitSliderForOrder: any = () => {
+const DryFruitSliderForOrder: any = () => {
     const desiredPart = usePathname();
     const parts = desiredPart.split('/products/');
     const paramId = parts[1];
@@ -315,5 +316,5 @@ export const DryFruitSliderForOrder: any = () => {
     );
 };
 
-
+export default DryFruitSliderForOrder
 

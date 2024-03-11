@@ -7,6 +7,7 @@ import { useRouter } from 'next/navigation';
 import { getToken } from '@/getLocalStroageToken';
 import Loader from '../loader/Loader';
 import Link from 'next/link';
+import dynamic from 'next/dynamic';
 interface Product {
     mrp: any;
     _id: any;
@@ -165,7 +166,10 @@ const GiftCombo = () => {
     );
 };
 
+
+// export default dynamic(() => Promise.resolve(GiftCombo), { ssr: false });
 export default GiftCombo;
+
 
 
 

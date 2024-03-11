@@ -9,6 +9,7 @@ import { ToastNotifications, showSuccessToast, showErrorToast } from '../../toas
 import Cookies from 'js-cookie';
 import i1 from '../../imageFolder/raw-cashews-nuts-bag-dark-background-PhotoRoom (1) 1.png'
 import i2 from '../../imageFolder/raw-cashews-nuts-bag-dark-background-PhotoRoom (2) 1.png'
+import dynamic from 'next/dynamic';
 
 const RegisterForm = () => {
     const router = useRouter();
@@ -161,7 +162,10 @@ const RegisterForm = () => {
 
     return (
         <>
-            {!authToken === true &&
+            {authToken && (
+                window.location.href = '/'
+            )}
+            {!authToken &&
                 <div className={styles.backImg}>
                     <div className={styles.register}>
                         <div className={styles.i1}  ></div>
@@ -224,9 +228,7 @@ const RegisterForm = () => {
                     </div>
                 </div>
             }
-            {!authToken === false && (
-                window.location.href = '/'
-            )}
+
         </>
     );
 };
