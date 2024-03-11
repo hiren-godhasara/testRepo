@@ -169,7 +169,7 @@ const RegisterForm = () => {
 
                         <form onSubmit={handleSubmit}>
                             <div className={styles.imgDiv}>
-                                <Image src={logo} alt={`Company logo`} fill={true} objectFit='contain' />
+                                <Image src={logo} alt="Company logo" fill={true} objectFit='contain' />
                             </div>
                             <div className={styles.registerName}>Sign up</div>
                             <div>

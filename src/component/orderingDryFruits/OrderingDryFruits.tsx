@@ -230,7 +230,7 @@ export const DryFruitSliderForOrder: any = () => {
                                     <Image
                                         key={index}
                                         src={image.location}
-                                        alt={`Image`}
+                                        alt="Image"
                                         width={205}
                                         height={85}
                                         className={`${styles.image1} ${shouldRenderRegisterForm ? styles.blurImage : ''}`}

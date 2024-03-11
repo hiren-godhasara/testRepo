@@ -89,7 +89,7 @@ const UpdateUser = ({ userDetails, onClose, onFormSubmit }: any) => {
                 <>
                     <form className={styles.form} onSubmit={handleSubmit}>
                         <div className={styles.companydetails}>
-                            <Image src={logo} alt={`Company logo`} width={100} height={100} />
+                            <Image src={logo} alt="Company logo" width={100} height={100} />
                         </div>
 
                         <div className={styles.registerName}>CUSTOMER EDIT DETAILS</div>
