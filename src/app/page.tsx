@@ -7,6 +7,8 @@ import ReviewSlider from "../component/customerReviews/CustomerReviews";
 import GiftCombo from "../component/giftCombos/GiftCombo";
 import GoogleLogin from '@/component/googleLogin/GoogleLogin';
 import { GoogleOAuthProvider } from '@react-oauth/google';
+import InstagramFeeds from '@/component/instagramFeed/InstagramFeed';
+import HashtagInstagramFeeds from '@/component/instagramFeed/HashtagInstagramFeed';
 
 
 export default function Home() {
@@ -23,8 +25,8 @@ export default function Home() {
         <div id='reviews'><ReviewSlider /></div>
         <div id='gifting'> <GiftCombo /></div>
 
-        {/* <InstagramFeeds />
-      <HashtagInstagramFeeds /> */}
+        <InstagramFeeds />
+        <HashtagInstagramFeeds />
         {/* <Invoices /> */}
         {/* <SlidingCarousel /> */}
       </GoogleOAuthProvider>; </div >

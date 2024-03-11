@@ -93,40 +93,91 @@
 }
 
 .instagramFeedArea {
+    margin-top: -40px;
     display: flex;
     flex-direction: column;
     justify-content: center;
 }
 
-@media (max-width: 990px) {
+.instagramFeedArea1 {
+    margin-top: 0px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+
+@media (max-width: 1920px) {
+    .card {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-left: 9%;
+        margin-right: 9%;
+    }
+
     .feedBackContainer {
-        min-width: 350px;
+        // min-width: 350px;
         margin-left: auto;
         margin-right: auto;
     }
 }
 
-@media (max-width: 765px) {
-    .feedBackContainer {
-        min-width: 350px;
-        margin-left: auto;
-        margin-right: auto;
+@media (max-width: 1670px) {
+    .card {
+        margin-left: 3%;
+        margin-right: 3%;
     }
 
-    .h2 {
-        font-size: 32px;
+}
 
+@media (max-width: 1360px) {
+    .card {
+        margin-left: 2%;
+        margin-right: 2%;
+    }
+
+    .feedBackContainer {
+        min-width: 300px;
+    }
+
+}
+
+// @media (max-width: 1482px) and (min-width: 1360px) {
+//     .feedBackContainer {
+//         min-width: 320px;
+//         margin-left: auto;
+//         margin-right: auto;
+//     }
+// }
+
+// @media (max-width: 1360px) and (min-width: 1320px) {
+// .feedBackContainer {
+//     min-width: 300px;
+//     margin-left: auto;
+//     margin-right: auto;
+// }
+// }
+
+
+
+// @media (max-width: 990px) {
+//     .feedBackContainer {
+//         min-width: 340px;
+//         margin-left: auto;
+//         margin-right: auto;
+//     }
+// }
+
+@media (max-width: 765px) {
+
+    .h2 {
+        font-size: 22px;
     }
 
 }
 
 @media (max-width: 410px) {
-    .feedBackContainer {
-        min-width: 320px;
-        margin-left: auto;
-        margin-right: auto;
-    }
-
     .h1 {
         font-size: 32px;
 

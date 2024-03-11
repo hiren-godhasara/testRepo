@@ -11,6 +11,8 @@ const whatsappLink = 'https://wa.me/+919157059719';
 const webSiteLink = 'http://www.mydryfruit.com'
 const faceBookLink = 'https://www.facebook.com/mydryfruit'
 const instagramLink = 'https://instagram.com/mydryfruit_com'
+const year = process.env.COPYRIGHT_YEAR || "20233"
+
 
 export default function Footer() {
     return (
@@ -136,7 +138,8 @@ export default function Footer() {
 
                 <p className={styles.pcopy}>
 
-                    @2024 <Link className={styles.span} href={webSiteLink}>MYDRYFRUIT</Link>  All Rights Reserved.
+                    @{`${process.env.COPYRIGHT_YEAR}`} <Link className={styles.span} href={webSiteLink}>MYDRYFRUIT</Link> All Rights Reserved.
+
                 </p>
             </div>
         </footer >
