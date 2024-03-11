@@ -432,7 +432,7 @@ const CartList: React.FC = () => {
                 <>
                     <div className={styles.over}>
                         <div className={styles.modalDel}>
-                            <p>Are you sure to delete the Cart?</p>
+                            <p>Are you sure to delete this Cart item?</p>
                             <div className={styles.btnss}>
                                 <button
                                     onClick={() => handleCartItemRemove(addressIdToDelete)}

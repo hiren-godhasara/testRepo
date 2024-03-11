@@ -4,13 +4,9 @@ import styles from './OrderAddress.module.scss';
 import { getUserId } from '@/getLocalStroageUserId';
 import { useRouter, useSearchParams } from 'next/navigation';
 import { getToken } from '@/getLocalStroageToken';
-import Image from 'next/image';
-import emptyCart from '../../imageFolder/emptyCart1-removebg-preview.png'
 import useTokenExpiration from '@/userTokenExpiration';
 import headerCompanyLogo from '../../imageFolder/mdfLogo.png';
-
 import { ToastNotifications, showSuccessToast, showErrorToast } from '../../toastNotifications'
-import { Spin } from 'antd';
 import Loader from '../loader/Loader';
 
 
@@ -140,6 +136,7 @@ const OrderAddresss = () => {
 
     });
 
+
     const handleEditCancel = () => {
         setEditFormData({
             firstName: '',
@@ -207,18 +204,22 @@ const OrderAddresss = () => {
         }
         return true
     }
-    const handleCheckPincode: any = () => {
-        const pinRegex = /^[1-9]\d{5}$/;
-        const pinCode = pinRegex.test(formData.pincode);
-        console.log(formData.pincode);
 
-        console.log(pinCode);
-
-        if (pinCode === false) {
-            showErrorToast('Invalid pinCode number');
-            return false
+    const handleCheckPincode: any = async () => {
+        const response = await fetch(`https://api.postalpincode.in/pincode/${formData.pincode}`, {
+            method: 'GET',
+        });
+        if (!response.ok) {
+            throw new Error('Network response was not ok');
         }
-        return true
+        const data = await response.json();
+        if (data[0].Status === "Error") {
+            showErrorToast('Invalid pinCode numbers');
+            return 'invalid';
+        }
+        if (data[0].Status === "Success") {
+            return 'valid';
+        }
     }
 
     const handleEditCheckMobile: any = () => {
@@ -231,18 +232,21 @@ const OrderAddresss = () => {
         return true
     }
 
-    const handleEditCheckPincode: any = () => {
-        const pinRegex = /^[1-9]\d{5}$/;
-        const pinCode = pinRegex.test(editFormData.pincode);
-        console.log(formData.pincode);
-
-        console.log(pinCode);
-
-        if (pinCode === false) {
-            showErrorToast('Invalid pinCode number');
-            return false
+    const handleEditCheckPincode: any = async () => {
+        const response = await fetch(`https://api.postalpincode.in/pincode/${editFormData.pincode}`, {
+            method: 'GET',
+        });
+        if (!response.ok) {
+            throw new Error('Network response was not ok');
         }
-        return true
+        const data = await response.json();
+        if (data[0].Status === "Error") {
+            showErrorToast('Invalid pinCode numbers');
+            return 'invalid';
+        }
+        if (data[0].Status === "Success") {
+            return 'valid';
+        }
     }
 
     const handleEditSubmit = async (e: any) => {
@@ -252,7 +256,9 @@ const OrderAddresss = () => {
             if (!handleEditCheckMobile()) {
                 return;
             }
-            if (!handleEditCheckPincode()) {
+
+            const pincodeCheckResult = await handleEditCheckPincode();
+            if (pincodeCheckResult === 'invalid') {
                 return;
             }
             setLoading(true)
@@ -354,10 +360,11 @@ const OrderAddresss = () => {
         }
         try {
 
-            if (!handleCheckMobile()) {
+            const pincodeCheckResult = await handleCheckPincode();
+            if (pincodeCheckResult === 'invalid') {
                 return;
             }
-            if (!handleCheckPincode()) {
+            if (!handleCheckMobile()) {
                 return;
             }
             setLoading(true)
@@ -936,10 +943,12 @@ const OrderAddresss = () => {
                                                     <input type="radio" name="addressType" value="Office" checked={formData.addressType === "Office"} onChange={handleChange} required /> Office
                                                 </label>
                                             </div>
+
                                             <div className={styles.bts}>
                                                 <button className={styles.bt} type="button" onClick={() => setShowAddressForm(false)}>CANCEL</button>
                                                 <button className={styles.bt1} type="submit" onClick={handleSubmit}>SAVE ADDRESS</button>
                                             </div>
+
                                         </form>
                                     </div>
                                 </div>
