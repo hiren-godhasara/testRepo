@@ -25,7 +25,8 @@ export default function Footer() {
                         <Image
                             src={logo}
                             alt='logo'
-                            fill={true} objectFit='contain'
+                            fill={true}
+                            style={{ objectFit: "contain" }}
                         />
                         {/* <p className={styles.headp}>My Dry Fruit</p> */}
                     </Link>
