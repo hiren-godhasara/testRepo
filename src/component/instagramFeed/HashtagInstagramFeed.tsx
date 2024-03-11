@@ -73,13 +73,9 @@ const HashtagInstagramFeeds: React.FC = () => {
 
     const filteredArray = feeds.filter(obj => obj.caption && obj.caption.includes("#feedback"));
     const ary = [...filteredArray]
-    console.log(filteredArray);
-
-
-
 
     return (
-        <div className={styles.instagramFeedArea}>
+        <div className={styles.instagramFeedArea1}>
             <h1 className={styles.h2}>Instagram Customer Reviews</h1>
             <Carousel
                 slidesToShow={slidesToShow}

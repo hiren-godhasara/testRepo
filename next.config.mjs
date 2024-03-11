@@ -2,6 +2,8 @@
 const nextConfig = {
     env: {
         BASE_URL: process.env.BASE_URL,
+        COPYRIGHT_YEAR: process.env.COPYRIGHT_YEAR,
+        RAZOR_PAY_KEYID: process.env.RAZOR_PAY_KEYID
     },
     images: {
         domains: [
