@@ -14,17 +14,39 @@ import { getUserId, removeUserId } from '@/getLocalStroageUserId';
 import UserDetails from '../user/UserData';
 import cart from '../../../public/cart.svg'
 import TagLine from '../tagLine/TagLine';
-
+import Cookies from 'js-cookie';
+import dynamic from 'next/dynamic';
 const Header = () => {
+
+    // const isMediumScreen = typeof window !== "undefined" ? useWindowSize().mediumScreen : false
     const isMediumScreen = useWindowSize().mediumScreen
+
     const cartButtonRef = useRef<HTMLButtonElement>(null);
+    const [auth, setAuth] = useState(false)
     const [isMenuShown, setIsMenuShown] = useState(false)
     const [productDetails, setProductDetails] = useState('');
     const [isCartDropdownOpen, setIsCartDropdownOpen] = useState(false);
     const [isUserDetailsModalOpen, setIsUserDetailsModalOpen] = useState(false);
     const router = useRouter()
-    const token = getToken();
+
+
     const userId = getUserId();
+    const token = getToken();
+
+    useEffect(() => {
+        const token = getToken();
+        if (token) {
+            setAuth(true);
+        }
+    }, []);
+
+    console.log(auth);
+
+
+
+
+
+
 
 
     useEffect(() => {
@@ -57,14 +79,9 @@ const Header = () => {
 
                 // if (data && data.length == 0) return
 
-                if (data && data.length != 0 && data.data.productList) {
-                    const cartProductIds = data.data.productList.map((item: any) => item.cartProductId);
-                    const cartItems = cartProductIds.length
-                    setProductDetails(cartItems);
-                    console.log(cartItems);
-                } else {
-                    setProductDetails('0');
-                }
+
+                setProductDetails(data?.data?.productList?.length ? data?.data?.productList?.length?.toString() : '0');
+
 
             })
             .catch(error => {
@@ -169,10 +186,9 @@ const Header = () => {
                             </div>
                         </Link>
 
-                        {token &&
+                        {auth &&
                             <div className={styles.mediumScreenSectionTwo}>
                                 <Link onClick={handleGoToCart} href='/cart'>
-                                    {/* <Image src={cartIcon} width={35} height={35} alt='Cart list' title='Cart List' className={styles.cartIcon} /> */}
                                     <Image src={cart} width={38} height={38} alt='Cart list' title='Cart List' />
                                 </Link>
                                 {productDetails && <p onClick={handleGoToCart} className={styles.cartItem}>{productDetails}</p>}
@@ -248,13 +264,13 @@ const Header = () => {
                             <Link className={styles.headerLink} onClick={() => setIsMenuShown(false)} href="/aboutUs">About Us</Link>
                             <Link className={styles.headerLink} onClick={() => setIsMenuShown(false)} href="/contactUs">Contact Us</Link>
                         </div>
-                        {!token &&
+                        {!auth &&
                             <div className={styles.headerButtonsWrapper}>
                                 <Link href='/registration' className={styles.contactUsBtn}>Register</Link>
                                 <Link href='/login' className={styles.contactUsBtn}>Login</Link>
                             </div>
                         }
-                        {token &&
+                        {auth &&
                             <div className={styles.mediumScreenSectionTwo}>
                                 <Link href='/cart'>
                                     <Image src={cart} width={38} height={40} alt='Cart list' title='Cart List' />
@@ -286,4 +302,7 @@ const Header = () => {
 }
 
 
+// export default dynamic(() => Promise.resolve(Header), { ssr: false });
 export default Header;
+
+

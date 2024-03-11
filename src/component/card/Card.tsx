@@ -7,6 +7,8 @@ import { useRouter } from 'next/navigation';
 import { getToken } from '@/getLocalStroageToken';
 import Loader from '../loader/Loader';
 import Link from 'next/link';
+import dynamic from 'next/dynamic';
+
 interface Product {
     mrp: any;
     _id: any;
@@ -47,17 +49,12 @@ const Card = () => {
                 return response.json();
             })
             .then(data => {
-                // console.log(data.data.productData);
-                // const comboProducts = data.data.productData.filter((product: { isCombo: boolean; }) => product.isCombo !== true);
-                // console.log(comboProducts);
                 setProducts(data.data.productData);
 
             })
             .catch(error => {
                 console.error('There was a problem fetching the data:', error);
-            }).finally(() => {
-                // setIsLoading(false);
-            });
+            })
     }, []);
 
     const onBtnClick = (id: any, displayname: string, variantName: string) => {
@@ -166,7 +163,8 @@ const Card = () => {
     );
 };
 
-export default Card;
+export default dynamic(() => Promise.resolve(Card), { ssr: false });
+
 
 
 

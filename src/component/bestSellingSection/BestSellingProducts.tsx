@@ -1,6 +1,5 @@
-'use client'
-
 import styles from './BestSellingProducts.module.scss';
+import dynamic from 'next/dynamic';
 
 const BestSelling = () => {
     return (

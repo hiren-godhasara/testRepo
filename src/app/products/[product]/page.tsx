@@ -1,5 +1,5 @@
 import React from 'react';
-import { DryFruitSliderForOrder } from '@/component/orderingDryFruits/OrderingDryFruits';
+import DryFruitSliderForOrder from '@/component/orderingDryFruits/OrderingDryFruits';
 
 const Cart = () => {
     return (

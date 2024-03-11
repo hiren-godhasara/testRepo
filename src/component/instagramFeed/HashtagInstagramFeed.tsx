@@ -38,7 +38,7 @@ const HashtagInstagramFeeds: React.FC = () => {
     const [feeds, setFeeds] = useState<InstagramFeed[]>([]);
     const [slidesToShow, setSlidesToShow] = useState<number>(3);
 
-    const accessToken = 'IGQWRNS2RYcW9yUFhXNEg5b19RLWo5aHZA1OWRfMUkzQXFONnZALT0VMcnY5X1NOUkRvemlTb1VVTDhZAaC12X3pCZAHZASbUpNZAFQ4Q3psSl9FNkRjQWRqOUdkYzFIa3FBa0VFbFdyNnFIV0ZAzdzk4bkw2cEFDOUVTemMZD';
+    const accessToken = 'IGQWRPVzFQek1icDRDUlpSa2xaRWQtZAndfVlpDZADR2Vm9RY2xCSVE5eFB2Ulg3N1ZAJNTdjdC1WbFQ4Q0xxczJVZAkpzMmVHZAktFN2l5WVE1ZAUJ1bi1IVWhRQlgtS01TaWFETlVKMUlPU0p4X2R0NUdYYUl3QW1qLU0ZD';
 
 
     const handleResize = () => {

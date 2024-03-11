@@ -4,6 +4,7 @@ import styles from './GoogleLogin.module.scss'
 import { getToken } from '@/getLocalStroageToken';
 import Cookies from 'js-cookie';
 import { useGoogleOneTapLogin } from '@react-oauth/google';
+import dynamic from 'next/dynamic';
 const jwt = require('jsonwebtoken');
 
 function GoogleLogin() {
@@ -109,9 +110,9 @@ function GoogleLogin() {
         </div>
     );
 }
+export default dynamic(() => Promise.resolve(GoogleLogin), { ssr: false });
 
 
-export default GoogleLogin;
 
 
 
