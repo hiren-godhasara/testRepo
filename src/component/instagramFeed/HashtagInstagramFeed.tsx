@@ -93,12 +93,12 @@ const HashtagInstagramFeeds: React.FC = () => {
                                 <div className={styles.feedBackWrapper}>
                                     <div className={styles.feedBackHeader}>
                                         <div style={{ marginLeft: '0.2rem' }}>
-                                            <Image src={companyLogo} alt={` Image`} width={50} height={50} className={styles.companyLogo} />
+                                            <Image src={companyLogo} alt="Image" width={50} height={50} className={styles.companyLogo} />
                                         </div>
                                         <p className={styles.feedBackHeading}>mydryfruit_com</p>
                                     </div>
                                     <div>
-                                        <Image src={dots} alt={` Image`} width={25} height={25} style={{ marginRight: '0' }} />
+                                        <Image src={dots} alt="Image" width={25} height={25} style={{ marginRight: '0' }} />
                                     </div>
                                 </div>
                                 <div className={styles.feedBackImageArea}>
@@ -106,12 +106,12 @@ const HashtagInstagramFeeds: React.FC = () => {
                                 </div>
                                 <div className={styles.mainIcon}>
                                     <div className={styles.icons}>
-                                        <Image src={like} alt={` Image`} width={28} height={28} className={styles.like} />
-                                        <Image src={comment} alt={` Image`} width={25} height={25} className={styles.comment} />
-                                        <Image src={share} alt={` Image`} width={25} height={25} className={styles.share} />
+                                        <Image src={like} alt="Image" width={28} height={28} className={styles.like} />
+                                        <Image src={comment} alt="Image" width={25} height={25} className={styles.comment} />
+                                        <Image src={share} alt="Image" width={25} height={25} className={styles.share} />
                                     </div>
                                     <div className={styles.saveIcon}>
-                                        <Image src={save} alt={` Image`} width={28} height={28} className={styles.save} />
+                                        <Image src={save} alt="Image" width={28} height={28} className={styles.save} />
                                     </div>
                                 </div>
                             </Link>

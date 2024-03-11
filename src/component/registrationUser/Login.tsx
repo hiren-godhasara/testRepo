@@ -115,7 +115,7 @@ const LoginForm = () => {
                         <form onSubmit={handleSubmit}>
                             <div className={styles.companydetails}>
                                 <div className={styles.imgDiv}>
-                                    <Image src={logo} alt={`Company logo`} fill={true} objectFit='contain' />
+                                    <Image src={logo} alt="Company logo" fill={true} objectFit='contain' />
                                 </div>
                             </div>
                             <div className={styles.registerName}>Welcome Back !</div>
