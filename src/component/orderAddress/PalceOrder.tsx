@@ -169,16 +169,22 @@ const PlaceOrders = () => {
         }
         return true
     }
-    const handleCheckPincode: any = () => {
-        const pinRegex = /^[1-9]\d{5}$/;
-        const pinCode = pinRegex.test(formData.pincode);
-        if (pinCode === false) {
-            showErrorToast('Invalid pinCode number');
-            return false
+    const handleCheckPincode: any = async () => {
+        const response = await fetch(`https://api.postalpincode.in/pincode/${formData.pincode}`, {
+            method: 'GET',
+        });
+        if (!response.ok) {
+            throw new Error('Network response was not ok');
         }
-        return true
+        const data = await response.json();
+        if (data[0].Status === "Error") {
+            showErrorToast('Invalid pinCode numbers');
+            return 'invalid';
+        }
+        if (data[0].Status === "Success") {
+            return 'valid';
+        }
     }
-
     const handleEditCheckMobile: any = () => {
         const mobileRegex = /^[1-9]\d{9}$/;
         const mobile = mobileRegex.test(editFormData.mobile);
@@ -189,18 +195,21 @@ const PlaceOrders = () => {
         return true
     }
 
-    const handleEditCheckPincode: any = () => {
-        const pinRegex = /^[1-9]\d{5}$/;
-        const pinCode = pinRegex.test(editFormData.pincode);
-        console.log(formData.pincode);
-
-        console.log(pinCode);
-
-        if (pinCode === false) {
-            showErrorToast('Invalid pinCode number');
-            return false
+    const handleEditCheckPincode: any = async () => {
+        const response = await fetch(`https://api.postalpincode.in/pincode/${editFormData.pincode}`, {
+            method: 'GET',
+        });
+        if (!response.ok) {
+            throw new Error('Network response was not ok');
         }
-        return true
+        const data = await response.json();
+        if (data[0].Status === "Error") {
+            showErrorToast('Invalid pinCode numbers');
+            return 'invalid';
+        }
+        if (data[0].Status === "Success") {
+            return 'valid';
+        }
     }
 
 
@@ -210,7 +219,8 @@ const PlaceOrders = () => {
             if (!handleEditCheckMobile()) {
                 return;
             }
-            if (!handleEditCheckPincode()) {
+            const pincodeCheckResult = await handleEditCheckPincode();
+            if (pincodeCheckResult === 'invalid') {
                 return;
             }
             if (!editAddressId) {
@@ -311,7 +321,8 @@ const PlaceOrders = () => {
             if (!handleCheckMobile()) {
                 return;
             }
-            if (!handleCheckPincode()) {
+            const pincodeCheckResult = await handleCheckPincode();
+            if (pincodeCheckResult === 'invalid') {
                 return;
             }
             setLoading(true);
