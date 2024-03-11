@@ -52,7 +52,7 @@ const OrderAddresss = () => {
     const [userData, setUserData] = useState<any>({});
     const [cartProducts, setCartProducts] = useState<any>([]);
     const [orderId, setOrderId] = useState('');
-    const [selectedAddress, setSelectedAddress] = useState<string | null>(null);
+    const [selectedAddress, setSelectedAddress] = useState<string | null>();
     const [showAddressForm, setShowAddressForm] = useState(false);
     const [address, setAddress] = useState<Address[]>([]);
     const [cartData, setCartData] = useState<any>('');
@@ -428,7 +428,6 @@ const OrderAddresss = () => {
             }
         });
     };
-
     const toggleAddressForm = () => {
         setShowAddressForm(!showAddressForm);
     };
@@ -497,7 +496,7 @@ const OrderAddresss = () => {
         }).then(data => {
 
             setOrderId(data.data.orderData._id)
-            console.log(data.data.orderData._id);
+            console.log(data.data);
 
             setSelectedAddress(null);
             showSuccessToast(data.message);
@@ -790,8 +789,8 @@ const OrderAddresss = () => {
                                         <input
                                             type="checkbox"
                                             name="selectedAddress"
-                                            onChange={() => handleCheckboxChange(e._id)}
                                             checked={selectedAddress === e._id}
+                                            onChange={() => handleCheckboxChange(e._id)}
                                             style={{ cursor: 'pointer' }}
                                         />
                                         <div className={styles.addressContent}>

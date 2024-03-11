@@ -16,6 +16,7 @@ import useWindowSize from '@/component/hooks/useWindowsize';
 import HomePage1 from './smallHomePage';
 import Loader from '../loader/Loader';
 import { useEffect, useState } from 'react';
+import Link from 'next/link';
 
 const HomePage = () => {
 
@@ -59,7 +60,9 @@ const HomePage = () => {
                                 </div>
                                 <h1 className={styles.heada1}>PREMIUM ALMONDS </h1>
                                 <h2 className={styles.heada2}>The Healthy Way to Snack</h2>
-                                <button onClick={onBtnClick} className={styles.btna1}>Contact Us</button>
+                                <Link href='/products/natural-premium-california-almond-200gm'>
+                                    <button className={styles.btna1}>Order Now</button>
+                                </Link>
                             </div>
 
                             <div className={`${styles.imageWrapper}`}>
@@ -75,7 +78,9 @@ const HomePage = () => {
                                 </div>
                                 <h1 className={styles.headp1}>PREMIUM </h1>
                                 <h2 className={styles.headp2}>CASHEW</h2>
-                                <button onClick={onBtnClick} className={styles.btnp1}>Contact Us</button>
+                                <Link href='/products/buy-premium-Whole-Cashew(kaju)-Nuts-200gm'>
+                                    <button className={styles.btnp1}>Order Now</button>
+                                </Link>
                             </div>
 
                             <div className={`${styles.imageWrapper} `}>
@@ -91,7 +96,9 @@ const HomePage = () => {
                                 </div>
                                 <h1 className={styles.headp1}>PREMIUM </h1>
                                 <h2 className={styles.headp2}>PISTACHIO</h2>
-                                <button onClick={onBtnClick} className={styles.btnp1}>Contact Us</button>
+                                <Link href='/products/buy-freshly-roasted-salted-pista-200gm'>
+                                    <button className={styles.btnp1}>Order Now</button>
+                                </Link>
                             </div>
 
                             <div className={`${styles.imageWrapper} `}>
@@ -104,7 +111,9 @@ const HomePage = () => {
 
                                 <h1 className={styles.headcombo2}>Dry Fruit Combos Are</h1>
                                 <h2 className={styles.headcombo3}>Avaialble.....</h2>
-                                <button onClick={onBtnClick} className={styles.btncombo1}>Contact Us</button>
+                                <Link href='/products/buy-freshly-roasted-salted-pista-200gm'>
+                                    <button className={styles.btncombo1}>Order Now</button>
+                                </Link>
                             </div>
 
 
