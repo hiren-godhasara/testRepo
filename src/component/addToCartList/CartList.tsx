@@ -74,11 +74,6 @@ const CartList: React.FC = () => {
             })
             .then(data => {
                 setProductDetails(data.data);
-                // const addToCart = typeof window !== "undefined" ? localStorage.getItem("addToCart") : null;
-                // if (addToCart) {
-                //     window.location.href = '/cart';
-                //     localStorage.removeItem("addToCart");
-                // }
             })
             .catch(error => {
                 console.error('There was a problem fetching the data:', error);
@@ -135,7 +130,8 @@ const CartList: React.FC = () => {
                     throw new Error('Network response was not ok');
                 }
                 fetchCartData();
-                window.location.href = "/cart";
+
+                // window.location.href = "/cart";
                 return response.json();
             })
             .then(data => {
@@ -199,6 +195,7 @@ const CartList: React.FC = () => {
 
     const handleCartItemRemove = (cartProductId: any) => {
         localStorage.setItem("removeCart", "true")
+
         DeleteCartData(cartProductId);
         setShowConfirmation(false);
     }
