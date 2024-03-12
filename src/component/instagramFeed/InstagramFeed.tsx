@@ -74,6 +74,7 @@ const InstagramFeeds: React.FC = () => {
 
     const finalArray = feeds
 
+
     return (
         <div className={styles.instagramFeedArea}>
             <h1 className={styles.h1}>Instagram Feeds</h1>

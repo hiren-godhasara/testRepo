@@ -1,8 +1,168 @@
-'use client'
+// 'use client'
 
-import { Carousel } from 'antd';
+// import { Carousel } from 'antd';
+// import styles from './HomePage.module.scss';
+// import Image from 'next/image';
+// import vector from '../../imageFolder/111xxxhdpi.png'
+// import vector1 from '../../imageFolder/Asset 1xxxhdpi.png'
+// import i1 from '../../imageFolder/HomePageImages/HomePageImage1.webp'
+// import i2 from '../../imageFolder/HomePageImages/HomePageImage2.webp'
+// import i3 from '../../imageFolder/HomePageImages/HomePageImage3.webp'
+// import i4 from '../../imageFolder/HomePageImages/HomePageImage4.webp'
+// import i5 from '../../imageFolder/HomePageImages/HomePageImage5.webp'
+
+// import { useRouter } from 'next/navigation';
+// import useWindowSize from '@/component/hooks/useWindowsize';
+// import HomePage1 from './smallHomePage';
+// import Loader from '../loader/Loader';
+// import { useEffect, useState } from 'react';
+// import Link from 'next/link';
+
+// const HomePage = () => {
+
+//     const router = useRouter();
+//     const isSmallScreen = useWindowSize().smallScreen
+//     const [loading, setLoading] = useState(true);
+
+//     const onBtnClick = () => {
+//         router.push('/contactUs')
+//     }
+
+//     useEffect(() => {
+//         const timer = setTimeout(() => {
+//             setLoading(false);
+//         }, 2000);
+
+//         return () => clearTimeout(timer);
+//     }, []);
+
+//     return (
+//         <div className={styles.home}>
+//             {/* {loading ? (
+//                 <div className={styles.loaderContainer}>
+//                     <div className={`${styles.img}`}>
+//                         <Image src={i1} alt="Image" style={{ objectFit: "cover" }} priority />
+//                     </div>
+
+//                 </div>
+//             ) : ( */}
+//             <>
+//                 <div className={styles.productCarousel}>
+//                     {isSmallScreen ?
+//                         <HomePage1 />
+//                         :
+//                         <Carousel slidesToShow={1} autoplay dots={false} draggable autoplaySpeed={3000} speed={1500}  >
+//                             <div className={`${styles.imageWrapper}`}>
+//                                 <div className={`${styles.imageWrapper1}`}>
+//                                     <Image src={i1} alt="Image"
+//                                         // style={{ objectFit: "contain" }}
+//                                         style={{ objectFit: "cover" }}
+//                                         priority />
+//                                 </div>
+//                                 <div className={styles.flex}>
+//                                     <Image src={vector} className={styles.leftImage} alt="Almonds" />
+//                                     <h3 className={styles.heada3}>Fresh & Naturally</h3>
+//                                     <Image src={vector1} className={styles.rightImage} alt="Almonds" />
+//                                 </div>
+//                                 <h1 className={styles.heada1}>PREMIUM ALMONDS </h1>
+//                                 <h2 className={styles.heada2}>The Healthy Way to Snack</h2>
+//                                 <Link href='/products/natural-premium-california-almond-200gm'>
+//                                     <button className={styles.btna1}>Order Now</button>
+//                                 </Link>
+//                             </div>
+
+//                             <div className={`${styles.imageWrapper}`}>
+//                                 <div className={`${styles.imageWrapper2}`}>
+//                                     <Image src={i2} alt="Image" style={{ objectFit: "cover" }}
+//                                         className={styles.imageWrapper} priority={true} />
+
+//                                 </div>
+
+//                                 <div className={styles.flex}>
+//                                     <Image src={vector} className={styles.leftImage} alt="Almonds" />
+//                                     <h3 className={styles.headp3}>The Natural Snack</h3>
+//                                     <Image src={vector1} className={styles.rightImage} alt="Almonds" />
+//                                 </div>
+//                                 <h1 className={styles.headp1}>PREMIUM </h1>
+//                                 <h2 className={styles.headp2}>CASHEW</h2>
+//                                 <Link href='/products/buy-premium-Whole-Cashew(kaju)-Nuts-200gm'>
+//                                     <button className={styles.btnp1}>Order Now</button>
+//                                 </Link>
+//                             </div>
+
+//                             <div className={`${styles.imageWrapper} `}>
+// <div className={`${styles.imageWrapper3}`}>
+//     <Image src={i3} alt="Image" style={{ objectFit: "cover" }}
+//         className={styles.imageWrapper} priority={true} />
+
+// </div>
+
+// <div className={styles.flex}>
+//     <Image src={vector} className={styles.leftImage} alt="Almonds" />
+//     <h3 className={styles.headp3}>Everyone Loves it</h3>
+//     <Image src={vector1} className={styles.rightImage} alt="Almonds" />
+// </div>
+// <h1 className={styles.headp1}>PREMIUM </h1>
+// <h2 className={styles.headp2}>PISTACHIO</h2>
+// <Link href='/products/buy-freshly-roasted-salted-pista-200gm'>
+//     <button className={styles.btnp1}>Order Now</button>
+// </Link>
+//                             </div>
+
+//                             <div className={`${styles.imageWrapper} `}>
+// <div className={`${styles.imageWrapper4}`}>
+//     <Image src={i4} alt="Image" style={{ objectFit: "cover" }}
+//         className={styles.imageWrapper} priority={true} />
+
+// </div>
+
+// <h3 className={styles.headcombo1}> Premium </h3>
+
+// <h1 className={styles.headcombo2}>Dry Fruit Combos Are</h1>
+// <h2 className={styles.headcombo3}>Avaialble.....</h2>
+// <Link href='/products/buy-freshly-roasted-salted-pista-200gm'>
+//     <button className={styles.btncombo1}>Order Now</button>
+// </Link>
+//                             </div>
+
+
+//                             <div className={`${styles.imageWrapper} `}>
+//     <div className={`${styles.imageWrapper5}`}>
+//         <Image src={i5} alt="Image" style={{ objectFit: "cover" }}
+//             className={styles.imageWrapper} priority={true} />
+
+//     </div>
+
+//     <h3 className={styles.headdetails1}>The Finest Dryfruits</h3>
+//     <hr className={styles.hr} />
+//     <h1 className={styles.headdetails2}>Eat healthy,Live well!</h1>
+//     <h2 className={styles.headdetails3}>Packed with good fats,micronutrients and antioxidants,our premium quality dry fruits make an excellent snack and are perfect festival gifts.</h2>
+//     <button onClick={onBtnClick} className={styles.btndetails1}>Contact Us</button>
+// </div>
+//                         </Carousel>
+//                     }
+//                 </div>
+//             </>
+//             {/* )} */}
+
+//         </div>
+//     );
+// };
+
+// export default HomePage;
+
+
+'use client'
+import React, { useRef, useState } from 'react';
+import { Swiper, SwiperSlide } from 'swiper/react';
 import styles from './HomePage.module.scss';
+import 'swiper/css/autoplay'
 import Image from 'next/image';
+import Link from 'next/link';
+import 'swiper/css';
+import 'swiper/css/pagination';
+import 'swiper/css/navigation';
+import { Autoplay, Pagination, Navigation } from 'swiper/modules';
 import vector from '../../imageFolder/111xxxhdpi.png'
 import vector1 from '../../imageFolder/Asset 1xxxhdpi.png'
 import i1 from '../../imageFolder/HomePageImages/HomePageImage1.webp'
@@ -10,143 +170,116 @@ import i2 from '../../imageFolder/HomePageImages/HomePageImage2.webp'
 import i3 from '../../imageFolder/HomePageImages/HomePageImage3.webp'
 import i4 from '../../imageFolder/HomePageImages/HomePageImage4.webp'
 import i5 from '../../imageFolder/HomePageImages/HomePageImage5.webp'
-
 import { useRouter } from 'next/navigation';
 import useWindowSize from '@/component/hooks/useWindowsize';
 import HomePage1 from './smallHomePage';
-import Loader from '../loader/Loader';
-import { useEffect, useState } from 'react';
-import Link from 'next/link';
 
-const HomePage = () => {
-
+export default function HomePage() {
     const router = useRouter();
     const isSmallScreen = useWindowSize().smallScreen
-    const [loading, setLoading] = useState(true);
-
     const onBtnClick = () => {
         router.push('/contactUs')
     }
-
-    useEffect(() => {
-        const timer = setTimeout(() => {
-            setLoading(false);
-        }, 2000);
-
-        return () => clearTimeout(timer);
-    }, []);
-
     return (
-        <div className={styles.home}>
-            {/* {loading ? (
-                <div className={styles.loaderContainer}>
-                    <div className={`${styles.img}`}>
-                        <Image src={i1} alt="Image" style={{ objectFit: "cover" }} priority />
-                    </div>
-
-                </div>
-            ) : ( */}
-            <>
-                <div className={styles.productCarousel}>
-                    {isSmallScreen ?
-                        <HomePage1 />
-                        :
-                        <Carousel slidesToShow={1} autoplay dots={false} draggable autoplaySpeed={3000} speed={1500}  >
-                            <div className={`${styles.imageWrapper}`}>
-                                <div className={`${styles.imageWrapper1}`}>
-                                    <Image src={i1} alt="Image"
-                                        // style={{ objectFit: "contain" }}
-                                        style={{ objectFit: "cover" }}
-                                        priority />
-                                </div>
-                                <div className={styles.flex}>
-                                    <Image src={vector} className={styles.leftImage} alt="Almonds" />
-                                    <h3 className={styles.heada3}>Fresh & Naturally</h3>
-                                    <Image src={vector1} className={styles.rightImage} alt="Almonds" />
-                                </div>
-                                <h1 className={styles.heada1}>PREMIUM ALMONDS </h1>
-                                <h2 className={styles.heada2}>The Healthy Way to Snack</h2>
-                                <Link href='/products/natural-premium-california-almond-200gm'>
-                                    <button className={styles.btna1}>Order Now</button>
-                                </Link>
-                            </div>
-
-                            <div className={`${styles.imageWrapper}`}>
-                                <div className={`${styles.imageWrapper2}`}>
-                                    <Image src={i2} alt="Image" style={{ objectFit: "cover" }}
-                                        className={styles.imageWrapper} priority={true} />
-
-                                </div>
-
-                                <div className={styles.flex}>
-                                    <Image src={vector} className={styles.leftImage} alt="Almonds" />
-                                    <h3 className={styles.headp3}>The Natural Snack</h3>
-                                    <Image src={vector1} className={styles.rightImage} alt="Almonds" />
-                                </div>
-                                <h1 className={styles.headp1}>PREMIUM </h1>
-                                <h2 className={styles.headp2}>CASHEW</h2>
-                                <Link href='/products/buy-premium-Whole-Cashew(kaju)-Nuts-200gm'>
-                                    <button className={styles.btnp1}>Order Now</button>
-                                </Link>
-                            </div>
-
-                            <div className={`${styles.imageWrapper} `}>
-                                <div className={`${styles.imageWrapper3}`}>
-                                    <Image src={i3} alt="Image" style={{ objectFit: "cover" }}
-                                        className={styles.imageWrapper} priority={true} />
-
-                                </div>
-
-                                <div className={styles.flex}>
-                                    <Image src={vector} className={styles.leftImage} alt="Almonds" />
-                                    <h3 className={styles.headp3}>Everyone Loves it</h3>
-                                    <Image src={vector1} className={styles.rightImage} alt="Almonds" />
-                                </div>
-                                <h1 className={styles.headp1}>PREMIUM </h1>
-                                <h2 className={styles.headp2}>PISTACHIO</h2>
-                                <Link href='/products/buy-freshly-roasted-salted-pista-200gm'>
-                                    <button className={styles.btnp1}>Order Now</button>
-                                </Link>
-                            </div>
-
-                            <div className={`${styles.imageWrapper} `}>
-                                <div className={`${styles.imageWrapper4}`}>
-                                    <Image src={i4} alt="Image" style={{ objectFit: "cover" }}
-                                        className={styles.imageWrapper} priority={true} />
-
-                                </div>
-
-                                <h3 className={styles.headcombo1}> Premium </h3>
-
-                                <h1 className={styles.headcombo2}>Dry Fruit Combos Are</h1>
-                                <h2 className={styles.headcombo3}>Avaialble.....</h2>
-                                <Link href='/products/buy-freshly-roasted-salted-pista-200gm'>
-                                    <button className={styles.btncombo1}>Order Now</button>
-                                </Link>
-                            </div>
+        <>
+            {isSmallScreen ?
+                <HomePage1 />
+                :
+                <Swiper
+                    centeredSlides={true}
+                    loop={true}
+                    speed={1500}
+                    autoplay={{
+                        delay: 3500,
+                        disableOnInteraction: false,
+                    }}
+                    modules={[Autoplay, Pagination, Navigation]}
+                >
+                    <SwiperSlide className={styles.mySwiper}>
+                        <div className={`${styles.imageWrapper1}`}>
+                            <Image src={i1} alt="Image" style={{ objectFit: "cover" }} priority />
+                        </div>
+                        <div className={styles.flex}>
+                            <Image src={vector} className={styles.leftImage} alt="Almonds" />
+                            <h3 className={styles.heada3}>Fresh & Naturally</h3>
+                            <Image src={vector1} className={styles.rightImage} alt="Almonds" />
+                        </div>
+                        <h1 className={styles.heada1}>PREMIUM ALMONDS </h1>
+                        <h2 className={styles.heada2}>The Healthy Way to Snack</h2>
+                        <Link href='/products/natural-premium-california-almond-200gm'>
+                            <button className={styles.btna1}>Order Now</button>
+                        </Link>
+                    </SwiperSlide>
 
 
-                            <div className={`${styles.imageWrapper} `}>
-                                <div className={`${styles.imageWrapper5}`}>
-                                    <Image src={i5} alt="Image" style={{ objectFit: "cover" }}
-                                        className={styles.imageWrapper} priority={true} />
+                    <SwiperSlide className={styles.mySwiper}>
+                        <div className={`${styles.imageWrapper2}`}>
+                            <Image src={i2} alt="Image" style={{ objectFit: "cover" }} className={styles.imageWrapper} priority={true} />
+                        </div>
 
-                                </div>
+                        <div className={styles.flex}>
+                            <Image src={vector} className={styles.leftImage} alt="Almonds" />
+                            <h3 className={styles.headp3}>The Natural Snack</h3>
+                            <Image src={vector1} className={styles.rightImage} alt="Almonds" />
+                        </div>
+                        <h1 className={styles.headp1}>PREMIUM </h1>
+                        <h2 className={styles.headp2}>CASHEW</h2>
+                        <Link href='/products/buy-premium-Whole-Cashew(kaju)-Nuts-200gm'>
+                            <button className={styles.btnp1}>Order Now</button>
+                        </Link>
+                    </SwiperSlide>
 
-                                <h3 className={styles.headdetails1}>The Finest Dryfruits</h3>
-                                <hr className={styles.hr} />
-                                <h1 className={styles.headdetails2}>Eat healthy,Live well!</h1>
-                                <h2 className={styles.headdetails3}>Packed with good fats,micronutrients and antioxidants,our premium quality dry fruits make an excellent snack and are perfect festival gifts.</h2>
-                                <button onClick={onBtnClick} className={styles.btndetails1}>Contact Us</button>
-                            </div>
-                        </Carousel>
-                    }
-                </div>
-            </>
-            {/* )} */}
 
-        </div>
+                    <SwiperSlide className={styles.mySwiper}>
+                        <div className={`${styles.imageWrapper3}`}>
+                            <Image src={i3} alt="Image" style={{ objectFit: "cover" }} className={styles.imageWrapper} priority={true} />
+
+                        </div>
+
+                        <div className={styles.flex}>
+                            <Image src={vector} className={styles.leftImage} alt="Almonds" />
+                            <h3 className={styles.headp3}>Everyone Loves it</h3>
+                            <Image src={vector1} className={styles.rightImage} alt="Almonds" />
+                        </div>
+                        <h1 className={styles.headp1}>PREMIUM </h1>
+                        <h2 className={styles.headp2}>PISTACHIO</h2>
+                        <Link href='/products/buy-freshly-roasted-salted-pista-200gm'>
+                            <button className={styles.btnp1}>Order Now</button>
+                        </Link>
+                    </SwiperSlide>
+
+
+                    <SwiperSlide className={styles.mySwiper}>
+                        <div className={`${styles.imageWrapper4}`}>
+                            <Image src={i4} alt="Image" style={{ objectFit: "cover" }} className={styles.imageWrapper} priority={true} />
+
+                        </div>
+
+                        <h3 className={styles.headcombo1}> Premium </h3>
+
+                        <h1 className={styles.headcombo2}>Dry Fruit Combos Are</h1>
+                        <h2 className={styles.headcombo3}>Avaialble.....</h2>
+                        <Link href='/products/buy-freshly-roasted-salted-pista-200gm'>
+                            <button className={styles.btncombo1}>Order Now</button>
+                        </Link>
+                    </SwiperSlide>
+
+
+                    <SwiperSlide className={styles.mySwiper}>
+                        <div className={`${styles.imageWrapper5}`}>
+                            <Image src={i5} alt="Image" style={{ objectFit: "cover" }} className={styles.imageWrapper} priority={true} />
+
+                        </div>
+
+                        <h3 className={styles.headdetails1}>The Finest Dryfruits</h3>
+                        <hr className={styles.hr} />
+                        <h1 className={styles.headdetails2}>Eat healthy,Live well!</h1>
+                        <h2 className={styles.headdetails3}>Packed with good fats,micronutrients and antioxidants,our premium quality dry fruits make an excellent snack and are perfect festival gifts.</h2>
+                        <button onClick={onBtnClick} className={styles.btndetails1}>Contact Us</button>
+                    </SwiperSlide>
+                </Swiper >
+            }
+        </>
     );
-};
+}
 
-export default HomePage;
