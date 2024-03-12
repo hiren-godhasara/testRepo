@@ -8,7 +8,7 @@ import Link from 'next/link';
 import cartIcon from '../../imageFolder/icons8-cart-35.png'
 import userIcon from '../../imageFolder/icons8-user-35.png'
 import { Drawer } from 'antd';
-import { useRouter } from 'next/navigation';
+import { usePathname, useRouter } from 'next/navigation';
 import { getToken, removeToken } from '@/getLocalStroageToken';
 import { getUserId, removeUserId } from '@/getLocalStroageUserId';
 import UserDetails from '../user/UserData';
@@ -28,8 +28,7 @@ const Header = () => {
     const [isCartDropdownOpen, setIsCartDropdownOpen] = useState(false);
     const [isUserDetailsModalOpen, setIsUserDetailsModalOpen] = useState(false);
     const router = useRouter()
-
-
+    const path = usePathname()
     const userId = getUserId();
     const token = getToken();
 
@@ -40,27 +39,18 @@ const Header = () => {
         }
     }, []);
 
-    console.log(auth);
-
-
-
-
-
-
-
-
     useEffect(() => {
-        if (userId) {
+        if (userId && path === '/cart') {
             fetchCartData();
             document.addEventListener('click', handleDocumentClick);
             return () => {
                 document.removeEventListener('click', handleDocumentClick);
             };
         }
-    }, [userId]);
-
+    }, [userId, path]);
 
     const fetchCartData = () => {
+        console.log('fetchCartData called with userId:', userId);
         fetch(`${process.env.BASE_URL}/s/cartProduct/cartProductList/${userId}`, {
             method: 'POST',
             headers: {
@@ -78,6 +68,7 @@ const Header = () => {
             .then(data => {
 
                 // if (data && data.length == 0) return
+                console.log(data?.data?.productList?.length?.toString());
 
 
                 setProductDetails(data?.data?.productList?.length ? data?.data?.productList?.length?.toString() : '0');
