@@ -15,7 +15,6 @@
 
 .rightSection:hover {
     background-color: #ffffff;
-    // color: #FBD449;
 }
 
 .productCarousel {
@@ -30,23 +29,9 @@
     object-fit: cover;
 }
 
-// @media (max-width: 1280px) {
-//     .home {
-//         padding-top: 58px;
-//     }
-// }
-
-
-
-
-.imageWrapper {
-    // background-size: cover;
-    // background-position: center;
-    // background-repeat: no-repeat;
-    width: 100vw;
-    // max-height: 100vh;
-    position: relative;
-
+.mySwiper {
+    width: 100%;
+    margin-top: 60px;
 }
 
 .imageWrapper1,
@@ -59,32 +44,6 @@
     width: 100%;
     z-index: -1;
 }
-
-
-// .imageWrapper1 {
-//     background-image: url('../../imageFolder/Mobile/Web\ Phone-01.png');
-// }
-
-// .imageWrapper2 {
-//     background-image: url('../../imageFolder/Mobile/Web\ Phone-02.png');
-// }
-
-// .imageWrapper3 {
-//     background-image: url('../../imageFolder/Mobile/Web\ Phone-03.png');
-// }
-
-// .imageWrapper4 {
-//     background-image: url('../../imageFolder/Mobile/Web\ Phone-04.png');
-// }
-
-// .imageWrapper5 {
-//     background-image: url('../../imageFolder/Mobile/Web\ Phone-05.png');
-// }
-
-// .imageWrapper6 {
-//     background-image: url('../../imageFolder/Mobile/Web\ Phone-01.png');
-// }
-
 
 .headp1,
 .headp2,
