@@ -198,6 +198,7 @@ const CartList: React.FC = () => {
     };
 
     const handleCartItemRemove = (cartProductId: any) => {
+        localStorage.setItem("removeCart", "true")
         DeleteCartData(cartProductId);
         setShowConfirmation(false);
     }

@@ -157,7 +157,7 @@ const DryFruitSliderForOrder: any = () => {
         const token = getToken()
         console.log(token);
         if (token) {
-            localStorage.setItem("addToCart", "true");
+            // localStorage.setItem("addToCart", "true");
             handleAddToCart();
             router.push('/cart')
         } else {

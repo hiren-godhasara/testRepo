@@ -63,7 +63,7 @@ const GiftCombo = () => {
 
     const onBtnClick = (id: any, displayname: string, variantName: string) => {
         // setIsLoading(true);
-        localStorage.setItem('variantName', variantName);
+        // localStorage.setItem('variantName', variantName);
         localStorage.setItem('productId', id);
         // router.push(`/products/${displayname}`);
         // setIsLoading(false);
