@@ -10,9 +10,12 @@ const nextConfig = {
             'scontent-pnq1-2.cdninstagram.com',
             'scontent.cdninstagram.com',
             "mydryfruit.s3.ap-northeast-1.amazonaws.com",
-            'example.com'
+            'example.com',
         ],
+        minimumCacheTTL: 31536000,
+
     },
+    reactStrictMode: false,
 }
 
 

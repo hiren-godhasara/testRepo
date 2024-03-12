@@ -40,7 +40,10 @@ const HomePage = () => {
         <div className={styles.home}>
             {/* {loading ? (
                 <div className={styles.loaderContainer}>
-                    <Loader />
+                    <div className={`${styles.img}`}>
+                        <Image src={i1} alt="Image" style={{ objectFit: "cover" }} priority />
+                    </div>
+
                 </div>
             ) : ( */}
             <>
@@ -140,7 +143,7 @@ const HomePage = () => {
                     }
                 </div>
             </>
-            {/* ) } */}
+            {/* )} */}
 
         </div>
     );

@@ -40,7 +40,7 @@ const Header = () => {
     }, []);
 
     useEffect(() => {
-        if (userId && path === '/cart') {
+        if (userId || path === '/cart') {
             fetchCartData();
             document.addEventListener('click', handleDocumentClick);
             return () => {
@@ -66,14 +66,7 @@ const Header = () => {
                 return response.json();
             })
             .then(data => {
-
-                // if (data && data.length == 0) return
-                console.log(data?.data?.productList?.length?.toString());
-
-
                 setProductDetails(data?.data?.productList?.length ? data?.data?.productList?.length?.toString() : '0');
-
-
             })
             .catch(error => {
                 console.error('There was a problem fetching the data:', error);
