@@ -109,6 +109,21 @@ const DryFruitSliderForOrder: any = () => {
     }
     const total = price * quantity;
 
+    const wt = (convertedWeight * quantity) / 1000
+    console.log(wt);
+
+    let totalShippingCharge: any = 0;
+    if (wt <= 0.5) {
+        totalShippingCharge = 60;
+    } else if (wt > 0.5 && wt <= 1) {
+        totalShippingCharge = 100;
+    } else if (wt > 1 && wt <= 2) {
+        totalShippingCharge = 180;
+    } else {
+        totalShippingCharge = 250;
+    }
+
+
     const addToCart = () => {
         setLoading(true)
         const productData = {
@@ -176,6 +191,8 @@ const DryFruitSliderForOrder: any = () => {
             console.log(productId, qtys, totalOrderCartValue);
             localStorage.setItem('qtys', qtys)
             localStorage.setItem('totalOrderCartValue', totalOrderCartValue)
+            localStorage.setItem('totalShippingCharge', totalShippingCharge)
+
             router.push(`/placeOrder`);
         } else {
             localStorage.setItem('isOrderRedirecting', "true");
