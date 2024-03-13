@@ -22,25 +22,10 @@ interface InstagramFeed {
     timestamp: string;
 }
 
-const fetchInstagramFeeds = async (accessToken: string, count: Number) => {
-    try {
-        const response = await axios.get(
-            `https://graph.instagram.com/v12.0/me/media?fields=id,caption,media_type,media_url,thumbnail_url,permalink,timestamp&access_token=${accessToken}&limit=${count}`
-        );
-        return response.data.data;
-    } catch (error) {
-        console.error('Error fetching Instagram feeds:', error);
-        return [];
-    }
-};
 
 const InstagramFeeds: React.FC = () => {
     const [feeds, setFeeds] = useState<InstagramFeed[]>([]);
     const [slidesToShow, setSlidesToShow] = useState<number>(3);
-
-    const accessToken = 'IGQWRPVzFQek1icDRDUlpSa2xaRWQtZAndfVlpDZADR2Vm9RY2xCSVE5eFB2Ulg3N1ZAJNTdjdC1WbFQ4Q0xxczJVZAkpzMmVHZAktFN2l5WVE1ZAUJ1bi1IVWhRQlgtS01TaWFETlVKMUlPU0p4X2R0NUdYYUl3QW1qLU0ZD';
-
-
     const handleResize = () => {
         const windowWidth = window.innerWidth;
         if (windowWidth < 765) {
@@ -56,6 +41,28 @@ const InstagramFeeds: React.FC = () => {
         }
     };
 
+
+    const fetchInstagramFeeds = async () => {
+        fetch(`${process.env.BASE_URL}/s/instagram/posts`, {
+            method: 'GET',
+        }).then(response => {
+            console.log(response);
+
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            return response.json();
+        })
+            .then(data => {
+                setFeeds(data?.data)
+                console.log(data.data);
+            })
+            .catch(error => {
+                console.error('There was a problem fetching Instgram the data:', error);
+            });
+
+    }
+
     useEffect(() => {
         handleResize();
         window.addEventListener('resize', handleResize);
@@ -65,14 +72,12 @@ const InstagramFeeds: React.FC = () => {
     }, []);
 
     useEffect(() => {
-        fetchInstagramFeeds(accessToken, 10)
-            .then((data) => setFeeds(data))
-            .catch((error) => console.error('Error setting Instagram feeds:', error));
+        fetchInstagramFeeds()
     }, []);
+    console.log(feeds);
 
-    // const filteredArray = feeds.filter(item => !item.caption || !item.caption.includes(hashtag));
+    const finalArray = feeds.filter(obj => obj.caption && obj.caption.includes("#mydryfruit"));
 
-    const finalArray = feeds
 
 
     return (
