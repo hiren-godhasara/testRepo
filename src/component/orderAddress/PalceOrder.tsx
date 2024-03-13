@@ -541,6 +541,8 @@ const PlaceOrders = () => {
                     localStorage.removeItem("productId")
                     localStorage.removeItem("qtys")
                     localStorage.removeItem("totalOrderCartValue")
+                    localStorage.removeItem("totalShippingCharge")
+
                 }
 
             },
