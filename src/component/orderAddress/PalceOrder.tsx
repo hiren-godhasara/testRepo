@@ -71,8 +71,10 @@ const PlaceOrders = () => {
 
     const prodId = typeof window !== 'undefined' ? localStorage.getItem('productId') : null;
     const qtys = typeof window !== 'undefined' ? localStorage.getItem('qtys') : null;
-    const totalOrderCartValue = typeof window !== 'undefined' ? localStorage.getItem('totalOrderCartValue') : null;
-
+    const totalOrderCartValue: any = typeof window !== 'undefined' ? localStorage.getItem('totalOrderCartValue') : null;
+    const totalShippingCharge: any = typeof window !== 'undefined' ? localStorage.getItem('totalShippingCharge') : null;
+    const val1 = parseFloat(totalOrderCartValue)
+    const val2 = parseFloat(totalShippingCharge)
     const [editFormData, setEditFormData] = useState<EditFormData>({
         firstName: '',
         lastName: '',
@@ -723,7 +725,16 @@ const PlaceOrders = () => {
                 <>
                     {token &&
                         <div className={styles.selectedAdd}>
-                            <div className={styles.grandtotal}>Grand Total<span>{totalOrderCartValue} ₹</span> </div>
+                            {/* <div className={styles.grandtotal}>Total<span>{totalOrderCartValue} ₹</span> </div>
+                                <div className={styles.grandtotal1}>Shipping Charge<span>{totalShippingCharge} ₹</span> </div> */}
+
+                            <div className={styles.ttl}>
+                                <p>Total Order Value<span>{totalOrderCartValue} ₹</span></p>
+                                <p>Shipping Charge<span>{totalShippingCharge} ₹</span></p>
+                                <div>GRAND TOTAL<span> {val1 + val2} ₹</span></div>
+                            </div>
+
+
 
                             <div className={styles.deliverAddress}>DELIVERY ADDRESS</div>
 

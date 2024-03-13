@@ -548,7 +548,7 @@ const OrderAddresss = () => {
                 'Authorization': `Bearer ${token}`
             },
             body: JSON.stringify({
-                amount: cartData.totalCartValue,
+                amount: cartData.totalCartValue + cartData.shippingCharge,
                 currency: 'INR'
 
             }),
@@ -786,7 +786,7 @@ const OrderAddresss = () => {
                 <>
                     {token &&
                         <div className={styles.selectedAdd}>
-                            {cartData && <div className={styles.grandtotal}>Grand Total<span>{cartData.totalCartValue} ₹</span> </div>}
+                            {cartData && <div className={styles.grandtotal}>Grand Total<span>{cartData.totalCartValue + cartData.shippingCharge} ₹</span> </div>}
 
                             <div className={styles.deliverAddress}>DELIVERY ADDRESS</div>
 
