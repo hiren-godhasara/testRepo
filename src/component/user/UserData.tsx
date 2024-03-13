@@ -14,7 +14,6 @@ const UserDetails = ({ onClose }: any) => {
         onClose();
     };
     const [userDetails, setUserDetails] = useState<any>(null);
-    console.log(userDetails);
 
     const userId = getUserId();
     const [formattedDate, setFormattedDate] = useState<string | null>(null);
@@ -74,14 +73,35 @@ const UserDetails = ({ onClose }: any) => {
                 />
             ) : (
                 userDetails && (
+
                     <div className={styles.mainSection}>
-                        <p className={styles.heading} >User Details</p>
-                        <div className={styles.section}>
-                            <p><strong>Name: </strong>{userDetails.firstName} {userDetails.lastName}</p>
-                            <p><strong>Mobile: </strong>{userDetails.countryCode} {userDetails.mobile}</p>
-                            <p><strong>Email: </strong>{userDetails.email}</p>
-                            <p><strong>Registered on: </strong>{formattedDate}</p>
-                        </div>
+                        <table className={styles.userTable}>
+                            <thead>
+                                <tr>
+                                    <th colSpan={2} className={styles.heading}>User Details</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><strong>Name</strong></td>
+                                    <td>{userDetails.firstName} {userDetails.lastName}</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Mobile</strong></td>
+                                    <td>
+                                        {userDetails.mobile ? `${userDetails.countryCode} ${userDetails.mobile}` : 'Not Available'}
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Email</strong></td>
+                                    <td>{userDetails.email}</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Registered on</strong></td>
+                                    <td>{formattedDate}</td>
+                                </tr>
+                            </tbody>
+                        </table>
 
                         <div className={styles.btn}>
                             <button className={styles.closeButton} onClick={handleClose}>
@@ -92,6 +112,25 @@ const UserDetails = ({ onClose }: any) => {
                             </button>
                         </div>
                     </div>
+
+                    // <div className={styles.mainSection}>
+                    //     <p className={styles.heading} >User Details</p>
+                    //     <div className={styles.section}>
+                    //         <p><strong>Name: </strong>{userDetails.firstName} {userDetails.lastName}</p>
+                    //         <p><strong>Mobile: </strong>{userDetails.countryCode} {userDetails.mobile}</p>
+                    //         <p><strong>Email: </strong>{userDetails.email}</p>
+                    //         <p><strong>Registered on: </strong>{formattedDate}</p>
+                    //     </div>
+
+                    //     <div className={styles.btn}>
+                    //         <button className={styles.closeButton} onClick={handleClose}>
+                    //             Close
+                    //         </button>
+                    //         <button className={styles.editButton} onClick={handleEditClick}>
+                    //             Edit Details
+                    //         </button>
+                    //     </div>
+                    // </div>
                 )
             )}
         </div>

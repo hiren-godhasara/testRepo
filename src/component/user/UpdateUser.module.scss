@@ -30,6 +30,14 @@
                 border: 1px solid #ccc;
                 box-sizing: border-box;
             }
+
+            input:focus {
+                border-color: #144950;
+            }
+
+            input:hover {
+                border-color: #144950;
+            }
         }
 
         button {
@@ -131,5 +139,13 @@
             width: 330px;
 
         }
+    }
+}
+
+
+.hide {
+    input {
+        pointer-events: none;
+        background-color: rgb(225, 225, 225);
     }
 }

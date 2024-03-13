@@ -9,6 +9,8 @@ import { getUserId } from '@/getLocalStroageUserId';
 import { getToken } from '@/getLocalStroageToken';
 import { Spin } from 'antd';
 import Loader from '../loader/Loader';
+import { ToastNotifications, showSuccessToast, showErrorToast } from '../../toastNotifications'
+
 
 const UpdateUser = ({ userDetails, onClose, onFormSubmit }: any) => {
     const router = useRouter();
@@ -25,6 +27,9 @@ const UpdateUser = ({ userDetails, onClose, onFormSubmit }: any) => {
 
     const handleChange = (e: any) => {
         const { name, value } = e.target;
+        if (name === 'mobile' && isNaN(value)) {
+            return;
+        }
         setFormData(prevState => ({
             ...prevState,
             [name]: value
@@ -33,10 +38,23 @@ const UpdateUser = ({ userDetails, onClose, onFormSubmit }: any) => {
     const userId = getUserId();
     const token = getToken()
 
+    const handleCheckMobile: any = () => {
+        const mobileRegex = /^[1-9]\d{9}$/;
+        const mobile = mobileRegex.test(formData.mobile);
+        if (mobile === false) {
+            showErrorToast('Invalid mobile number');
+            return false
+        }
+        return true
+    }
+
     const handleSubmit = async (e: any) => {
         e.preventDefault();
         try {
             setLoading(true)
+            if (!handleCheckMobile()) {
+                return;
+            }
 
             const response = await fetch(`${process.env.BASE_URL}/s/user/${userId}`, {
                 method: 'PUT',
@@ -50,11 +68,6 @@ const UpdateUser = ({ userDetails, onClose, onFormSubmit }: any) => {
             const data = await response.json();
             onClose();
             onFormSubmit();
-
-        } catch (error) {
-            console.error('Error updating user:', error);
-        } finally {
-            setLoading(false)
             setFormData({
                 firstName: '',
                 lastName: '',
@@ -62,6 +75,12 @@ const UpdateUser = ({ userDetails, onClose, onFormSubmit }: any) => {
                 mobile: '',
                 email: '',
             });
+
+        } catch (error) {
+            console.error('Error updating user:', error);
+        } finally {
+            setLoading(false)
+
         }
     };
 
@@ -103,12 +122,20 @@ const UpdateUser = ({ userDetails, onClose, onFormSubmit }: any) => {
                             <label>Last Name:</label>
                             <input type="text" name="lastName" value={formData.lastName} onChange={handleChange} required />
                         </div>
+                        {/* {!userDetails.mobile && */}
+                        <div className={userDetails.mobile ? styles.hide : styles.show}>
+                            <label>Mobile:</label>
+                            <input type="tel" maxLength={10} name="mobile" value={formData.mobile} onChange={handleChange} required />
+                        </div>
+                        {/* } */}
                         <div>
                             <button type="button" onClick={handleReset}>Close</button>
                             <button type="submit" onClick={handleSubmit}>Submit</button>
                         </div>
 
                     </form>
+                    <ToastNotifications />
+
                 </>
             )
             }

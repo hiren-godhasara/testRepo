@@ -75,7 +75,7 @@ const HashtagInstagramFeeds: React.FC = () => {
 
     return (
         <div className={styles.instagramFeedArea1}>
-            <h1 className={styles.h2}>Instagram Customer Reviews</h1>
+            {/* <h1 className={styles.h2}>Instagram Customer Reviews</h1> */}
             <Carousel
                 slidesToShow={slidesToShow}
                 autoplay
