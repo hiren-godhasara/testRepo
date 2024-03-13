@@ -9,6 +9,7 @@ import useTokenExpiration from '@/userTokenExpiration';
 import { ToastNotifications, showSuccessToast, showErrorToast } from '../../toastNotifications'
 import Loader from '../loader/Loader';
 import dynamic from 'next/dynamic';
+import shippingCharge from '@/data/ShippingCharges';
 
 const DryFruitSliderForOrder: any = () => {
     const desiredPart = usePathname();
@@ -112,16 +113,20 @@ const DryFruitSliderForOrder: any = () => {
     const wt = (convertedWeight * quantity) / 1000
     console.log(wt);
 
-    let totalShippingCharge: any = 0;
-    if (wt <= 0.5) {
-        totalShippingCharge = 60;
-    } else if (wt > 0.5 && wt <= 1) {
-        totalShippingCharge = 100;
-    } else if (wt > 1 && wt <= 2) {
-        totalShippingCharge = 180;
-    } else {
-        totalShippingCharge = 250;
-    }
+    // let totalShippingCharge: any = 0;
+    // if (wt <= 0.5) {
+    //     totalShippingCharge = 60;
+    // } else if (wt > 0.5 && wt <= 1) {
+    //     totalShippingCharge = 100;
+    // } else if (wt > 1 && wt <= 2) {
+    //     totalShippingCharge = 180;
+    // } else {
+    //     totalShippingCharge = 250;
+    // }
+
+
+    const totalShippingCharge = shippingCharge(wt)
+    console.log(totalShippingCharge);
 
 
     const addToCart = () => {
