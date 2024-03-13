@@ -26,6 +26,8 @@ interface Product {
     message: string;
     data: any;
     productList: any;
+    shippingCharge: any;
+    totalMRP: any
 }
 
 
@@ -206,24 +208,31 @@ const CartList: React.FC = () => {
     const closeConfirmationDialog = () => {
         setShowConfirmation(false);
     };
-    const calculateTotalCartValue = (): number => {
-        if (productDetails) {
-            return productDetails.productList.reduce((total: any, item: any) => {
-                const itemQuantity = quantities[item.cartProductId] || 0;
-                return total + itemQuantity * item.product.mrp;
-            }, 0);
-        }
-        return 0;
-    };
+    // const calculateTotalCartValue = (): number => {
+    //     if (productDetails) {
+    //         return productDetails.productList.reduce((total: any, item: any) => {
+    //             const itemQuantity = quantities[item.cartProductId] || 0;
+    //             return total + itemQuantity * item.product.mrp;
+    //         }, 0);
+    //     }
+    //     return 0;
+    // };
 
-    const calculateTotalCost = (): number => {
+    // const calculateTotalCost = (): number => {
+    //     if (productDetails) {
+    //         return productDetails.productList.reduce((total: any, item: any) => {
+    //             const itemQuantity = quantities[item.cartProductId] || 0;
+    //             return total + itemQuantity * item.product.price;
+    //         }, 0);
+    //     }
+    //     return 0;
+    // };
+
+    const calculateTotalCost = () => {
         if (productDetails) {
-            return productDetails.productList.reduce((total: any, item: any) => {
-                const itemQuantity = quantities[item.cartProductId] || 0;
-                return total + itemQuantity * item.product.price;
-            }, 0);
+            return productDetails.totalCartValue + productDetails.shippingCharge
         }
-        return 0;
+        return 0
     };
 
     return (
@@ -295,15 +304,17 @@ const CartList: React.FC = () => {
                                 <div className={styles.orderSummaryDetails}>
                                     <div className={styles.totalPriceArea}>
                                         <div className={styles.label}>Cart Value:</div>
-                                        <div className={styles.value}>{calculateTotalCartValue()} ₹</div>
+                                        <div className={styles.value}>{productDetails.totalMRP} ₹</div>
+                                        {/* <div className={styles.value}>{calculateTotalCartValue()} ₹</div> */}
+
                                     </div>
                                     <div className={styles.totalPriceArea}>
                                         <div className={styles.label}>Total Discount:</div>
-                                        <div className={styles.valueDiscount}>{calculateTotalCost() - calculateTotalCartValue()} ₹</div>
+                                        <div className={styles.valueDiscount}>{productDetails.totalCartValue - productDetails.totalMRP} ₹</div>
                                     </div>
                                     <div className={styles.totalPriceArea}>
                                         <div className={styles.label}>Total Shipping Charge:</div>
-                                        <div className={styles.shipValue}>{productDetails.totalShippingValue || "Free"} </div>
+                                        <div className={styles.shipValue}>{productDetails.totalShippingValue || "Free"} ₹</div>
 
                                     </div>
                                 </div>
@@ -313,7 +324,7 @@ const CartList: React.FC = () => {
                                         ? "0 ₹"
                                         : <b>{`${calculateTotalCost()} ₹`}</b>}
                                 </div>
-                                <div className={styles.disSen}>You will save {-calculateTotalCost() + calculateTotalCartValue()} ₹ on this order.</div>
+                                <div className={styles.disSen}>You will save {-productDetails.totalCartValue + productDetails.totalMRP} ₹ on this order.</div>
                                 <div onClick={onBtnClick} className={styles.placeOrderBtn}>
                                     <button onClick={onBtnClick} className={styles.button}>PLACE ORDER</button>
                                 </div>
@@ -391,17 +402,18 @@ const CartList: React.FC = () => {
                                 <div className={styles.orderSummaryDetails}>
                                     <div className={styles.totalPriceArea}>
                                         <div className={styles.label}>Cart Value:</div>
-                                        <div className={styles.value}>{calculateTotalCartValue()} ₹</div>
+                                        <div className={styles.value}>{productDetails.totalMRP} ₹</div>
+                                        {/* <div className={styles.value}>{calculateTotalCartValue()} ₹</div> */}
                                     </div>
 
                                     <div className={styles.totalPriceArea}>
                                         <div className={styles.label}>Total Discount:</div>
-                                        <div className={styles.valueDiscount}>{calculateTotalCost() - calculateTotalCartValue()} ₹</div>
+                                        <div className={styles.valueDiscount}>{productDetails.totalCartValue - productDetails.totalMRP} ₹</div>
                                     </div>
 
                                     <div className={styles.totalPriceArea}>
                                         <div className={styles.label}>Total Shipping Charge:</div>
-                                        <div className={styles.shipValue}>{productDetails.totalShippingValue || "Free"} </div>
+                                        <div className={styles.shipValue}>{productDetails.shippingCharge || "Free"} ₹</div>
                                     </div>
                                 </div>
                                 <div className={styles.totalValueContainer}>
@@ -410,7 +422,7 @@ const CartList: React.FC = () => {
                                         ? "0 ₹"
                                         : <b>{`${calculateTotalCost()} ₹`}</b>}
                                 </div>
-                                <div className={styles.disSen}>You will save {-calculateTotalCost() + calculateTotalCartValue()} ₹ on this order.</div>
+                                <div className={styles.disSen}>You will save {-productDetails.totalCartValue + productDetails.totalMRP} ₹ on this order.</div>
                                 <div onClick={onBtnClick} className={styles.placeOrderBtn}>
                                     <button onClick={onBtnClick} className={styles.button}>PLACE ORDER</button>
                                 </div>

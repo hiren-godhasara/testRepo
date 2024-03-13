@@ -144,7 +144,7 @@ const GiftCombo = () => {
                             </Link>
 
 
-                            <p className={styles.price2} >Free Shipping Available</p>
+                            {/* <p className={styles.price2} >Free Shipping Available</p> */}
 
                             {(product.discount !== 0) && <del> <p className={`${styles.mrp} ${product.name.length < 30 ? styles.mrp1 : ''}`}>MRP: {product.mrp} ₹</p></del>}
                             <p className={`${styles.price}  ${product.name.length < 30 ? styles.price1 : ''} ${product.details ? styles.prodPrice : ''}`}>Price: <b className={styles.grade}>{product.price} ₹</b></p>
