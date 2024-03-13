@@ -873,6 +873,7 @@ const OrderAddresss = () => {
                                                             type="tel"
                                                             name="countryCode"
                                                             value={`+${formData.countryCode.slice(1, 3)}`}
+                                                            readOnly
                                                             required
                                                         />
 
@@ -981,6 +982,7 @@ const OrderAddresss = () => {
                                                             type="tel"
                                                             name="countryCode"
                                                             value='+91'
+                                                            readOnly
                                                             // onChange={(e) => handleEditChange(e, true)}
                                                             required
                                                         />

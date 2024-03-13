@@ -23,10 +23,9 @@ export default function Home() {
         <Card />
         <div id='about'><Info /></div>
         <div id='reviews'><ReviewSlider /></div>
-        <div id='gifting'> <GiftCombo /></div>
-
-        <InstagramFeeds />
         <HashtagInstagramFeeds />
+        <div id='gifting'> <GiftCombo /></div>
+        <InstagramFeeds />
         {/* <Invoices /> 
         {/* <SlidingCarousel /> */}
       </GoogleOAuthProvider>

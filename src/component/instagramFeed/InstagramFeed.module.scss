@@ -14,6 +14,10 @@
     color: #144950;
     font-weight: 700;
     margin: 1.5rem;
+    background: linear-gradient(45deg, #405de6, #5851db, #833ab4, #c13584, #e1306c, #fd1d1d, #f56040, #f77737, #fcaf45, #ffdc80);
+    background-clip: text;
+    color: transparent;
+
 }
 
 .icons {
@@ -173,7 +177,7 @@
 @media (max-width: 765px) {
 
     .h2 {
-        font-size: 22px;
+        font-size: 20px;
     }
 
 }

@@ -12,7 +12,7 @@ const reviews = [
         id: 1,
         name: 'James Warner',
         designation: 'Customer',
-        review: 'Embarking on a journey with this online dry fruit haven is like being treated to a culinary symphony! Every bite is a burst of rich flavor and divine texture, turning each indulgence into a true gastronomic delight.',
+        review: "Fresh and flavorful dry fruits, prompt delivery – my go-to online source!",
         image: review1,
         rating: "⭐⭐⭐⭐⭐"
     },
@@ -20,7 +20,7 @@ const reviews = [
         id: 2,
         name: 'Carla Houston',
         designation: 'Customer',
-        review: 'Uncover the secret to affordable opulence in the world of dry fruits. This online gem offers masterfully sourced delights that redefine luxury, turning your everyday snacking into a regal experience.',
+        review: "Excellent quality, great variety, and hassle-free shopping experience.",
         image: review2,
         rating: "⭐⭐⭐⭐⭐"
     },
@@ -28,7 +28,7 @@ const reviews = [
         id: 3,
         name: 'Alsister Smith',
         designation: 'Customer',
-        review: 'Exploring the dry fruit offerings from this online treasure trove feels like discovering a secret garden of gourmet delights. The flavors and textures are unparalleled, making every bite a memorable culinary adventure.',
+        review: 'Impressed with the packaging and premium quality dry fruits. Highly recommend! Quick shipping, top-notch products – exceeded my expectations!"',
         image: review3,
         rating: "⭐⭐⭐⭐⭐"
     },
@@ -36,7 +36,7 @@ const reviews = [
         id: 4,
         name: 'Travis Marsh',
         designation: 'Customer',
-        review: 'Dive into the world of exquisite dry fruits where each morsel conducts a symphony of taste and texture. It`s a gastronomic experience that elevates snacking to an art form, leaving your taste buds craving more.',
+        review: "Reliable service, delicious dry fruits – couldn't be happier with my purchase.",
         image: review4,
         rating: "⭐⭐⭐⭐⭐"
     },
@@ -44,7 +44,7 @@ const reviews = [
         id: 5,
         name: 'Chris Jordan',
         designation: 'Customer',
-        review: 'Experience the epitome of gourmet snacking with this online dry fruit haven. The curated selection transforms ordinary moments into extraordinary ones, as each piece becomes a marvel of taste and texture.',
+        review: "The online store's selection is fantastic, and the dry fruits are consistently delicious Five stars for the quality, speed, and convenience of my dry fruit order.",
         image: review5,
         rating: "⭐⭐⭐⭐⭐"
     },
@@ -52,7 +52,7 @@ const reviews = [
         id: 6,
         name: 'Roman Cena',
         designation: 'Customer',
-        review: 'Indulging in the offerings from this exceptional online dry fruit source is not just a purchase; it`s an elegant sensory experience. Every bite is a testament to the artistry of flavor and texture that sets them apart.',
+        review: "Found the best deals on premium dry fruits a satisfied customer! Exceptional customer service and a delightful assortment of fresh dry fruits.",
         image: review6,
         rating: "⭐⭐⭐⭐⭐"
     },

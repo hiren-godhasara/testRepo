@@ -22,8 +22,8 @@ const TagLine = () => {
                 return response.json();
             })
             .then(data => {
-                // console.log(data.data);
-                setTagLineList(data.data);
+                console.log(data.data);
+                setTagLineList(data?.data);
             })
             .catch(error => {
                 console.error('There was a problem fetching the data:', error);
@@ -36,7 +36,7 @@ const TagLine = () => {
 
     useEffect(() => {
         const intervalId = setInterval(() => {
-            setCurrentTagLineIndex(prevIndex => (prevIndex + 1) % tagLineList.length);
+            setCurrentTagLineIndex(prevIndex => (prevIndex + 1) % tagLineList?.length);
         }, 3000);
 
         return () => clearInterval(intervalId);
@@ -45,7 +45,7 @@ const TagLine = () => {
     return (
         <>
             <div className={styles.container}>
-                {tagLineList.length > 0 && (
+                {tagLineList?.length > 0 && (
                     <p className={styles.p}>
                         {(tagLineList[currentTagLineIndex].tagLine)}
                     </p>

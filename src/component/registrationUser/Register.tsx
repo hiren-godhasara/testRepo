@@ -127,9 +127,6 @@ const RegisterForm = () => {
                     if (returnUrl === "true") {
                         window.history.go(-2);
                         localStorage.removeItem('isOrderRedirecting')
-                    } else {
-                        window.location.reload()
-                        window.location.href = '/'
                     }
 
                 } else {
@@ -197,7 +194,8 @@ const RegisterForm = () => {
                                         type="tel"
                                         name="countryCode"
                                         value='+91'
-                                        onChange={handleChange}
+                                        readOnly
+                                        // onChange={handleChange}
                                         required
                                     />
 

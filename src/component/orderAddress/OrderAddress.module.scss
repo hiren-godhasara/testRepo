@@ -20,7 +20,8 @@
         align-items: center;
 
         &.selectedAddress {
-            background-color: #e0dede;
+            // background-color: #e0dede;
+            border: 1px solid #144950;
         }
 
         input[type="checkbox"] {
