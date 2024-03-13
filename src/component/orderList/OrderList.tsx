@@ -123,7 +123,9 @@ const OrderList = () => {
                                                 </div>
                                                 <div className={styles.prodDet}>
                                                     <p>{cartProduct.cartProductId.productId.name}</p>
-                                                    <p>Weight : {cartProduct.cartProductId.productId.weight} g</p>
+                                                    {cartProduct.cartProductId.productId.isCombo === true && <p>Total Combo Weight : {cartProduct.cartProductId.productId.weight} g</p>}
+                                                    {cartProduct.cartProductId.productId.isCombo !== true && <p>Weight : {cartProduct.cartProductId.productId.weight} g</p>}
+                                                    {/* <p>Weight : {cartProduct.cartProductId.productId.weight} g</p> */}
                                                     <p>Price : {cartProduct.cartProductId.productId.price} ₹</p>
                                                     <p>Qty : {cartProduct.cartProductId.qty}</p>
                                                 </div>
