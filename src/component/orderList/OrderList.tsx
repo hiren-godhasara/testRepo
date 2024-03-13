@@ -99,8 +99,10 @@ const OrderList = () => {
                                 </div>
 
                                 <div className={styles.row2}>
-                                    <p><strong>Shipping Address</strong> : {e.shippingAddressId.addressLine},{e.shippingAddressId.city}-{e.shippingAddressId.pincode},{e.shippingAddressId.state},{e.shippingAddressId.country}</p>
-                                    <p><strong>Billing Address</strong> : {e.billingAddressId.addressLine},{e.billingAddressId.city}-{e.billingAddressId.pincode},{e.billingAddressId.state},{e.billingAddressId.country}</p>
+                                    <p><strong>Shipping Address</strong> : {e.shippingAddressId.addressLine1} {e.shippingAddressId.addressLine2},</p>
+                                    <p> {e.shippingAddressId.city}-{e.shippingAddressId.pincode},{e.shippingAddressId.state},{e.shippingAddressId.country}</p>
+                                    <p><strong>Billing Address</strong> : {e.shippingAddressId.addressLine1} {e.shippingAddressId.addressLine2},</p>
+                                    <p> {e.shippingAddressId.city}-{e.shippingAddressId.pincode},{e.shippingAddressId.state},{e.shippingAddressId.country}</p>
                                 </div>
 
                                 <div className={styles.payment}>Payment Method : <strong> UPI Payment</strong></div>
@@ -146,7 +148,7 @@ const OrderList = () => {
                                         </div>
                                         <div className={styles.value}>
                                             <p>Total Shipping Charge : </p>
-                                            <del>{e.shippingCharge} ₹</del>
+                                            {e.shippingCharge} ₹
                                         </div>
                                         <div className={styles.value}>
                                             <p>Total Order Value : </p>
