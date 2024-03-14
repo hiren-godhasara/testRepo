@@ -694,6 +694,7 @@ const OrderAddresss = () => {
             },
             body: JSON.stringify({
                 status: "paid",
+                tracking: "pending"
             }),
         })
             .then(async response => {

@@ -631,6 +631,7 @@ const PlaceOrders = () => {
             },
             body: JSON.stringify({
                 status: "paid",
+                tracking: "pending"
             }),
         })
             .then(async response => {
