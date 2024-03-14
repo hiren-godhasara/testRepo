@@ -20,6 +20,7 @@
 }
 
 .sideImg {
+    margin-top: 10px;
     width: 30%;
     display: flex;
     align-items: center;
@@ -50,7 +51,7 @@
 
 .description {
     // margin-left: -90px;
-    // margin-top: -40px;
+    margin-top: 20px;
     width: 40%;
 }
 
@@ -317,7 +318,7 @@
     }
 
     .sideImg {
-        margin-top: 0px;
+        margin-top: 10px;
     }
 
     .image1 {
@@ -347,6 +348,8 @@
 @media (max-width:768PX) {
     .sideImg {
         align-items: start;
+        margin-top: 10px;
+
     }
 
     .image1 {
