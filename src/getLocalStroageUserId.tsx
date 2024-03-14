@@ -13,5 +13,10 @@ const removeUserId = () => {
         Cookies.remove('userId');
     }
 };
+const runEvery24Hours = () => {
+    setInterval(removeUserId, 24 * 60 * 60 * 1000);
+};
+
+runEvery24Hours();
 
 export { getUserId, removeUserId };

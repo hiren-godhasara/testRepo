@@ -4,7 +4,7 @@ import styles from './OrderAddress.module.scss';
 import { getUserId } from '@/getLocalStroageUserId';
 import { useRouter, useSearchParams } from 'next/navigation';
 import { getToken } from '@/getLocalStroageToken';
-import useTokenExpiration from '@/userTokenExpiration';
+// import useTokenExpiration from '@/userTokenExpiration';
 import headerCompanyLogo from '../../imageFolder/mdfLogo.png';
 import { ToastNotifications, showSuccessToast, showErrorToast } from '../../toastNotifications'
 import Loader from '../loader/Loader';
@@ -58,7 +58,7 @@ const OrderAddresss = () => {
     const [editFormVisible, setEditFormVisible] = useState(false);
     const token = getToken()
     const router = useRouter();
-    useTokenExpiration(token);
+    // useTokenExpiration(token);
     const [loading, setLoading] = useState(true);
 
 

@@ -7,7 +7,7 @@ import { useRouter } from 'next/navigation';
 import { getUserId } from '../../getLocalStroageUserId'
 import emptyCart from '../../imageFolder/emptyCart1-removebg-preview.png'
 import { getToken } from '@/getLocalStroageToken';
-import useTokenExpiration from '@/userTokenExpiration';
+// import useTokenExpiration from '@/userTokenExpiration';
 import useWindowSize from '../hooks/useWindowsize';
 import Loader from '../loader/Loader';
 
@@ -42,7 +42,7 @@ const CartList: React.FC = () => {
     const [loading, setLoading] = useState(true);
     const userId = getUserId();
     const token = getToken()
-    useTokenExpiration(token);
+    // useTokenExpiration(token);
 
     useEffect(() => {
         fetchCartData();

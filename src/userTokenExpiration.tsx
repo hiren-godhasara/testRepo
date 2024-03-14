@@ -1,32 +1,32 @@
-import { useState, useEffect } from 'react';
+// import { useState, useEffect } from 'react';
 
-const useTokenExpiration = (token: any) => {
-    const [tokenExpired, setTokenExpired] = useState(false);
+// const useTokenExpiration = (token: any) => {
+//     const [tokenExpired, setTokenExpired] = useState(false);
 
-    useEffect(() => {
-        const checkTokenExpiration = () => {
-            const expirationTime = 86400000;
-            const tokenExpirationTimer = setTimeout(() => {
-                setTokenExpired(true);
-            }, expirationTime);
+//     useEffect(() => {
+//         const checkTokenExpiration = () => {
+//             const expirationTime = 86400000;
+//             const tokenExpirationTimer = setTimeout(() => {
+//                 setTokenExpired(true);
+//             }, expirationTime);
 
-            return () => clearTimeout(tokenExpirationTimer);
-        };
+//             return () => clearTimeout(tokenExpirationTimer);
+//         };
 
-        if (token) {
-            checkTokenExpiration();
-        }
+//         if (token) {
+//             checkTokenExpiration();
+//         }
 
-        return () => { };
-    }, [token]);
+//         return () => { };
+//     }, [token]);
 
-    useEffect(() => {
-        if (tokenExpired) {
-            window.location.reload();
-        }
-    }, [tokenExpired]);
+//     useEffect(() => {
+//         if (tokenExpired) {
+//             window.location.reload();
+//         }
+//     }, [tokenExpired]);
 
-    return tokenExpired;
-};
+//     return tokenExpired;
+// };
 
-export default useTokenExpiration;
+// export default useTokenExpiration;

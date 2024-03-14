@@ -6,7 +6,7 @@ import { useRouter, useSearchParams } from 'next/navigation';
 import { getToken } from '@/getLocalStroageToken';
 import Image from 'next/image';
 import emptyCart from '../../imageFolder/emptyCart1-removebg-preview.png'
-import useTokenExpiration from '@/userTokenExpiration';
+// import useTokenExpiration from '@/userTokenExpiration';
 import headerCompanyLogo from '../../imageFolder/mdfLogo.png';
 import { ToastNotifications, showSuccessToast, showErrorToast } from '../../toastNotifications'
 import { Spin } from 'antd';
@@ -65,7 +65,7 @@ const PlaceOrders = () => {
     const [editFormVisible, setEditFormVisible] = useState(false);
     const token = getToken()
     const router = useRouter();
-    useTokenExpiration(token);
+    // useTokenExpiration(token);
     const [loading, setLoading] = useState(true);
 
 

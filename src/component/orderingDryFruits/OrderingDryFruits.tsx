@@ -5,7 +5,7 @@ import styles from './OrderingDryFruits.module.scss';
 import { usePathname, useRouter } from 'next/navigation';
 import { getToken } from '@/getLocalStroageToken';
 import { getUserId } from '@/getLocalStroageUserId';
-import useTokenExpiration from '@/userTokenExpiration';
+// import useTokenExpiration from '@/userTokenExpiration';
 import { ToastNotifications, showSuccessToast, showErrorToast } from '../../toastNotifications'
 import Loader from '../loader/Loader';
 import dynamic from 'next/dynamic';
@@ -26,7 +26,7 @@ const DryFruitSliderForOrder: any = () => {
     const token = getToken();
     const userId = getUserId();
     const [selectedImage, setSelectedImage] = useState(null)
-    useTokenExpiration(token);
+    // useTokenExpiration(token);
 
     useEffect(() => {
         getProductDetails(paramId);
