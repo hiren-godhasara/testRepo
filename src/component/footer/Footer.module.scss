@@ -201,17 +201,15 @@
 .copy {
     display: flex;
     justify-content: center;
-    margin-top: -2rem;
+    // margin-top: -2rem;
 }
 
 .pcopy {
     text-align: center;
     color: #ffffff;
     padding-bottom: 0.5rem;
-
-    .span {
-        color: #fbd449;
-    }
+    font-size: 13px;
+    opacity: 0.4;
 }
 
 

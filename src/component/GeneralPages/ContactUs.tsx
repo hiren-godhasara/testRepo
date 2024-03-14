@@ -143,7 +143,8 @@ const ContactUs = () => {
                                         type="tel"
                                         name="countryCode"
                                         value={`+${formData.countryCode.slice(1, 3)}`}
-                                        onChange={handleChange}
+                                        // onChange={handleChange}
+                                        readOnly
                                         required
                                     />
 
