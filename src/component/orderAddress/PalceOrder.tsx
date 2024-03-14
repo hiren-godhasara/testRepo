@@ -96,7 +96,8 @@ const PlaceOrders = () => {
         userId: userId || '',
         firstName: userDetails ? userDetails.firstName : '',
         lastName: userDetails ? userDetails.lastName : '',
-        mobile: userDetails ? userDetails.mobile : '',
+        // mobile: userDetails ? userDetails.mobile : '',
+        mobile: userDetails && userDetails.mobile ? userDetails.mobile : '',
         pincode: '',
         city: '',
         addressLine1: '',
@@ -826,6 +827,7 @@ const PlaceOrders = () => {
                                                             name="countryCode"
                                                             value={`+${formData.countryCode.slice(1, 3)}`}
                                                             required
+                                                            readOnly
                                                         />
 
                                                         <input
@@ -932,6 +934,8 @@ const PlaceOrders = () => {
                                                             value='+91'
                                                             // onChange={(e) => handleEditChange(e, true)}
                                                             required
+                                                            readOnly
+
                                                         />
 
                                                         <input
