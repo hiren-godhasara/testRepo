@@ -109,10 +109,13 @@
 }
 
 .price {
-    color: #144950;
-    font-weight: 700;
+
     font-size: 20px;
-    // margin-top: 10px;
+
+    span {
+        color: #144950;
+        font-weight: 700;
+    }
 
 }
 
@@ -244,9 +247,14 @@
     text-align: center;
 }
 
-.clickable {
-    border: 1px solid rgba(0, 0, 0, 0.1);
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+.qty {
+    .clickable {
+        border: 2px solid rgba(0, 0, 0, 0.1);
+    }
+
+    .clickable:hover {
+        border: 2px solid #dbb016;
+    }
 }
 
 .notbtnOrder {
@@ -264,7 +272,7 @@
     display: flex;
     // justify-content: center;
     align-items: center;
-    margin-top: 10px;
+    margin-top: 15px;
     gap: 15px;
 }
 
@@ -274,17 +282,33 @@
     .image1 {
         width: 40%
     }
+
+    .name {
+        font-size: 18px;
+    }
+
+    .des,
+    .weight {
+        font-size: 15px;
+    }
+
 }
 
 
 @media (max-width:1190px) {
     .variantCard {
-        justify-content: start;
+        justify-content: center;
     }
 
     .image1 {
 
         width: 40%
+    }
+
+    .priceAndStock {
+        p {
+            font-size: 15px;
+        }
     }
 
 }
@@ -345,7 +369,11 @@
     }
 }
 
-@media (max-width:768PX) {
+@media (max-width:768px) {
+    .mainImg {
+        width: 80%;
+    }
+
     .sideImg {
         align-items: start;
         margin-top: 10px;
@@ -419,8 +447,11 @@
         font-size: 15px;
     }
 
-
-
+    .qty {
+        label {
+            font-size: 16px;
+        }
+    }
 }
 
 @media (max-width:550px) {
@@ -466,9 +497,15 @@
         width: 90%;
     }
 
-    // .name {
-    //     font-size: 17px;
-    // }
+    .mainImg {
+        // display: flex;
+        // justify-content: center;
+        // align-items: center;
+        // width: 90vw;
+        margin-left: -30px !important;
+        margin-right: 5vw !important;
+
+    }
 }
 
 
