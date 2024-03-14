@@ -20,7 +20,6 @@
 }
 
 .sideImg {
-    margin-top: 33px;
     width: 30%;
     display: flex;
     align-items: center;
@@ -31,12 +30,11 @@
 .image1 {
     // margin-left: -30px;
     margin-bottom: 10px;
-    width: 60%;
-
-    padding: 0 1rem 0 1rem;
+    width: 35%;
+    // padding: 0 1rem 0 1rem;
     height: auto;
     object-fit: cover;
-    border-radius: 10px;
+    border-radius: 5px;
 
 }
 
@@ -269,11 +267,24 @@
     gap: 15px;
 }
 
+
+@media (max-width:1330px) {
+
+    .image1 {
+        width: 40%
+    }
+}
+
+
 @media (max-width:1190px) {
     .variantCard {
         justify-content: start;
     }
 
+    .image1 {
+
+        width: 40%
+    }
 
 }
 
@@ -310,12 +321,15 @@
     }
 
     .image1 {
-        width: 55%;
+        width: 30%;
         align-items: start;
-        padding-left: 0px;
-        border-radius: 0px;
+        object-fit: cover;
+        height: auto;
+        border-radius: 5px;
 
     }
+
+
 
     .largeImage {
         width: 80%;
@@ -336,7 +350,8 @@
     }
 
     .image1 {
-        width: 65%;
+        width: 30%;
+        margin-left: 50px;
     }
 
     // .name {
@@ -412,7 +427,8 @@
     // }
 
     .image1 {
-        width: 50%;
+        width: 27%;
+        margin-left: 70px;
     }
 
     .des {
@@ -439,7 +455,8 @@
 
 @media (max-width:480px) {
     .image1 {
-        width: 75%;
+        width: 27%;
+        margin-left: 50px;
     }
 
     .largeImage {
