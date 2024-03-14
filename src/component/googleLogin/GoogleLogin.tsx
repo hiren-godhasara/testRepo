@@ -92,6 +92,7 @@ function GoogleLogin() {
             },
             onError: () => console.log('error'),
             cancel_on_tap_outside: false,
+            // auto_select: true
         });
     }
 
