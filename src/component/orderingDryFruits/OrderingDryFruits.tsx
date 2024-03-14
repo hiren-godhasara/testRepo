@@ -300,9 +300,9 @@ const DryFruitSliderForOrder: any = () => {
 
                         <div className={styles.mobileOrder}>
                             <div className={styles.priceAndStock}>
-                                <p className={styles.price}>{price} ₹</p>
-                                <p className={styles.discount}>{productDetails?.discount}% Off</p>
-                                <del> <p className={styles.mrp}>MRP : {productDetails?.mrp} ₹</p></del>
+                                <p className={styles.price}>Price : <span> {price} ₹</span></p>
+                                <del> <p className={styles.mrp}>{productDetails?.mrp} ₹</p></del>
+                                <p className={styles.discount}>({productDetails?.discount}% Off)</p>
                             </div>
 
                             <div className={styles.qty}>
