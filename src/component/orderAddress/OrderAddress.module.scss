@@ -491,9 +491,13 @@
         margin-left: 30px;
     }
 
+    .buttons {
+        margin-left: 10px !important;
+    }
+
     .addressContent {
         p {
-            font-size: 14px;
+            font-size: 18px;
         }
     }
 
@@ -538,10 +542,15 @@
 }
 
 @media (max-width:470px) {
+    .selectedAdd {
+        margin-left: 10px !important;
+        margin-right: 10px !important;
+    }
+
     .addressContent {
 
         p {
-            font-size: 13px;
+            font-size: 16px;
         }
     }
 
@@ -597,7 +606,7 @@
 @media (max-width:427px) {
     .addressContent {
         p {
-            font-size: 12px;
+            font-size: 15px;
         }
     }
 }
@@ -605,7 +614,7 @@
 @media (max-width:390px) {
     .addressContent {
         p {
-            font-size: 11px;
+            font-size: 15px;
         }
     }
 }
@@ -739,6 +748,14 @@
             color: #144950;
             font-weight: 600;
         }
+    }
+
+}
+
+@media (max-width:920px) {
+    .selectedAdd {
+        margin-left: 25px;
+        margin-right: 25px;
     }
 
 }
