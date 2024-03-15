@@ -211,6 +211,7 @@ const DryFruitSliderForOrder: any = () => {
     };
 
     const handleVariantClick = async (id: any, displayname: string, variantName: string) => {
+        setLoading(true)
         setSelectedVariant(id);
         window.history.pushState({ path: displayname }, '', displayname);
 
@@ -230,6 +231,7 @@ const DryFruitSliderForOrder: any = () => {
             const data = await response.json();
             setProductDetails(data.data[0])
             setSelectedVariant(data.data[0]._id);
+            setLoading(false)
         } catch (error) {
             console.error('There was a problem fetching the data:', error);
         }

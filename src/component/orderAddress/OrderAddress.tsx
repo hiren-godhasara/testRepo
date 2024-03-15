@@ -207,7 +207,8 @@ const OrderAddresss = () => {
             method: 'GET',
         });
         if (!response.ok) {
-            throw new Error('Network response was not ok');
+            // throw new Error('Network response was not ok');
+            return 'valid';
         }
         const data = await response.json();
         if (data[0].Status === "Error") {
