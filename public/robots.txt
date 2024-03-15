@@ -1,0 +1,8 @@
+User-agent: *
+Disallow: /privacyPolicy/
+Disallow: /returnPolicy/
+Disallow: /termsOfUse/
+Disallow: /cart/
+Disallow: /orderList/
+Disallow: /orderAddress/
+Disallow: /placeOrder/

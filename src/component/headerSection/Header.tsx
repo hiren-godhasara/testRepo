@@ -16,6 +16,7 @@ import cart from '../../../public/cart.svg'
 import TagLine from '../tagLine/TagLine';
 import Cookies from 'js-cookie';
 import dynamic from 'next/dynamic';
+import { googleLogout } from '@react-oauth/google';
 const Header = () => {
 
     // const isMediumScreen = typeof window !== "undefined" ? useWindowSize().mediumScreen : false
@@ -95,6 +96,7 @@ const Header = () => {
     }
     const onLogoutBtn = () => {
         logout();
+        // googleLogout();
     }
     const logout = () => {
         fetch(`${process.env.BASE_URL}/s/logout`, {
