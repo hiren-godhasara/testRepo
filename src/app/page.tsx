@@ -9,6 +9,7 @@ import GoogleLogin from '@/component/googleLogin/GoogleLogin';
 import { GoogleOAuthProvider } from '@react-oauth/google';
 import InstagramFeeds from '@/component/instagramFeed/InstagramFeed';
 import HashtagInstagramFeeds from '@/component/instagramFeed/HashtagInstagramFeed';
+import SlidingCarousel from '@/component/keyWords/KeyWords';
 
 
 export default function Home() {
@@ -26,7 +27,7 @@ export default function Home() {
         {/* <HashtagInstagramFeeds /> */}
         <div id='gifting'> <GiftCombo /></div>
         {/* <InstagramFeeds /> */}
-        {/* <Invoices /> 
+        {/* <Invoices /> */}
         {/* <SlidingCarousel /> */}
       </GoogleOAuthProvider>
     </div >

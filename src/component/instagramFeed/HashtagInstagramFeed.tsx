@@ -106,7 +106,16 @@ const HashtagInstagramFeeds: React.FC = () => {
                                     </div>
                                 </div>
                                 <div className={styles.feedBackImageArea}>
-                                    <Image src={feed.media_url} width={220} height={205} alt={feed.caption || 'imagesInsta'} className={styles.feedImg} />
+                                    {feed.media_type === 'VIDEO' ? (
+                                        <video width={220} height={205} autoPlay controls className={styles.feedImg}>
+                                            <source src={feed.media_url} type="video/mp4" />
+                                            Your browser does not support the video tag.
+                                        </video>
+                                    ) : (
+                                        <img src={feed.media_url} width={220} height={205} alt={feed.caption || 'imagesInsta'} className={styles.feedImg} />
+                                    )}
+
+                                    {/* <Image src={feed.media_url} width={220} height={205} alt={feed.caption || 'imagesInsta'} className={styles.feedImg} /> */}
                                 </div>
                                 <div className={styles.mainIcon}>
                                     <div className={styles.icons}>
