@@ -90,7 +90,7 @@
     margin-top: 10px;
 
     input {
-        width: 130px;
+        width: 80px;
         height: 40px;
         color: #144950;
         font-weight: 800;
@@ -108,16 +108,19 @@
     }
 }
 
-.price {
 
-    font-size: 20px;
+
+.mrp {
 
     span {
+
+        font-size: 21px;
         color: #144950;
         font-weight: 700;
     }
-
 }
+
+
 
 .total {
     margin-top: 30px;
@@ -198,6 +201,7 @@
 
 .variantSubCard {
     // flex: 0 1 calc(12% - 3px);
+    width: 20%;
     box-sizing: border-box;
     margin-bottom: 10px;
     margin-left: 3px;
@@ -249,7 +253,7 @@
 
 .qty {
     .clickable {
-        border: 2px solid rgba(0, 0, 0, 0.1);
+        border: 2px solid #144950;
     }
 
     .clickable:hover {
@@ -365,7 +369,7 @@
     }
 
     .variantSubCard {
-        font-size: 13px;
+        font-size: 14px;
     }
 }
 
@@ -430,7 +434,7 @@
     .priceAndStock {
         margin-top: 3px;
         display: flex;
-        justify-content: center;
+        // justify-content: center;
         align-items: center;
 
         p {
@@ -449,16 +453,18 @@
 
     .qty {
         label {
-            font-size: 16px;
+            font-size: 15px;
+        }
+
+        input {
+            height: 35px;
         }
     }
+
 }
 
 @media (max-width:550px) {
-    // .mainDiv {
-    //     padding-left: 3rem;
-    //     padding-right: 3rem;
-    // }
+
 
     .image1 {
         width: 27%;
@@ -470,7 +476,7 @@
     }
 
     .description {
-        width: 100%;
+        width: 100vw !important;
     }
 
     // .name {
@@ -485,6 +491,7 @@
     .largeImage {
         width: 70%;
     }
+
 }
 
 @media (max-width:480px) {
@@ -505,6 +512,11 @@
         margin-left: -30px !important;
         margin-right: 5vw !important;
 
+    }
+
+    .variantSubCard {
+        padding: 0.2rem;
+        font-size: 12px;
     }
 }
 

@@ -10,6 +10,7 @@ import { getToken } from '@/getLocalStroageToken';
 // import useTokenExpiration from '@/userTokenExpiration';
 import useWindowSize from '../hooks/useWindowsize';
 import Loader from '../loader/Loader';
+import { showErrorToast, ToastNotifications } from '@/toastNotifications';
 
 interface Product {
     length: number;
@@ -164,13 +165,24 @@ const CartList: React.FC = () => {
     }
 
     const handleIncrement = (cartProductId: number) => {
-        setQuantities((prevQuantities) => ({
-            ...prevQuantities,
-            [cartProductId]: (prevQuantities[cartProductId] || 0) + 1,
-        }));
-        handleQuantityChange(cartProductId, quantities[cartProductId] + 1);
-        const qty = quantities[cartProductId] + 1
-        UpdateCartData(cartProductId, qty)
+        // setQuantities((prevQuantities) => ({
+        //     ...prevQuantities,
+        //     [cartProductId]: (prevQuantities[cartProductId] || 0) + 1,
+        // }));
+        // handleQuantityChange(cartProductId, quantities[cartProductId] + 1);
+        // const qty = quantities[cartProductId] + 1
+        // UpdateCartData(cartProductId, qty)
+        if (quantities[cartProductId] < 10) {
+            setQuantities((prevQuantities) => ({
+                ...prevQuantities,
+                [cartProductId]: (prevQuantities[cartProductId] || 0) + 1,
+            }));
+            handleQuantityChange(cartProductId, quantities[cartProductId] + 1);
+            const qty = quantities[cartProductId] + 1;
+            UpdateCartData(cartProductId, qty);
+        } else {
+            showErrorToast('Maximum 10 quantities are allow per order.')
+        }
     };
 
     const handleDecrement = (cartProductId: number) => {
@@ -313,7 +325,7 @@ const CartList: React.FC = () => {
                                         <div className={styles.valueDiscount}>{productDetails.totalCartValue - productDetails.totalMRP} ₹</div>
                                     </div>
                                     <div className={styles.totalPriceArea}>
-                                        <div className={styles.label}>Total Shipping Charge:</div>
+                                        <div className={styles.label}>Shipping Charge:</div>
                                         <div className={styles.shipValue}>{productDetails.totalShippingValue || "Free"} ₹</div>
 
                                     </div>
@@ -412,7 +424,7 @@ const CartList: React.FC = () => {
                                     </div>
 
                                     <div className={styles.totalPriceArea}>
-                                        <div className={styles.label}>Total Shipping Charge:</div>
+                                        <div className={styles.label}>Shipping Charge:</div>
                                         <div className={styles.shipValue}>{productDetails.shippingCharge || "Free"} ₹</div>
                                     </div>
                                 </div>
@@ -470,7 +482,7 @@ const CartList: React.FC = () => {
             )}
 
             {!token && typeof window !== 'undefined' && (() => { router.push('/login'); return null; })()}
-
+            <ToastNotifications />
         </div>
     )
 }
