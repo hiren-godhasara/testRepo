@@ -19,7 +19,7 @@ const DryFruitSliderForOrder: any = () => {
     const [quantity, setQuantity] = useState<number>(1);
     const [shouldRenderRegisterForm, setShouldRenderRegisterForm] = useState(false);
     const [id, setId] = useState<any>()
-    const [loading, setLoading] = useState(false)
+    const [loading, setLoading] = useState(true)
     const [variantData, setVariantData] = useState([])
     const [selectedVariant, setSelectedVariant] = useState<any>(id);
     const [productDetails, setProductDetails] = useState<any>(null);
