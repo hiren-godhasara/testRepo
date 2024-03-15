@@ -1,6 +1,6 @@
 .carouselContainer {
     margin-top: 30px;
-    margin-left: 100px;
+    margin-left: 190px;
     margin-bottom: 50px;
 }
 
@@ -72,9 +72,13 @@
 }
 
 
-@media (max-width: 1480px) {
+@media (max-width: 1634px) {
+    .carouselContainer {
+        margin-left: 90px;
+    }
+
     .card {
-        width: 330px;
+        width: 360px;
         height: 239px;
         box-shadow: 0 0 8px rgba(0, 0, 0, 0.3);
         padding: 16px;
@@ -116,10 +120,16 @@
     }
 }
 
-@media (max-width: 977px) {
+
+@media (max-width: 1400px) {
+
+    .carouselContainer {
+        margin-left: 50px;
+    }
+
     .card {
         width: auto;
-        height: 300px;
+        height: 280px;
         box-shadow: 0 0 8px rgba(0, 0, 0, 0.3);
         padding: 16px;
         margin: 20px 20px;
@@ -128,158 +138,25 @@
 
     }
 
-    .p {
-        font-size: 17px;
-        margin-top: -20px;
-
-    }
-
-    .h2 {
-        font-size: 15px;
-        font-weight: 600;
-        position: relative;
-        top: 150px;
-        left: 70px;
-    }
-
-    .h3 {
-        font-size: 13px;
-        font-weight: 600;
-        position: relative;
-        top: 150px;
-        left: 70px;
-    }
-
-    .h4 {
-        margin-top: -100px;
-    }
-
-    .image {
-        width: 50px;
-        position: relative;
-        top: 200px;
-        left: 10px;
-    }
-
-    .carouselContainer {
-        margin-left: 15%;
-        margin-right: 15%;
-    }
-}
-
-
-
-@media (max-width: 1280px) {
-    .card {
-        width: auto;
-        height: 300px;
-        box-shadow: 0 0 8px rgba(0, 0, 0, 0.3);
-        padding: 16px;
-        margin: 20px 20px;
-        box-sizing: border-box;
-        border-radius: 16px;
-
-    }
-
-    .p {
-        font-size: 17px;
-        margin-top: -20px;
-
-    }
-
-    .h2 {
-        font-size: 15px;
-        font-weight: 600;
-        position: relative;
-        top: 150px;
-        left: 70px;
-    }
-
-    .h3 {
-        font-size: 13px;
-        font-weight: 600;
-        position: relative;
-        top: 150px;
-        left: 70px;
-    }
-
-    .h4 {
-        margin-top: -100px;
-    }
-
-    .image {
-        width: 50px;
-        position: relative;
-        top: 200px;
-        left: 10px;
-    }
-
-    .carouselContainer {
-        margin-left: 10%;
-        margin-right: 10%;
-    }
-}
-
-
-@media (max-width: 1066px) {
-
-    .p {
-        font-size: 15px;
-        margin-top: -20px;
-
-    }
-
 
 }
-
 
 @media (max-width: 600px) {
+    .carouselContainer {
+        margin-left: 0 !important;
+    }
+
     .card {
+        margin-left: 20px !important;
+        margin-right: 20px !important;
+
         width: auto;
-        height: 300px;
-        box-shadow: 0 0 8px rgba(0, 0, 0, 0.3);
-        padding: 16px;
-        margin: 20px 20px;
-        box-sizing: border-box;
-        border-radius: 16px;
 
     }
 
     .p {
-        font-size: 13px;
+        font-size: 15px;
         margin-top: -20px;
 
-    }
-
-    .h2 {
-        font-size: 15px;
-        font-weight: 600;
-        position: relative;
-        top: 150px;
-        left: 70px;
-    }
-
-    .h3 {
-        font-size: 13px;
-        font-weight: 600;
-        position: relative;
-        top: 150px;
-        left: 70px;
-    }
-
-    .h4 {
-        margin-top: -100px;
-    }
-
-    .image {
-        width: 50px;
-        position: relative;
-        top: 200px;
-        left: 10px;
-    }
-
-    .carouselContainer {
-        margin-left: 3%;
-        margin-right: 3%;
     }
 }

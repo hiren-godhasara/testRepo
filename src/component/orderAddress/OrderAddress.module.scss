@@ -567,6 +567,24 @@
 
 @media (max-width:440px) {
 
+    .ttl {
+        p {
+            font-size: 14px !important;
+
+            span {
+                font-size: 17px !important;
+            }
+        }
+
+        div {
+            font-size: 18px !important;
+
+            span {
+                font-size: 20px !important;
+            }
+        }
+    }
+
     .label1 {
         margin-left: -90px;
     }
