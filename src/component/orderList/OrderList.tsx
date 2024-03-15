@@ -99,11 +99,14 @@ const OrderList = () => {
                                 </div>
 
                                 <div className={styles.row2}>
-                                    <p><strong>Shipping Address</strong> : {e.shippingAddressId.addressLine1} {e.shippingAddressId.addressLine2},</p>
-                                    <p> {e.shippingAddressId.city}-{e.shippingAddressId.pincode},{e.shippingAddressId.state},{e.shippingAddressId.country}</p>
-                                    <p><strong>Billing Address</strong> : {e.shippingAddressId.addressLine1} {e.shippingAddressId.addressLine2},</p>
-                                    <p> {e.shippingAddressId.city}-{e.shippingAddressId.pincode},{e.shippingAddressId.state},{e.shippingAddressId.country}</p>
+                                    <p><strong>Shipping Address</strong>:</p>
+                                    <div className={styles.addressLines}>
+                                        <p>{e.shippingAddressId.addressLine1}</p>
+                                        {e.shippingAddressId.addressLine2 && <p>{e.shippingAddressId.addressLine2}</p>}
+                                        <p>{e.shippingAddressId.city}, {e.shippingAddressId.state}, {e.shippingAddressId.pincode}</p>
+                                    </div>
                                 </div>
+
 
                                 <div className={styles.payment}>Payment Method : <strong> UPI Payment</strong></div>
 
@@ -112,22 +115,22 @@ const OrderList = () => {
                                     <div className={styles.row3}>
                                         {e.productList.map((cartProduct: any) => (
                                             <div key={cartProduct.cartProductId._id} className={styles.prod}>
-                                                <div className={styles.prodImg}>
-                                                    <Image
-                                                        src={cartProduct.cartProductId.productId.imageUrl[0].location}
-                                                        alt={cartProduct.cartProductId.productId.name}
-                                                        width={100}
-                                                        height={100}
-                                                        className={styles.img}
-                                                    />
-                                                </div>
+                                                {/* <div className={styles.prodImg}> */}
+                                                <Image
+                                                    src={cartProduct.cartProductId.productId.imageUrl[0].location}
+                                                    alt={cartProduct.cartProductId.productId.name}
+                                                    width={120}
+                                                    height={120}
+                                                    className={styles.img}
+                                                />
+                                                {/* </div> */}
                                                 <div className={styles.prodDet}>
                                                     <p>{cartProduct.cartProductId.productId.name}</p>
-                                                    {cartProduct.cartProductId.productId.isCombo === true && <p>Total Combo Weight : {cartProduct.cartProductId.productId.weight} g</p>}
-                                                    {cartProduct.cartProductId.productId.isCombo !== true && <p>Weight : {cartProduct.cartProductId.productId.weight} g</p>}
+                                                    {cartProduct.cartProductId.productId.isCombo === true && <p> <span style={{ fontWeight: '650' }}>  Total Combo Weight : </span>  {cartProduct.cartProductId.productId.weight} g</p>}
+                                                    {cartProduct.cartProductId.productId.isCombo !== true && <p> <span style={{ fontWeight: '650' }}> Weight : </span>{cartProduct.cartProductId.productId.weight} g</p>}
                                                     {/* <p>Weight : {cartProduct.cartProductId.productId.weight} g</p> */}
-                                                    <p>Price : {cartProduct.cartProductId.productId.price} ₹</p>
-                                                    <p>Qty : {cartProduct.cartProductId.qty}</p>
+                                                    <p><span style={{ fontWeight: '650' }}> Price : </span>{cartProduct.cartProductId.productId.price} ₹</p>
+                                                    <p><span style={{ fontWeight: '650' }}>Qty :</span> {cartProduct.cartProductId.qty}</p>
                                                 </div>
 
                                             </div>
