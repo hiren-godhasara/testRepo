@@ -276,6 +276,8 @@ const DryFruitSliderForOrder: any = () => {
                                     src={selectedImage}
                                     width={655}
                                     height={505}
+                                    placeholder="blur"
+                                    blurDataURL='https://mydryfruit.s3.ap-northeast-1.amazonaws.com/200+GM/Cashew/200gm-cashew-package-front.png'
                                     alt={`Large Image`}
                                     className={`${styles.largeImage} ${shouldRenderRegisterForm ? styles.blurImage : ''}`}
                                 />
