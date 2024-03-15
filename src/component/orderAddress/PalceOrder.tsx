@@ -550,6 +550,11 @@ const PlaceOrders = () => {
             modal: {
                 ondismiss: async function () {
                     console.log('Payment failed or user closed the popup.');
+                    router.replace('/');
+                    localStorage.removeItem("productId")
+                    localStorage.removeItem("qtys")
+                    localStorage.removeItem("totalOrderCartValue")
+                    localStorage.removeItem("totalShippingCharge")
                     const orderData = await handleIsOrderUpdate(_ID)
                     console.log(orderData);
 
