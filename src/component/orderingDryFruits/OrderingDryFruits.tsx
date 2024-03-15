@@ -94,10 +94,16 @@ const DryFruitSliderForOrder: any = () => {
         const inputText = e.target.value;
 
         if (/^\d*$/.test(inputText)) {
-            const newQuantity = parseInt(inputText, 10);
+            let newQuantity = parseInt(inputText, 10);
+
+            if (newQuantity > 10) {
+                showErrorToast('Maximum 10 quantities are allow per order.')
+                newQuantity = 10;
+            }
+
             setQuantity(isNaN(newQuantity) ? 0 : newQuantity);
         }
-    };
+    }
 
     const price = productDetails?.price
     const discount = productDetails?.discount
@@ -297,19 +303,19 @@ const DryFruitSliderForOrder: any = () => {
                     <div className={styles.description}>
                         <p className={styles.name}>{productDetails?.name}</p>
                         <p className={styles.des}>{productDetails?.productDescription}</p>
-                        <p className={styles.weight}>Weight : <strong> {weight}</strong></p>
+                        <p className={styles.weight}>Weight : <strong style={{ marginLeft: '20px' }}> {weight}</strong></p>
 
 
                         <div className={styles.mobileOrder}>
                             <div className={styles.priceAndStock}>
-                                <p className={styles.price}>Price : <span> {price} ₹</span></p>
-                                <del> <p className={styles.mrp}>{productDetails?.mrp} ₹</p></del>
+                                <p className={styles.price}>Price :  <del style={{ marginLeft: '36px' }}> {productDetails?.mrp} ₹</del></p>
+                                <p className={styles.mrp}> <span> {productDetails?.price} ₹</span></p>
                                 <p className={styles.discount}>({productDetails?.discount}% Off)</p>
                             </div>
 
                             <div className={styles.qty}>
                                 <label htmlFor="quantity">Quantity :</label>
-                                <input type="number" id="quantity" name="quantity" value={quantity} className={styles.clickable} onChange={handleQuantityChange} />
+                                <input type="number" max={10} style={{ marginLeft: '15px' }} id="quantity" name="quantity" value={quantity} className={styles.clickable} onChange={handleQuantityChange} />
                             </div>
 
                             {isButtonDisabled && <div className={styles.outOfStock}>This Item is currently out of stock !</div>}
