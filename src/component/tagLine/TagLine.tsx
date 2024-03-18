@@ -42,6 +42,9 @@ const TagLine = () => {
         return () => clearInterval(intervalId);
     }, [tagLineList]);
 
+    console.log(tagLineList, 'tagLineList');
+
+
     return (
         <>
             <div className={styles.container}>

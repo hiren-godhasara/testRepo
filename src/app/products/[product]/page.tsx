@@ -1,3 +1,43 @@
+// 'use client'
+// import React, { useState, useEffect } from 'react';
+// import { Helmet } from 'react-helmet';
+// import { usePathname } from 'next/navigation';
+// import DryFruitSliderForOrder from '@/component/orderingDryFruits/OrderingDryFruits';
+
+// const productData = require('../../../data/products.json');
+
+// const Cart = () => {
+//     const path = usePathname();
+//     const parts = path.split('/products/');
+//     const paramId = parts[1];
+//     console.log(paramId);
+
+//     const product = productData[paramId];
+
+//     const metadata = {
+//         title: `MY DRY FRUIT-${paramId}`,
+//         description: product.description,
+//         keywords: product.keywords,
+//     };
+//     console.log(metadata);
+
+
+//     return (
+//         <div style={{ backgroundColor: 'white' }}>
+//             <Helmet>
+//                 <title>{metadata?.title}</title>
+//                 <meta name="description" content={metadata?.description} />
+//                 <meta name="keywords" content={metadata?.keywords} />
+//             </Helmet>
+//             <DryFruitSliderForOrder />
+//         </div>
+//     );
+// };
+
+// export default Cart;
+
+
+
 
 'use client'
 import React, { useState, useEffect } from 'react';
@@ -5,11 +45,13 @@ import { Helmet } from 'react-helmet';
 import { Metadata } from 'next';
 import { usePathname } from 'next/navigation';
 import DryFruitSliderForOrder from '@/component/orderingDryFruits/OrderingDryFruits';
-import productList from '../../../data/products.json'
 
 const getProductDescription = async (paramId: string): Promise<string | any> => {
     try {
-        const product = productList.productList.find((item: any) => item.displayName === paramId);
+        const productData = require('../../../data/products.json');
+        const product = productData[paramId]
+        console.log(product);
+
         if (product) {
             return product;
         } else {
@@ -26,24 +68,20 @@ const generateMetaData = async (desiredPart: string): Promise<Metadata | any> =>
         const parts = desiredPart.split('/products/');
         const paramId = parts[1];
         const products = await getProductDescription(paramId);
-        console.log(products, 'products');
-        const ogImages = products.imageUrl.map((imageUrl: any) => ({
-            url: imageUrl.location,
-            alt: products.name
-        }));
+        console.log(products);
+
         return {
-            title: `My Dry Fruit-${paramId}`,
-            description: products.productDescription,
-            og: {
-                title: `My Dry Fruit-${products.name}`,
-                images: ogImages
-            }
+            title: `My Dry Fruit-${products.title}`,
+            description: products.description,
+            keywords: products.keywords
+
         };
     } catch (error) {
         console.error('Error generating metadata:', error);
         return {
             title: '',
-            description: ''
+            description: '',
+            keywords: ''
         };
     }
 };
@@ -74,10 +112,7 @@ const ProductPage = () => {
                 <meta property="og:type" content="website" />
                 <link rel="canonical" href={`https://mydryfruit.com/${desiredPart}`} />
                 <meta name="description" content={metadata?.description} />
-                {metadata?.og?.images.slice(0, 4).map((image: any, index: any) => (
-                    <meta key={index} property="og:image" content={image.url} />
-                ))}
-                <meta property="og:image:alt" content={metadata?.og?.title} />
+                <meta name="keywords" content={metadata?.keywords} />
             </Helmet>
             <Cart />
         </div>
