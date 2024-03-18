@@ -265,7 +265,7 @@ const PlaceOrders = () => {
             });
 
             if (response.ok) {
-                console.log('Form data updated successfully');
+
             } else {
                 console.error('Failed to update form data');
             }
@@ -311,7 +311,7 @@ const PlaceOrders = () => {
                 return response.json();
             })
             .then(data => {
-                console.log(data.data);
+
 
                 setAddress(data.data)
 
@@ -362,7 +362,7 @@ const PlaceOrders = () => {
                 body: JSON.stringify(formData),
             });
             if (response.ok) {
-                console.log('Form data sent successfully');
+
             } else {
                 console.error('Failed to send form data');
             }
@@ -440,7 +440,7 @@ const PlaceOrders = () => {
                 return response.json();
             })
             .then(data => {
-                console.log('Response:', data);
+
             })
             .catch(error => {
                 console.error('There was a problem with the fetch operation:', error);
@@ -484,7 +484,7 @@ const PlaceOrders = () => {
             setOrderAmount(data.data.orderData.orderAmount)
 
             setOrderId(data.data.orderData._id)
-            console.log(data.data.orderData);
+
 
             setSelectedAddress(null);
             showSuccessToast(data.message);
@@ -534,7 +534,7 @@ const PlaceOrders = () => {
             .then(response => response.json())
             .then(data => {
                 setUserData(data.data)
-                console.log('API Response:', data);
+
             })
             .catch(error => {
                 console.error('Error fetching data:', error);
@@ -559,7 +559,7 @@ const PlaceOrders = () => {
                 color: '#144950',
             },
             handler: async function (response: any) {
-                console.log(response);
+
                 if (response) {
                     const res = await handleStatusUpdate(_ID)
                     router.replace('/orderList');
@@ -573,14 +573,14 @@ const PlaceOrders = () => {
             },
             modal: {
                 ondismiss: async function () {
-                    console.log('Payment failed or user closed the popup.');
+
                     router.replace('/');
                     localStorage.removeItem("productId")
                     localStorage.removeItem("qtys")
                     localStorage.removeItem("totalOrderCartValue")
                     localStorage.removeItem("totalShippingCharge")
                     const orderData = await handleIsOrderUpdate(_ID)
-                    console.log(orderData);
+
 
                     if (!orderData) return;
                     await updateCartStatus(orderData)
@@ -617,7 +617,7 @@ const PlaceOrders = () => {
                     return response.json();
                 })
                 .then(data => {
-                    console.log(data);
+
                     return data;
                 })
                 .catch(error => {
@@ -628,7 +628,7 @@ const PlaceOrders = () => {
     }
     const handleIsOrderUpdate = (_ID: any) => {
 
-        console.log(_ID);
+
 
         return fetch(`${process.env.BASE_URL}/s/order/${_ID}`, {
             method: 'GET',
@@ -644,7 +644,7 @@ const PlaceOrders = () => {
                 return response.json();
             })
             .then(data => {
-                console.log(data);
+
                 return data;
             })
             .catch(error => {
@@ -671,7 +671,7 @@ const PlaceOrders = () => {
                 return response.json();
             })
             .then(data => {
-                console.log(data);
+
                 return data;
             })
             .catch(error => {
@@ -686,9 +686,7 @@ const PlaceOrders = () => {
 
             const mongoOrderId = await handleOrder();
             const _ID = await mongoOrderId._id
-            console.log(_ID, '_IDs');
 
-            console.log(orderId, 'orderId');
             if (!_ID) {
                 throw new Error('orderId not found.')
             }
