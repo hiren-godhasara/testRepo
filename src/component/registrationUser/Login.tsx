@@ -104,14 +104,26 @@ const LoginForm = () => {
 
     const inputType = formData.loginId.includes('@') ? 'text' : "text";
 
+    // const authToken = Cookies.get('token')
+    // if (!authToken === false) {
+    //     window.location.href = '/'
+    // }
+
+    const [auth, setAuth] = useState(false)
     const authToken = Cookies.get('token')
-    if (!authToken === false) {
-        window.location.href = '/'
-    }
+    useEffect(() => {
+        if (!authToken) {
+            setAuth(true)
+        } else {
+            window.location.href = '/'
+        }
+    }, [authToken])
+    console.log(auth);
+
 
     return (
         <>
-            {!authToken === true &&
+            {auth &&
                 <div className={styles.backImg}>
                     <div className={styles.register}>
                         <form onSubmit={handleSubmit}>
