@@ -10,6 +10,7 @@ import { ToastNotifications, showSuccessToast, showErrorToast } from '../../toas
 import Loader from '../loader/Loader';
 
 
+
 declare global {
     interface Window {
         Razorpay: any;
@@ -56,11 +57,31 @@ const OrderAddresss = () => {
     const userId = getUserId();
     const [editAddressId, setEditAddressId] = useState<string | null>(null);
     const [editFormVisible, setEditFormVisible] = useState(false);
-    const token = getToken()
+    const [tokenData, setTokenData] = useState(false);
+    const [cart, setCart] = useState(false);
+
     const router = useRouter();
     // useTokenExpiration(token);
     const [loading, setLoading] = useState(true);
 
+    const token = getToken();
+    useEffect(() => {
+        if (token) {
+            setTokenData(true);
+        } else {
+            router.push('/login');
+        }
+    }, [router]);
+
+    console.log(cartData);
+
+    useEffect(() => {
+        if (cartData === "undefined" || '') {
+            setCart(true);
+        } else {
+            router.push("/")
+        }
+    }, [router])
 
 
     const fetchCartData = () => {
@@ -78,9 +99,9 @@ const OrderAddresss = () => {
                 }
                 return response.json();
             })
-            .then(data => {
+            .then(async data => {
                 console.log(data.data);
-                setCartData(data.data);
+                await setCartData(data.data);
 
                 const cartProductIds = data.data.productList.map((item: any) => {
                     return { "cartProductId": item.cartProductId };
@@ -1087,8 +1108,8 @@ const OrderAddresss = () => {
                     </div>
                     } */}
 
-                    {!token && router.push('/login')}
-                    {(cartData === undefined) && router.push("/")}
+                    {/* {!token && router.push('/login')} */}
+                    {/* {(cartData === undefined) && router.push("/")} */}
 
                 </>
             )

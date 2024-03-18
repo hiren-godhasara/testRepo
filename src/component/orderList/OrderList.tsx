@@ -22,10 +22,17 @@ const OrderList = () => {
     const [orderList, setOrderList] = useState<[]>([]);
     const [userList, setUserList] = useState<[]>([]);
     const [loading, setLoading] = useState(true);
-
-
+    const [tokenData, setTokenData] = useState(false);
     const userId = getUserId();
-    const token = getToken()
+
+    const token = getToken();
+    useEffect(() => {
+        if (token) {
+            setTokenData(true);
+        } else {
+            router.push('/login');
+        }
+    }, [router]);
 
 
 
@@ -62,6 +69,7 @@ const OrderList = () => {
     };
 
     useEffect(() => {
+        if (!userId) return
         fetchAddressData();
     }, []);
 
@@ -117,19 +125,19 @@ const OrderList = () => {
                                             <div key={cartProduct.cartProductId._id} className={styles.prod}>
                                                 {/* <div className={styles.prodImg}> */}
                                                 <Image
-                                                    src={cartProduct.cartProductId.productId.imageUrl[0].location}
-                                                    alt={cartProduct.cartProductId.productId.name}
+                                                    src={cartProduct.cartProductId.productId?.imageUrl[0].location}
+                                                    alt={cartProduct.cartProductId.productId?.name}
                                                     width={120}
                                                     height={120}
                                                     className={styles.img}
                                                 />
                                                 {/* </div> */}
                                                 <div className={styles.prodDet}>
-                                                    <p>{cartProduct.cartProductId.productId.name}</p>
-                                                    {cartProduct.cartProductId.productId.isCombo === true && <p> <span style={{ fontWeight: '650' }}>  Total Combo Weight : </span>  {cartProduct.cartProductId.productId.weight} g</p>}
-                                                    {cartProduct.cartProductId.productId.isCombo !== true && <p> <span style={{ fontWeight: '650' }}> Weight : </span>{cartProduct.cartProductId.productId.weight} g</p>}
-                                                    {/* <p>Weight : {cartProduct.cartProductId.productId.weight} g</p> */}
-                                                    <p><span style={{ fontWeight: '650' }}> Price : </span>{cartProduct.cartProductId.productId.price} ₹</p>
+                                                    <p>{cartProduct.cartProductId.productId?.name}</p>
+                                                    {cartProduct.cartProductId.productId?.isCombo === true && <p> <span style={{ fontWeight: '650' }}>  Total Combo Weight : </span>  {cartProduct.cartProductId.productId?.weight} g</p>}
+                                                    {cartProduct.cartProductId.productId?.isCombo !== true && <p> <span style={{ fontWeight: '650' }}> Weight : </span>{cartProduct.cartProductId.productId?.weight} g</p>}
+                                                    {/* <p>Weight : {cartProduct.cartProductId.productId?.weight} g</p> */}
+                                                    <p><span style={{ fontWeight: '650' }}> Price : </span>{cartProduct.cartProductId.productId?.price} ₹</p>
                                                     <p><span style={{ fontWeight: '650' }}>Qty :</span> {cartProduct.cartProductId.qty}</p>
                                                 </div>
 
@@ -192,8 +200,6 @@ const OrderList = () => {
                         </div>
                     }
 
-                    {/* {!token && router.push('/login')} */}
-                    {!token && typeof window !== 'undefined' && (() => { router.push('/login'); return null; })()}
 
                 </>
             )}

@@ -42,6 +42,42 @@ export default function RootLayout({
           <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
           <link href="https://fonts.googleapis.com/css2?family=Cedarville+Cursive&family=Dancing+Script:wght@400..700&family=Kalam:wght@300;400;700&family=Protest+Riot&display=swap" rel="stylesheet" />
           <meta name="viewport" content="initial-scale=1, maximum-scale=1" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+          <title>
+            iPhone 12 XS Max For Sale in Colorado - Big Discounts | Apple
+          </title>
+          <meta
+            name="description"
+            content="Check out iPhone 12 XR Pro and iPhone 12 Pro Max. Visit your local store and for expert advice."
+            key="desc"
+          />
         </Head>
         {/* <body style={{ backgroundColor: 'white', fontFamily: ' "Montserrat", sans-serif' }} className={inter.className}> */}
         <body style={{ backgroundColor: 'white' }} className={inter.className}>
