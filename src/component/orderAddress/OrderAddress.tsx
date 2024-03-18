@@ -60,6 +60,8 @@ const OrderAddresss = () => {
     const [tokenData, setTokenData] = useState(false);
     const [cart, setCart] = useState(false);
 
+
+
     const router = useRouter();
     // useTokenExpiration(token);
     const [loading, setLoading] = useState(true);
@@ -73,7 +75,6 @@ const OrderAddresss = () => {
         }
     }, [router]);
 
-    console.log(cartData === undefined);
 
 
     useEffect(() => {
@@ -82,6 +83,9 @@ const OrderAddresss = () => {
             router.push("/")
         }
     }, [router])
+
+
+
 
 
     const fetchCartData = () => {
@@ -100,7 +104,6 @@ const OrderAddresss = () => {
                 return response.json();
             })
             .then(async data => {
-                console.log(data.data);
                 await setCartData(data.data);
 
                 const cartProductIds = data.data.productList.map((item: any) => {
@@ -108,9 +111,9 @@ const OrderAddresss = () => {
                 });
 
                 setCartProducts(cartProductIds);
-                console.log(cartProductIds);
             })
             .catch(error => {
+                router.push("/")
                 console.error('There was a problem fetching the data:', error);
             });
     };
@@ -195,8 +198,6 @@ const OrderAddresss = () => {
 
     const handleEditChange = (e: any, isEditForm: boolean) => {
         const { name, value, type, checked } = e.target;
-        console.log(e);
-
 
         if (isEditForm) {
             setEditFormData((prevEditFormData: any) => ({
@@ -296,7 +297,6 @@ const OrderAddresss = () => {
             });
 
             if (response.ok) {
-                console.log('Form data updated successfully');
             } else {
                 console.error('Failed to update form data');
             }
@@ -344,7 +344,6 @@ const OrderAddresss = () => {
                 return response.json();
             })
             .then(data => {
-                console.log(data.data);
 
                 setAddress(data.data)
 
@@ -479,7 +478,6 @@ const OrderAddresss = () => {
                 return response.json();
             })
             .then(data => {
-                console.log('Response:', data);
             })
             .catch(error => {
                 console.error('There was a problem with the fetch operation:', error);
@@ -522,7 +520,6 @@ const OrderAddresss = () => {
         }).then(data => {
 
             setOrderId(data.data.orderData._id)
-            console.log(data.data);
 
             setSelectedAddress(null);
             showSuccessToast(data.message);
@@ -548,7 +545,6 @@ const OrderAddresss = () => {
                     return response.json();
                 })
                 .then(data => {
-                    console.log(data);
                     return data;
                 })
                 .catch(error => {
@@ -592,7 +588,6 @@ const OrderAddresss = () => {
             .then(response => response.json())
             .then(data => {
                 setUserData(data.data)
-                console.log('API Response:', data);
             })
             .catch(error => {
                 console.error('Error fetching data:', error);
@@ -617,7 +612,6 @@ const OrderAddresss = () => {
                 color: '#144950',
             },
             handler: async function (response: any) {
-                console.log(response);
                 if (response) {
                     const res = await handleStatusUpdate(mongoOrderId)
                     router.replace('/orderList');
@@ -625,9 +619,7 @@ const OrderAddresss = () => {
             },
             modal: {
                 ondismiss: async function () {
-                    console.log('Payment failed or user closed the popup.');
                     const orderData = await handleIsOrderUpdate(mongoOrderId)
-                    console.log(orderData);
 
                     if (!orderData) return;
                     await updateCartStatus(orderData)
@@ -665,7 +657,6 @@ const OrderAddresss = () => {
                     return response.json();
                 })
                 .then(data => {
-                    console.log(data);
                     return data;
                 })
                 .catch(error => {
@@ -677,7 +668,6 @@ const OrderAddresss = () => {
 
     const handleIsOrderUpdate = (mongoOrderId: any) => {
 
-        console.log(mongoOrderId);
 
         return fetch(`${process.env.BASE_URL}/s/order/${mongoOrderId}`, {
             method: 'GET',
@@ -693,7 +683,6 @@ const OrderAddresss = () => {
                 return response.json();
             })
             .then(data => {
-                console.log(data);
                 return data;
             })
             .catch(error => {
@@ -723,7 +712,6 @@ const OrderAddresss = () => {
                 return response.json();
             })
             .then(data => {
-                console.log(data);
                 return data;
             })
             .catch(error => {
@@ -736,7 +724,6 @@ const OrderAddresss = () => {
         setLoading(true)
         try {
             const mongoOrderId = await handleOrder();
-            console.log(orderId, 'orderId');
             if (!mongoOrderId) {
                 throw new Error('orderId not found.')
             }
