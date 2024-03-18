@@ -1,6 +1,6 @@
 'use client'
 
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import styles from './Register.module.scss';
 import Image from 'next/image';
 import logo from '../../imageFolder/mdfLogo.png'
@@ -155,14 +155,20 @@ const RegisterForm = () => {
     const handleCancel = () => {
         router.back();
     };
+    const [auth, setAuth] = useState(false)
     const authToken = Cookies.get('token')
+    useEffect(() => {
+        if (!authToken) {
+            setAuth(true)
+        } else {
+            window.location.href = '/'
+        }
+    }, [authToken])
+    console.log(auth);
 
     return (
         <>
-            {authToken && (
-                window.location.href = '/'
-            )}
-            {!authToken &&
+            {auth &&
                 <div className={styles.backImg}>
                     <div className={styles.register}>
                         <div className={styles.i1}  ></div>
