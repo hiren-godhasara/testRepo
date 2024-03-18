@@ -73,12 +73,12 @@ const OrderAddresss = () => {
         }
     }, [router]);
 
-    console.log(cartData);
+    console.log(cartData === undefined);
+
 
     useEffect(() => {
-        if (cartData === "undefined" || '') {
+        if (cartData === undefined) {
             setCart(true);
-        } else {
             router.push("/")
         }
     }, [router])

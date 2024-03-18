@@ -74,12 +74,12 @@ const LoginForm = () => {
                 Cookies.set('userId', data.data.userId, { expires: 1 });
                 await handleUserData(data.data.userId, data.data.token)
                 showSuccessToast(data.message);
-                if (isOrderRedirecting === "true") {
-                    window.history.back();
-                } else {
-                    window.location.reload()
-                    window.location.href = '/'
-                }
+                // if (isOrderRedirecting === "true") {
+                //     window.history.back();
+                // } else {
+                //     window.location.reload()
+                //     window.location.href = '/'
+                // }
                 setFormData({
                     loginId: '',
                     password: ''
@@ -105,7 +105,9 @@ const LoginForm = () => {
     const inputType = formData.loginId.includes('@') ? 'text' : "text";
 
     const authToken = Cookies.get('token')
-
+    if (!authToken === false) {
+        window.location.href = '/'
+    }
 
     return (
         <>
@@ -158,9 +160,9 @@ const LoginForm = () => {
                 </div>
             }
 
-            {!authToken === false && (
+            {/* {!authToken === false && (
                 window.location.href = '/'
-            )}
+            )} */}
         </>
     );
 };
