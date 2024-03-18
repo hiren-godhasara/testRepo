@@ -9,9 +9,11 @@ import Cookies from 'js-cookie';
 import Link from 'next/link';
 import { ToastNotifications, showSuccessToast, showErrorToast } from '../../toastNotifications'
 import Header from '../headerSection/Header';
+import Loader from '../loader/Loader';
 
 
 const LoginForm = () => {
+    const [loading, setLoading] = useState(true);
     const router = useRouter()
     const [formData, setFormData] = useState({
         loginId: '',
@@ -114,6 +116,7 @@ const LoginForm = () => {
     useEffect(() => {
         if (!authToken) {
             setAuth(true)
+            setLoading(false)
         } else {
             window.location.href = '/'
         }
@@ -122,60 +125,65 @@ const LoginForm = () => {
 
 
     return (
-        <>
-            {auth &&
-                <div className={styles.backImg}>
-                    <div className={styles.register}>
-                        <form onSubmit={handleSubmit}>
-                            <div className={styles.companydetails}>
-                                <div className={styles.imgDiv}>
-                                    <Image src={logo} alt="Company logo" fill={true} style={{ objectFit: "contain" }} />
-                                </div>
-                            </div>
-                            <div className={styles.registerName}>Welcome Back !</div>
-
-                            <div>
-                                <label>Email / Phone Number: <span style={{ color: 'red' }}>*</span></label>
-                                <input
-                                    type={inputType}
-                                    placeholder="Enter Email Or Phone"
-                                    name="loginId"
-                                    value={formData.loginId}
-                                    onChange={handleChange}
-                                // required
-                                />
-                            </div>
-                            <div>
-                                <label>Password: <span style={{ color: 'red' }}>*</span></label>
-                                <input
-                                    type="password"
-                                    name="password"
-                                    placeholder="Enter Password"
-                                    value={formData.password}
-                                    onChange={handleChange}
-                                // required
-
-                                />
-                            </div>
-                            <div>
-                                <button type="submit" className={styles.btn}>Sign In</button>
-                            </div>
-                            <div style={{ textAlign: "center", margin: "0 0 10px 0", color: "#a9a9a9" }}>Don&apos;t have an account? </div>
-                            <div>
-                                <Link href='/registration'>
-                                    <button className={`${styles.btn} ${styles.registerBtn}`} >Create account</button>
-                                </Link>
-                            </div>
-                        </form>
-                        <ToastNotifications />
-                    </div>
+        <div>
+            {loading ? (
+                <div className={styles.loaderContainer}>
+                    <Loader />
                 </div>
-            }
+            ) : (
+                <>
+                    {auth &&
+                        <div className={styles.backImg}>
+                            <div className={styles.register}>
+                                <form onSubmit={handleSubmit}>
+                                    <div className={styles.companydetails}>
+                                        <div className={styles.imgDiv}>
+                                            <Image src={logo} alt="Company logo" fill={true} style={{ objectFit: "contain" }} />
+                                        </div>
+                                    </div>
+                                    <div className={styles.registerName}>Welcome Back !</div>
 
-            {/* {!authToken === false && (
-                window.location.href = '/'
-            )} */}
-        </>
+                                    <div>
+                                        <label>Email / Phone Number: <span style={{ color: 'red' }}>*</span></label>
+                                        <input
+                                            type={inputType}
+                                            placeholder="Enter Email Or Phone"
+                                            name="loginId"
+                                            value={formData.loginId}
+                                            onChange={handleChange}
+                                        // required
+                                        />
+                                    </div>
+                                    <div>
+                                        <label>Password: <span style={{ color: 'red' }}>*</span></label>
+                                        <input
+                                            type="password"
+                                            name="password"
+                                            placeholder="Enter Password"
+                                            value={formData.password}
+                                            onChange={handleChange}
+                                        // required
+
+                                        />
+                                    </div>
+                                    <div>
+                                        <button type="submit" className={styles.btn}>Sign In</button>
+                                    </div>
+                                    <div style={{ textAlign: "center", margin: "0 0 10px 0", color: "#a9a9a9" }}>Don&apos;t have an account? </div>
+                                    <div>
+                                        <Link href='/registration'>
+                                            <button className={`${styles.btn} ${styles.registerBtn}`} >Create account</button>
+                                        </Link>
+                                    </div>
+                                </form>
+                                <ToastNotifications />
+                            </div>
+                        </div>
+                    }
+                </>
+            )}
+
+        </div>
     );
 };
 
