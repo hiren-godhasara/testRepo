@@ -63,15 +63,39 @@ const PlaceOrders = () => {
     // const totalOrderCartValue = useSearchParams().get('totalOrderCartValue');
     const [editAddressId, setEditAddressId] = useState<string | null>(null);
     const [editFormVisible, setEditFormVisible] = useState(false);
-    const token = getToken()
     const router = useRouter();
     // useTokenExpiration(token);
     const [loading, setLoading] = useState(true);
+    const [tokenData, setTokenData] = useState(false);
+    const [TotalOrderCartValue, setTotalOrderCartValue] = useState(false);
 
+    const token = getToken();
+
+    useEffect(() => {
+        if (token) {
+            setTokenData(true);
+        } else {
+            router.push('/login');
+        }
+    }, [router]);
 
     const prodId = typeof window !== 'undefined' ? localStorage.getItem('productId') : null;
     const qtys = typeof window !== 'undefined' ? localStorage.getItem('qtys') : null;
     const totalOrderCartValue: any = typeof window !== 'undefined' ? localStorage.getItem('totalOrderCartValue') : null;
+    useEffect(() => {
+        const storedTotalOrderCartValue = typeof window !== 'undefined' ? localStorage.getItem('totalOrderCartValue') : null;
+        if (!totalOrderCartValue) {
+            setTotalOrderCartValue(storedTotalOrderCartValue !== null);
+        }
+    }, [totalOrderCartValue]);
+
+
+    useEffect(() => {
+        if (!totalOrderCartValue) {
+            router.push("/");
+        }
+    }, [totalOrderCartValue, router]);
+
     const totalShippingCharge: any = typeof window !== 'undefined' ? localStorage.getItem('totalShippingCharge') : null;
     const val1 = parseFloat(totalOrderCartValue)
     const val2 = parseFloat(totalShippingCharge)
@@ -1040,8 +1064,8 @@ const PlaceOrders = () => {
                             </div>
                         </div>
                     </div>} */}
-                    {!token && router.push('/login')}
-                    {(totalOrderCartValue === null) && router.push("/")}
+                    {/* {!token && router.push('/login')} */}
+                    {/* {TotalOrderCartValue && router.push("/")} */}
                 </>
             )}
         </div >

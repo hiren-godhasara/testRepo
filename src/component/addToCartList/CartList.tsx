@@ -42,7 +42,16 @@ const CartList: React.FC = () => {
     const isSmallScreen = useWindowSize().smallScreen
     const [loading, setLoading] = useState(true);
     const userId = getUserId();
+    const [tokenData, setTokenData] = useState(false);
+
     const token = getToken()
+    useEffect(() => {
+        if (token) {
+            setTokenData(true);
+        } else {
+            router.push('/login');
+        }
+    }, [router]);
     // useTokenExpiration(token);
 
     useEffect(() => {
@@ -481,7 +490,7 @@ const CartList: React.FC = () => {
                 </div>
             )}
 
-            {!token && typeof window !== 'undefined' && (() => { router.push('/login'); return null; })()}
+            {/* {!token && typeof window !== 'undefined' && (() => { router.push('/login'); return null; })()} */}
             <ToastNotifications />
         </div>
     )

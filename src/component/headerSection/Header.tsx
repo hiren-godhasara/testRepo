@@ -228,8 +228,8 @@ const Header = () => {
                                 <li><Link className={styles.drawerLink} onClick={() => setIsMenuShown(false)} href="/contactUs">Contact Us</Link></li>
                             </ul>
                             <div className={styles.antDrawerBtn}>
-                                {!token && <Link className={styles.contactUsBtn} onClick={() => setIsMenuShown(false)} href='/registration'>Register</Link>}
-                                {!token && <Link className={styles.contactUsBtn} onClick={() => setIsMenuShown(false)} href='/login'>Login</Link>}
+                                {!auth && <Link className={styles.contactUsBtn} onClick={() => setIsMenuShown(false)} href='/registration'>Register</Link>}
+                                {!auth && <Link className={styles.contactUsBtn} onClick={() => setIsMenuShown(false)} href='/login'>Login</Link>}
                             </div>
                         </div>
                     </Drawer>
