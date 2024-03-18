@@ -1,814 +1,102 @@
 {
-    "productList": [
-        {
-            "name": "Natural Premium California Almond & Cashew each 200gm | Mydryfruit - Premium Dry fruit store",
-            "__v": 0,
-            "discount": 25,
-            "displayName": "natural-premium-california-almond-fresh-cashew-200gm",
-            "hsncode": "080212",
-            "imageUrl": [
-                {
-                    "name": "Almond-Cashew",
-                    "location": "https://mydryfruit.s3.ap-northeast-1.amazonaws.com/200+GM/Almond+Cashew/200gm-almond-cashew-package-front.png",
-                    "index": 1
-                },
-                {
-                    "name": "Almond-Cashew",
-                    "location": "https://mydryfruit.s3.ap-northeast-1.amazonaws.com/200+GM/Almond+Cashew/200gm-almond-cashew-package-back.png",
-                    "index": 2
-                },
-                {
-                    "name": "Almond-Cashew",
-                    "location": "https://mydryfruit.s3.ap-northeast-1.amazonaws.com/200+GM/Almond+Cashew/200gm-almond-cashew-benefits.png",
-                    "index": 3
-                },
-                {
-                    "name": "Almond-Cashew",
-                    "location": "https://mydryfruit.s3.ap-northeast-1.amazonaws.com/200+GM/Almond+Cashew/200gm-almond-package-price.png",
-                    "index": 4
-                },
-                {
-                    "name": "Almond-Cashew",
-                    "location": "https://mydryfruit.s3.ap-northeast-1.amazonaws.com/200+GM/Almond+Cashew/200gm-cashew-package-price.png",
-                    "index": 5
-                }
-            ],
-            "mrp": 640,
-            "price": 480,
-            "productCode": "ac200",
-            "productDescription": "Experiencing sluggishness or in need of an energy boost? Indulge in our premium California almonds, brimming with protein, fiber, and healthy fats. These crispy delights offer a delectable solution to satiate your cravings healthily while enhancing your well-being. Setting us apart from competitors is not just premium quality, but also the rich nutrients packed into each bite.",
-            "variantName": "almond-cashew",
-            "weight": "400",
-            "details": "100% Natural & Premium Quality Badam | Hygienically Packed Almonds | High in Fiber | Raw badam | Healthy Dry Fruit Snacks | Badam ",
-            "isAvailable": true,
-            "isCombo": true
-        },
-        {
-            "name": "Natural Premium California Almond 200gm | Mydryfruit - Premium Dry fruit store",
-            "__v": 0,
-            "discount": 25,
-            "displayName": "natural-premium-california-almond-200gm",
-            "hsncode": "080212",
-            "imageUrl": [
-                {
-                    "name": "Almond",
-                    "location": "https://mydryfruit.s3.ap-northeast-1.amazonaws.com/200+GM/Almond/200gm-almond-package-front.png",
-                    "index": 1
-                },
-                {
-                    "name": "Almond",
-                    "location": "https://mydryfruit.s3.ap-northeast-1.amazonaws.com/200+GM/Almond/200gm-almond-benefits.png",
-                    "index": 2
-                },
-                {
-                    "name": "Almond",
-                    "location": "https://mydryfruit.s3.ap-northeast-1.amazonaws.com/200+GM/Almond/200gm-almond-package-back.png",
-                    "index": 3
-                },
-                {
-                    "name": "Almond",
-                    "location": "https://mydryfruit.s3.ap-northeast-1.amazonaws.com/200+GM/Almond/200gm-almond-package-price.png",
-                    "index": 4
-                }
-            ],
-            "mrp": 314,
-            "price": 235,
-            "productCode": "a200",
-            "productDescription": "Experiencing sluggishness or in need of an energy boost? Indulge in our premium California almonds, brimming with protein, fiber, and healthy fats. These crispy delights offer a delectable solution to satiate your cravings healthily while enhancing your well-being. Setting us apart from competitors is not just premium quality, but also the rich nutrients packed into each bite.",
-            "variantName": "almond",
-            "weight": "200",
-            "details": "100% Natural & Premium Quality Badam | Hygienically Packed Almonds | High in Fiber | Raw badam | Healthy Dry Fruit Snacks | Badam ",
-            "isAvailable": true,
-            "isCombo": false
-        },
-        {
-            "name": "Premium Whole Cashew Nuts (kaju) 200gm | Mydryfruit - Premium Dry fruit store",
-            "__v": 0,
-            "discount": 25,
-            "displayName": "buy-premium-Whole-Cashew(kaju)-Nuts-200gm",
-            "hsncode": "08013220",
-            "imageUrl": [
-                {
-                    "name": "Cashew",
-                    "location": "https://mydryfruit.s3.ap-northeast-1.amazonaws.com/200+GM/Cashew/200gm-cashew-package-front.png",
-                    "index": 1
-                },
-                {
-                    "name": "Cashew",
-                    "location": "https://mydryfruit.s3.ap-northeast-1.amazonaws.com/200+GM/Cashew/200gm-cashew-benefits.png",
-                    "index": 2
-                },
-                {
-                    "name": "Cashew",
-                    "location": "https://mydryfruit.s3.ap-northeast-1.amazonaws.com/200+GM/Cashew/200gm-cashew-package-back.png",
-                    "index": 3
-                },
-                {
-                    "name": "Cashew",
-                    "location": "https://mydryfruit.s3.ap-northeast-1.amazonaws.com/200+GM/Cashew/200gm-cashew-package-price.png",
-                    "index": 4
-                }
-            ],
-            "mrp": 347,
-            "price": 260,
-            "productCode": "c200",
-            "productDescription": "Often referred to as kaju fruits, these little flavor bombs are more than just delicious dry fruits. Packed with healthy fats, protein, and essential minerals like copper and magnesium MyDryFruit's premium cashew nuts are a guilt-free go to snack snack that supports your well-being in a natural and healthy way. Then our range of cashew products are your savior.",
-            "variantName": "cashew",
-            "weight": "200",
-            "details": "White & Whole Kaju | Hygienically Packed 200gm kaju | W180 Cashew Nut (kaju) | Raw kaju | Healthy Cashew Nuts | Kaju",
-            "isAvailable": true,
-            "isCombo": false
-        },
-        {
-            "name": "Freshly Roasted & Salted Pistachios (Pista) 200gm | Mydryfruit - Premium dry fruit store",
-            "__v": 0,
-            "discount": 25,
-            "displayName": "buy-freshly-roasted-salted-pista-200gm",
-            "hsncode": "08025100",
-            "imageUrl": [
-                {
-                    "name": "Pista",
-                    "location": "https://mydryfruit.s3.ap-northeast-1.amazonaws.com/200+GM/Pista/200gm-pista-package-front.png",
-                    "index": 1
-                },
-                {
-                    "name": "Pista",
-                    "location": "https://mydryfruit.s3.ap-northeast-1.amazonaws.com/200+GM/Pista/200gm-pista-benefits.png",
-                    "index": 2
-                },
-                {
-                    "name": "Pista",
-                    "location": "https://mydryfruit.s3.ap-northeast-1.amazonaws.com/200+GM/Pista/200gm-pista-package-back.png",
-                    "index": 3
-                },
-                {
-                    "name": "Pista",
-                    "location": "https://mydryfruit.s3.ap-northeast-1.amazonaws.com/200+GM/Pista/200gm-pista-package-price.png",
-                    "index": 4
-                }
-            ],
-            "mrp": 494,
-            "price": 370,
-            "productCode": "p200",
-            "productDescription": "Love something that’s crunchy and has a vibrant look? Then our premium pistachio nuts (pista) are what you were looking for. These green gems, also known as pista fruit, are a delicious and healthy way to add a touch of excitement to your day. Packed with protein, fiber, and antioxidants, MyDryFruit's pistachios are the perfect snack or a flavorful addition to your favorite ice cream or salad. Not just that its a delight to also have it as a snack.",
-            "variantName": "pista",
-            "weight": "200",
-            "details": "Premium Quality Pista | Crunchy & Healthy | Iranian pistachios (pista) | Healthy Nuts | Pista",
-            "isAvailable": true,
-            "isCombo": false
-        },
-        {
-            "name": "Premium Whole Cashew Nuts (kaju) 300gm | Mydryfruit - Premium Dry fruit store",
-            "__v": 0,
-            "discount": 25,
-            "displayName": "buy-premium-Whole-Cashew(kaju)-Nuts-300gm",
-            "hsncode": "08013220",
-            "imageUrl": [
-                {
-                    "name": "Cashew",
-                    "location": "https://mydryfruit.s3.ap-northeast-1.amazonaws.com/300+GM/Cashew/300gm-cashew-package-front.png",
-                    "index": 1
-                },
-                {
-                    "name": "Cashew",
-                    "location": "https://mydryfruit.s3.ap-northeast-1.amazonaws.com/300+GM/Cashew/300gm-cashew-benefits.png",
-                    "index": 2
-                },
-                {
-                    "name": "Cashew",
-                    "location": "https://mydryfruit.s3.ap-northeast-1.amazonaws.com/300+GM/Cashew/300gm-cashew-package-back.png",
-                    "index": 3
-                },
-                {
-                    "name": "Cashew",
-                    "location": "https://mydryfruit.s3.ap-northeast-1.amazonaws.com/300+GM/Cashew/300gm-cashew-package-price.png",
-                    "index": 4
-                }
-            ],
-            "mrp": 454,
-            "price": 340,
-            "productCode": "c300",
-            "productDescription": "Often referred to as kaju fruits, these little flavor bombs are more than just delicious dry fruits. Packed with healthy fats, protein, and essential minerals like copper and magnesium MyDryFruit's premium cashew nuts are a guilt-free go to snack snack that supports your well-being in a natural and healthy way. Then our range of cashew products are your savior.",
-            "variantName": "cashew",
-            "weight": "300",
-            "details": "White & Whole Kaju | Hygienically Packed 300gm kaju | W180 Cashew Nut (kaju) | Raw kaju | Healthy Cashew Nuts | Kaju",
-            "isAvailable": true,
-            "isCombo": false
-        },
-        {
-            "name": "Natural Premium California Almond & Fresh Cashew & Salted PistaChio each 200gm | Mydryfruit - Premium Dry fruit store",
-            "__v": 0,
-            "discount": 25,
-            "displayName": "natural-premium-california-almond-fresh-cashew-salted-pista-200gm",
-            "hsncode": "080212",
-            "imageUrl": [
-                {
-                    "name": "Almond-Cashew-Pistachio",
-                    "location": "https://mydryfruit.s3.ap-northeast-1.amazonaws.com/200+GM/Almond-Cashew-Pista/200gm-cashew-pista-almond-package-front.png",
-                    "index": 1
-                },
-                {
-                    "name": "Almond-Cashew-Pistachio",
-                    "location": "https://mydryfruit.s3.ap-northeast-1.amazonaws.com/200+GM/Almond-Cashew-Pista/200gm-cashew-pista-almond-package-back.png",
-                    "index": 2
-                },
-                {
-                    "name": "Almond-Cashew-Pistachio",
-                    "location": "https://mydryfruit.s3.ap-northeast-1.amazonaws.com/200+GM/Almond-Cashew-Pista/200gm-cashew-pista-almond-benefits.png",
-                    "index": 3
-                },
-                {
-                    "name": "Almond-Cashew-Pistachio",
-                    "location": "https://mydryfruit.s3.ap-northeast-1.amazonaws.com/200+GM/Almond-Cashew-Pista/200gm-almond-package-price.png",
-                    "index": 4
-                },
-                {
-                    "name": "Almond-Cashew-Pistachio",
-                    "location": "https://mydryfruit.s3.ap-northeast-1.amazonaws.com/200+GM/Almond-Cashew-Pista/200gm-cashew-package-price.png",
-                    "index": 5
-                },
-                {
-                    "name": "Almond-Cashew-Pistachio",
-                    "location": "https://mydryfruit.s3.ap-northeast-1.amazonaws.com/200+GM/Almond-Cashew-Pista/200gm-pista-package-price.png",
-                    "index": 6
-                }
-            ],
-            "mrp": 1134,
-            "price": 850,
-            "productCode": "acp200",
-            "productDescription": "Experiencing sluggishness or in need of an energy boost? Indulge in our premium California almonds, brimming with protein, fiber, and healthy fats. These crispy delights offer a delectable solution to satiate your cravings healthily while enhancing your well-being. Setting us apart from competitors is not just premium quality, but also the rich nutrients packed into each bite.",
-            "variantName": "almond-cashew-pista",
-            "weight": "600",
-            "details": "100% Natural & Premium Quality Badam | Hygienically Packed Almonds | High in Fiber | Raw badam | Healthy Dry Fruit Snacks | Badam ",
-            "isAvailable": true,
-            "isCombo": true
-        },
-        {
-            "name": "Natural Premium California Almond & Pista each 200gm | Mydryfruit - Premium Dry fruit store",
-            "__v": 0,
-            "discount": 25,
-            "displayName": "natural-premium-california-almond-salted-pista-200gm",
-            "hsncode": "080212",
-            "imageUrl": [
-                {
-                    "name": "Almond-Pista",
-                    "location": "https://mydryfruit.s3.ap-northeast-1.amazonaws.com/200+GM/Almond+Pista/200gm-almond-pista-package-front.png",
-                    "index": 1
-                },
-                {
-                    "name": "Almond-Pista",
-                    "location": "https://mydryfruit.s3.ap-northeast-1.amazonaws.com/200+GM/Almond+Pista/200gm-almond-pista-package-back.png",
-                    "index": 2
-                },
-                {
-                    "name": "Almond-Pista",
-                    "location": "https://mydryfruit.s3.ap-northeast-1.amazonaws.com/200+GM/Almond+Pista/200gm-almond-pista-benefits.png",
-                    "index": 3
-                },
-                {
-                    "name": "Almond-Pista",
-                    "location": "https://mydryfruit.s3.ap-northeast-1.amazonaws.com/200+GM/Almond+Pista/200gm-almond-package-price.png",
-                    "index": 4
-                },
-                {
-                    "name": "Almond-Pista",
-                    "location": "https://mydryfruit.s3.ap-northeast-1.amazonaws.com/200+GM/Almond+Pista/200gm-pista-package-price.png",
-                    "index": 5
-                }
-            ],
-            "mrp": 787,
-            "price": 590,
-            "productCode": "ap200",
-            "productDescription": "Experiencing sluggishness or in need of an energy boost? Indulge in our premium California almonds, brimming with protein, fiber, and healthy fats. These crispy delights offer a delectable solution to satiate your cravings healthily while enhancing your well-being. Setting us apart from competitors is not just premium quality, but also the rich nutrients packed into each bite.",
-            "variantName": "almond-pista",
-            "weight": "400",
-            "details": "100% Natural & Premium Quality Badam | Hygienically Packed Almonds | High in Fiber | Raw badam | Healthy Dry Fruit Snacks | Badam ",
-            "isAvailable": true,
-            "isCombo": true
-        },
-        {
-            "name": "Natural Premium California Almond 300gm | Mydryfruit - Premium Dry fruit store",
-            "__v": 0,
-            "discount": 25,
-            "displayName": "natural-premium-california-almond-300gm",
-            "hsncode": "080212",
-            "imageUrl": [
-                {
-                    "name": "Almond",
-                    "location": "https://mydryfruit.s3.ap-northeast-1.amazonaws.com/300+GM/Almond/300gm-almond-package-front.png",
-                    "index": 1
-                },
-                {
-                    "name": "Almond",
-                    "location": "https://mydryfruit.s3.ap-northeast-1.amazonaws.com/300+GM/Almond/300gm-almond-benefits.png",
-                    "index": 2
-                },
-                {
-                    "name": "Almond",
-                    "location": "https://mydryfruit.s3.ap-northeast-1.amazonaws.com/300+GM/Almond/300gm-Almond-package-back.png",
-                    "index": 3
-                },
-                {
-                    "name": "Almond",
-                    "location": "https://mydryfruit.s3.ap-northeast-1.amazonaws.com/300+GM/Almond/300gm-almond-package-price.png",
-                    "index": 4
-                }
-            ],
-            "mrp": 399,
-            "price": 299,
-            "productCode": "a300",
-            "productDescription": "Experiencing sluggishness or in need of an energy boost? Indulge in our premium California almonds, brimming with protein, fiber, and healthy fats. These crispy delights offer a delectable solution to satiate your cravings healthily while enhancing your well-being. Setting us apart from competitors is not just premium quality, but also the rich nutrients packed into each bite.",
-            "variantName": "almond",
-            "weight": "300",
-            "details": "100% Natural & Premium Quality Badam | Hygienically Packed Almonds | High in Fiber | Raw badam | Healthy Dry Fruit Snacks | Badam ",
-            "isAvailable": true,
-            "isCombo": false
-        },
-        {
-            "name": "Freshly Roasted & Salted Pistachios (Pista) 300gm | Mydryfruit - Premium dry fruit store",
-            "__v": 0,
-            "discount": 25,
-            "displayName": "buy-freshly-roasted-salted-pista-300gm",
-            "hsncode": "08025100",
-            "imageUrl": [
-                {
-                    "name": "Pista",
-                    "location": "https://mydryfruit.s3.ap-northeast-1.amazonaws.com/300+GM/Pista/300gm-pista-package-front.png",
-                    "index": 1
-                },
-                {
-                    "name": "Pista",
-                    "location": "https://mydryfruit.s3.ap-northeast-1.amazonaws.com/300+GM/Pista/300gm-pista-benefits.png",
-                    "index": 2
-                },
-                {
-                    "name": "Pista",
-                    "location": "https://mydryfruit.s3.ap-northeast-1.amazonaws.com/300+GM/Pista/300gm-pista-package-back.png",
-                    "index": 3
-                },
-                {
-                    "name": "Pista",
-                    "location": "https://mydryfruit.s3.ap-northeast-1.amazonaws.com/300+GM/Pista/300gm-pista-package-price.png",
-                    "index": 4
-                }
-            ],
-            "mrp": 607,
-            "price": 455,
-            "productCode": "p300",
-            "productDescription": "Love something that’s crunchy and has a vibrant look? Then our premium pistachio nuts (pista) are what you were looking for. These green gems, also known as pista fruit, are a delicious and healthy way to add a touch of excitement to your day. Packed with protein, fiber, and antioxidants, MyDryFruit's pistachios are the perfect snack or a flavorful addition to your favorite ice cream or salad. Not just that its a delight to also have it as a snack.",
-            "variantName": "pista",
-            "weight": "300",
-            "details": "Premium Quality Pista | Crunchy & Healthy | Iranian pistachios (pista) | Healthy Nuts | Pista",
-            "isAvailable": true,
-            "isCombo": false
-        },
-        {
-            "name": "Natural Premium California Almond 500gm | Mydryfruit - Premium Dry fruit store",
-            "__v": 0,
-            "discount": 25,
-            "displayName": "natural-premium-california-almond-500gm",
-            "hsncode": "080212",
-            "imageUrl": [
-                {
-                    "name": "Almond",
-                    "location": "https://mydryfruit.s3.ap-northeast-1.amazonaws.com/500+GM/Almond/500gm-almond-package-front.png",
-                    "index": 1
-                },
-                {
-                    "name": "Almond",
-                    "location": "https://mydryfruit.s3.ap-northeast-1.amazonaws.com/500+GM/Almond/500gm-almond-benefits.png",
-                    "index": 2
-                },
-                {
-                    "name": "Almond",
-                    "location": "https://mydryfruit.s3.ap-northeast-1.amazonaws.com/500+GM/Almond/500gm-almond-package-back.png",
-                    "index": 3
-                },
-                {
-                    "name": "Almond",
-                    "location": "https://mydryfruit.s3.ap-northeast-1.amazonaws.com/500+GM/Almond/500gm-almond-package-price.png",
-                    "index": 4
-                }
-            ],
-            "mrp": 640,
-            "price": 480,
-            "productCode": "a500",
-            "productDescription": "Experiencing sluggishness or in need of an energy boost? Indulge in our premium California almonds, brimming with protein, fiber, and healthy fats. These crispy delights offer a delectable solution to satiate your cravings healthily while enhancing your well-being. Setting us apart from competitors is not just premium quality, but also the rich nutrients packed into each bite.",
-            "variantName": "almond",
-            "weight": "500",
-            "details": "100% Natural & Premium Quality Badam | Hygienically Packed Almonds | High in Fiber | Raw badam | Healthy Dry Fruit Snacks | Badam ",
-            "isAvailable": true,
-            "isCombo": false
-        },
-        {
-            "name": "Premium Whole Cashew Nuts (kaju) 500gm | Mydryfruit - Premium Dry fruit store",
-            "__v": 0,
-            "discount": 25,
-            "displayName": "buy-premium-Whole-Cashew(kaju)-Nuts-500gm",
-            "hsncode": "08013220",
-            "imageUrl": [
-                {
-                    "name": "Cashew",
-                    "location": "https://mydryfruit.s3.ap-northeast-1.amazonaws.com/500+GM/Cashew/500gm-cashew-package-front.png",
-                    "index": 1
-                },
-                {
-                    "name": "Cashew",
-                    "location": "https://mydryfruit.s3.ap-northeast-1.amazonaws.com/500+GM/Cashew/500gm-cashew-benefits.png",
-                    "index": 2
-                },
-                {
-                    "name": "Cashew",
-                    "location": "https://mydryfruit.s3.ap-northeast-1.amazonaws.com/500+GM/Cashew/500gm-cashew-package-back.png",
-                    "index": 3
-                },
-                {
-                    "name": "Cashew",
-                    "location": "https://mydryfruit.s3.ap-northeast-1.amazonaws.com/500+GM/Cashew/500gm-cashew-package-price.png",
-                    "index": 4
-                }
-            ],
-            "mrp": 666,
-            "price": 499,
-            "productCode": "c500",
-            "productDescription": "Often referred to as kaju fruits, these little flavor bombs are more than just delicious dry fruits. Packed with healthy fats, protein, and essential minerals like copper and magnesium MyDryFruit's premium cashew nuts are a guilt-free go to snack snack that supports your well-being in a natural and healthy way. Then our range of cashew products are your savior.",
-            "variantName": "cashew",
-            "weight": "500",
-            "details": "White & Whole Kaju | Hygienically Packed 500gm kaju | W180 Cashew Nut (kaju) | Raw kaju | Healthy Cashew Nuts | Kaju",
-            "isAvailable": true,
-            "isCombo": false
-        },
-        {
-            "name": "Freshly Roasted & Salted Pistachios (Pista) 500gm | Mydryfruit - Premium dry fruit store",
-            "__v": 0,
-            "discount": 25,
-            "displayName": "buy-freshly-roasted-salted-pista-500gm",
-            "hsncode": "08025100",
-            "imageUrl": [
-                {
-                    "name": "Pista",
-                    "location": "https://mydryfruit.s3.ap-northeast-1.amazonaws.com/500+GM/Pistachio/500gm-pista-package-front.png",
-                    "index": 1
-                },
-                {
-                    "name": "Pista",
-                    "location": "https://mydryfruit.s3.ap-northeast-1.amazonaws.com/500+GM/Pistachio/500gm-pista-benefits.png",
-                    "index": 2
-                },
-                {
-                    "name": "Pista",
-                    "location": "https://mydryfruit.s3.ap-northeast-1.amazonaws.com/500+GM/Pistachio/500gm-pista-package-back.png",
-                    "index": 3
-                },
-                {
-                    "name": "Pista",
-                    "location": "https://mydryfruit.s3.ap-northeast-1.amazonaws.com/500+GM/Pistachio/500gm-pista-package-price.png",
-                    "index": 4
-                }
-            ],
-            "mrp": 854,
-            "price": 640,
-            "productCode": "p500",
-            "productDescription": "Love something that’s crunchy and has a vibrant look? Then our premium pistachio nuts (pista) are what you were looking for. These green gems, also known as pista fruit, are a delicious and healthy way to add a touch of excitement to your day. Packed with protein, fiber, and antioxidants, MyDryFruit's pistachios are the perfect snack or a flavorful addition to your favorite ice cream or salad. Not just that its a delight to also have it as a snack.",
-            "variantName": "pista",
-            "weight": "500",
-            "details": "Premium Quality Pista | Crunchy & Healthy | Iranian pistachios (pista) | Healthy Nuts | Pista",
-            "isAvailable": true,
-            "isCombo": false
-        },
-        {
-            "name": "Natural Premium California Almond & Cashew each 500gm | Mydryfruit - Premium Dry fruit store",
-            "__v": 0,
-            "discount": 25,
-            "displayName": "natural-premium-california-almond-fresh-cashew-500gm",
-            "hsncode": "080212",
-            "imageUrl": [
-                {
-                    "name": "Almond-Cashew",
-                    "location": "https://mydryfruit.s3.ap-northeast-1.amazonaws.com/500+GM/Almond-Cashew/500gm-almond-cashew-package-front.png",
-                    "index": 1
-                },
-                {
-                    "name": "Almond-Cashew",
-                    "location": "https://mydryfruit.s3.ap-northeast-1.amazonaws.com/500+GM/Almond-Cashew/500gm-almond-cashew-package-price.png",
-                    "index": 2
-                },
-                {
-                    "name": "Almond-Cashew",
-                    "location": "https://mydryfruit.s3.ap-northeast-1.amazonaws.com/500+GM/Almond-Cashew/500gm-almond-cashew-benefits.png",
-                    "index": 3
-                },
-                {
-                    "name": "Almond-Cashew",
-                    "location": "https://mydryfruit.s3.ap-northeast-1.amazonaws.com/500+GM/Almond-Cashew/500gm-almond-package-back.png",
-                    "index": 4
-                },
-                {
-                    "name": "Almond-Cashew",
-                    "location": "https://mydryfruit.s3.ap-northeast-1.amazonaws.com/500+GM/Almond-Cashew/500gm-cashew-package-back.png",
-                    "index": 5
-                }
-            ],
-            "mrp": 1280,
-            "price": 960,
-            "productCode": "ac500",
-            "productDescription": "Experiencing sluggishness or in need of an energy boost? Indulge in our premium California almonds, brimming with protein, fiber, and healthy fats. These crispy delights offer a delectable solution to satiate your cravings healthily while enhancing your well-being. Setting us apart from competitors is not just premium quality, but also the rich nutrients packed into each bite.",
-            "variantName": "almond-cashew",
-            "weight": "1000",
-            "details": "100% Natural & Premium Quality Badam | Hygienically Packed Almonds | High in Fiber | Raw badam | Healthy Dry Fruit Snacks | Badam ",
-            "isAvailable": true,
-            "isCombo": true
-        },
-        {
-            "name": "Natural Premium California Almond & Pista each 500gm | Mydryfruit - Premium Dry fruit store",
-            "__v": 0,
-            "discount": 25,
-            "displayName": "natural-premium-california-almond-salted-pista-500gm",
-            "hsncode": "080212",
-            "imageUrl": [
-                {
-                    "name": "Almond-Pista",
-                    "location": "https://mydryfruit.s3.ap-northeast-1.amazonaws.com/500+GM/Almond+-+Pista/500gm-almond-pista-package-front.png",
-                    "index": 1
-                },
-                {
-                    "name": "Almond-Pista",
-                    "location": "https://mydryfruit.s3.ap-northeast-1.amazonaws.com/500+GM/Almond+-+Pista/500gm-almond-pista-package-price.png",
-                    "index": 2
-                },
-                {
-                    "name": "Almond-Pista",
-                    "location": "https://mydryfruit.s3.ap-northeast-1.amazonaws.com/500+GM/Almond+-+Pista/500gm-almond-pista-benefits.png",
-                    "index": 3
-                },
-                {
-                    "name": "Almond-Pista",
-                    "location": "https://mydryfruit.s3.ap-northeast-1.amazonaws.com/500+GM/Almond+-+Pista/500gm-almond-package-back.png",
-                    "index": 4
-                },
-                {
-                    "name": "Almond-Pista",
-                    "location": "https://mydryfruit.s3.ap-northeast-1.amazonaws.com/500+GM/Almond+-+Pista/500gm-pista-package-back.png",
-                    "index": 5
-                }
-            ],
-            "mrp": 1466,
-            "price": 1099,
-            "productCode": "ap500",
-            "productDescription": "Experiencing sluggishness or in need of an energy boost? Indulge in our premium California almonds, brimming with protein, fiber, and healthy fats. These crispy delights offer a delectable solution to satiate your cravings healthily while enhancing your well-being. Setting us apart from competitors is not just premium quality, but also the rich nutrients packed into each bite.",
-            "variantName": "almond-pista",
-            "weight": "1000",
-            "details": "100% Natural & Premium Quality Badam | Hygienically Packed Almonds | High in Fiber | Raw badam | Healthy Dry Fruit Snacks | Badam ",
-            "isAvailable": true,
-            "isCombo": true
-        },
-        {
-            "name": "Natural Premium Roasted Pista & Cashew each 500gm | Mydryfruit - Premium Dry fruit store",
-            "__v": 0,
-            "discount": 25,
-            "displayName": "natural-premium-roasted-pista-fresh-cashew-500gm",
-            "hsncode": "080212",
-            "imageUrl": [
-                {
-                    "name": "Cashew-Pista",
-                    "location": "https://mydryfruit.s3.ap-northeast-1.amazonaws.com/500+GM/Cashew+Pista/500gm-cashew-pista-package-front.png",
-                    "index": 1
-                },
-                {
-                    "name": "Cashew-Pista",
-                    "location": "https://mydryfruit.s3.ap-northeast-1.amazonaws.com/500+GM/Cashew+Pista/500gm-cashew-pista-package-back.png",
-                    "index": 2
-                },
-                {
-                    "name": "Cashew-Pista",
-                    "location": "https://mydryfruit.s3.ap-northeast-1.amazonaws.com/500+GM/Cashew+Pista/500gm-cashew-pista-benefits.png",
-                    "index": 3
-                },
-                {
-                    "name": "Cashew-Pista",
-                    "location": "https://mydryfruit.s3.ap-northeast-1.amazonaws.com/500+GM/Cashew+Pista/500gm-cashew-package-price.png",
-                    "index": 4
-                },
-                {
-                    "name": "Cashew-Pista",
-                    "location": "https://mydryfruit.s3.ap-northeast-1.amazonaws.com/500+GM/Cashew+Pista/500gm-pista-package-price.png",
-                    "index": 5
-                }
-            ],
-            "mrp": 1519,
-            "price": 1139,
-            "productCode": "cp500",
-            "productDescription": "Experiencing sluggishness or in need of an energy boost? Indulge in our premium California almonds, brimming with protein, fiber, and healthy fats. These crispy delights offer a delectable solution to satiate your cravings healthily while enhancing your well-being. Setting us apart from competitors is not just premium quality, but also the rich nutrients packed into each bite.",
-            "variantName": "cashew-pista",
-            "weight": "1000",
-            "details": "100% Natural & Premium Quality Badam | Hygienically Packed Almonds | High in Fiber | Raw badam | Healthy Dry Fruit Snacks | Badam ",
-            "isAvailable": true,
-            "isCombo": true
-        },
-        {
-            "name": "Natural Premium California Almond & Fresh Cashew & Salted PistaChio each 500gm | Mydryfruit - Premium Dry fruit store",
-            "__v": 0,
-            "discount": 25,
-            "displayName": "natural-premium-california-almond-fresh-cashew-salted-pista-500gm",
-            "hsncode": "080212",
-            "imageUrl": [
-                {
-                    "name": "Almond-Cashew-Pistachio",
-                    "location": "https://mydryfruit.s3.ap-northeast-1.amazonaws.com/500+GM/Almond-Cashew-Pistachio/500gm-almond-cashew-pista-package-front.png",
-                    "index": 1
-                },
-                {
-                    "name": "Almond-Cashew-Pistachio",
-                    "location": "https://mydryfruit.s3.ap-northeast-1.amazonaws.com/500+GM/Almond-Cashew-Pistachio/500gm-almond-cashew-pista-package-back.png",
-                    "index": 2
-                },
-                {
-                    "name": "Almond-Cashew-Pistachio",
-                    "location": "https://mydryfruit.s3.ap-northeast-1.amazonaws.com/500+GM/Almond-Cashew-Pistachio/500gm-almond-cashew-pista-benefits.png",
-                    "index": 3
-                },
-                {
-                    "name": "Almond-Cashew-Pistachio",
-                    "location": "https://mydryfruit.s3.ap-northeast-1.amazonaws.com/500+GM/Almond-Cashew-Pistachio/500gm-almond-package-price.png",
-                    "index": 4
-                },
-                {
-                    "name": "Almond-Cashew-Pistachio",
-                    "location": "https://mydryfruit.s3.ap-northeast-1.amazonaws.com/500+GM/Almond-Cashew-Pistachio/500gm-cashew-package-price.png",
-                    "index": 5
-                },
-                {
-                    "name": "Almond-Cashew-Pistachio",
-                    "location": "https://mydryfruit.s3.ap-northeast-1.amazonaws.com/500+GM/Almond-Cashew-Pistachio/500gm-pista-package-price.png",
-                    "index": 6
-                }
-            ],
-            "mrp": 2132,
-            "price": 1599,
-            "productCode": "acp500",
-            "productDescription": "Experiencing sluggishness or in need of an energy boost? Indulge in our premium California almonds, brimming with protein, fiber, and healthy fats. These crispy delights offer a delectable solution to satiate your cravings healthily while enhancing your well-being. Setting us apart from competitors is not just premium quality, but also the rich nutrients packed into each bite.",
-            "variantName": "almond-cashew-pista",
-            "weight": "1500",
-            "details": "100% Natural & Premium Quality Badam | Hygienically Packed Almonds | High in Fiber | Raw badam | Healthy Dry Fruit Snacks | Badam ",
-            "isAvailable": true,
-            "isCombo": true
-        },
-        {
-            "name": "Natural Premium Roasted Pista & Cashew each 200gm | Mydryfruit - Premium Dry fruit store",
-            "__v": 0,
-            "discount": 25,
-            "displayName": "natural-premium-roasted-pista-fresh-cashew-200gm",
-            "hsncode": "080212",
-            "imageUrl": [
-                {
-                    "name": "Cashew-Pista",
-                    "location": "https://mydryfruit.s3.ap-northeast-1.amazonaws.com/200+GM/Cashew+Pista/200gm-cashew-pista-package-front.png",
-                    "index": 1
-                },
-                {
-                    "name": "Cashew-Pista",
-                    "location": "https://mydryfruit.s3.ap-northeast-1.amazonaws.com/200+GM/Cashew+Pista/200gm-cashew-pista-package-back.png",
-                    "index": 2
-                },
-                {
-                    "name": "Cashew-Pista",
-                    "location": "https://mydryfruit.s3.ap-northeast-1.amazonaws.com/200+GM/Cashew+Pista/200gm-cashew-pista-benefits.png",
-                    "index": 3
-                },
-                {
-                    "name": "Cashew-Pista",
-                    "location": "https://mydryfruit.s3.ap-northeast-1.amazonaws.com/200+GM/Cashew+Pista/200gm-cashew-package-price.png",
-                    "index": 4
-                },
-                {
-                    "name": "Cashew-Pista",
-                    "location": "https://mydryfruit.s3.ap-northeast-1.amazonaws.com/200+GM/Cashew+Pista/200gm-pista-package-price.png",
-                    "index": 5
-                }
-            ],
-            "mrp": 816,
-            "price": 612,
-            "productCode": "cp200",
-            "productDescription": "Experiencing sluggishness or in need of an energy boost? Indulge in our premium California almonds, brimming with protein, fiber, and healthy fats. These crispy delights offer a delectable solution to satiate your cravings healthily while enhancing your well-being. Setting us apart from competitors is not just premium quality, but also the rich nutrients packed into each bite.",
-            "variantName": "cashew-pista",
-            "weight": "400",
-            "details": "100% Natural & Premium Quality Badam | Hygienically Packed Almonds | High in Fiber | Raw badam | Healthy Dry Fruit Snacks | Badam ",
-            "isAvailable": true,
-            "isCombo": true
-        },
-        {
-            "name": "Natural Premium California Almond 1Kg | Mydryfruit - Premium Dry fruit store",
-            "__v": 0,
-            "discount": 25,
-            "displayName": "natural-premium-california-almond-1Kg",
-            "hsncode": "080212",
-            "imageUrl": [
-                {
-                    "name": "Almond",
-                    "location": "https://mydryfruit.s3.ap-northeast-1.amazonaws.com/500+GM/ALMOND+ALMOND/1Kg-almond-package-front.png",
-                    "index": 1
-                },
-                {
-                    "name": "Almond",
-                    "location": "https://mydryfruit.s3.ap-northeast-1.amazonaws.com/500+GM/ALMOND+ALMOND/1Kg-almond-benefits.png",
-                    "index": 2
-                },
-                {
-                    "name": "Almond",
-                    "location": "https://mydryfruit.s3.ap-northeast-1.amazonaws.com/500+GM/ALMOND+ALMOND/1Kg-almond-package-back.png",
-                    "index": 3
-                },
-                {
-                    "name": "Almond",
-                    "location": "https://mydryfruit.s3.ap-northeast-1.amazonaws.com/500+GM/ALMOND+ALMOND/1Kg-almond-package-price.png",
-                    "index": 4
-                }
-            ],
-            "mrp": 1267,
-            "price": 950,
-            "productCode": "a1000",
-            "productDescription": "Experiencing sluggishness or in need of an energy boost? Indulge in our premium California almonds, brimming with protein, fiber, and healthy fats. These crispy delights offer a delectable solution to satiate your cravings healthily while enhancing your well-being. Setting us apart from competitors is not just premium quality, but also the rich nutrients packed into each bite.",
-            "variantName": "almond",
-            "weight": "1000",
-            "details": "100% Natural & Premium Quality Badam | Hygienically Packed Almonds | High in Fiber | Raw badam | Healthy Dry Fruit Snacks | Badam ",
-            "isAvailable": true,
-            "isCombo": false
-        },
-        {
-            "name": "Premium Whole Cashew Nuts (kaju) 1Kg | Mydryfruit - Premium Dry fruit store",
-            "__v": 0,
-            "discount": 25,
-            "displayName": "buy-premium-Whole-Cashew(kaju)-Nuts-1Kg",
-            "hsncode": "08013220",
-            "imageUrl": [
-                {
-                    "name": "Cashew",
-                    "location": "https://mydryfruit.s3.ap-northeast-1.amazonaws.com/500+GM/Cashew+Cashew/1Kg-cashew-package-front.png",
-                    "index": 1
-                },
-                {
-                    "name": "Cashew",
-                    "location": "https://mydryfruit.s3.ap-northeast-1.amazonaws.com/500+GM/Cashew+Cashew/1Kg-cashew-benefits.png",
-                    "index": 2
-                },
-                {
-                    "name": "Cashew",
-                    "location": "https://mydryfruit.s3.ap-northeast-1.amazonaws.com/500+GM/Cashew+Cashew/1Kg-cashew-package-back.png",
-                    "index": 3
-                },
-                {
-                    "name": "Cashew",
-                    "location": "https://mydryfruit.s3.ap-northeast-1.amazonaws.com/500+GM/Cashew+Cashew/1Kg-cashew-package-price.png",
-                    "index": 4
-                }
-            ],
-            "mrp": 1307,
-            "price": 980,
-            "productCode": "c1000",
-            "productDescription": "Often referred to as kaju fruits, these little flavor bombs are more than just delicious dry fruits. Packed with healthy fats, protein, and essential minerals like copper and magnesium MyDryFruit's premium cashew nuts are a guilt-free go to snack snack that supports your well-being in a natural and healthy way. Then our range of cashew products are your savior.",
-            "variantName": "cashew",
-            "weight": "1000",
-            "details": "White & Whole Kaju | Hygienically Packed 1Kg kaju | W180 Cashew Nut (kaju) | Raw kaju | Healthy Cashew Nuts | Kaju",
-            "isAvailable": true,
-            "isCombo": false
-        },
-        {
-            "name": "Freshly Roasted & Salted Pistachios (Pista) 1Kg | Mydryfruit - Premium dry fruit store",
-            "__v": 0,
-            "discount": 25,
-            "displayName": "buy-freshly-roasted-salted-pista-1Kg",
-            "hsncode": "08025100",
-            "imageUrl": [
-                {
-                    "name": "Pista",
-                    "location": "https://mydryfruit.s3.ap-northeast-1.amazonaws.com/500+GM/Pista+Pista/1Kg-pista-package-front.png",
-                    "index": 1
-                },
-                {
-                    "name": "Pista",
-                    "location": "https://mydryfruit.s3.ap-northeast-1.amazonaws.com/500+GM/Pista+Pista/1Kg-pista-benefits.png",
-                    "index": 2
-                },
-                {
-                    "name": "Pista",
-                    "location": "https://mydryfruit.s3.ap-northeast-1.amazonaws.com/500+GM/Pista+Pista/1Kg-pista-package-back.png",
-                    "index": 3
-                },
-                {
-                    "name": "Pista",
-                    "location": "https://mydryfruit.s3.ap-northeast-1.amazonaws.com/500+GM/Pista+Pista/1Kg-pista-package-price.png",
-                    "index": 4
-                }
-            ],
-            "mrp": 1667,
-            "price": 1250,
-            "productCode": "p1000",
-            "productDescription": "Love something that’s crunchy and has a vibrant look? Then our premium pistachio nuts (pista) are what you were looking for. These green gems, also known as pista fruit, are a delicious and healthy way to add a touch of excitement to your day. Packed with protein, fiber, and antioxidants, MyDryFruit's pistachios are the perfect snack or a flavorful addition to your favorite ice cream or salad. Not just that its a delight to also have it as a snack.",
-            "variantName": "pista",
-            "weight": "1000",
-            "details": "Premium Quality Pista | Crunchy & Healthy | Iranian pistachios (pista) | Healthy Nuts | Pista",
-            "isAvailable": true,
-            "isCombo": false
-        }
-    ]
+    "natural-premium-california-almond-fresh-cashew-200gm": {
+        "title": "MY DRY FRUIT-title",
+        "description": "description1",
+        "keywords": "keywords1"
+    },
+    "natural-premium-california-almond-200gm": {
+        "title": "MY DRY FRUIT-title",
+        "description": "description2",
+        "keywords": "keywords2"
+    },
+    "buy-premium-Whole-Cashew(kaju)-Nuts-200gm": {
+        "title": "MY DRY FRUIT-title",
+        "description": "description",
+        "keywords": "keywords"
+    },
+    "buy-freshly-roasted-salted-pista-200gm": {
+        "title": "MY DRY FRUIT-title",
+        "description": "description",
+        "keywords": "keywords"
+    },
+    "buy-premium-Whole-Cashew(kaju)-Nuts-300gm": {
+        "title": "MY DRY FRUIT-title",
+        "description": "description",
+        "keywords": "keywords"
+    },
+    "natural-premium-california-almond-fresh-cashew-salted-pista-200gm": {
+        "title": "MY DRY FRUIT-title",
+        "description": "description",
+        "keywords": "keywords"
+    },
+    "natural-premium-california-almond-salted-pista-200gm": {
+        "title": "MY DRY FRUIT-title",
+        "description": "description",
+        "keywords": "keywords"
+    },
+    "natural-premium-california-almond-300gm": {
+        "title": "MY DRY FRUIT-title",
+        "description": "description",
+        "keywords": "keywords"
+    },
+    "buy-freshly-roasted-salted-pista-300gm": {
+        "title": "MY DRY FRUIT-title",
+        "description": "description",
+        "keywords": "keywords"
+    },
+    "natural-premium-california-almond-500gm": {
+        "title": "MY DRY FRUIT-title",
+        "description": "description",
+        "keywords": "keywords"
+    },
+    "buy-premium-Whole-Cashew(kaju)-Nuts-500gm": {
+        "title": "MY DRY FRUIT-title",
+        "description": "description",
+        "keywords": "keywords"
+    },
+    "buy-freshly-roasted-salted-pista-500gm": {
+        "title": "MY DRY FRUIT-title",
+        "description": "description",
+        "keywords": "keywords"
+    },
+    "natural-premium-california-almond-fresh-cashew-500gm": {
+        "title": "MY DRY FRUIT-title",
+        "description": "description",
+        "keywords": "keywords"
+    },
+    "natural-premium-california-almond-salted-pista-500gm": {
+        "title": "MY DRY FRUIT-title",
+        "description": "description",
+        "keywords": "keywords"
+    },
+    "natural-premium-roasted-pista-fresh-cashew-500gm": {
+        "title": "MY DRY FRUIT-title",
+        "description": "description",
+        "keywords": "keywords"
+    },
+    "natural-premium-california-almond-fresh-cashew-salted-pista-500gm": {
+        "title": "MY DRY FRUIT-title",
+        "description": "description",
+        "keywords": "keywords"
+    },
+    "natural-premium-roasted-pista-fresh-cashew-200gm": {
+        "title": "MY DRY FRUIT-title",
+        "description": "description",
+        "keywords": "keywords"
+    },
+    "natural-premium-california-almond-1Kg": {
+        "title": "MY DRY FRUIT-title",
+        "description": "description",
+        "keywords": "keywords"
+    },
+    "buy-premium-Whole-Cashew(kaju)-Nuts-1Kg": {
+        "title": "MY DRY FRUIT-title",
+        "description": "description",
+        "keywords": "keywords"
+    },
+    "buy-freshly-roasted-salted-pista-1Kg": {
+        "title": "MY DRY FRUIT-title",
+        "description": "description",
+        "keywords": "keywords"
+    }
 }
