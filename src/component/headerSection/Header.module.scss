@@ -284,8 +284,8 @@
 
 .cartDropdownContent {
     position: absolute;
-    right: 1rem;
-    background-color: #fff;
+    right: 3.8rem;
+    background-color: #ffffff;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     color: #144950;
     font-weight: 500;
@@ -378,4 +378,29 @@
 
 .header {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+
+@media (max-width:1380px) {
+    .cartDropdownContent {
+        position: absolute;
+        right: 1rem;
+        top: 4.1rem !important;
+    }
+}
+
+@media (max-width:1285px) {
+    .cartDropdownContent {
+        position: absolute;
+        right: 1rem;
+        top: 5rem !important;
+    }
+}
+
+@media (max-width: 1025px) {
+    .cartDropdownContent {
+        position: absolute;
+        right: -1rem;
+        top: 4.1rem !important;
+    }
 }

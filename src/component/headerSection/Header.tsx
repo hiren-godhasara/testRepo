@@ -268,7 +268,7 @@ const Header = () => {
                                         <Image src={userIcon} width={35} height={35} alt='Home Pagea' />
                                     </button>
                                     {isCartDropdownOpen && (
-                                        <div className={styles.cartDropdownContent} style={{ top: '5rem ' }}>
+                                        <div className={styles.cartDropdownContent} style={{ top: '4.05rem ' }}>
                                             <button onClick={openUserDetailsModal}>User Details</button>
                                             <button onClick={orderListClick} >Your Order</button>
                                             <button onClick={onLogoutBtn} >Log Out</button>
