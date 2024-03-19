@@ -173,7 +173,12 @@ const PlaceOrders = () => {
 
     const handleEditChange = (e: any, isEditForm: boolean) => {
         const { name, value, type, checked } = e.target;
-
+        if (name === 'mobile' && isNaN(value)) {
+            return;
+        }
+        if (name === 'pincode' && isNaN(value)) {
+            return;
+        }
         if (isEditForm) {
             setEditFormData((prevEditFormData: any) => ({
                 ...prevEditFormData,
@@ -1001,7 +1006,7 @@ const PlaceOrders = () => {
                                             <div className={styles.thirdRow}>
                                                 <div>
                                                     <label>Pincode: <span style={{ color: 'red' }}>*</span></label>
-                                                    <input type="text" name="pincode" value={editFormData.pincode} onChange={(e) => handleEditChange(e, true)} required />
+                                                    <input type="text" maxLength={6} name="pincode" value={editFormData.pincode} onChange={(e) => handleEditChange(e, true)} required />
                                                 </div>
                                                 <div>
                                                     <label>City: <span style={{ color: 'red' }}>*</span></label>
