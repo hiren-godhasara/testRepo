@@ -3,14 +3,6 @@ import RegisterForm from '@/component/registrationUser/Register';
 import { GoogleOAuthProvider } from '@react-oauth/google';
 import React from 'react';
 
-const information = require('../../data/details.json')
-
-export const metadata = {
-    title: information?.registration?.title,
-    description: information?.registration?.description,
-    keywords: information?.registration?.keywords
-};
-
 export default function Cart() {
     return (
         <div>

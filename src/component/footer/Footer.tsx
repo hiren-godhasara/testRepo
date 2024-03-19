@@ -31,10 +31,13 @@ export default function Footer() {
                         {/* <p className={styles.headp}>My Dry Fruit</p> */}
                     </Link>
                     <Link href='/' className={styles.p11}>
-                        BITSSHADOW LLP
+                        MYDRYFRUIT
                     </Link>
 
                     <p className={styles.p1}>
+                        powered by: <span>BITSSHADOW LLP</span>
+                    </p>
+                    <p className={styles.p1} >
                         519-521 Meridian Business Center, Mota Varachha, Surat, Gujarat 394101
                     </p>
 
