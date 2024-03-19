@@ -22,7 +22,7 @@ const TagLine = () => {
                 return response.json();
             })
             .then(data => {
-                console.log(data.data);
+                // console.log(data.data);
                 setTagLineList(data?.data);
             })
             .catch(error => {
@@ -42,7 +42,7 @@ const TagLine = () => {
         return () => clearInterval(intervalId);
     }, [tagLineList]);
 
-    console.log(tagLineList, 'tagLineList');
+    // console.log(tagLineList, 'tagLineList');
 
 
     return (

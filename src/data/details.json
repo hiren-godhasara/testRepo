@@ -1,5 +1,5 @@
 {
-    "registration_abc": {
+    "registration": {
         "title": "MY DRY FRUIT-Registration",
         "description": "MyDryFruit.com is your premier destination for online shopping of dry fruits including almonds, cashews, and pistachios. We offer a wide range of high-quality dry fruits sourced from trusted suppliers. Enjoy the convenience of shopping online for your favorite dry fruits with free cash on delivery and free shipping options available. Explore our extensive selection today and experience the goodness of premium dry fruits delivered straight to your doorstep.",
         "keywords": "dry fruits online, online shopping, online shopping sites, online shopping india, shopping, dry fruits, online shoping, shop, almonds, cashews, pistachios, online shopping websites, online shopping sites in india, online shopping in india, online dry fruit shopping, dry fruit store, buy dry fruits online, online dry fruit shop, dry fruit delivery, dry fruit offers, best online shopping sites"
@@ -15,6 +15,18 @@
     },
     "contactUs": {
         "title": "My Dry Fruit-Contact Us",
+        "description": "Reach out and connect with MyDryFruit to have your queries, feedback, or inquiries addressed promptly! Whether you're seeking information about our products, exploring partnership opportunities, or eager to share your experience, we're committed to providing attentive assistance. Don't hesitate to get in touch today and initiate a fruitful conversation with us!"
+    },
+    "privacyPolicy": {
+        "title": "My Dry Fruit-Privacy Policy",
+        "description": "Reach out and connect with MyDryFruit to have your queries, feedback, or inquiries addressed promptly! Whether you're seeking information about our products, exploring partnership opportunities, or eager to share your experience, we're committed to providing attentive assistance. Don't hesitate to get in touch today and initiate a fruitful conversation with us!"
+    },
+    "returnPolicy": {
+        "title": "My Dry Fruit-Return Policy",
+        "description": "Reach out and connect with MyDryFruit to have your queries, feedback, or inquiries addressed promptly! Whether you're seeking information about our products, exploring partnership opportunities, or eager to share your experience, we're committed to providing attentive assistance. Don't hesitate to get in touch today and initiate a fruitful conversation with us!"
+    },
+    "termsOfUse": {
+        "title": "My Dry Fruit-Terms of Uses",
         "description": "Reach out and connect with MyDryFruit to have your queries, feedback, or inquiries addressed promptly! Whether you're seeking information about our products, exploring partnership opportunities, or eager to share your experience, we're committed to providing attentive assistance. Don't hesitate to get in touch today and initiate a fruitful conversation with us!"
     }
 }
