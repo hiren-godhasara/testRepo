@@ -7,7 +7,7 @@ import img from '../../imageFolder/branchInfoBg.png';
 
 const Info: React.FC = () => {
     const [dynamicValue, setDynamicValue] = useState(() => {
-        const storedValue = localStorage.getItem('dynamicValue');
+        const storedValue = typeof window !== 'undefined' ? localStorage.getItem('dynamicValue') : null;
         return storedValue ? parseInt(storedValue) : 10000;
     });
 
