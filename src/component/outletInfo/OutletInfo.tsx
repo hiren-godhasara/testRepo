@@ -6,17 +6,27 @@ import Image from 'next/image';
 import img from '../../imageFolder/branchInfoBg.png';
 
 const Info: React.FC = () => {
+    const [dynamicValue, setDynamicValue] = useState(() => {
+        const storedValue = localStorage.getItem('dynamicValue');
+        return storedValue ? parseInt(storedValue) : 10000;
+    });
 
-    const [dynamicValue, setDynamicValue] = useState(10000);
+    const incFunction = () => {
+        setDynamicValue(prevValue => prevValue + 50);
+    };
+
     useEffect(() => {
-        const updateValue = () => {
-            setDynamicValue(prevValue => prevValue + 50);
-        };
+        localStorage.setItem('dynamicValue', dynamicValue.toString());
+    }, [dynamicValue]);
 
-        updateValue();
-        const intervalId = setInterval(updateValue, 86400);
-        return () => clearInterval(intervalId);
+    const runEvery24Hours = () => {
+        setInterval(incFunction, 86400);
+    };
+
+    useEffect(() => {
+        runEvery24Hours();
     }, []);
+
     return (
         <div className={styles.infoContainer}>
             <div className={styles.imageContainer}>

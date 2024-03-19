@@ -17,10 +17,12 @@
 }
 
 .p {
+    margin-left: 10px;
+    margin-right: 10px;
     font-size: 16px;
     position: relative;
     top: 50px;
-    left: 13px;
+    text-align: justify;
 
 }
 
@@ -33,7 +35,6 @@
 
 
 .image {
-
     border-radius: 8px;
     position: relative;
     top: 190px;
@@ -141,6 +142,38 @@
 
 }
 
+@media (max-width: 977px) {
+    .p {
+        font-size: 18px;
+    }
+
+    .image {
+        border-radius: 8px;
+        position: relative;
+        top: 190px;
+        left: 10px;
+    }
+
+    .h2 {
+        font-size: 18px;
+        font-weight: 600;
+        color: rgba(20, 73, 80, 1);
+        position: relative;
+        top: 140px;
+        left: 70px;
+    }
+
+    .h3 {
+        font-size: 16px;
+        font-weight: 600;
+        color: rgba(131, 129, 129, 1);
+        position: relative;
+        top: 140px;
+        left: 70px;
+    }
+
+}
+
 @media (max-width: 600px) {
     .carouselContainer {
         margin-left: 0 !important;
@@ -149,14 +182,35 @@
     .card {
         margin-left: 20px !important;
         margin-right: 20px !important;
-
         width: auto;
 
     }
 
     .p {
-        font-size: 15px;
+        margin-left: 0px !important;
+        margin-right: 0px !important;
+        font-size: 15px !important;
         margin-top: -20px;
+    }
 
+    .h4 {
+        position: relative;
+        top: 20px;
+        left: 0px;
+    }
+
+    .image {
+        position: relative;
+        left: 0px;
+    }
+
+    .h2 {
+        position: relative;
+        left: 60px;
+    }
+
+    .h3 {
+        position: relative;
+        left: 60px;
     }
 }
