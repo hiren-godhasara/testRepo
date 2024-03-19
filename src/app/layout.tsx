@@ -12,7 +12,7 @@ import Footer from '@/component/footer/Footer';
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "My Dry Fruit",
+  title: "Mydryfruit",
   keywords: "almond,  kaju,  cashew,  almond,  badam,  premium almond,  premium cashew nuts,  premium cashew,  dry fruits combo pack,  dry fruits combo,  pista,  premium california almonds,  kaju badam packet,  dry fruit,  almond and kaju,  kaju badam,  dry fruit small packets",
   description: "Indulge in the exquisite taste of our natural premium California almonds, whole cashew nuts (kaju), and freshly roasted & salted pistachios (pista) available exclusively on our online shopping website. Our range offers the perfect combination of flavor, crunch, and nutrition. Choose from our wide selection of individual packs, including 200gm, 300gm, 500gm, and 1 kg, to suit your snacking needs. Looking for variety? Explore our tantalizing combos such as almond-cashew, almond-pistachio, cashew-pistachio, and the ultimate trifecta of almond-cashew-pistachio.Elevate your snacking experience with our premium dry fruits, carefully sourced and packed to retain their freshness and goodness. Shop now and treat yourself to the finest quality nuts delivered right to your doorstep.",
 };

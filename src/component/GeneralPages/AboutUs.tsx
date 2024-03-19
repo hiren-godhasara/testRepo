@@ -1,4 +1,4 @@
-'use client'
+// 'use client'
 
 import React from 'react';
 
@@ -12,10 +12,10 @@ const AboutUs = () => {
         <div className={styles.aboutContainer}>
             <div className={styles.detailsContainer}>
                 <h1 className={styles.head}>About Us</h1>
-                <p >At Bitsshadow, we take pride in being a leading manufacturer, processor, and trader of a diverse range of high-quality dry fruits under our esteemed brand name &quot;MyDryFruit.&quot; With a commitment to excellence, we engage in the meticulous processing, grading, packaging, and marketing of a wide variety of dry fruits and spices, ensuring that our customers receive nothing but the best.</p>
+                <p>At Bitsshadow LLP, we proudly present &quot;MyDryFruit&quot; our distinguished brand renowned for its superior quality dry fruits. As pioneers in the industry, we specialize in processing, sorting, and repackaging an extensive assortment of premium dry fruits. Our dedication to excellence drives us to meticulously grade, package, and market these products, guaranteeing our customers unparalleled quality and satisfaction.</p>
                 <br /> <div className={styles.details1}>
                     <div className={styles.p}>Our Mission:</div> <br />
-                    <p>At Bitsshadow, we are dedicated to delivering wholesome and nutritious dry fruits to satisfy your cravings at any time of the day. We understand the importance of offering premium products that not only curb your odd-hour cravings but also contribute to a healthy and energetic lifestyle.</p>
+                    <p>At Bitsshadow, our mission is to bring you the finest selection of dry fruits, curated to meet your cravings anytime, anywhere. We understand the importance of offering top-quality products that not only satiate your snack desires but also promote a balanced and active lifestyle. Our commitment is to provide you with nutritious delights that not only please your palate but also nourish your body, empowering you to enjoy life to the fullest.</p>
                 </div>
 
                 <div className={styles.details1}>
@@ -25,12 +25,12 @@ const AboutUs = () => {
 
                 <div className={styles.details1}>
                     <div className={styles.p}>Product Range:</div> <br />
-                    <p>Explore the exquisite range of MyDryFruit products, featuring the finest assortment of flavors to enhance your breakfasts and evening snacks. Whether you are looking to add a boost to your tiresome day or preparing a healthy feast, our dry fruits are the perfect choice.</p>
+                    <p>Explore the exquisite range of MyDryFruit products, showcasing a diverse assortment of flavors meticulously crafted to elevate your breakfasts and evening snacks. Whether you seek to invigorate a weary day or prepare a nutritious feast, our dry fruits are the ultimate choice. With a wide array of products available in preferred quantity packaging and weight options, we ensure convenience and satisfaction in every purchase.</p>
                 </div>
 
                 <div className={styles.details1}>
                     <div className={styles.p}>Customer Satisfaction:</div> <br />
-                    <p>At Bitsshadow, we prioritize customer satisfaction and aim to be your first choice when it comes to fulfilling your dry fruit needs. Our commitment to delivering top-notch products is reflected in every bite of our MyDryFruit offerings. </p>
+                    <p>At Bitsshadow, we prioritize customer satisfaction and aim to be your first choice when it comes to fulfilling your dry fruit needs. Our commitment to delivering top-notch products is reflected in every bite of our MyDryFruit offerings. With a dedicated focus on quality assurance and prompt customer support, we strive to exceed your expectations and build lasting relationships based on trust and excellence. Your satisfaction is not just our goal; it&apos;s our driving force. </p>
                 </div>
 
 
