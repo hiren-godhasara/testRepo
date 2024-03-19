@@ -199,7 +199,12 @@ const OrderAddresss = () => {
 
     const handleEditChange = (e: any, isEditForm: boolean) => {
         const { name, value, type, checked } = e.target;
-
+        if (name === 'mobile' && isNaN(value)) {
+            return;
+        }
+        if (name === 'pincode' && isNaN(value)) {
+            return;
+        }
         if (isEditForm) {
             setEditFormData((prevEditFormData: any) => ({
                 ...prevEditFormData,
