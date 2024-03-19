@@ -78,6 +78,7 @@ const OrderAddresss = () => {
 
 
     useEffect(() => {
+        setLoading(true)
         if (cartData === undefined) {
             setCart(true);
             router.push("/")
