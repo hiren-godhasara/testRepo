@@ -6,26 +6,26 @@ import Image from 'next/image';
 import img from '../../imageFolder/branchInfoBg.png';
 
 const Info: React.FC = () => {
-    const [dynamicValue, setDynamicValue] = useState(() => {
-        const storedValue = typeof window !== 'undefined' ? localStorage.getItem('dynamicValue') : null;
-        return storedValue ? parseInt(storedValue) : 10000;
-    });
+    // const [dynamicValue, setDynamicValue] = useState(() => {
+    //     const storedValue = typeof window !== 'undefined' ? localStorage.getItem('dynamicValue') : null;
+    //     return storedValue ? parseInt(storedValue) : 10000;
+    // });
 
-    const incFunction = () => {
-        setDynamicValue(prevValue => prevValue + 50);
-    };
+    // const incFunction = () => {
+    //     setDynamicValue(prevValue => prevValue + 50);
+    // };
 
-    useEffect(() => {
-        localStorage.setItem('dynamicValue', dynamicValue.toString());
-    }, [dynamicValue]);
+    // useEffect(() => {
+    //     localStorage.setItem('dynamicValue', dynamicValue.toString());
+    // }, [dynamicValue]);
 
-    const runEvery24Hours = () => {
-        setInterval(incFunction, 86400);
-    };
+    // const runEvery24Hours = () => {
+    //     setInterval(incFunction, 86400);
+    // };
 
-    useEffect(() => {
-        runEvery24Hours();
-    }, []);
+    // useEffect(() => {
+    //     runEvery24Hours();
+    // }, []);
 
     return (
         <div className={styles.infoContainer}>
@@ -35,7 +35,7 @@ const Info: React.FC = () => {
                 <div className={styles.cardDetails}>
                     <div className={styles.card}>
                         <p className={styles.p}>Number of happy customers</p>
-                        <h2 className={styles.h2}>{dynamicValue} +</h2>
+                        <h2 className={styles.h2}>10000 +</h2>
                     </div>
                     <div className={styles.card}>
                         <p className={styles.p}>Shipping Global Destinations</p>
