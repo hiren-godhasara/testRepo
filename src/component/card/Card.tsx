@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useEffect, Key } from 'react';
+import { useState, useEffect, Key, useLayoutEffect } from 'react';
 import Image, { StaticImageData } from 'next/image';
 import styles from './Card.module.scss';
 import { useRouter } from 'next/navigation';
@@ -32,7 +32,7 @@ const Card = () => {
     const imageHeight = 200;
     const [products, setProducts] = useState<Product[]>([]);
 
-    useEffect(() => {
+    useLayoutEffect(() => {
         // setIsLoading(true);
         fetch(`${process.env.BASE_URL}/s/productList`, {
             method: 'POST',
