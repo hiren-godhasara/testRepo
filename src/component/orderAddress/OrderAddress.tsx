@@ -801,13 +801,17 @@ const OrderAddresss = () => {
                             <div className={styles.preAddress}>
                                 {address && address.map((e: any) => (
                                     <div className={`${styles.addressCard} ${selectedAddress === e._id ? styles.selectedAddress : ''}`} key={e._id}>
-                                        <input
-                                            type="checkbox"
-                                            name="selectedAddress"
-                                            checked={selectedAddress === e._id}
-                                            onChange={() => handleCheckboxChange(e._id)}
-                                            style={{ cursor: 'pointer' }}
-                                        />
+                                        <label className={styles.container}>
+                                            <input
+                                                type="checkbox"
+                                                name="selectedAddress"
+                                                checked={selectedAddress === e._id}
+                                                onChange={() => handleCheckboxChange(e._id)}
+                                                style={{ cursor: 'pointer' }}
+                                            />
+                                            <span className={styles.checkmark}></span>
+                                        </label>
+
                                         <div className={styles.addressContent}>
                                             <p className={styles.fullName}>
                                                 {e.firstName} {e.lastName}, Mo. {e.mobile}
