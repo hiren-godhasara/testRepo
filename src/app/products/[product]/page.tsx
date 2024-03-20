@@ -73,7 +73,8 @@ const generateMetaData = async (desiredPart: string): Promise<Metadata | any> =>
         return {
             title: `Mydryfruit-${products.title}`,
             description: products.description,
-            keywords: products.keywords
+            keywords: products.keywords,
+            image: products.image
 
         };
     } catch (error) {
@@ -81,7 +82,8 @@ const generateMetaData = async (desiredPart: string): Promise<Metadata | any> =>
         return {
             title: '',
             description: '',
-            keywords: ''
+            keywords: '',
+            image: ''
         };
     }
 };
@@ -113,6 +115,10 @@ const ProductPage = () => {
                 <link rel="canonical" href={`https://mydryfruit.com/${desiredPart}`} />
                 <meta name="description" content={metadata?.description} />
                 <meta name="keywords" content={metadata?.keywords} />
+                <meta property="og:url" content="https://www.mydryfruit.com/" />
+                <meta property="og:type" content="website" />
+                <meta property="og:title" content={metadata?.title} />
+                <meta property="og:image" content={metadata?.image} />
             </Helmet>
             <Cart />
         </div>
