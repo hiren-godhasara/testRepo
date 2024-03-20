@@ -17,8 +17,9 @@ import TagLine from '../tagLine/TagLine';
 import Cookies from 'js-cookie';
 import dynamic from 'next/dynamic';
 import { googleLogout } from '@react-oauth/google';
+// import RefreshToken from '../refreshingToken/RefreshToken';
 const Header = () => {
-
+    // RefreshToken()
     // const isMediumScreen = typeof window !== "undefined" ? useWindowSize().mediumScreen : false
     const isMediumScreen = useWindowSize().mediumScreen
 

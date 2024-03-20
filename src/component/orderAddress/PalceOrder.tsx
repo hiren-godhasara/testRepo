@@ -549,7 +549,7 @@ const PlaceOrders = () => {
             amount: razorpayData.data.amount,
             currency: razorpayData.data.currency,
             name: 'MY DRY FRUIT',
-            image: headerCompanyLogo,
+            image: 'https://mydryfruit.s3.ap-northeast-1.amazonaws.com/mdfLogo.png',
             description: 'Payment for Order',
             order_id: razorpayData.data.id,
             prefill: {
