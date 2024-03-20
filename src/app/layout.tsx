@@ -6,15 +6,19 @@ import Head from "next/head";
 import TagLine from "@/component/tagLine/TagLine";
 import Header from "@/component/headerSection/Header";
 import Footer from '@/component/footer/Footer';
-
-
+const information = require('../data/details.json');
 
 const inter = Inter({ subsets: ["latin"] });
 
-export const metadata: Metadata = {
-  title: "Mydryfruit",
-  keywords: "almond,  kaju,  cashew,  almond,  badam,  premium almond,  premium cashew nuts,  premium cashew,  dry fruits combo pack,  dry fruits combo,  pista,  premium california almonds,  kaju badam packet,  dry fruit,  almond and kaju,  kaju badam,  dry fruit small packets",
-  description: "Indulge in the exquisite taste of our natural premium California almonds, whole cashew nuts (kaju), and freshly roasted & salted pistachios (pista) available exclusively on our online shopping website. Our range offers the perfect combination of flavor, crunch, and nutrition. Choose from our wide selection of individual packs, including 200gm, 300gm, 500gm, and 1 kg, to suit your snacking needs. Looking for variety? Explore our tantalizing combos such as almond-cashew, almond-pistachio, cashew-pistachio, and the ultimate trifecta of almond-cashew-pistachio.Elevate your snacking experience with our premium dry fruits, carefully sourced and packed to retain their freshness and goodness. Shop now and treat yourself to the finest quality nuts delivered right to your doorstep.",
+export const metadata = {
+  title: information?.homePage?.title,
+  description: information?.homePage?.description,
+  image: information?.homePage?.image,
+  openGraph: {
+    title: information?.homePage?.ogTitle,
+    description: information?.homePage?.ogDescription,
+    image: information?.homePage?.ogImage,
+  },
 };
 
 export default function RootLayout({
@@ -43,7 +47,6 @@ export default function RootLayout({
           <link href="https://fonts.googleapis.com/css2?family=Cedarville+Cursive&family=Dancing+Script:wght@400..700&family=Kalam:wght@300;400;700&family=Protest+Riot&display=swap" rel="stylesheet" />
           <meta name="viewport" content="initial-scale=1, maximum-scale=1" />
         </Head>
-        {/* <body style={{ backgroundColor: 'white', fontFamily: ' "Montserrat", sans-serif' }} className={inter.className}> */}
         <body style={{ backgroundColor: 'white' }} className={inter.className}>
           <Header />
           {children}
