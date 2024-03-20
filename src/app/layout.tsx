@@ -11,6 +11,7 @@ const information = require('../data/details.json');
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata = {
+  metadataBase: new URL('https://mydryfruit.com'),
   title: information?.homePage?.title,
   description: information?.homePage?.description,
   image: information?.homePage?.image,
