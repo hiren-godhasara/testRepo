@@ -17,7 +17,11 @@ export const metadata = {
   openGraph: {
     title: information?.homePage?.ogTitle,
     description: information?.homePage?.ogDescription,
-    images: information?.homePage?.ogImage,
+    images: {
+      url: information?.aboutUs?.ogImage,
+      height: 340,
+      width: 640,
+    },
   },
 };
 
