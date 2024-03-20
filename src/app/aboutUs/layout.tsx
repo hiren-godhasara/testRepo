@@ -7,9 +7,14 @@ export const metadata = {
     openGraph: {
         title: information?.aboutUs?.ogTitle,
         description: information?.aboutUs?.ogDescription,
-        images: information?.aboutUs?.ogImage,
+        images: {
+            url: information?.aboutUs?.ogImage,
+            height: 340,
+            width: 640,
+        },
     },
 };
+
 
 
 
