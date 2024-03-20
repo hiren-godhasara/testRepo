@@ -3,7 +3,9 @@
         "title": "natural-premium-california-almond-fresh-cashew-200gm",
         "description": "description1",
         "keywords": "keywords1",
-        "image": "https://mydryfruit.s3.ap-northeast-1.amazonaws.com/200+GM/Almond+Cashew/200gm-almond-cashew-package-front.png"
+        "image": "https://mydryfruit.s3.ap-northeast-1.amazonaws.com/200+GM/Almond+Cashew/200gm-almond-cashew-package-front.png",
+        "ogTitle": "natural-premium-california-almond-fresh-cashew-200gm---FB",
+        "ogDescription": "description1---FB"
     },
     "natural-premium-california-almond-200gm": {
         "title": "natural-premium-california-almond-200gm",

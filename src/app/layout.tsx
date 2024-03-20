@@ -14,11 +14,10 @@ export const metadata = {
   metadataBase: new URL('https://mydryfruit.com'),
   title: information?.homePage?.title,
   description: information?.homePage?.description,
-  image: information?.homePage?.image,
   openGraph: {
     title: information?.homePage?.ogTitle,
     description: information?.homePage?.ogDescription,
-    image: information?.homePage?.ogImage,
+    images: information?.homePage?.ogImage,
   },
 };
 
