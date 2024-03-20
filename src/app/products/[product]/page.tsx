@@ -71,7 +71,7 @@ const generateMetaData = async (desiredPart: string): Promise<Metadata | any> =>
         console.log(products);
 
         return {
-            title: `My Dry Fruit-${products.title}`,
+            title: `Mydryfruit-${products.title}`,
             description: products.description,
             keywords: products.keywords
 
