@@ -566,7 +566,9 @@ const PlaceOrders = () => {
             handler: async function (response: any) {
 
                 if (response) {
-                    const res = await handleStatusUpdate(_ID)
+                    // const res = await handleStatusUpdate(_ID)
+                    const success = await handleSuccess(response, _ID)
+
                     router.replace('/orderList');
                     localStorage.removeItem("productId")
                     localStorage.removeItem("qtys")
@@ -589,6 +591,7 @@ const PlaceOrders = () => {
 
                     if (!orderData) return;
                     await updateCartStatus(orderData)
+
                 }
             }
         };
@@ -656,7 +659,7 @@ const PlaceOrders = () => {
                 console.error('There was a problem with the fetch operation:', error);
             });
     }
-    const handleStatusUpdate = (_ID: any) => {
+    const handleStatusUpdate = (_ID: any, id: any) => {
 
         return fetch(`${process.env.BASE_URL}/s/order/${_ID}`, {
             method: 'PUT',
@@ -666,7 +669,8 @@ const PlaceOrders = () => {
             },
             body: JSON.stringify({
                 status: "paid",
-                tracking: "pending"
+                tracking: "pending",
+                razorpay_order_id: id,
             }),
         })
             .then(async response => {
@@ -676,6 +680,44 @@ const PlaceOrders = () => {
                 return response.json();
             })
             .then(data => {
+
+                return data;
+            })
+            .catch(error => {
+                console.error('There was a problem with the fetch operation:', error);
+            });
+
+    }
+
+
+
+
+    const handleSuccess = (response: any, mongoOrderId: any) => {
+        console.log(response, 'response');
+        console.log(mongoOrderId, 'mongoOrderId');
+
+
+        return fetch(`${process.env.BASE_URL}/s/order/payment-success/${mongoOrderId}`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${token}`,
+            },
+            body: JSON.stringify({
+                "razorpay_payment_id": response.razorpay_payment_id,
+                "razorpay_order_id": response.razorpay_order_id,
+                "razorpay_signature": response.razorpay_signature
+            }),
+        })
+            .then(async response => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                return response.json();
+            })
+            .then(data => {
+                console.log(data);
+                handleStatusUpdate(mongoOrderId, data.data.razorpay_order_id)
 
                 return data;
             })
