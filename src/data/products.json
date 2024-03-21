@@ -2,7 +2,6 @@
     "natural-premium-california-almond-fresh-cashew-200gm": {
         "title": "natural-premium-california-almond-fresh-cashew-200gm",
         "description": "description1",
-        "keywords": "keywords1",
         "image": "https://mydryfruit.s3.ap-northeast-1.amazonaws.com/200+GM/Almond+Cashew/200gm-almond-cashew-package-front.png",
         "ogTitle": "natural-premium-california-almond-fresh-cashew-200gm---FB",
         "ogDescription": "description1---FB"
@@ -10,96 +9,134 @@
     "natural-premium-california-almond-200gm": {
         "title": "natural-premium-california-almond-200gm",
         "description": "description2",
-        "keywords": "keywords2"
+        "ogTitle": "natural-premium-california-almond-200gm",
+        "ogDescription": "description1---FB",
+        "image": "https://mydryfruit.s3.ap-northeast-1.amazonaws.com/200+GM/Almond/200gm-almond-package-front.png"
     },
     "buy-premium-Whole-Cashew(kaju)-Nuts-200gm": {
         "title": "buy-premium-Whole-Cashew(kaju)-Nuts-200gm",
         "description": "description",
-        "keywords": "keywords"
+        "ogTitle": "buy-premium-Whole-Cashew(kaju)-Nuts-200gm",
+        "ogDescription": "description1---FB",
+        "image": "https://mydryfruit.s3.ap-northeast-1.amazonaws.com/200+GM/Cashew/200gm-cashew-package-front.png"
     },
     "buy-freshly-roasted-salted-pista-200gm": {
         "title": "buy-freshly-roasted-salted-pista-200gm",
         "description": "description",
-        "keywords": "keywords"
+        "ogTitle": "buy-freshly-roasted-salted-pista-200gm",
+        "ogDescription": "description1---FB",
+        "image": "https://mydryfruit.s3.ap-northeast-1.amazonaws.com/200+GM/Pista/200gm-pista-package-front.png"
     },
     "buy-premium-Whole-Cashew(kaju)-Nuts-300gm": {
         "title": "buy-premium-Whole-Cashew(kaju)-Nuts-300gm",
         "description": "description",
-        "keywords": "keywords"
+        "ogTitle": "buy-premium-Whole-Cashew(kaju)-Nuts-300gm",
+        "ogDescription": "description1---FB",
+        "image": "https://mydryfruit.s3.ap-northeast-1.amazonaws.com/300+GM/Cashew/300gm-cashew-package-front.png"
     },
     "natural-premium-california-almond-fresh-cashew-salted-pista-200gm": {
         "title": "natural-premium-california-almond-fresh-cashew-salted-pista-200gm",
         "description": "description",
-        "keywords": "keywords"
+        "ogTitle": "natural-premium-california-almond-fresh-cashew-salted-pista-200gm",
+        "ogDescription": "description1---FB",
+        "image": "https://mydryfruit.s3.ap-northeast-1.amazonaws.com/200+GM/Almond-Cashew-Pista/200gm-cashew-pista-almond-package-front.png"
     },
     "natural-premium-california-almond-salted-pista-200gm": {
         "title": "natural-premium-california-almond-salted-pista-200gm",
         "description": "description",
-        "keywords": "keywords"
+        "ogTitle": "natural-premium-california-almond-salted-pista-200gm",
+        "ogDescription": "description1---FB",
+        "image": "https://mydryfruit.s3.ap-northeast-1.amazonaws.com/200+GM/Almond+Pista/200gm-almond-pista-package-front.png"
     },
     "natural-premium-california-almond-300gm": {
         "title": "natural-premium-california-almond-300gm",
         "description": "description",
-        "keywords": "keywords"
+        "ogTitle": "natural-premium-california-almond-300gm",
+        "ogDescription": "description1---FB",
+        "image": "https://mydryfruit.s3.ap-northeast-1.amazonaws.com/300+GM/Almond/300gm-almond-package-front.png"
     },
     "buy-freshly-roasted-salted-pista-300gm": {
         "title": "buy-freshly-roasted-salted-pista-300gm",
         "description": "description",
-        "keywords": "keywords"
+        "ogTitle": "buy-freshly-roasted-salted-pista-300gm",
+        "ogDescription": "description1---FB",
+        "image": "https://mydryfruit.s3.ap-northeast-1.amazonaws.com/300+GM/Pista/300gm-pista-package-front.png"
     },
     "natural-premium-california-almond-500gm": {
         "title": "natural-premium-california-almond-500gm",
         "description": "description",
-        "keywords": "keywords"
+        "ogTitle": "natural-premium-california-almond-500gm",
+        "ogDescription": "description1---FB",
+        "image": "https://mydryfruit.s3.ap-northeast-1.amazonaws.com/500+GM/Almond/500gm-almond-package-front.png"
     },
     "buy-premium-Whole-Cashew(kaju)-Nuts-500gm": {
         "title": "buy-premium-Whole-Cashew(kaju)-Nuts-500gm",
         "description": "description",
-        "keywords": "keywords"
+        "ogTitle": "buy-premium-Whole-Cashew(kaju)-Nuts-500gm",
+        "ogDescription": "description1---FB",
+        "image": "https://mydryfruit.s3.ap-northeast-1.amazonaws.com/500+GM/Cashew/500gm-cashew-package-front.png"
     },
     "buy-freshly-roasted-salted-pista-500gm": {
         "title": "buy-freshly-roasted-salted-pista-500gm",
         "description": "description",
-        "keywords": "keywords"
+        "ogTitle": "buy-freshly-roasted-salted-pista-500gm",
+        "ogDescription": "description1---FB",
+        "image": "https://mydryfruit.s3.ap-northeast-1.amazonaws.com/500+GM/Pistachio/500gm-pista-package-front.png"
     },
     "natural-premium-california-almond-fresh-cashew-500gm": {
         "title": "natural-premium-california-almond-fresh-cashew-500gm",
         "description": "description",
-        "keywords": "keywords"
+        "ogTitle": "natural-premium-california-almond-fresh-cashew-500gm",
+        "ogDescription": "description1---FB",
+        "image": "https://mydryfruit.s3.ap-northeast-1.amazonaws.com/500+GM/Almond-Cashew/500gm-almond-cashew-package-front.png"
     },
     "natural-premium-california-almond-salted-pista-500gm": {
         "title": "natural-premium-california-almond-salted-pista-500gm",
         "description": "description",
-        "keywords": "keywords"
+        "ogTitle": "natural-premium-california-almond-salted-pista-500gm",
+        "ogDescription": "description1---FB",
+        "image": "https://mydryfruit.s3.ap-northeast-1.amazonaws.com/500+GM/Almond+-+Pista/500gm-almond-pista-package-front.png"
     },
     "natural-premium-roasted-pista-fresh-cashew-500gm": {
         "title": "natural-premium-roasted-pista-fresh-cashew-500gm",
         "description": "description",
-        "keywords": "keywords"
+        "ogTitle": "natural-premium-roasted-pista-fresh-cashew-500gm",
+        "ogDescription": "description1---FB",
+        "image": "https://mydryfruit.s3.ap-northeast-1.amazonaws.com/500+GM/Cashew+Pista/500gm-cashew-pista-package-front.png"
     },
     "natural-premium-california-almond-fresh-cashew-salted-pista-500gm": {
         "title": "natural-premium-california-almond-fresh-cashew-salted-pista-500gm",
         "description": "description",
-        "keywords": "keywords"
+        "ogTitle": "natural-premium-california-almond-fresh-cashew-salted-pista-500gm",
+        "ogDescription": "description1---FB",
+        "image": "https://mydryfruit.s3.ap-northeast-1.amazonaws.com/500+GM/Almond-Cashew-Pistachio/500gm-almond-cashew-pista-package-front.png"
     },
     "natural-premium-roasted-pista-fresh-cashew-200gm": {
         "title": "natural-premium-roasted-pista-fresh-cashew-200gm",
         "description": "description",
-        "keywords": "keywords"
+        "ogTitle": "natural-premium-roasted-pista-fresh-cashew-200gm",
+        "ogDescription": "description1---FB",
+        "image": "https://mydryfruit.s3.ap-northeast-1.amazonaws.com/200+GM/Cashew+Pista/200gm-cashew-pista-package-front.png"
     },
     "natural-premium-california-almond-1Kg": {
         "title": "natural-premium-california-almond-1Kg",
         "description": "description",
-        "keywords": "keywords"
+        "ogTitle": "natural-premium-california-almond-1Kg",
+        "ogDescription": "description1---FB",
+        "image": "https://mydryfruit.s3.ap-northeast-1.amazonaws.com/500+GM/ALMOND+ALMOND/1Kg-almond-package-front.png"
     },
     "buy-premium-Whole-Cashew(kaju)-Nuts-1Kg": {
         "title": "buy-premium-Whole-Cashew(kaju)-Nuts-1Kg",
         "description": "description",
-        "keywords": "keywords"
+        "ogTitle": "buy-premium-Whole-Cashew(kaju)-Nuts-1Kg",
+        "ogDescription": "description1---FB",
+        "image": "https://mydryfruit.s3.ap-northeast-1.amazonaws.com/500+GM/Cashew+Cashew/1Kg-cashew-package-front.png"
     },
     "buy-freshly-roasted-salted-pista-1Kg": {
         "title": "buy-freshly-roasted-salted-pista-1Kg",
         "description": "description",
-        "keywords": "keywords"
+        "ogTitle": "buy-freshly-roasted-salted-pista-1Kg",
+        "ogDescription": "description1---FB",
+        "image": "https://mydryfruit.s3.ap-northeast-1.amazonaws.com/500+GM/Pista+Pista/1Kg-pista-package-front.png"
     }
 }
