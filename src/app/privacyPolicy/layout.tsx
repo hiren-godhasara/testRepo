@@ -3,6 +3,15 @@ const information = require('../../data/details.json')
 export const metadata = {
     title: information?.privacyPolicy?.title,
     description: information?.privacyPolicy?.description,
+    openGraph: {
+        title: information?.privacyPolicy?.ogTitle,
+        description: information?.privacyPolicy?.ogDescription,
+        images: {
+            url: information?.privacyPolicy?.ogImage,
+            height: 340,
+            width: 640,
+        },
+    },
 };
 
 export default function PrivacyPolicyLayout({
