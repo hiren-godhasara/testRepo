@@ -9,8 +9,8 @@ export const metadata = {
         description: information?.login?.ogDescription,
         images: {
             url: information?.login?.ogImage,
-            height: "630px",
-            width: "1200px",
+            height: "200px",
+            width: "200px",
         },
     },
 };
