@@ -1,26 +1,26 @@
-.backImg {
-    position: relative;
-}
+// .backImg {
+//     position: relative;
+// }
 
-.backImg::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    background-image: url('../../imageFolder/dryfruit-vector.png');
-    opacity: 0.1;
-    /* Adjust the opacity value as needed (0 to 1) */
-    /* Other background properties can be added as needed */
-    background-size: cover;
-    /* Optional: adjust to your preference */
-    background-position: center;
-    /* Optional: adjust to your preference */
-    background-repeat: no-repeat;
-    /* Optional: adjust to your preference */
-    z-index: -1;
-}
+// .backImg::before {
+//     content: '';
+//     position: absolute;
+//     top: 0;
+//     right: 0;
+//     bottom: 0;
+//     left: 0;
+//     background-image: url('../../imageFolder/dryfruit-vector.png');
+//     opacity: 0.1;
+//     /* Adjust the opacity value as needed (0 to 1) */
+//     /* Other background properties can be added as needed */
+//     background-size: cover;
+//     /* Optional: adjust to your preference */
+//     background-position: center;
+//     /* Optional: adjust to your preference */
+//     background-repeat: no-repeat;
+//     /* Optional: adjust to your preference */
+//     z-index: -1;
+// }
 
 .register {
     display: flex;

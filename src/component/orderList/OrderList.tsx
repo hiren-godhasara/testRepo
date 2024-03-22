@@ -30,7 +30,7 @@ const OrderList = () => {
         if (token) {
             setTokenData(true);
         } else {
-            router.push('/login');
+            router.push('/aaaaa/log');
         }
     }, [router]);
 

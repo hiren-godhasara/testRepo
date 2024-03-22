@@ -178,68 +178,68 @@ const RegisterForm = () => {
             ) : (
                 <>
                     {auth &&
-                        <div className={styles.backImg}>
-                            <div className={styles.register}>
-                                <div className={styles.i1}  ></div>
-                                <div className={styles.i2}  ></div>
 
-                                <form onSubmit={handleSubmit}>
-                                    <div className={styles.imgDiv}>
-                                        <Image src={logo} alt="Company logo" fill={true} objectFit='contain' />
+                        <div className={styles.register}>
+                            <div className={styles.i1}  ></div>
+                            <div className={styles.i2}  ></div>
+
+                            <form onSubmit={handleSubmit}>
+                                <div className={styles.imgDiv}>
+                                    <Image src={logo} alt="Company logo" fill={true} objectFit='contain' />
+                                </div>
+                                <div className={styles.registerName}>Sign up</div>
+                                <div>
+                                    <label>Name: <span style={{ color: 'red' }}>*</span></label>
+                                    <div className={styles.num}>
+                                        <input className={styles.firstName} type="text" name="firstName" placeholder='First Name' value={formData.firstName} onChange={handleChange} required />
+                                        <input type="text" name="lastName" placeholder='Last Name' value={formData.lastName} onChange={handleChange} required />
                                     </div>
-                                    <div className={styles.registerName}>Sign up</div>
-                                    <div>
-                                        <label>Name: <span style={{ color: 'red' }}>*</span></label>
-                                        <div className={styles.num}>
-                                            <input className={styles.firstName} type="text" name="firstName" placeholder='First Name' value={formData.firstName} onChange={handleChange} required />
-                                            <input type="text" name="lastName" placeholder='Last Name' value={formData.lastName} onChange={handleChange} required />
-                                        </div>
-                                    </div>
+                                </div>
 
-                                    <div>
-                                        <label>Email: <span style={{ color: 'red' }}>*</span></label>
-                                        <input type="email" name="email" placeholder='Enter Email' value={formData.email} onChange={handleChange} required />
-                                    </div>
-                                    <div>
-                                        <label>Phone Number: <span style={{ color: 'red' }}>*</span></label>
-                                        <div className={styles.num}>
-                                            <input
-                                                className={styles.code}
-                                                maxLength={6}
-                                                type="tel"
-                                                name="countryCode"
-                                                value='+91'
-                                                readOnly
-                                                // onChange={handleChange}
-                                                required
-                                            />
+                                <div>
+                                    <label>Email: <span style={{ color: 'red' }}>*</span></label>
+                                    <input type="email" name="email" placeholder='Enter Email' value={formData.email} onChange={handleChange} required />
+                                </div>
+                                <div>
+                                    <label>Phone Number: <span style={{ color: 'red' }}>*</span></label>
+                                    <div className={styles.num}>
+                                        <input
+                                            className={styles.code}
+                                            maxLength={6}
+                                            type="tel"
+                                            name="countryCode"
+                                            value='+91'
+                                            readOnly
+                                            // onChange={handleChange}
+                                            required
+                                        />
 
-                                            <input
-                                                type="tel"
-                                                name="mobile"
-                                                placeholder="Enter Phone"
-                                                value={formData.mobile}
-                                                onChange={handleChange}
-                                                maxLength={10}
-                                                required
-                                            />
+                                        <input
+                                            type="tel"
+                                            name="mobile"
+                                            placeholder="Enter Phone"
+                                            value={formData.mobile}
+                                            onChange={handleChange}
+                                            maxLength={10}
+                                            required
+                                        />
 
-
-                                        </div>
 
                                     </div>
-                                    <div>
-                                        <label>Password: <span style={{ color: 'red' }}>*</span></label>
-                                        <input type="password"
-                                            name="password" placeholder='Enter Password' value={formData.password} onChange={handleChange} required />
-                                    </div>
-                                    <div >
-                                        <button type="submit" className={styles.btn} onClick={handleSubmit}>Submit</button>
-                                    </div>
-                                </form>
-                                <ToastNotifications />
-                            </div>
+
+                                </div>
+                                <div>
+                                    <label>Password: <span style={{ color: 'red' }}>*</span></label>
+                                    <input type="password"
+                                        name="password" placeholder='Enter Password' value={formData.password} onChange={handleChange} required />
+                                </div>
+                                <div >
+                                    <button type="submit" className={styles.btn} onClick={handleSubmit}>Submit</button>
+                                </div>
+                            </form>
+                            <ToastNotifications />
                         </div>
+
                     }
                 </>
             )}
