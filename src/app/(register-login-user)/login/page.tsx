@@ -1,4 +1,5 @@
-const information = require('../../data/details.json')
+import LoginForm from "@/component/registrationUser/Login";
+const information = require('../../../data/details.json')
 
 
 export const metadata = {
@@ -14,15 +15,13 @@ export const metadata = {
         },
     },
 };
-
-export default function LoginLayout({
-    children,
-}: Readonly<{
-    children: React.ReactNode;
-}>) {
+const log = () => {
     return (
         <>
-            {children}
+            <div>
+                <LoginForm />
+            </div>
         </>
-    );
+    )
 }
+export default log;

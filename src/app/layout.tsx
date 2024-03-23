@@ -51,7 +51,7 @@ export default function RootLayout({
           <link href="https://fonts.googleapis.com/css2?family=Cedarville+Cursive&family=Dancing+Script:wght@400..700&family=Kalam:wght@300;400;700&family=Protest+Riot&display=swap" rel="stylesheet" />
           <meta name="viewport" content="initial-scale=1, maximum-scale=1" />
         </Head>
-        <body style={{ backgroundColor: 'white' }} className={inter.className}>
+        <body suppressHydrationWarning={true} style={{ backgroundColor: 'white' }} className={inter.className}>
           <Header />
           {children}
           <Footer />
@@ -60,7 +60,6 @@ export default function RootLayout({
       <Script src="https://checkout.razorpay.com/v1/checkout.js" />
       <Script async src="https://cdn.jsdelivr.net/gh/stevenschobert/instafeed.js@2.0.0rc1/src/instafeed.min.js" />
       <Script src="https://accounts.google.com/gsi/client" async defer />
-
 
     </>
 

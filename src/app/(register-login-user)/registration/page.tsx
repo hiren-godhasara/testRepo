@@ -1,4 +1,5 @@
-const information = require('../../data/details.json')
+import RegisterForm from "@/component/registrationUser/Register";
+const information = require('../../../data/details.json')
 
 
 export const metadata = {
@@ -9,20 +10,19 @@ export const metadata = {
         description: information?.registration?.ogDescription,
         images: {
             url: information?.registration?.ogImage,
-            height: 340,
-            width: 640,
+            height: "200px",
+            width: "200px",
         },
     },
 };
-
-export default function RegisterLayout({
-    children,
-}: Readonly<{
-    children: React.ReactNode;
-}>) {
+const reg = () => {
     return (
         <>
-            {children}
+            <div>
+                <RegisterForm />
+            </div>
         </>
-    );
+    )
 }
+
+export default reg;
