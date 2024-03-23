@@ -100,9 +100,9 @@ const OrderList = () => {
                         {reversedOrderList && reversedOrderList.length > 0 && reversedOrderList.map((e: any) => (
                             <div className={styles.addressCard} key={e._id}>
                                 <div className={styles.row1}>
-                                    <p>ORDER No : <strong> {e.orderNumber}</strong></p>
+                                    <p>Order No : <strong> {e.orderNumber}</strong></p>
                                     <p>Order Date : <strong> {new Date(e.createdAt).toLocaleDateString('en-GB')}</strong></p>
-                                    <p>ORDER Status : <strong style={{ color: 'green' }}>{e.status.toUpperCase()}</strong></p>
+                                    <p>Order Status : <strong style={{ color: 'green' }}>{e.status.toUpperCase()}</strong></p>
                                     <p>Total Order Value : <strong> {e.totalOrderValue} ₹</strong></p>
                                 </div>
 
