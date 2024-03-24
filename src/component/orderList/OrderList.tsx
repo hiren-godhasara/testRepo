@@ -102,7 +102,13 @@ const OrderList = () => {
                                 <div className={styles.row1}>
                                     <p>Order No : <strong> {e.orderNumber}</strong></p>
                                     <p>Order Date : <strong> {new Date(e.createdAt).toLocaleDateString('en-GB')}</strong></p>
-                                    <p>Order Status : <strong style={{ color: 'green' }}>{e.status.toUpperCase()}</strong></p>
+                                    {/* <p>Order Status : <strong style={{ color: 'green' }}>{e.status.toUpperCase()}</strong></p> */}
+                                    <p>Order Status :
+                                        {e.status.toUpperCase() === 'CASHONDELIVERY' ?
+                                            <strong style={{ color: 'green' }}>CASH ON DELIVERY</strong> :
+                                            <strong style={{ color: 'green' }}>{e.status.toUpperCase()}</strong>}
+                                    </p>
+
                                     <p>Total Order Value : <strong> {e.totalOrderValue} ₹</strong></p>
                                 </div>
 

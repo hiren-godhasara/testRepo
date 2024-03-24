@@ -52,12 +52,14 @@ const PlaceOrders = () => {
     const [cartProducts, setCartProducts] = useState([]);
     const [orderId, setOrderId] = useState('');
     const [orderAmount, setOrderAmount] = useState();
-
+    const [paymentMethod, setPaymentMethod] = useState('online');
     const [selectedAddress, setSelectedAddress] = useState<string | null>(null);
     const [showAddressForm, setShowAddressForm] = useState(false);
     const [address, setAddress] = useState<Address[]>([]);
     const [cartData, setCartData] = useState<any>('');
     const userId = getUserId();
+    const [showConfirmation, setShowConfirmation] = useState(false);
+    const [addressIdToDelete, setAddressIdToDelete] = useState(null);
     // const prodId = useSearchParams().get('productId');
     // const qtys = useSearchParams().get('qtys');
     // const totalOrderCartValue = useSearchParams().get('totalOrderCartValue');
@@ -99,6 +101,8 @@ const PlaceOrders = () => {
     const totalShippingCharge: any = typeof window !== 'undefined' ? localStorage.getItem('totalShippingCharge') : null;
     const val1 = parseFloat(totalOrderCartValue)
     const val2 = parseFloat(totalShippingCharge)
+    const val3 = parseFloat("35")
+
     const [editFormData, setEditFormData] = useState<EditFormData>({
         firstName: '',
         lastName: '',
@@ -452,15 +456,8 @@ const PlaceOrders = () => {
             });
     };
 
-
-
-
-
-
-
-
+    const codCharge = paymentMethod === 'cod' ? val3 : 0;
     const handleOrder = () => {
-
         const obj = {
             userId,
             productId: prodId,
@@ -468,7 +465,8 @@ const PlaceOrders = () => {
             shippingAddressId: selectedAddress,
             billingAddressId: selectedAddress,
             totalCartValue: totalOrderCartValue,
-            shippingCharge: 0
+            shippingCharge: 0,
+            codCharge
 
         };
 
@@ -752,15 +750,6 @@ const PlaceOrders = () => {
         }
     };
 
-    const OnShopBtn = () => {
-        router.push('/#products')
-    }
-
-    const OnSignInBtn = () => {
-        router.push('/login')
-    }
-    const [showConfirmation, setShowConfirmation] = useState(false);
-    const [addressIdToDelete, setAddressIdToDelete] = useState(null);
     const handleRemove = (addressId: any) => {
         DeleteCartAddress(addressId);
         setShowConfirmation(false);
@@ -778,11 +767,66 @@ const PlaceOrders = () => {
     const handleNewAddress = () => {
         setShowAddressForm(true)
     }
-    // useEffect(() => {
-    //     // setTimeout(() => {
-    //     setLoading(false);
-    //     // }, 1000);
-    // }, []);
+    const handleStatusCOD = (mongoOrderId: any,) => {
+        console.log(mongoOrderId, 'mongoOrderId');
+
+        return fetch(`${process.env.BASE_URL}/s/order/${mongoOrderId}`, {
+            method: 'PUT',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${token}`,
+            },
+            body: JSON.stringify({
+                status: "cashOnDelivery",
+                tracking: "pending",
+
+            }),
+        })
+            .then(async response => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                return response.json();
+            })
+            .then(data => {
+                router.replace('/orderList');
+                return data;
+
+            })
+            .catch(error => {
+                console.error('There was a problem with the fetch operation:', error);
+            });
+
+    }
+
+    const OnShopBtn = async () => {
+        console.log(orderId);
+        setLoading(true)
+        try {
+            const orderId = await handleOrder();
+            console.log(orderId);
+            if (!orderId._id) {
+                throw new Error('orderId not found.')
+            }
+            const statusCod = await handleStatusCOD(orderId._id);
+            if (!statusCod) {
+                throw new Error('please try adain later.')
+            }
+
+        } catch (error) {
+            console.error('Order  failed:', error);
+        } finally {
+            setLoading(false)
+        }
+
+    }
+
+    const handleCheckbox = (method: any) => {
+        setPaymentMethod(method);
+    };
+
+    const handleClick = paymentMethod === 'online' ? orderAndPayment : OnShopBtn;
+
 
 
     const indianStates = [
@@ -806,13 +850,20 @@ const PlaceOrders = () => {
                             {/* <div className={styles.grandtotal}>Total<span>{totalOrderCartValue} ₹</span> </div>
                                 <div className={styles.grandtotal1}>Shipping Charge<span>{totalShippingCharge} ₹</span> </div> */}
 
-                            <div className={styles.ttl}>
+                            {(paymentMethod === 'online') && <div className={styles.ttl}>
                                 <p>Total Order Value<span>{totalOrderCartValue} ₹</span></p>
                                 <p>Shipping Charge<span>{totalShippingCharge} ₹</span></p>
                                 <div>GRAND TOTAL<span> {val1 + val2} ₹</span></div>
                             </div>
+                            }
 
-
+                            {(paymentMethod === 'cod') && < div className={styles.ttl}>
+                                <p>Total Order Value<span>{totalOrderCartValue} ₹</span></p>
+                                <p>Shipping Charge<span>{totalShippingCharge} ₹</span></p>
+                                <p>COD Charge<span>{val3} ₹</span></p>
+                                <div>GRAND TOTAL<span> {val1 + val2 + val3} ₹</span></div>
+                            </div>
+                            }
 
                             <div className={styles.deliverAddress}>DELIVERY ADDRESS</div>
 
@@ -857,7 +908,30 @@ const PlaceOrders = () => {
 
                                 ))}
                             </div>
+                            <p className={styles.toggleP} onClick={() => handleNewAddress()}>+ Add New Address</p>
+                            <div className={styles.deliverAddress}>PAYMENT METHOD</div>
+                            <div className={styles.cod}>
+                                <p>
+                                    <input
+                                        type="checkbox"
+                                        checked={paymentMethod === 'online'}
+                                        onChange={() => handleCheckbox('online')}
+                                        style={{ cursor: 'pointer' }}
+                                    />Online Payment
+                                </p>
+                                <p>
+                                    <input
+                                        type="checkbox"
+                                        checked={paymentMethod === 'cod'}
+                                        onChange={() => handleCheckbox('cod')}
 
+                                        style={{ cursor: 'pointer' }}
+                                    />
+                                    Cash On Delivery
+                                    <span>(Note:Additional ₹35/- COD charge will be applied for this option.) </span>
+                                </p>
+
+                            </div>
                             {showConfirmation && (
                                 <>
                                     <div className={styles.over}>
@@ -874,7 +948,6 @@ const PlaceOrders = () => {
                             )}
 
 
-                            <p className={styles.toggleP} onClick={() => handleNewAddress()}>+ Add New Address</p>
 
 
                             {showAddressForm && !selectedAddress && (
@@ -1091,7 +1164,12 @@ const PlaceOrders = () => {
                             )}
 
                             <div className={`${styles.orderBtn} ${!selectedAddress ? styles.selectedAddressPayment : ''}`}>
-                                <button type="submit" onClick={orderAndPayment} >PROCEED TO PAYMENT</button>
+
+                                {/* <button type="submit" onClick={handleClick}>PROCEED TO PAYMENT</button> */}
+                                <button type="submit" onClick={handleClick}>
+                                    {paymentMethod === 'online' ? 'PROCEED TO PAYMENT' : 'PLACE ORDER'}
+                                </button>
+                                {/* <button type="submit" onClick={orderAndPayment} >PROCEED TO PAYMENT</button> */}
                             </div>
 
                         </div>}
