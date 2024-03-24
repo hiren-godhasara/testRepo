@@ -896,12 +896,12 @@ const OrderAddresss = () => {
                 <>
                     {token &&
                         <div className={styles.selectedAdd}>
-                            {cartData && (paymentMethod === 'online') && <div className={styles.grandtotal}>Grand Total<span>{cartData.totalCartValue + cartData.shippingCharge} ₹</span> </div>}
+                            {cartData && (paymentMethod === 'online') && <div className={styles.grandtotal}>Grand Total<span>₹{cartData.totalCartValue + cartData.shippingCharge}</span> </div>}
 
                             {cartData && (paymentMethod === 'cod') && < div className={styles.ttl}>
-                                <p>Total Cart Value<span>{val1} ₹</span></p>
-                                <p>COD Charge<span>{val2}₹</span></p>
-                                <div>GRAND TOTAL<span> {val1 + val2} ₹</span></div>
+                                <p>Total Cart Value<span>₹v{val1}</span></p>
+                                <p>COD Charge<span>₹{val2}</span></p>
+                                <div>GRAND TOTAL<span>₹{val1 + val2}</span></div>
                             </div>
                             }
 

@@ -851,17 +851,17 @@ const PlaceOrders = () => {
                                 <div className={styles.grandtotal1}>Shipping Charge<span>{totalShippingCharge} ₹</span> </div> */}
 
                             {(paymentMethod === 'online') && <div className={styles.ttl}>
-                                <p>Total Order Value<span>{totalOrderCartValue} ₹</span></p>
-                                <p>Shipping Charge<span>{totalShippingCharge} ₹</span></p>
-                                <div>GRAND TOTAL<span> {val1 + val2} ₹</span></div>
+                                <p>Total Order Value<span>₹{totalOrderCartValue} </span></p>
+                                <p>Shipping Charge<span>₹{totalShippingCharge} </span></p>
+                                <div>GRAND TOTAL<span>₹{val1 + val2} </span></div>
                             </div>
                             }
 
                             {(paymentMethod === 'cod') && < div className={styles.ttl}>
-                                <p>Total Order Value<span>{totalOrderCartValue} ₹</span></p>
-                                <p>Shipping Charge<span>{totalShippingCharge} ₹</span></p>
-                                <p>COD Charge<span>{val3} ₹</span></p>
-                                <div>GRAND TOTAL<span> {val1 + val2 + val3} ₹</span></div>
+                                <p>Total Order Value<span>₹{totalOrderCartValue} </span></p>
+                                <p>Shipping Charge<span>₹{totalShippingCharge} </span></p>
+                                <p>COD Charge<span>₹{val3} </span></p>
+                                <div>GRAND TOTAL<span> ₹{val1 + val2 + val3} </span></div>
                             </div>
                             }
 
