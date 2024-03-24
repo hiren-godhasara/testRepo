@@ -244,6 +244,15 @@ const DryFruitSliderForOrder: any = () => {
 
     };
 
+    const [loadings, setLoadings] = useState(true);
+    useEffect(() => {
+        const loaderTimer = setTimeout(() => {
+            setLoadings(false);
+        }, 3000); // 3 seconds
+
+        return () => clearTimeout(loaderTimer);
+    }, []);
+
     const isButtonDisabled = (productDetails?.isAvailable === false)
     return (
         <>
@@ -253,7 +262,6 @@ const DryFruitSliderForOrder: any = () => {
                 </div>
             ) : (
                 <div className={styles.mainDiv} style={shouldRenderRegisterForm ? { filter: "blur(2px)", pointerEvents: 'none' } : {}}>
-
                     <div className={styles.mainImg} >
                         <div className={styles.sideImg}>
                             {(
@@ -266,20 +274,23 @@ const DryFruitSliderForOrder: any = () => {
                                         height={85}
                                         className={`${styles.image1} ${shouldRenderRegisterForm ? styles.blurImage : ''}`}
                                         onMouseEnter={() => handleImageClick(image.location)}
+                                        placeholder="blur"
+                                        blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/4gHYSUNDX1BST0ZJTEUAAQEAAAHIAAAAAAQwAABtbnRyUkdCIFhZWiAH4AABAAEAAAAAAABhY3NwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAA9tYAAQAAAADTLQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAlkZXNjAAAA8AAAACRyWFlaAAABFAAAABRnWFlaAAABKAAAABRiWFlaAAABPAAAABR3dHB0AAABUAAAABRyVFJDAAABZAAAAChnVFJDAAABZAAAAChiVFJDAAABZAAAAChjcHJ0AAABjAAAADxtbHVjAAAAAAAAAAEAAAAMZW5VUwAAAAgAAAAcAHMAUgBHAEJYWVogAAAAAAAAb6IAADj1AAADkFhZWiAAAAAAAABimQAAt4UAABjaWFlaIAAAAAAAACSgAAAPhAAAts9YWVogAAAAAAAA9tYAAQAAAADTLXBhcmEAAAAAAAQAAAACZmYAAPKnAAANWQAAE9AAAApbAAAAAAAAAABtbHVjAAAAAAAAAAEAAAAMZW5VUwAAACAAAAAcAEcAbwBvAGcAbABlACAASQBuAGMALgAgADIAMAAxADb/2wBDABQODxIPDRQSEBIXFRQYHjIhHhwcHj0sLiQySUBMS0dARkVQWnNiUFVtVkVGZIhlbXd7gYKBTmCNl4x9lnN+gXz/2wBDARUXFx4aHjshITt8U0ZTfHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHz/wAARCACqAKoDASIAAhEBAxEB/8QAGQABAQEBAQEAAAAAAAAAAAAAAAECAwQG/8QAFxABAQEBAAAAAAAAAAAAAAAAABEBEv/EABUBAQEAAAAAAAAAAAAAAAAAAAAB/8QAFBEBAAAAAAAAAAAAAAAAAAAAAP/aAAwDAQACEQMRAD8A+zAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEpQUZqUGxip0g6DnToHQY6KDYxVoNDNKDQxSg2lZqUG6VilBqpWKUG6lYqUG6nTG6nQN9J0x0nQOnR059HQOvR05dL0Dp0vTl0vQOnRXPo6B0qVipQdKlYqUHTornSg3UrNSg1UrNTdBrdSs7rO6DdSsVKDp0VzpQdOlrlVoOlWudKDpSsUoN0rFSg3SsVKDdKxSg61KlQF3U3U1N0DdTdTU0CpUSg1Ss0oNVaxVoN1axVoNUrNKDVKyAtKzQFpUAdgARnWmdBNZ1rWdBNRdQEABQAVUUBUUEAARUAAB6EaQGU1uM7gMamt7ibgMRI1EgMwjUICQWLARVhAQahAZGoQGUahAZhGoQHcjUSAzEjcSAxuMxvcSAxCNQgMQjUIDMWNQgJCLFgMxYsICRI1CAzCNQgMwjUIDsjSKIkaRBmJGkBmEaQGYRoBmLFASEVQSEUBIRQEiRoBmEaAdAFBFRBEVAQVAQVAUAAFAAAAAABBQH//Z"
                                     />
                                 ))
                             )}
                         </div>
                         <div className={styles.largeImageContainer}>
+
                             {selectedImage && (
                                 <Image
                                     src={selectedImage}
                                     width={655}
                                     height={505}
                                     placeholder="blur"
-                                    blurDataURL='https://mydryfruit.s3.ap-northeast-1.amazonaws.com/200+GM/Cashew/200gm-cashew-package-front.png'
                                     alt={`Large Image`}
                                     className={`${styles.largeImage} ${shouldRenderRegisterForm ? styles.blurImage : ''}`}
+                                    blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/4gHYSUNDX1BST0ZJTEUAAQEAAAHIAAAAAAQwAABtbnRyUkdCIFhZWiAH4AABAAEAAAAAAABhY3NwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAA9tYAAQAAAADTLQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAlkZXNjAAAA8AAAACRyWFlaAAABFAAAABRnWFlaAAABKAAAABRiWFlaAAABPAAAABR3dHB0AAABUAAAABRyVFJDAAABZAAAAChnVFJDAAABZAAAAChiVFJDAAABZAAAAChjcHJ0AAABjAAAADxtbHVjAAAAAAAAAAEAAAAMZW5VUwAAAAgAAAAcAHMAUgBHAEJYWVogAAAAAAAAb6IAADj1AAADkFhZWiAAAAAAAABimQAAt4UAABjaWFlaIAAAAAAAACSgAAAPhAAAts9YWVogAAAAAAAA9tYAAQAAAADTLXBhcmEAAAAAAAQAAAACZmYAAPKnAAANWQAAE9AAAApbAAAAAAAAAABtbHVjAAAAAAAAAAEAAAAMZW5VUwAAACAAAAAcAEcAbwBvAGcAbABlACAASQBuAGMALgAgADIAMAAxADb/2wBDABQODxIPDRQSEBIXFRQYHjIhHhwcHj0sLiQySUBMS0dARkVQWnNiUFVtVkVGZIhlbXd7gYKBTmCNl4x9lnN+gXz/2wBDARUXFx4aHjshITt8U0ZTfHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHz/wAARCACqAKoDASIAAhEBAxEB/8QAGQABAQEBAQEAAAAAAAAAAAAAAAECAwQG/8QAFxABAQEBAAAAAAAAAAAAAAAAABEBEv/EABUBAQEAAAAAAAAAAAAAAAAAAAAB/8QAFBEBAAAAAAAAAAAAAAAAAAAAAP/aAAwDAQACEQMRAD8A+zAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEpQUZqUGxip0g6DnToHQY6KDYxVoNDNKDQxSg2lZqUG6VilBqpWKUG6lYqUG6nTG6nQN9J0x0nQOnR059HQOvR05dL0Dp0vTl0vQOnRXPo6B0qVipQdKlYqUHTornSg3UrNSg1UrNTdBrdSs7rO6DdSsVKDp0VzpQdOlrlVoOlWudKDpSsUoN0rFSg3SsVKDdKxSg61KlQF3U3U1N0DdTdTU0CpUSg1Ss0oNVaxVoN1axVoNUrNKDVKyAtKzQFpUAdgARnWmdBNZ1rWdBNRdQEABQAVUUBUUEAARUAAB6EaQGU1uM7gMamt7ibgMRI1EgMwjUICQWLARVhAQahAZGoQGUahAZhGoQHcjUSAzEjcSAxuMxvcSAxCNQgMQjUIDMWNQgJCLFgMxYsICRI1CAzCNQgMwjUIDsjSKIkaRBmJGkBmEaQGYRoBmLFASEVQSEUBIRQEiRoBmEaAdAFBFRBEVAQVAQVAUAAFAAAAAABBQH//Z"
                                 />
                             )}
                             <div className={styles.variantCard}>

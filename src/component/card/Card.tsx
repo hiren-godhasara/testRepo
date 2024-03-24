@@ -8,6 +8,7 @@ import { getToken } from '@/getLocalStroageToken';
 import Loader from '../loader/Loader';
 import Link from 'next/link';
 import dynamic from 'next/dynamic';
+import LoginForm from '../registrationUser/Login';
 
 interface Product {
     mrp: any;
@@ -31,6 +32,8 @@ const Card = () => {
     const imageWidth = 300;
     const imageHeight = 200;
     const [products, setProducts] = useState<Product[]>([]);
+    const [otherCom, setOtherCom] = useState(true);
+
 
     useLayoutEffect(() => {
         // setIsLoading(true);
@@ -50,7 +53,6 @@ const Card = () => {
             })
             .then(data => {
                 setProducts(data.data.productData);
-
             })
             .catch(error => {
                 console.error('There was a problem fetching the data:', error);
@@ -103,7 +105,8 @@ const Card = () => {
                                     height={imageHeight}
                                     className={hoveredCard === index ? styles.img1 : styles.img}
                                     onClick={() => onBtnClick(product._id, product.displayName, product.variantName)}
-
+                                    placeholder="blur"
+                                    blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/4gHYSUNDX1BST0ZJTEUAAQEAAAHIAAAAAAQwAABtbnRyUkdCIFhZWiAH4AABAAEAAAAAAABhY3NwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAA9tYAAQAAAADTLQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAlkZXNjAAAA8AAAACRyWFlaAAABFAAAABRnWFlaAAABKAAAABRiWFlaAAABPAAAABR3dHB0AAABUAAAABRyVFJDAAABZAAAAChnVFJDAAABZAAAAChiVFJDAAABZAAAAChjcHJ0AAABjAAAADxtbHVjAAAAAAAAAAEAAAAMZW5VUwAAAAgAAAAcAHMAUgBHAEJYWVogAAAAAAAAb6IAADj1AAADkFhZWiAAAAAAAABimQAAt4UAABjaWFlaIAAAAAAAACSgAAAPhAAAts9YWVogAAAAAAAA9tYAAQAAAADTLXBhcmEAAAAAAAQAAAACZmYAAPKnAAANWQAAE9AAAApbAAAAAAAAAABtbHVjAAAAAAAAAAEAAAAMZW5VUwAAACAAAAAcAEcAbwBvAGcAbABlACAASQBuAGMALgAgADIAMAAxADb/2wBDABQODxIPDRQSEBIXFRQYHjIhHhwcHj0sLiQySUBMS0dARkVQWnNiUFVtVkVGZIhlbXd7gYKBTmCNl4x9lnN+gXz/2wBDARUXFx4aHjshITt8U0ZTfHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHz/wAARCACqAKoDASIAAhEBAxEB/8QAGQABAQEBAQEAAAAAAAAAAAAAAAECAwQG/8QAFxABAQEBAAAAAAAAAAAAAAAAABEBEv/EABUBAQEAAAAAAAAAAAAAAAAAAAAB/8QAFBEBAAAAAAAAAAAAAAAAAAAAAP/aAAwDAQACEQMRAD8A+zAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEpQUZqUGxip0g6DnToHQY6KDYxVoNDNKDQxSg2lZqUG6VilBqpWKUG6lYqUG6nTG6nQN9J0x0nQOnR059HQOvR05dL0Dp0vTl0vQOnRXPo6B0qVipQdKlYqUHTornSg3UrNSg1UrNTdBrdSs7rO6DdSsVKDp0VzpQdOlrlVoOlWudKDpSsUoN0rFSg3SsVKDdKxSg61KlQF3U3U1N0DdTdTU0CpUSg1Ss0oNVaxVoN1axVoNUrNKDVKyAtKzQFpUAdgARnWmdBNZ1rWdBNRdQEABQAVUUBUUEAARUAAB6EaQGU1uM7gMamt7ibgMRI1EgMwjUICQWLARVhAQahAZGoQGUahAZhGoQHcjUSAzEjcSAxuMxvcSAxCNQgMQjUIDMWNQgJCLFgMxYsICRI1CAzCNQgMwjUIDsjSKIkaRBmJGkBmEaQGYRoBmLFASEVQSEUBIRQEiRoBmEaAdAFBFRBEVAQVAQVAUAAFAAAAAABBQH//Z"
                                 />
                             </Link>
                         </div>
