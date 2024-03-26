@@ -40,3 +40,55 @@
         width: 90%;
     }
 }
+
+
+.head::-moz-selection {
+    background-color: #FBD449;
+    color: #144950;
+}
+
+.head::selection {
+    background-color: #FBD449;
+    color: #144950;
+}
+
+.details1 {
+    p::-moz-selection {
+        background-color: #FBD449;
+        color: #144950;
+    }
+
+    h2::-moz-selection {
+        background-color: #FBD449;
+        color: #144950;
+    }
+
+    .p::-moz-selection {
+        background-color: #FBD449;
+        color: #144950;
+    }
+}
+
+.details1 {
+    p::selection {
+        background-color: #FBD449;
+        color: #144950;
+    }
+
+    h2::selection {
+        background-color: #FBD449;
+        color: #144950;
+    }
+
+    .p::selection {
+        background-color: #FBD449;
+        color: #144950;
+    }
+}
+
+.detailsContainer {
+    p::selection {
+        background-color: #FBD449;
+        color: #144950;
+    }
+}

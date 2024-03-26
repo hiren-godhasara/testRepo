@@ -234,3 +234,34 @@
     }
 
 }
+
+
+.head::-moz-selection {
+    background-color: #FBD449;
+    color: #144950;
+}
+
+.head::selection {
+    background-color: #FBD449;
+    color: #144950;
+}
+
+.leftSection::-moz-selection {
+    background-color: #FBD449;
+    color: #144950;
+}
+
+.leftSection ::selection {
+    background-color: #FBD449;
+    color: #144950;
+}
+
+.contactForm::-moz-selection {
+    background-color: #FBD449;
+    color: #144950;
+}
+
+.contactForm ::selection {
+    background-color: #FBD449;
+    color: #144950;
+}

@@ -331,3 +331,51 @@
     background-color: #144950;
     color: #ffffff;
 }
+
+.ellipsis1::-moz-selection,
+.ellipsis::-moz-selection,
+.mrp::-moz-selection,
+.price::-moz-selection,
+.grade::-moz-selection,
+.img::-moz-selection,
+.img1::-moz-selection {
+    background-color: #FBD449;
+    color: #144950;
+}
+
+.ellipsis1::selection,
+.ellipsis::selection,
+.mrp::selection,
+.price::selection,
+.grade::selection,
+.img::selection,
+.img1::selection {
+    background-color: #FBD449;
+    color: #144950;
+}
+
+.discount {
+
+    p::-moz-selection {
+        color: #FBD449;
+        background-color: #144950;
+    }
+}
+
+.discount {
+    p::selection {
+        color: #FBD449;
+        background-color: #144950;
+    }
+}
+
+
+.comboHead::-moz-selection {
+    background-color: #FBD449;
+    color: #144950;
+}
+
+.comboHead::selection {
+    background-color: #FBD449;
+    color: #144950;
+}

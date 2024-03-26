@@ -404,3 +404,25 @@
         top: 4rem !important;
     }
 }
+
+.drawerLink::-moz-selection,
+.headerLink::-moz-selection,
+.drawerHeaderNameSection::-moz-selection,
+.leftSectionName::-moz-selection,
+.div::-moz-selection,
+.image::-moz-selection,
+.image11::-moz-selection {
+    background-color: #FBD449;
+    color: #144950;
+}
+
+.drawerLink::selection,
+.headerLink::selection,
+.drawerHeaderNameSection::selection,
+.leftSectionName::selection,
+.div::selection,
+.image::selection,
+.image11::selection {
+    background-color: #FBD449;
+    color: #144950;
+}
