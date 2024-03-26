@@ -490,7 +490,7 @@ const PlaceOrders = () => {
 
 
             setSelectedAddress(null);
-            showSuccessToast(data.message);
+            // showSuccessToast(data.message);
             return data.data.orderData
         }).catch(error => {
             console.error('There was a problem with the fetch operation:', error);
@@ -567,7 +567,7 @@ const PlaceOrders = () => {
                     // const res = await handleStatusUpdate(_ID)
                     const success = await handleSuccess(response, _ID)
 
-                    router.replace('/orderList');
+                    router.push('/orderList');
                     localStorage.removeItem("productId")
                     localStorage.removeItem("qtys")
                     localStorage.removeItem("totalOrderCartValue")
@@ -579,7 +579,7 @@ const PlaceOrders = () => {
             modal: {
                 ondismiss: async function () {
 
-                    router.replace('/');
+                    router.push('/');
                     localStorage.removeItem("productId")
                     localStorage.removeItem("qtys")
                     localStorage.removeItem("totalOrderCartValue")
@@ -666,8 +666,8 @@ const PlaceOrders = () => {
                 'Authorization': `Bearer ${token}`,
             },
             body: JSON.stringify({
-                status: "paid",
-                tracking: "pending",
+                paymentStatus: "paid",
+                trackingStatus: "pending",
                 razorpay_order_id: id,
             }),
         })
@@ -777,9 +777,8 @@ const PlaceOrders = () => {
                 'Authorization': `Bearer ${token}`,
             },
             body: JSON.stringify({
-                status: "cashOnDelivery",
-                tracking: "pending",
-
+                paymentStatus: "cod",
+                trackingStatus: "pending",
             }),
         })
             .then(async response => {
@@ -789,7 +788,7 @@ const PlaceOrders = () => {
                 return response.json();
             })
             .then(data => {
-                router.replace('/orderList');
+                router.push('/orderList');
                 return data;
 
             })

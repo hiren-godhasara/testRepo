@@ -102,14 +102,9 @@ const OrderList = () => {
                                 <div className={styles.row1}>
                                     <p>Order No : <strong> {e.orderNumber}</strong></p>
                                     <p>Order Date : <strong> {new Date(e.createdAt).toLocaleDateString('en-GB')}</strong></p>
-                                    {/* <p>Order Status : <strong style={{ color: 'green' }}>{e.status.toUpperCase()}</strong></p> */}
-                                    <p>Order Status :
-                                        {e.status.toUpperCase() === 'CASHONDELIVERY' ?
-                                            <strong style={{ color: 'green' }}>CASH ON DELIVERY</strong> :
-                                            <strong style={{ color: 'green' }}>{e.status.toUpperCase()}</strong>}
-                                    </p>
+                                    <p>Order Status : <strong style={{ color: 'green' }}>{e.orderStatus.toUpperCase()}</strong></p>
 
-                                    <p>Total Order Value : <strong> {e.totalOrderValue} ₹</strong></p>
+                                    <p>Total Order Value : <strong> ₹{e.totalOrderValue}</strong></p>
                                 </div>
 
                                 <div className={styles.row2}>
@@ -122,7 +117,9 @@ const OrderList = () => {
                                 </div>
 
 
-                                <div className={styles.payment}>Payment Method : <strong> UPI Payment</strong></div>
+                                <div className={styles.payment}>Payment Status : <strong> {e.paymentStatus.toUpperCase() === 'CASHONDELIVERY' ?
+                                    <strong style={{ color: 'green' }}>COD</strong> :
+                                    <strong style={{ color: 'green' }}>{e.paymentStatus.toUpperCase()}</strong>}</strong></div>
 
                                 <div className={styles.mainRow}>
 
@@ -136,6 +133,8 @@ const OrderList = () => {
                                                     width={120}
                                                     height={120}
                                                     className={styles.img}
+                                                    placeholder="blur"
+                                                    blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/4gHYSUNDX1BST0ZJTEUAAQEAAAHIAAAAAAQwAABtbnRyUkdCIFhZWiAH4AABAAEAAAAAAABhY3NwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAA9tYAAQAAAADTLQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAlkZXNjAAAA8AAAACRyWFlaAAABFAAAABRnWFlaAAABKAAAABRiWFlaAAABPAAAABR3dHB0AAABUAAAABRyVFJDAAABZAAAAChnVFJDAAABZAAAAChiVFJDAAABZAAAAChjcHJ0AAABjAAAADxtbHVjAAAAAAAAAAEAAAAMZW5VUwAAAAgAAAAcAHMAUgBHAEJYWVogAAAAAAAAb6IAADj1AAADkFhZWiAAAAAAAABimQAAt4UAABjaWFlaIAAAAAAAACSgAAAPhAAAts9YWVogAAAAAAAA9tYAAQAAAADTLXBhcmEAAAAAAAQAAAACZmYAAPKnAAANWQAAE9AAAApbAAAAAAAAAABtbHVjAAAAAAAAAAEAAAAMZW5VUwAAACAAAAAcAEcAbwBvAGcAbABlACAASQBuAGMALgAgADIAMAAxADb/2wBDABQODxIPDRQSEBIXFRQYHjIhHhwcHj0sLiQySUBMS0dARkVQWnNiUFVtVkVGZIhlbXd7gYKBTmCNl4x9lnN+gXz/2wBDARUXFx4aHjshITt8U0ZTfHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHz/wAARCACqAKoDASIAAhEBAxEB/8QAGQABAQEBAQEAAAAAAAAAAAAAAAECAwQG/8QAFxABAQEBAAAAAAAAAAAAAAAAABEBEv/EABUBAQEAAAAAAAAAAAAAAAAAAAAB/8QAFBEBAAAAAAAAAAAAAAAAAAAAAP/aAAwDAQACEQMRAD8A+zAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEpQUZqUGxip0g6DnToHQY6KDYxVoNDNKDQxSg2lZqUG6VilBqpWKUG6lYqUG6nTG6nQN9J0x0nQOnR059HQOvR05dL0Dp0vTl0vQOnRXPo6B0qVipQdKlYqUHTornSg3UrNSg1UrNTdBrdSs7rO6DdSsVKDp0VzpQdOlrlVoOlWudKDpSsUoN0rFSg3SsVKDdKxSg61KlQF3U3U1N0DdTdTU0CpUSg1Ss0oNVaxVoN1axVoNUrNKDVKyAtKzQFpUAdgARnWmdBNZ1rWdBNRdQEABQAVUUBUUEAARUAAB6EaQGU1uM7gMamt7ibgMRI1EgMwjUICQWLARVhAQahAZGoQGUahAZhGoQHcjUSAzEjcSAxuMxvcSAxCNQgMQjUIDMWNQgJCLFgMxYsICRI1CAzCNQgMwjUIDsjSKIkaRBmJGkBmEaQGYRoBmLFASEVQSEUBIRQEiRoBmEaAdAFBFRBEVAQVAQVAUAAFAAAAAABBQH//Z"
                                                 />
                                                 {/* </div> */}
                                                 <div className={styles.prodDet}>
@@ -143,7 +142,7 @@ const OrderList = () => {
                                                     {cartProduct.cartProductId.productId?.isCombo === true && <p> <span style={{ fontWeight: '650' }}>  Total Combo Weight : </span>  {cartProduct.cartProductId.productId?.weight} g</p>}
                                                     {cartProduct.cartProductId.productId?.isCombo !== true && <p> <span style={{ fontWeight: '650' }}> Weight : </span>{cartProduct.cartProductId.productId?.weight} g</p>}
                                                     {/* <p>Weight : {cartProduct.cartProductId.productId?.weight} g</p> */}
-                                                    <p><span style={{ fontWeight: '650' }}> Price : </span>{cartProduct.cartProductId.productId?.price} ₹</p>
+                                                    <p><span style={{ fontWeight: '650' }}> Price : </span>₹{cartProduct.cartProductId.productId?.price} </p>
                                                     <p><span style={{ fontWeight: '650' }}>Qty :</span> {cartProduct.cartProductId.qty}</p>
                                                 </div>
 
@@ -159,19 +158,23 @@ const OrderList = () => {
 
                                         <div className={styles.value}>
                                             <p>Total Cart Value : </p>
-                                            <div> {e.totalCartValue} ₹ </div>
+                                            <div> ₹{e.totalCartValue}  </div>
                                         </div>
                                         <div className={styles.value}>
                                             <p>Total Discount : </p>
-                                            <strong style={{ color: 'green' }}> {e.totalDiscount} ₹ </strong>
+                                            <strong style={{ color: 'green' }}> ₹{e.totalDiscount}  </strong>
                                         </div>
                                         <div className={styles.value}>
                                             <p>Total Shipping Charge : </p>
-                                            {e.shippingCharge} ₹
+                                            ₹{e.shippingCharge}
                                         </div>
+                                        {e.paymentStatus === 'cod' && <div className={styles.value}>
+                                            <p>COD Charge : </p>
+                                            ₹{e.codCharge}
+                                        </div>}
                                         <div className={styles.value}>
                                             <p>Total Order Value : </p>
-                                            <strong> {e.totalOrderValue} ₹ </strong>
+                                            <strong> ₹{e.totalOrderValue}  </strong>
                                         </div>
                                     </div>
 

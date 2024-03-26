@@ -533,7 +533,7 @@ const OrderAddresss = () => {
             setOrderId(data.data.orderData._id)
 
             setSelectedAddress(null);
-            showSuccessToast(data.message);
+            // showSuccessToast(data.message);
             return data.data.orderData._id
         }).catch(error => {
 
@@ -628,7 +628,9 @@ const OrderAddresss = () => {
                     const success = await handleSuccess(response, mongoOrderId)
 
                     // const res = await handleStatusUpdate(mongoOrderId, response.razorpay_order_id)
-                    router.replace('/orderList');
+                    // router.replace('/orderList');
+                    router.push('/orderList');
+
                 }
             },
             modal: {
@@ -716,8 +718,8 @@ const OrderAddresss = () => {
                 'Authorization': `Bearer ${token}`,
             },
             body: JSON.stringify({
-                status: "paid",
-                tracking: "pending",
+                paymentStatus: "paid",
+                trackingStatus: "pending",
                 razorpay_order_id: id,
 
             }),
@@ -788,7 +790,6 @@ const OrderAddresss = () => {
                 throw new Error('please try adain later.')
             }
             openPaymentGateway(razorpayResponse, mongoOrderId)
-
         } catch (error) {
             console.error('Order and payment process failed:', error);
         } finally {
@@ -808,8 +809,8 @@ const OrderAddresss = () => {
                 'Authorization': `Bearer ${token}`,
             },
             body: JSON.stringify({
-                status: "cashOnDelivery",
-                tracking: "pending",
+                paymentStatus: "cod",
+                trackingStatus: "pending",
 
             }),
         })
@@ -820,7 +821,9 @@ const OrderAddresss = () => {
                 return response.json();
             })
             .then(data => {
-                router.replace('/orderList');
+                // router.replace('/orderList');
+                router.push('/orderList');
+
                 return data;
 
             })
@@ -840,7 +843,9 @@ const OrderAddresss = () => {
                 throw new Error('orderId not found.')
             }
             const statusCod = await handleStatusCOD(orderId);
-            router.replace('/orderList');
+            // router.replace('/orderList');
+            router.push('/orderList');
+
             if (!statusCod) {
                 throw new Error('please try adain later.')
             }
@@ -899,7 +904,7 @@ const OrderAddresss = () => {
                             {cartData && (paymentMethod === 'online') && <div className={styles.grandtotal}>Grand Total<span>₹{cartData.totalCartValue + cartData.shippingCharge}</span> </div>}
 
                             {cartData && (paymentMethod === 'cod') && < div className={styles.ttl}>
-                                <p>Total Cart Value<span>₹v{val1}</span></p>
+                                <p>Total Cart Value<span>₹{val1}</span></p>
                                 <p>COD Charge<span>₹{val2}</span></p>
                                 <div>GRAND TOTAL<span>₹{val1 + val2}</span></div>
                             </div>
