@@ -10,8 +10,8 @@ export const metadata = {
         description: information?.registration?.ogDescription,
         images: {
             url: information?.registration?.ogImage,
-            height: "200px",
-            width: "200px",
+            height: 200,
+            width: 200,
         },
     },
 };
