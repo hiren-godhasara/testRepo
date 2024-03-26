@@ -214,3 +214,21 @@
         left: 60px;
     }
 }
+
+.p::-moz-selection,
+.h2::-moz-selection,
+.h3::-moz-selection,
+.h4::-moz-selection,
+.image::-moz-selection {
+    background-color: #FBD449;
+    color: #144950;
+}
+
+.p::selection,
+.h2::selection,
+.h3::selection,
+.h4::selection,
+.image::selection {
+    background-color: #FBD449;
+    color: #144950;
+}

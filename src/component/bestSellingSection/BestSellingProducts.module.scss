@@ -47,3 +47,15 @@
      }
 
  }
+
+ .head::-moz-selection,
+ .description::-moz-selection {
+     background-color: #FBD449;
+     color: #000;
+ }
+
+ .head::selection,
+ .description::selection {
+     background-color: #FBD449;
+     color: #000;
+ }

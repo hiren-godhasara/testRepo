@@ -211,3 +211,19 @@
         font-size: 5px;
     }
 }
+
+.p::-moz-selection,
+.h2::-moz-selection,
+.image::-moz-selection,
+.img::-moz-selection {
+    background-color: #FBD449;
+    color: #144950;
+}
+
+.p::selection,
+.h2::selection,
+.image::selection,
+.img::selection {
+    background-color: #FBD449;
+    color: #144950;
+}

@@ -27,6 +27,7 @@ export default function Footer() {
                             alt='logo'
                             fill={true}
                             style={{ objectFit: "contain" }}
+                            className={styles.head1}
                         />
                         {/* <p className={styles.headp}>My Dry Fruit</p> */}
                     </Link>
@@ -35,7 +36,9 @@ export default function Footer() {
                     </Link>
 
                     <p className={styles.p1}>
-                        powered by: <span>BITSSHADOW LLP</span>
+                        <span className={styles.ps1}>BITSSHADOW LLP</span>
+
+                        {/* powered by: <span>BITSSHADOW LLP</span> */}
                     </p>
                     <p className={styles.p1} >
                         519-521 Meridian Business Center, Mota Varachha, Surat, Gujarat 394101

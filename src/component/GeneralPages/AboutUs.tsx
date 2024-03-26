@@ -13,7 +13,8 @@ const AboutUs = () => {
             <div className={styles.detailsContainer}>
                 <h1 className={styles.head}>About Us</h1>
                 <p>At Bitsshadow LLP, we proudly present &quot;MyDryFruit&quot; our distinguished brand renowned for its superior quality dry fruits. As pioneers in the industry, we specialize in processing, sorting, and repackaging an extensive assortment of premium dry fruits. Our dedication to excellence drives us to meticulously grade, package, and market these products, guaranteeing our customers unparalleled quality and satisfaction.</p>
-                <br /> <div className={styles.details1}>
+                <br />
+                <div className={styles.details1}>
                     <div className={styles.p}>Our Mission:</div> <br />
                     <p>At Bitsshadow, our mission is to bring you the finest selection of dry fruits, curated to meet your cravings anytime, anywhere. We understand the importance of offering top-quality products that not only satiate your snack desires but also promote a balanced and active lifestyle. Our commitment is to provide you with nutritious delights that not only please your palate but also nourish your body, empowering you to enjoy life to the fullest.</p>
                 </div>

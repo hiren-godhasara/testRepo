@@ -25,3 +25,14 @@
 .whiteBackground {
     font-weight: 700;
 }
+
+.p::-moz-selection {
+    color: #FBD449;
+    background-color: #144950;
+
+}
+
+.p::selection {
+    color: #FBD449;
+    background-color: #144950;
+}

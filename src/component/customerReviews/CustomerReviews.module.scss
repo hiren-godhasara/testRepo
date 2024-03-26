@@ -59,3 +59,14 @@
         margin-right: 0;
     }
 }
+
+
+.says::-moz-selection {
+    background-color: #FBD449;
+    color: #144950;
+}
+
+.says::selection {
+    background-color: #FBD449;
+    color: #144950;
+}
