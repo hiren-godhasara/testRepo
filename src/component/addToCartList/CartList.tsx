@@ -255,6 +255,7 @@ const CartList: React.FC = () => {
         }
         return 0
     };
+    console.log(productDetails, 'productDetails');
 
     return (
         <div style={{ background: '#FFFFFF' }}>
