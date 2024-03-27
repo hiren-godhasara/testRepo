@@ -58,6 +58,7 @@ const DryFruitSliderForOrder: any = () => {
             await variantProducts(data.data[0].variantName);
             setSelectedImage(data.data[0].imageUrl[0].location)
             setId(data.data[0]._id)
+            localStorage.setItem('productId', data.data[0]._id)
             setSelectedVariant(data.data[0]._id)
             setLoading(false)
         } catch (error) {

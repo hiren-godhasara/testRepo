@@ -829,9 +829,13 @@ const PlaceOrders = () => {
             if (!orderId._id) {
                 throw new Error('orderId not found.')
             }
+            localStorage.removeItem("productId")
+            localStorage.removeItem("qtys")
+            localStorage.removeItem("totalOrderCartValue")
+            localStorage.removeItem("totalShippingCharge")
             const statusCod = await handleStatusCOD(orderId._id);
-            router.push('/orderList');
 
+            router.push('/orderList');
             if (!statusCod) {
                 throw new Error('please try adain later.')
             }
