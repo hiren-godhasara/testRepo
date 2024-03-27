@@ -352,7 +352,11 @@ const OrderAddresss = () => {
                 return response.json();
             })
             .then(data => {
-
+                if (data && data.length !== 0) {
+                    setShowAddressForm(false)
+                } else {
+                    setShowAddressForm(true)
+                }
                 setAddress(data.data)
 
             })
@@ -452,14 +456,30 @@ const OrderAddresss = () => {
     };
 
 
-    const handleCheckboxChange = (addressId: string) => {
-        setSelectedAddress((prevSelected) => {
-            if (prevSelected === addressId) {
-                return null;
-            } else {
-                return addressId;
-            }
-        });
+    // const handleCheckboxChange = (addressId: string) => {
+    //     setSelectedAddress((prevSelected) => {
+    //         if (prevSelected === addressId) {
+    //             return null;
+    //         } else {
+    //             return addressId;
+    //         }
+    //     });
+    // };
+    // useEffect(() => {
+    //     // Set the selected address to the first address in the array if it exists
+    //     if (address && address.length > 0) {
+    //         setSelectedAddress(address[0]._id);
+    //     }
+    // }, [address]);
+
+    useEffect(() => {
+        if (address && address.length > 0) {
+            setSelectedAddress(address[address.length - 1]._id);
+        }
+    }, [address]);
+
+    const handleCheckboxChange = (addressId: any) => {
+        setSelectedAddress(prevSelected => (prevSelected === addressId ? null : addressId));
     };
     const toggleAddressForm = () => {
         setShowAddressForm(!showAddressForm);
@@ -1024,7 +1044,7 @@ const OrderAddresss = () => {
                             )}
 
                             {/* <p className={styles.toggleP} onClick={() => handleNewAddress()}>+ Add New Address</p> */}
-                            {showAddressForm && !selectedAddress && (
+                            {(showAddressForm || (address === undefined)) && (
 
                                 <div className={`${styles.overlay} ${styles.OrderAddressContainer}`}>
                                     <div className={styles.popup}>

@@ -70,6 +70,7 @@ const PlaceOrders = () => {
     const [loading, setLoading] = useState(true);
     const [tokenData, setTokenData] = useState(false);
     const [TotalOrderCartValue, setTotalOrderCartValue] = useState(false);
+    const [formShow, setFormShow] = useState<any>();
 
     const token = getToken();
 
@@ -320,8 +321,11 @@ const PlaceOrders = () => {
                 return response.json();
             })
             .then(data => {
-
-
+                if (data && data.length !== 0) {
+                    setShowAddressForm(false)
+                } else {
+                    setShowAddressForm(true)
+                }
                 setAddress(data.data)
 
             })
@@ -336,6 +340,7 @@ const PlaceOrders = () => {
     useEffect(() => {
         fetchAddressData();
     }, []);
+    console.log(address?.length);
 
     const handleSubmit = async (e: any) => {
         e.preventDefault();
@@ -418,14 +423,31 @@ const PlaceOrders = () => {
     };
 
 
-    const handleCheckboxChange = (addressId: string) => {
-        setSelectedAddress((prevSelected) => {
-            if (prevSelected === addressId) {
-                return null;
-            } else {
-                return addressId;
-            }
-        });
+    // const handleCheckboxChange = (addressId: string) => {
+    //     setSelectedAddress((prevSelected) => {
+    //         if (prevSelected === addressId) {
+    //             return null;
+    //         } else {
+    //             return addressId;
+    //         }
+    //     });
+    // };
+
+    // useEffect(() => {
+    //     // Set the selected address to the first address in the array if it exists
+    //     if (address && address.length > 0) {
+    //         setSelectedAddress(address[0]._id);
+    //     }
+    // }, [address]);
+
+    useEffect(() => {
+        if (address && address.length > 0) {
+            setSelectedAddress(address[address.length - 1]._id);
+        }
+    }, [address]);
+
+    const handleCheckboxChange = (addressId: any) => {
+        setSelectedAddress(prevSelected => (prevSelected === addressId ? null : addressId));
     };
 
     const toggleAddressForm = () => {
@@ -974,8 +996,7 @@ const PlaceOrders = () => {
 
 
 
-                            {showAddressForm && !selectedAddress && (
-
+                            {(showAddressForm || (address === undefined)) && (
                                 <div className={`${styles.overlay} ${styles.OrderAddressContainer}`}>
                                     <div className={styles.popup}>
                                         <h1 className={styles.h1}>ADDRESS DETAILS</h1>
