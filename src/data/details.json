@@ -33,7 +33,7 @@
         "image": "https://mydryfruit.s3.ap-northeast-1.amazonaws.com/Web+Phone-04_about.jpg",
         "ogTitle": "Mydryfruit-aboutUs-FB",
         "ogDescription": "Mydryfruit-aboutUs-FB_description",
-        "ogImage": "https://mydryfruit.s3.ap-northeast-1.amazonaws.com/metaDataImages/HomePageImage1+(1).jpg"
+        "ogImage": "https://mydryfruit.s3.ap-northeast-1.amazonaws.com/metaDataImages/HomePageImage1.webp"
     },
     "contactUs": {
         "title": "Mydryfruit-Contact Us",
@@ -41,7 +41,7 @@
         "image": "https://mydryfruit.s3.ap-northeast-1.amazonaws.com/jineshLogo.png",
         "ogTitle": "Mydryfruit-Contact Us-FB",
         "ogDescription": "Mydryfruit-Contact Us-FB_description",
-        "ogImage": "https://mydryfruit.s3.ap-northeast-1.amazonaws.com/jineshLogo.png"
+        "ogImage": "https://mydryfruit.s3.ap-northeast-1.amazonaws.com/metaDataImages/HomePageImage1.webp"
     },
     "privacyPolicy": {
         "title": "Mydryfruit-Privacy Policy",
