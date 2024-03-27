@@ -27,8 +27,7 @@
     color: #718096;
 
     span {
-        color: white;
-        opacity: 0.6;
+        color: #a0aec0;
     }
 }
 
@@ -107,10 +106,9 @@
 
 .pcopy {
     text-align: center;
-    color: #ffffff;
+    color: #a0aec0;
     padding-bottom: 0.5rem;
     font-size: 13px;
-    opacity: 0.4;
 }
 
 
@@ -188,6 +186,8 @@
         margin-left: -33vw;
     }
 }
+
+
 
 .gray::-moz-selection,
 .pcopy::-moz-selection,

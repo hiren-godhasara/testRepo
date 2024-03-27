@@ -808,6 +808,8 @@ const PlaceOrders = () => {
                 throw new Error('orderId not found.')
             }
             const statusCod = await handleStatusCOD(orderId._id);
+            router.push('/orderList');
+
             if (!statusCod) {
                 throw new Error('please try adain later.')
             }
@@ -849,10 +851,10 @@ const PlaceOrders = () => {
                             {/* <div className={styles.grandtotal}>Total<span>{totalOrderCartValue} ₹</span> </div>
                                 <div className={styles.grandtotal1}>Shipping Charge<span>{totalShippingCharge} ₹</span> </div> */}
 
-                            {(paymentMethod === 'online') && <div className={styles.ttl}>
+                            {(paymentMethod === 'online') && <div className={styles.ttl11}>
                                 <p>Total Order Value<span>₹{totalOrderCartValue} </span></p>
                                 <p>Shipping Charge<span>₹{totalShippingCharge} </span></p>
-                                <div>GRAND TOTAL<span>₹{val1 + val2} </span></div>
+                                <div>Total Order Value<span>₹{val1 + val2} </span></div>
                             </div>
                             }
 
@@ -860,11 +862,57 @@ const PlaceOrders = () => {
                                 <p>Total Order Value<span>₹{totalOrderCartValue} </span></p>
                                 <p>Shipping Charge<span>₹{totalShippingCharge} </span></p>
                                 <p>COD Charge<span>₹{val3} </span></p>
-                                <div>GRAND TOTAL<span> ₹{val1 + val2 + val3} </span></div>
+                                <div>Total Order Value<span> ₹{val1 + val2 + val3} </span></div>
                             </div>
                             }
+                            <div className={styles.deliverAddress1}>Payment Method</div>
+                            <div className={styles.radioInputs}>
+                                <label>
+                                    <input className={styles.radioInput} checked={paymentMethod === 'online'} onChange={() => handleCheckbox('online')} type="radio" name="engine" />
+                                    <span className={styles.radioTile}>
+                                        <span className={styles.radioLabel}>Online Payment</span>
+                                        <span className={styles.radioIcon}>Card payment, UPI payment, and Net banking are available.
+                                        </span>
+                                    </span>
+                                </label>
+                                <label>
+                                    <input checked={paymentMethod === 'cod'} onChange={() => handleCheckbox('cod')} className={styles.radioInput} type="radio" name="engine" />
+                                    <span className={styles.radioTile}>
+                                        <span className={styles.radioLabel}>
+                                            Cash On Delivery
 
-                            <div className={styles.deliverAddress}>DELIVERY ADDRESS</div>
+                                        </span>
+                                        <span className={styles.radioIcon}>Note:Additional ₹35/- COD charge will be applied for this option.
+                                        </span>
+                                    </span>
+                                </label>
+                            </div>
+                            {/* <div className={styles.deliverAddress}>PAYMENT METHOD</div>
+                            <div className={styles.cod}>
+                                <p>
+                                    <input
+                                        type="checkbox"
+                                        checked={paymentMethod === 'online'}
+                                        onChange={() => handleCheckbox('online')}
+                                        style={{ cursor: 'pointer' }}
+                                    />Online Payment
+                                </p>
+                                <p>
+                                    <input
+                                        type="checkbox"
+                                        checked={paymentMethod === 'cod'}
+                                        onChange={() => handleCheckbox('cod')}
+                            
+                                        style={{ cursor: 'pointer' }}
+                                    />
+                                    Cash On Delivery
+                                    <span>(Note:Additional ₹35/- COD charge will be applied for this option.) </span>
+                                </p>
+                            
+                            </div> */}
+
+
+                            <div className={styles.deliverAddress}>Delivery Address</div>
 
                             <div className={styles.preAddress}>
                                 {address && address.map((e: any) => (
@@ -908,29 +956,6 @@ const PlaceOrders = () => {
                                 ))}
                             </div>
                             <p className={styles.toggleP} onClick={() => handleNewAddress()}>+ Add New Address</p>
-                            <div className={styles.deliverAddress}>PAYMENT METHOD</div>
-                            <div className={styles.cod}>
-                                <p>
-                                    <input
-                                        type="checkbox"
-                                        checked={paymentMethod === 'online'}
-                                        onChange={() => handleCheckbox('online')}
-                                        style={{ cursor: 'pointer' }}
-                                    />Online Payment
-                                </p>
-                                <p>
-                                    <input
-                                        type="checkbox"
-                                        checked={paymentMethod === 'cod'}
-                                        onChange={() => handleCheckbox('cod')}
-
-                                        style={{ cursor: 'pointer' }}
-                                    />
-                                    Cash On Delivery
-                                    <span>(Note:Additional ₹35/- COD charge will be applied for this option.) </span>
-                                </p>
-
-                            </div>
                             {showConfirmation && (
                                 <>
                                     <div className={styles.over}>

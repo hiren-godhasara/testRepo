@@ -12,10 +12,8 @@
     padding-top: 15px;
 
     .addressCard {
-        // border: 1px solid #ccc;
-        // box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+        border-radius: 6px;
         border: 1px solid rgba(0, 0, 0, 0.1);
-
         padding: 20px;
         margin: 10px 0;
         display: flex;
@@ -200,7 +198,7 @@
     color: #FBD449;
     margin: 5px;
     padding: 5px;
-    border-radius: 2px;
+    border-radius: 4px;
     transition: background-color 0.5s, color 0.5s;
 }
 
@@ -224,16 +222,19 @@
     justify-content: space-between;
     align-items: center;
     border: 1px solid rgba(0, 0, 0, 0.1);
-
+    border-radius: 6px;
     // box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     padding: 10px;
-    font-size: 22px;
+    font-size: 18px;
     margin-top: 90px;
     margin-bottom: 30px;
     width: 100%;
+    font-weight: 550;
+    height: 96px;
+
 
     span {
-        font-size: 26px;
+        font-size: 20px;
         color: #144950;
         font-weight: 600;
     }
@@ -746,10 +747,11 @@
 
 .ttl {
     width: 100%;
-    margin-top: 120px;
+    margin-top: 90px;
     padding: 10px;
-    font-size: 22px;
+    font-size: 18px;
     border: 1px solid rgba(0, 0, 0, 0.1);
+    border-radius: 6px;
 
     p {
         font-size: 17px;
@@ -758,18 +760,58 @@
         align-items: center;
 
         span {
-            font-size: 19px;
+            font-size: 18px;
         }
     }
 
     div {
-        font-size: 22px;
+        font-size: 19px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        font-weight: 550;
+
+        span {
+            font-size: 20px;
+            color: #144950;
+            font-weight: 600;
+        }
+    }
+
+}
+
+.ttl11 {
+    width: 100%;
+    margin-top: 90px;
+    padding: 10px;
+    font-size: 18px;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    border-radius: 6px;
+    height: 133px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    p {
+        font-size: 17px;
         display: flex;
         justify-content: space-between;
         align-items: center;
 
         span {
-            font-size: 26px;
+            font-size: 18px;
+        }
+    }
+
+    div {
+        font-size: 19px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        font-weight: 550;
+
+        span {
+            font-size: 20px;
             color: #144950;
             font-weight: 600;
         }
@@ -893,4 +935,147 @@
     color: #144950;
     text-align: center;
     font-weight: 600;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.radioInputs {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.radioInputs>* {
+    margin: 6px;
+}
+
+.radioInput:checked+.radioTile {
+    border-color: #fbd449;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+    color: #fbd449;
+    // background-color: #f8ecc1;
+
+}
+
+.radioInput:checked+.radioTile:before {
+    transform: scale(1);
+    opacity: 1;
+    background-color: #fbd449;
+    border-color: #fbd449;
+
+}
+
+.radioInput:checked+.radioTile .radioIcon {
+    color: #144950;
+    opacity: 1;
+}
+
+.radioInput:checked+.radioTile .radioLabel {
+    color: #144950;
+    font-weight: 700;
+
+
+}
+
+.radioInput:focus+.radioTile {
+    border-color: #FBD449;
+}
+
+.radioInput:focus+.radioTile:before {
+    transform: scale(1);
+    opacity: 1;
+}
+
+.radioTile {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 380px;
+    min-height: 80px;
+    border-radius: 0.5rem;
+    border: 2px solid #e3d8d8;
+    background-color: #fff;
+    transition: 0.15s ease;
+    cursor: pointer;
+    position: relative;
+    padding: 20px;
+
+}
+
+
+.radioTile:hover:before {
+    transform: scale(1);
+    opacity: 1;
+}
+
+.radioIcon svg {
+    color: #144950;
+    opacity: 0.8;
+}
+
+.radioIcon {
+    font-size: 14px;
+    color: #707070;
+    opacity: 0.8;
+    text-align: center;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+
+.radioLabel {
+    color: #707070;
+    transition: 0.375s ease;
+    text-align: center;
+    font-size: 19px;
+    font-weight: 700;
+
+}
+
+.radioInput {
+    clip: rect(0 0 0 0);
+    -webkit-clip-path: inset(100%);
+    clip-path: inset(100%);
+    height: 1px;
+    overflow: hidden;
+    position: absolute;
+    white-space: nowrap;
+    width: 1px;
+
+}
+
+
+@media (max-width:800px) {
+
+    .radioInputs {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+}
+
+@media (max-width:410px) {
+
+    .radioTile {
+        width: 320px;
+    }
+
 }
