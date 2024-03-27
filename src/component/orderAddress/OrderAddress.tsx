@@ -649,7 +649,9 @@ const OrderAddresss = () => {
 
                     // const res = await handleStatusUpdate(mongoOrderId, response.razorpay_order_id)
                     // router.replace('/orderList');
-                    router.push('/orderList');
+                    // router.push('/orderList');
+                    window.location.href = '/orderList'
+
 
                 }
             },

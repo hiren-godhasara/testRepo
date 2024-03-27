@@ -589,7 +589,9 @@ const PlaceOrders = () => {
                     // const res = await handleStatusUpdate(_ID)
                     const success = await handleSuccess(response, _ID)
 
-                    router.push('/orderList');
+                    // router.push('/orderList');
+                    window.location.href = '/orderList'
+
                     localStorage.removeItem("productId")
                     localStorage.removeItem("qtys")
                     localStorage.removeItem("totalOrderCartValue")
