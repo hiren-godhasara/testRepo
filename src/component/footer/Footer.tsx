@@ -73,33 +73,33 @@ export default function Footer() {
                                 </Link>
                             </li>
                             <li>
-                                <Link href={"/contactUs"} className={styles.gray}>
-                                    Contact Us
-                                </Link>
-                            </li>
-                            <li>
                                 <Link href={"/aboutUs"} className={styles.gray}>
                                     About Us
                                 </Link>
                             </li>
                             <li>
-                                <Link href={"/"} className={styles.gray}>
-                                    Combos Offer
+                                <Link href={"/contactUs"} className={styles.gray}>
+                                    Contact Us
                                 </Link>
                             </li>
+                            {/* <li>
+                                <Link href={"/#gifting"} className={styles.gray}>
+                                    Combos Offer
+                                </Link>
+                            </li> */}
                         </ul>
                     </div>
                     <div className={styles.h1}>
                         <ul className={styles.ul}>
 
-                            <li className={styles.li}>
-                                <Link href={"/#products"} className={styles.gray}>
-                                    Products
-                                </Link>
-                            </li>
                             <li>
                                 <Link href={"/cart"} className={styles.gray}>
                                     Cart
+                                </Link>
+                            </li>
+                            <li className={styles.li}>
+                                <Link href={"/#products"} className={styles.gray}>
+                                    Products
                                 </Link>
                             </li>
                             <li>
@@ -107,24 +107,24 @@ export default function Footer() {
                                     Your Order
                                 </Link>
                             </li>
-                            <li>
+                            {/* <li>
                                 <Link href={"/"} className={styles.gray}>
                                     Best Deals
                                 </Link>
-                            </li>
+                            </li> */}
                         </ul>
                     </div>
                     <div className={styles.h1}>
                         <ul className={styles.ul}>
 
                             <li>
-                                <Link href={"/privacyPolicy"} className={styles.gray}>
-                                    Privacy Policy
+                                <Link href={"/returnPolicy"} className={styles.gray}>
+                                    Return Policy
                                 </Link>
                             </li>
                             <li>
-                                <Link href={"/returnPolicy"} className={styles.gray}>
-                                    Return Policy
+                                <Link href={"/privacyPolicy"} className={styles.gray}>
+                                    Privacy Policy
                                 </Link>
                             </li>
                             <li>
@@ -132,11 +132,11 @@ export default function Footer() {
                                     Terms & Conditions
                                 </Link>
                             </li>
-                            <li>
+                            {/* <li>
                                 <Link href={"/"} className={styles.gray}>
                                     Gifting
                                 </Link>
-                            </li>
+                            </li> */}
                         </ul>
                     </div>
                 </div>
