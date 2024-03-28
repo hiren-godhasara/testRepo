@@ -209,7 +209,7 @@
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     // background-color: #144950;
     // color: #FBD449;
-    line-height: 1rem;
+    line-height: 1.5rem;
 
     padding: 0.5rem;
     border-radius: 5px;
@@ -496,27 +496,38 @@
 
 @media (max-width:480px) {
     .image1 {
-        width: 27%;
-        margin-left: 50px;
+        min-width: 22%;
+        margin-left: 10px;
     }
 
     .largeImage {
-        width: 90%;
+        width: 100%;
+    }
+
+    .largeImageContainer {
+        width: 100%;
+
     }
 
     .mainImg {
         // display: flex;
-        // justify-content: center;
-        // align-items: center;
-        // width: 90vw;
-        margin-left: -30px !important;
-        margin-right: 5vw !important;
-
+        flex-direction: column-reverse;
+        justify-content: center;
+        align-items: center;
     }
 
     .variantSubCard {
         padding: 0.2rem;
         font-size: 12px;
+    }
+
+
+    .sideImg {
+        overflow-x: auto;
+        flex-direction: row;
+        width: 100%;
+        // align-items: center;
+        // justify-content: center;
     }
 }
 
@@ -536,50 +547,6 @@
 
 }
 
-// .image1::-moz-selection {
-//     background-color: #FBD449;
-//     color: #144950;
-
-// }
-
-// .image1::selection {
-//     background-color: #FBD449;
-//     color: #144950;
-// }
-
-// .blurImage::-moz-selection {
-//     background-color: #FBD449;
-//     color: #144950;
-
-// }
-
-// .blurImage::selection {
-//     background-color: #FBD449;
-//     color: #144950;
-// }
-
-// .largeImage::-moz-selection {
-//     background-color: #FBD449;
-//     color: #144950;
-
-// }
-
-// .largeImage::selection {
-//     background-color: #FBD449;
-//     color: #144950;
-// }
-
-
-// .name::-moz-selection {
-//     background-color: #FBD449;
-//     color: #144950;
-
-// }
-
-// .name::selection {
-//     background-color: #FBD449;
-//     color: #144950;
-// }
 
 .image1::-moz-selection,
 .blurImage::-moz-selection,
