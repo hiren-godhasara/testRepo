@@ -8,8 +8,14 @@ import { getToken } from '@/getLocalStroageToken';
 import headerCompanyLogo from '../../imageFolder/mdfLogo.png';
 import { ToastNotifications, showSuccessToast, showErrorToast } from '../../toastNotifications'
 import Loader from '../loader/Loader';
-
-
+import Image from 'next/image';
+import paytm from '../../imageFolder/paytm.png'
+import gpay from '../../imageFolder/googlePay.png'
+import bhim from '../../imageFolder/bhim.png'
+import card from '../../imageFolder/debitCard.png'
+import phonePe from '../../imageFolder/phonePe.png'
+import cod1 from '../../imageFolder/cod1.png'
+import cod2 from '../../imageFolder/cod2.png'
 
 declare global {
     interface Window {
@@ -63,9 +69,8 @@ const OrderAddresss = () => {
     const [cart, setCart] = useState(false);
 
 
-
     const router = useRouter();
-    // useTokenExpiration(token);
+
     const [loading, setLoading] = useState(true);
 
     const token = getToken();
@@ -77,8 +82,6 @@ const OrderAddresss = () => {
         }
     }, [router]);
 
-
-
     useEffect(() => {
         setLoading(true)
         if (cartData === undefined) {
@@ -86,10 +89,6 @@ const OrderAddresss = () => {
             router.push("/")
         }
     }, [router])
-
-
-
-
 
     const fetchCartData = () => {
         fetch(`${process.env.BASE_URL}/s/cartProduct/cartProductList/${userId}`, {
@@ -125,8 +124,6 @@ const OrderAddresss = () => {
         fetchCartData();
     }, []);
 
-
-
     const [editFormData, setEditFormData] = useState<EditFormData>({
         firstName: '',
         lastName: '',
@@ -159,7 +156,6 @@ const OrderAddresss = () => {
         addressType: 'Home'
 
     });
-
 
     const handleEditCancel = () => {
         setEditFormData({
@@ -221,7 +217,6 @@ const OrderAddresss = () => {
     };
 
 
-
     const handleCheckMobile: any = () => {
         const mobileRegex = /^[1-9]\d{9}$/;
         const mobile = mobileRegex.test(formData.mobile);
@@ -237,7 +232,6 @@ const OrderAddresss = () => {
             method: 'GET',
         });
         if (!response.ok) {
-            // throw new Error('Network response was not ok');
             return 'valid';
         }
         const data = await response.json();
@@ -317,8 +311,6 @@ const OrderAddresss = () => {
         setEditFormVisible(false);
         setEditAddressId(null);
     };
-
-
 
     const handleChange = (e: any) => {
         const { name, value } = e.target;
@@ -937,6 +929,43 @@ const OrderAddresss = () => {
                                 <label>
                                     <input className={styles.radioInput} checked={paymentMethod === 'online'} onChange={() => handleCheckbox('online')} type="radio" name="engine" />
                                     <span className={styles.radioTile}>
+                                        <span className={styles.imgSpan}>
+                                            <Image
+                                                src={paytm}
+                                                alt='Bag'
+                                                width='48'
+                                                height='48'
+                                                style={{ marginRight: '10px' }}
+                                            />
+                                            <Image
+                                                src={gpay}
+                                                alt='Bag'
+                                                width='48'
+                                                height='48'
+                                                style={{ marginRight: '10px' }}
+                                            />
+                                            <Image
+                                                src={phonePe}
+                                                alt='Bag'
+                                                width='48'
+                                                height='48'
+                                                style={{ marginRight: '10px' }}
+                                            />
+                                            <Image
+                                                src={bhim}
+                                                alt='Bag'
+                                                width='48'
+                                                height='48'
+                                                style={{ marginRight: '10px' }}
+                                            />
+                                            <Image
+                                                src={card}
+                                                alt='Bag'
+                                                width='48'
+                                                height='48'
+                                                style={{ marginRight: '10px' }}
+                                            />
+                                        </span>
                                         <span className={styles.radioLabel}>Online Payment</span>
                                         <span className={styles.radioIcon}>Card payment, UPI payment, and Net banking are available.
                                         </span>
@@ -945,42 +974,29 @@ const OrderAddresss = () => {
                                 <label>
                                     <input checked={paymentMethod === 'cod'} onChange={() => handleCheckbox('cod')} className={styles.radioInput} type="radio" name="engine" />
                                     <span className={styles.radioTile}>
-                                        <span className={styles.radioLabel}>
-                                            Cash On Delivery
+                                        <span className={styles.imgSpan}>
+                                            <Image
+                                                src={cod1}
+                                                alt='Bag'
+                                                width='48'
+                                                height='48'
+                                                style={{ marginLeft: '10px' }}
 
+                                            />
+                                            <Image
+                                                src={cod2}
+                                                alt='Bag'
+                                                width='48'
+                                                height='48'
+                                                style={{ marginLeft: '20px' }}
+                                            />
                                         </span>
+                                        <span className={styles.radioLabel}>Cash On Delivery</span>
                                         <span className={styles.radioIcon}>Note:Additional ₹35/- COD charge will be applied for this option.
                                         </span>
                                     </span>
                                 </label>
                             </div>
-                            {/* <div className={styles.cod}>
-
-                                <div className={styles.flex}>
-                                    <p>
-                                        <input
-                                            type="checkbox"
-                                            checked={paymentMethod === 'online'}
-                                            onChange={() => handleCheckbox('online')}
-                                            style={{ cursor: 'pointer' }}
-                                        />Online Payment
-                                    </p>
-                                    <p>
-                                        <input
-                                            type="checkbox"
-                                            checked={paymentMethod === 'cod'}
-                                            onChange={() => handleCheckbox('cod')}
-
-                                            style={{ cursor: 'pointer' }}
-                                        />
-                                        Cash On Delivery
-                                    </p>
-                                </div>
-                                <span>(Note:Additional ₹35/- COD charge will be applied for this option.) </span>
-                            </div> */}
-
-
-
 
                             <div className={styles.deliverAddress}>Delivery Address</div>
                             <div className={styles.preAddress}>
@@ -1050,7 +1066,7 @@ const OrderAddresss = () => {
 
                                 <div className={`${styles.overlay} ${styles.OrderAddressContainer}`}>
                                     <div className={styles.popup}>
-                                        <h1 className={styles.h1}>ADDRESS DETAILS</h1>
+                                        <h1 className={styles.h1}>Address details</h1>
 
                                         <form onSubmit={handleSubmit}>
                                             <div className={styles.firstRow}>
@@ -1146,8 +1162,8 @@ const OrderAddresss = () => {
                                             </div>
 
                                             <div className={styles.bts}>
-                                                <button className={styles.bt} type="button" onClick={() => setShowAddressForm(false)}>CANCEL</button>
-                                                <button className={styles.bt1} type="submit" onClick={handleSubmit}>SAVE ADDRESS</button>
+                                                <button className={styles.bt} type="button" onClick={() => setShowAddressForm(false)}>Cancel</button>
+                                                <button className={styles.bt1} type="submit" onClick={handleSubmit}>Save Address</button>
                                             </div>
 
                                         </form>
@@ -1159,7 +1175,7 @@ const OrderAddresss = () => {
                             {editFormVisible && (
                                 <div className={`${styles.overlay} ${styles.OrderAddressContainer}`}>
                                     <div className={styles.popup}>
-                                        <h1 className={styles.h1}>ADDRESS DETAILS</h1>
+                                        <h1 className={styles.h1}>Address details</h1>
 
                                         <form onSubmit={handleEditSubmit}>
                                             <div className={styles.firstRow}>
@@ -1255,8 +1271,8 @@ const OrderAddresss = () => {
                                                 </label>
                                             </div>
                                             <div>
-                                                <button type="button" onClick={handleEditCancel}>CANCEL</button>
-                                                <button type="submit">SAVE EDITS</button>
+                                                <button type="button" onClick={handleEditCancel}>Cancel</button>
+                                                <button type="submit">Save Edits</button>
                                             </div>
                                         </form>
                                     </div>
@@ -1266,34 +1282,12 @@ const OrderAddresss = () => {
                             <div className={`${styles.orderBtn} ${(!selectedAddress) ? styles.selectedAddressPayment : ''}`}>
                                 {/* <button type="submit" onClick={handleClick}>PROCEED TO PAYMENT</button> */}
                                 <button type="submit" onClick={handleClick}>
-                                    {paymentMethod === 'online' ? 'PROCEED TO PAYMENT' : 'PLACE ORDER'}
+                                    {paymentMethod === 'online' ? 'Proceed To Payment' : 'Place Order'}
                                 </button>
 
                             </div>
 
                         </div>}
-
-                    {/* {!token && <div className={styles.main}>
-                        <Image
-                            src={emptyCart}
-                            alt='Empty Shopping Bag'
-                            width='256'
-                            height='256'
-                        />
-                        <div className={styles.details}>
-                            <div className={styles.heading}>Shopping Cart</div>
-                            <div className={styles.emptyCard}>Your Cart Is Currently Empty.</div>
-
-                            <div className={styles.btns}>
-                                <button onClick={OnSignInBtn} className={styles.btn}>SIGN IN</button>
-                                <button onClick={OnShopBtn} className={styles.btn}>Return To Shop</button>
-                            </div>
-                        </div>
-                    </div>
-                    } */}
-
-                    {/* {!token && router.push('/login')} */}
-                    {/* {(cartData === undefined) && router.push("/")} */}
 
                 </>
             )

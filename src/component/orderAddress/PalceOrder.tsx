@@ -2,15 +2,18 @@
 import { Suspense, useEffect, useState } from 'react';
 import styles from './OrderAddress.module.scss';
 import { getUserId } from '@/getLocalStroageUserId';
-import { useRouter, useSearchParams } from 'next/navigation';
+import { useRouter } from 'next/navigation';
 import { getToken } from '@/getLocalStroageToken';
 import Image from 'next/image';
-import emptyCart from '../../imageFolder/emptyCart1-removebg-preview.png'
-// import useTokenExpiration from '@/userTokenExpiration';
-import headerCompanyLogo from '../../imageFolder/mdfLogo.png';
 import { ToastNotifications, showSuccessToast, showErrorToast } from '../../toastNotifications'
-import { Spin } from 'antd';
 import Loader from '../loader/Loader';
+import paytm from '../../imageFolder/paytm.png'
+import gpay from '../../imageFolder/googlePay.png'
+import bhim from '../../imageFolder/bhim.png'
+import card from '../../imageFolder/debitCard.png'
+import phonePe from '../../imageFolder/phonePe.png'
+import cod1 from '../../imageFolder/cod1.png'
+import cod2 from '../../imageFolder/cod2.png'
 
 
 declare global {
@@ -869,16 +872,12 @@ const PlaceOrders = () => {
         <div className={styles.CenteredContainer}>
             {loading ? (
                 <div className={styles.loaderContainer}>
-                    {/* <Spin size="large" /> */}
                     <Loader />
                 </div>
             ) : (
                 <>
                     {token &&
                         <div className={styles.selectedAdd}>
-                            {/* <div className={styles.grandtotal}>Total<span>{totalOrderCartValue} ₹</span> </div>
-                                <div className={styles.grandtotal1}>Shipping Charge<span>{totalShippingCharge} ₹</span> </div> */}
-
                             {(paymentMethod === 'online') && <div className={styles.ttl11}>
                                 <p>Total Order Value<span>₹{totalOrderCartValue} </span></p>
                                 <p>Shipping Charge<span>₹{totalShippingCharge} </span></p>
@@ -898,6 +897,43 @@ const PlaceOrders = () => {
                                 <label>
                                     <input className={styles.radioInput} checked={paymentMethod === 'online'} onChange={() => handleCheckbox('online')} type="radio" name="engine" />
                                     <span className={styles.radioTile}>
+                                        <span className={styles.imgSpan}>
+                                            <Image
+                                                src={paytm}
+                                                alt='Bag'
+                                                width='48'
+                                                height='48'
+                                                style={{ marginRight: '10px' }}
+                                            />
+                                            <Image
+                                                src={gpay}
+                                                alt='Bag'
+                                                width='48'
+                                                height='48'
+                                                style={{ marginRight: '10px' }}
+                                            />
+                                            <Image
+                                                src={phonePe}
+                                                alt='Bag'
+                                                width='48'
+                                                height='48'
+                                                style={{ marginRight: '10px' }}
+                                            />
+                                            <Image
+                                                src={bhim}
+                                                alt='Bag'
+                                                width='48'
+                                                height='48'
+                                                style={{ marginRight: '10px' }}
+                                            />
+                                            <Image
+                                                src={card}
+                                                alt='Bag'
+                                                width='48'
+                                                height='48'
+                                                style={{ marginRight: '10px' }}
+                                            />
+                                        </span>
                                         <span className={styles.radioLabel}>Online Payment</span>
                                         <span className={styles.radioIcon}>Card payment, UPI payment, and Net banking are available.
                                         </span>
@@ -906,40 +942,29 @@ const PlaceOrders = () => {
                                 <label>
                                     <input checked={paymentMethod === 'cod'} onChange={() => handleCheckbox('cod')} className={styles.radioInput} type="radio" name="engine" />
                                     <span className={styles.radioTile}>
-                                        <span className={styles.radioLabel}>
-                                            Cash On Delivery
+                                        <span className={styles.imgSpan}>
+                                            <Image
+                                                src={cod1}
+                                                alt='Bag'
+                                                width='48'
+                                                height='48'
+                                                style={{ marginLeft: '10px' }}
 
+                                            />
+                                            <Image
+                                                src={cod2}
+                                                alt='Bag'
+                                                width='48'
+                                                height='48'
+                                                style={{ marginLeft: '20px' }}
+                                            />
                                         </span>
-                                        <span className={styles.radioIcon}>Note:Additional ₹35/- COD charge will be applied for this option.
+                                        <span className={styles.radioLabel}>Cash On Delivery</span>
+                                        <span className={styles.radioIcon}>Additional ₹35/- COD charge will be applied for this option.
                                         </span>
                                     </span>
                                 </label>
                             </div>
-                            {/* <div className={styles.deliverAddress}>PAYMENT METHOD</div>
-                            <div className={styles.cod}>
-                                <p>
-                                    <input
-                                        type="checkbox"
-                                        checked={paymentMethod === 'online'}
-                                        onChange={() => handleCheckbox('online')}
-                                        style={{ cursor: 'pointer' }}
-                                    />Online Payment
-                                </p>
-                                <p>
-                                    <input
-                                        type="checkbox"
-                                        checked={paymentMethod === 'cod'}
-                                        onChange={() => handleCheckbox('cod')}
-                            
-                                        style={{ cursor: 'pointer' }}
-                                    />
-                                    Cash On Delivery
-                                    <span>(Note:Additional ₹35/- COD charge will be applied for this option.) </span>
-                                </p>
-                            
-                            </div> */}
-
-
                             <div className={styles.deliverAddress}>Delivery Address</div>
 
                             <div className={styles.preAddress}>
@@ -1005,7 +1030,7 @@ const PlaceOrders = () => {
                             {(showAddressForm || (address === undefined)) && (
                                 <div className={`${styles.overlay} ${styles.OrderAddressContainer}`}>
                                     <div className={styles.popup}>
-                                        <h1 className={styles.h1}>ADDRESS DETAILS</h1>
+                                        <h1 className={styles.h1}>Address details</h1>
 
                                         <form onSubmit={handleSubmit}>
                                             <div className={styles.firstRow}>
@@ -1100,8 +1125,8 @@ const PlaceOrders = () => {
                                             </div>
 
                                             <div className={styles.bts}>
-                                                <button className={styles.bt1} type="button" onClick={() => setShowAddressForm(false)}>CANCEL</button>
-                                                <button className={styles.bt2} type="submit" onClick={handleSubmit}>SAVE ADDRESS</button>
+                                                <button className={styles.bt1} type="button" onClick={() => setShowAddressForm(false)}>Cancel</button>
+                                                <button className={styles.bt2} type="submit" onClick={handleSubmit}>Save Address</button>
                                             </div>
                                         </form>
                                     </div>
@@ -1112,7 +1137,7 @@ const PlaceOrders = () => {
                             {editFormVisible && (
                                 <div className={`${styles.overlay} ${styles.OrderAddressContainer}`}>
                                     <div className={styles.popup}>
-                                        <h1 className={styles.h1}>ADDRESS DETAILS</h1>
+                                        <h1 className={styles.h1}>Address details</h1>
                                         <form onSubmit={handleEditSubmit}>
                                             <div className={styles.firstRow}>
                                                 <div>
@@ -1206,8 +1231,8 @@ const PlaceOrders = () => {
                                                 </label>
                                             </div>
                                             <div>
-                                                <button type="button" onClick={handleEditCancel}>CANCEL</button>
-                                                <button type="submit">SAVE EDITS</button>
+                                                <button type="button" onClick={handleEditCancel}>Cancel</button>
+                                                <button type="submit">Save Edits</button>
                                             </div>
                                         </form>
                                     </div>
@@ -1216,34 +1241,13 @@ const PlaceOrders = () => {
 
                             <div className={`${styles.orderBtn} ${!selectedAddress ? styles.selectedAddressPayment : ''}`}>
 
-                                {/* <button type="submit" onClick={handleClick}>PROCEED TO PAYMENT</button> */}
                                 <button type="submit" onClick={handleClick}>
-                                    {paymentMethod === 'online' ? 'PROCEED TO PAYMENT' : 'PLACE ORDER'}
+                                    {paymentMethod === 'online' ? 'Proceed To Payment' : 'Place Order'}
                                 </button>
-                                {/* <button type="submit" onClick={orderAndPayment} >PROCEED TO PAYMENT</button> */}
                             </div>
 
                         </div>}
 
-                    {/* {!token && <div className={styles.main}>
-                        <Image
-                            src={emptyCart}
-                            alt='Empty Shopping Bag'
-                            width='256'
-                            height='256'
-                        />
-                        <div className={styles.details}>
-                            <div className={styles.heading}>Shopping Cart</div>
-                            <div className={styles.emptyCard}>Your Cart Is Currently Empty.</div>
-
-                            <div className={styles.btns1}>
-                                <button onClick={OnSignInBtn} className={styles.btn}>SIGN IN</button>
-                                <button onClick={OnShopBtn} className={styles.btn}>Return To Shop</button>
-                            </div>
-                        </div>
-                    </div>} */}
-                    {/* {!token && router.push('/login')} */}
-                    {/* {TotalOrderCartValue && router.push("/")} */}
                 </>
             )}
         </div >
