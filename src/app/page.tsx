@@ -27,7 +27,6 @@ export default function Home() {
         {/* <HashtagInstagramFeeds /> */}
         <div id='gifting'> <GiftCombo /></div>
         {/* <InstagramFeeds /> */}
-        {/* <Invoices /> */}
         {/* <SlidingCarousel /> */}
       </GoogleOAuthProvider>
     </div >

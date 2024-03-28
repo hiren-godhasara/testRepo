@@ -304,7 +304,7 @@
 
     .button {
         width: calc(100% - 25px);
-        height: 3.8vh !important;
+        height: 4.5vh !important;
         margin-bottom: -7px;
     }
 
@@ -325,7 +325,7 @@
 
     .button {
         margin-bottom: 0px;
-        height: 3.5vh !important;
+        // height: 3.5vh !important;
     }
 
     .ellipsis1 {
@@ -352,9 +352,9 @@
         min-width: 155px;
     }
 
-    .button {
-        height: 3vh !important;
-    }
+    // .button {
+    //     height: 3vh !important;
+    // }
 }
 
 @media (max-width: 360px) {

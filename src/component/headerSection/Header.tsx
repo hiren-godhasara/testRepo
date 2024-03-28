@@ -223,7 +223,7 @@ const Header = () => {
                         <div className={styles.antDrawerBody}>
                             <ul className={styles.drawerMenuItems}>
                                 <li><Link className={styles.drawerLink} onClick={() => setIsMenuShown(false)} href="/#products">Products</Link></li>
-                                <li><Link className={styles.drawerLink} onClick={() => setIsMenuShown(false)} href="/#gifting">Gifting</Link></li>
+                                <li><Link className={styles.drawerLink} onClick={() => setIsMenuShown(false)} href="/#gifting">Combo</Link></li>
                                 <li><Link className={styles.drawerLink} onClick={() => setIsMenuShown(false)} href="/#deals">Best Deals</Link></li>
                                 <li><Link className={styles.drawerLink} onClick={() => setIsMenuShown(false)} href="/aboutUs">About Us</Link></li>
                                 <li><Link className={styles.drawerLink} onClick={() => setIsMenuShown(false)} href="/contactUs">Contact Us</Link></li>
@@ -246,7 +246,7 @@ const Header = () => {
                         </Link>
                         <div className={styles.headerLinkWrapper}>
                             <Link className={styles.headerLink} onClick={() => setIsMenuShown(false)} href="/#products">Products</Link>
-                            <Link className={styles.headerLink} onClick={() => setIsMenuShown(false)} href="/#gifting">Gifting</Link>
+                            <Link className={styles.headerLink} onClick={() => setIsMenuShown(false)} href="/#gifting">Combo</Link>
                             <Link className={styles.headerLink} onClick={() => setIsMenuShown(false)} href="/#deals">Best Deals</Link>
                             <Link className={styles.headerLink} onClick={() => setIsMenuShown(false)} href="/aboutUs">About Us</Link>
                             <Link className={styles.headerLink} onClick={() => setIsMenuShown(false)} href="/contactUs">Contact Us</Link>

@@ -3,6 +3,8 @@ const information = require('../../data/details.json')
 export const metadata = {
     title: information?.contactUs?.title,
     description: information?.contactUs?.description,
+    keywords: information?.contactUs?.keywords,
+
     openGraph: {
         title: information?.contactUs?.ogTitle,
         description: information?.contactUs?.ogDescription,
