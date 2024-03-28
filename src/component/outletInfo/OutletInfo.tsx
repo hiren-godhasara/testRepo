@@ -3,7 +3,7 @@
 import React, { useEffect, useState } from 'react';
 import styles from './Outlet.module.scss';
 import Image from 'next/image';
-import img from '../../imageFolder/branchInfoBg.png';
+import img from '../../imageFolder/branchInfoBg1.png';
 
 const Info: React.FC = () => {
     const [dynamicValue, setDynamicValue] = useState(10519);
@@ -29,8 +29,9 @@ const Info: React.FC = () => {
     return (
         <div className={styles.infoContainer}>
             <div className={styles.imageContainer}>
-                <Image src={img} alt="Image Description" className={styles.image} />
-
+                <div className={styles.demo}>
+                    <Image src={img} alt="Image Description" className={styles.image} />
+                </div>
                 <div className={styles.cardDetails}>
                     <div className={styles.card}>
                         <p className={styles.p}>Number of happy customers</p>
@@ -42,11 +43,11 @@ const Info: React.FC = () => {
                     </div>
                     <div className={styles.card}>
                         <p className={styles.p}>Discover Exclusive Products</p>
-                        <h2 className={styles.h2}>2000+</h2>
+                        <h2 className={styles.h2}>25+</h2>
                     </div>
                     <div className={styles.card}>
-                        <p className={styles.p}>Explore Distinct Varieties of Premium Dry Fruits</p>
-                        <h2 className={styles.h2}>45+</h2>
+                        <p className={styles.p}>Customer Satisfaction Rate</p>
+                        <h2 className={styles.h2}>99%</h2>
                     </div>
                 </div>
             </div>
