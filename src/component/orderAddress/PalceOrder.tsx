@@ -587,21 +587,13 @@ const PlaceOrders = () => {
                 color: '#144950',
             },
             handler: async function (response: any) {
-
                 if (response) {
-                    // const res = await handleStatusUpdate(_ID)
                     const success = await handleSuccess(response, _ID)
-
-                    router.push('/orderList');
-                    // window.location.href = '/orderList'
-
                     localStorage.removeItem("productId")
                     localStorage.removeItem("qtys")
                     localStorage.removeItem("totalOrderCartValue")
                     localStorage.removeItem("totalShippingCharge")
-
                 }
-
             },
             modal: {
                 ondismiss: async function () {
@@ -705,6 +697,7 @@ const PlaceOrders = () => {
                 return response.json();
             })
             .then(data => {
+                router.push('/orderList');
 
                 return data;
             })
@@ -840,7 +833,6 @@ const PlaceOrders = () => {
             localStorage.removeItem("totalShippingCharge")
             const statusCod = await handleStatusCOD(orderId._id);
 
-            router.push('/orderList');
             if (!statusCod) {
                 throw new Error('please try adain later.')
             }

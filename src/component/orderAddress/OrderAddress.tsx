@@ -637,14 +637,7 @@ const OrderAddresss = () => {
             handler: async function (response: any) {
                 if (response) {
                     console.log(response);
-                    const success = await handleSuccess(response, mongoOrderId)
-
-                    // const res = await handleStatusUpdate(mongoOrderId, response.razorpay_order_id)
-                    // router.replace('/orderList');
-                    router.push('/orderList');
-                    // window.location.href = '/orderList'
-
-
+                    await handleSuccess(response, mongoOrderId)
                 }
             },
             modal: {
@@ -745,6 +738,7 @@ const OrderAddresss = () => {
                 return response.json();
             })
             .then(data => {
+                router.push('/orderList');
                 return data;
             })
             .catch(error => {
@@ -835,7 +829,6 @@ const OrderAddresss = () => {
                 return response.json();
             })
             .then(data => {
-                // router.replace('/orderList');
                 router.push('/orderList');
 
                 return data;
@@ -857,8 +850,6 @@ const OrderAddresss = () => {
                 throw new Error('orderId not found.')
             }
             const statusCod = await handleStatusCOD(orderId);
-            // router.replace('/orderList');
-            router.push('/orderList');
 
             if (!statusCod) {
                 throw new Error('please try adain later.')
