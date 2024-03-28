@@ -10,65 +10,65 @@ import review8 from '../imageFolder/review8.png'
 const reviews = [
     {
         id: 1,
-        name: 'James Warner',
+        name: 'Jagriti Chaurasia',
         designation: 'Customer',
-        review: "Fresh and flavorful dry fruits, prompt delivery – my go-to online source!",
+        review: "I recently ordered from this online store and was delighted with the premium quality almonds and cashews. The prompt delivery ensured freshness, making it my go-to source for dry fruits.",
         image: review1,
         rating: "⭐⭐⭐⭐⭐"
     },
     {
         id: 2,
-        name: 'Carla Houston',
+        name: 'Arun Prasad',
         designation: 'Customer',
-        review: "Excellent quality, great variety, and hassle-free shopping experience.",
+        review: "Hassle-free shopping with unmatched variety – this store is my preferred destination for healthy snacks. Highly recommend for a five-star dry fruit experience!",
         image: review2,
         rating: "⭐⭐⭐⭐⭐"
     },
     {
         id: 3,
-        name: 'Alsister Smith',
+        name: 'Rishikesh Kumar',
         designation: 'Customer',
-        review: 'Impressed with the packaging and premium quality dry fruits. Highly recommend! Quick shipping, top-notch products – exceeded my expectations!"',
+        review: "Quick shipping and top-notch products blew me away! This online store is a must for anyone seeking reliability and deliciousness in dry fruits.",
         image: review3,
         rating: "⭐⭐⭐⭐⭐"
     },
     {
         id: 4,
-        name: 'Travis Marsh',
+        name: 'Subojit Roy',
         designation: 'Customer',
-        review: "Reliable service, delicious dry fruits – couldn't be happier with my purchase.",
+        review: "With fantastic selection and speedy delivery, this store is my go-to for restocking my pantry.",
         image: review4,
         rating: "⭐⭐⭐⭐⭐"
     },
     {
         id: 5,
-        name: 'Chris Jordan',
+        name: 'Nitesh Mishra',
         designation: 'Customer',
-        review: "The online store's selection is fantastic, and the dry fruits are consistently delicious Five stars for the quality, speed, and convenience of my dry fruit order.",
+        review: "Best deals on premium dry fruits! Exceptional customer service and a delightful assortment make this store my top choice for snacking needs.",
         image: review5,
         rating: "⭐⭐⭐⭐⭐"
     },
     {
         id: 6,
-        name: 'Roman Cena',
+        name: 'Anand Prasad',
         designation: 'Customer',
-        review: "Found the best deals on premium dry fruits a satisfied customer! Exceptional customer service and a delightful assortment of fresh dry fruits.",
+        review: "Every piece of dry fruit I received from this online source was a symphony of taste and texture. It's truly an elevated snacking experience that I can't get enough of.",
         image: review6,
         rating: "⭐⭐⭐⭐⭐"
     },
     {
         id: 7,
-        name: 'Sally Selcen Stochliya',
+        name: 'Prankur Patel',
         designation: 'Customer',
-        review: 'A symphony of taste and texture in every piece. Elevate your snacking with this exceptional online source.',
+        review: "For discerning tastes, this online destination offers seamless bulk ordering and delightful discounts. Highly recommended for all dry fruit enthusiasts!",
         image: review7,
         rating: "⭐⭐⭐⭐⭐"
     },
     {
         id: 8,
-        name: 'Elizbeth Smith',
+        name: 'Sangeeth M Reji',
         designation: 'Customer',
-        review: 'For discerning tastes, this online destination offers seamless bulk ordering and delightful discounts.',
+        review: "Impressed by the packaging and premium quality of the dry fruits! Quick shipping ensured top-notch products arrived promptly.",
         image: review8,
         rating: "⭐⭐⭐⭐⭐"
     },
